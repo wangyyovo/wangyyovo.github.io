@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>如何优雅的使用opa进行开发 | Blank</title><meta name="keywords" content="opa"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="如何优雅的使用opa进行开发opaopa（命令行工具）现在迭代比较快，为了性能和一些丰富的内置函数，推荐使用最新版 12345678# maccurl -L -o opa https:&#x2F;&#x2F;openpolicyagent.org&#x2F;downloads&#x2F;latest&#x2F;opa_darwin_amd64chmod +x opamv opa &#x2F;usr&#x2F;local&#x2F;bin&#x2F;opa# othergo instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何优雅的使用opa进行开发">
+<meta property="og:url" content="http://wangyangyangisme.github.io/posts/74b42414/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="如何优雅的使用opa进行开发opaopa（命令行工具）现在迭代比较快，为了性能和一些丰富的内置函数，推荐使用最新版 12345678# maccurl -L -o opa https:&#x2F;&#x2F;openpolicyagent.org&#x2F;downloads&#x2F;latest&#x2F;opa_darwin_amd64chmod +x opamv opa &#x2F;usr&#x2F;local&#x2F;bin&#x2F;opa# othergo instal">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg">
+<meta property="article:published_time" content="2022-03-02T09:32:44.000Z">
+<meta property="article:modified_time" content="2022-03-02T09:32:44.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="opa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/favicon.ico"><link rel="canonical" href="http://wangyangyangisme.github.io/posts/74b42414/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章所描述的內容可能已经发生变化，请留意。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '如何优雅的使用opa进行开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-02 17:32:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">347</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">如何优雅的使用opa进行开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-02T09:32:44.000Z" title="发表于 2022-03-02 17:32:44">2022-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-02T09:32:44.000Z" title="更新于 2022-03-02 17:32:44">2022-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/opa/">opa</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="如何优雅的使用opa进行开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="如何优雅的使用opa进行开发"><a href="#如何优雅的使用opa进行开发" class="headerlink" title="如何优雅的使用opa进行开发"></a>如何优雅的使用opa进行开发</h1><h2 id="opa"><a href="#opa" class="headerlink" title="opa"></a>opa</h2><p><code>opa</code>（命令行工具）现在迭代比较快，为了性能和一些丰富的内置函数，推荐使用最新版</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mac</span></span><br><span class="line">curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_darwin_amd64</span><br><span class="line">chmod +x opa</span><br><span class="line">mv opa /usr/local/bin/opa</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> other</span></span><br><span class="line">go install github.com/open-policy-agent/opa@latest</span><br></pre></td></tr></table></figure>
+
+<p>查看命令帮助</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;opa -h</span><br><span class="line">An open source project to policy-enable your service.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  E:\goproject\gopath\bin\opa.exe [command]</span><br><span class="line"></span><br><span class="line">Available Commands:</span><br><span class="line">  bench       Benchmark a Rego query</span><br><span class="line">  build       Build an OPA bundle</span><br><span class="line">  check       Check Rego source files</span><br><span class="line">  completion  Generate the autocompletion script for the specified shell</span><br><span class="line">  deps        Analyze Rego query dependencies</span><br><span class="line">  eval        Evaluate a Rego query</span><br><span class="line">  exec        Execute against input files</span><br><span class="line">  fmt         Format Rego source files</span><br><span class="line">  help        Help about any command</span><br><span class="line">  inspect     Inspect OPA bundle(s)</span><br><span class="line">  parse       Parse Rego source file</span><br><span class="line">  run         Start OPA in interactive or server mode</span><br><span class="line">  sign        Generate an OPA bundle signature</span><br><span class="line">  test        Execute Rego test cases</span><br><span class="line">  version     Print the version of OPA</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -h, --help   help for E:\goproject\gopath\bin\opa.exe</span><br><span class="line"></span><br><span class="line">Use &quot;E:\goproject\gopath\bin\opa.exe [command] --help&quot; for more information about a command.</span><br></pre></td></tr></table></figure>
+
+<p>看介绍能知道每个命令是干啥的，用到时具体看 help 就行</p>
+<p>这里边挑常用的命令讲下：</p>
+<h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><p><code>opa run</code>是<code>OPA</code>实现的<strong>交互式运行</strong>（<code>REPL</code>）命令，本地学习或者调试会很方便</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir quick-start</span><br></pre></td></tr></table></figure>
+
+<p>data.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;roles&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;operation&quot;</span>: <span class="string">&quot;read&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;resource&quot;</span>: <span class="string">&quot;widgets&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;widget-reader&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;operation&quot;</span>: <span class="string">&quot;write&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;resource&quot;</span>: <span class="string">&quot;widgets&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;widget-writer&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;bindings&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;inspector-alice&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;role&quot;</span>: <span class="string">&quot;widget-reader&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;maker-bob&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;role&quot;</span>: <span class="string">&quot;widget-writer&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>example.rego</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package example_rbac</span><br><span class="line"></span><br><span class="line">default allow &#x3D; false</span><br><span class="line"></span><br><span class="line"># allow will be true when user has role and role has permission</span><br><span class="line">allow &#123;</span><br><span class="line">	# opa eval -f pretty -d quick-start -i quick-start&#x2F;input.json &quot;data.example_rbac.allow&quot; --explain&#x3D;notes</span><br><span class="line">	# trace(role_name)</span><br><span class="line">	some role_name</span><br><span class="line">	user_has_role[role_name]</span><br><span class="line">	role_has_permission[role_name]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># check user role binding exist</span><br><span class="line">user_has_role[role_name] &#123;</span><br><span class="line">	role_binding &#x3D; data.bindings[_]</span><br><span class="line">	role_binding.role &#x3D; role_name</span><br><span class="line">	role_binding.user &#x3D;&#x3D; input.subject.user</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># check role permission exist</span><br><span class="line">role_has_permission[role_name] &#123;</span><br><span class="line">	role &#x3D; data.roles[_]</span><br><span class="line">	role.name &#x3D; role_name</span><br><span class="line">	role.operation &#x3D;&#x3D; input.action.operation</span><br><span class="line">	role.resource &#x3D;&#x3D; input.action.resource</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>example_test.rego</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package example_rbac_test</span><br><span class="line"></span><br><span class="line">import data.example_rbac</span><br><span class="line"></span><br><span class="line"># tests to coverage 100%</span><br><span class="line"></span><br><span class="line">test_not_allow &#123;</span><br><span class="line">	not example_rbac.allow with input as &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test_allow &#123;</span><br><span class="line">	example_rbac.allow with input as &#123;</span><br><span class="line">		&quot;action&quot;: &#123;</span><br><span class="line">			&quot;operation&quot;: &quot;read&quot;,</span><br><span class="line">			&quot;resource&quot;: &quot;widgets&quot;,</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;subject&quot;: &#123;&quot;user&quot;: &quot;inspector-alice&quot;&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>input.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;action&quot;</span>:&#123;</span><br><span class="line">        <span class="attr">&quot;operation&quot;</span>:<span class="string">&quot;read&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;resource&quot;</span>:<span class="string">&quot;widgets&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;subject&quot;</span>:&#123;</span><br><span class="line">        <span class="attr">&quot;user&quot;</span>:<span class="string">&quot;inspector-alice&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行opa</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> opa run quick-start</span></span><br><span class="line">OPA 0.37.2 (commit , built at )</span><br><span class="line">Run &#x27;help&#x27; to see a list of commands and check for updates.</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">获取上下文</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> data</span></span><br><span class="line">&#123;</span><br><span class="line">  &quot;action&quot;: &#123;</span><br><span class="line">    &quot;operation&quot;: &quot;read&quot;,</span><br><span class="line">    &quot;resource&quot;: &quot;widgets&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>你会得到 json 格式的 data 下的所有节点内容</p>
+<p>主要有两类，所有<code>quick-start</code>目录下的</p>
+<ul>
+<li><p>配置文件（<code>.json|.yaml|.yml</code>）</p>
+<p>对应的父节点是<code>data</code></p>
+</li>
+<li><p><code>Rego</code>文件(包括 test 文件)</p>
+</li>
+</ul>
+<p>对应的父节点是<code>data.&lt;package name&gt;</code></p>
+<blockquote>
+<p>Tips: 这样配置文件都挂在<code>data</code>这个根节点下了。</p>
+<p>如果想加载配置文件时增加父节点（如<code>data.example.file</code>）该怎么办？</p>
+<p>可以文件的路径映射前缀 <code>opa run example.file:quick-start</code>注意<strong>只会改变配置文件</strong>的父节点</p>
+<p>这一点很有用，以后讲<code>bundle</code>也会提到</p>
+</blockquote>
+<p>当然也可以指定输入文件<code>input</code>。这个比较特殊，命令行保留了包前缀<code>repl.input</code>给<code>input</code></p>
+<p>也就是说，可以用<code>repl.input:&lt;path to input.json&gt;</code>的方式传递输入，而避免挂载到<code>data</code>根节点下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> opa run quick-start  repl.input:quick-start/input.json</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> data.example_rbac</span></span><br><span class="line">&#123;</span><br><span class="line">  &quot;allow&quot;: true,</span><br><span class="line">  &quot;role_has_permission&quot;: [</span><br><span class="line">    &quot;widget-reader&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;user_has_role&quot;: [</span><br><span class="line">    &quot;widget-reader&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips: <code>-w</code>支持交互式窗口内实时文件变更 reload</p>
+<p><code>-s</code>支持服务常驻式启动，启动后可以 REST-Api 查询；</p>
+</blockquote>
+<h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p><code>opa eval</code>是用来查询策略结果</p>
+<p><code>-d</code> 指定上下文，<code>-i</code> 指定输入 <code>-f</code> 指定返回格式，默认 json，还支持<code>values,bindings,pretty,source</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">opa eval -f values -d quick-start -i quick-start/input.json &quot;data.example_rbac&quot;</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;allow&quot;: true,</span><br><span class="line">    &quot;role_has_permission&quot;: [</span><br><span class="line">      &quot;widget-reader&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;user_has_role&quot;: [</span><br><span class="line">      &quot;widget-reader&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips: 还支持性能分析 <code>--metrics</code>, <code>--instrument</code>, <code>--profile</code></p>
+</blockquote>
+<h3 id="deps"><a href="#deps" class="headerlink" title="deps"></a>deps</h3><p><code>opa deps</code> 用来分析查询依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ opa deps -d quick-start &quot;data.example_rbac&quot;</span><br><span class="line">+------------------------+---------------------------------------+</span><br><span class="line">|     BASE DOCUMENTS     |           VIRTUAL DOCUMENTS           |</span><br><span class="line">+------------------------+---------------------------------------+</span><br><span class="line">| data.bindings          | data.example_rbac.allow               |</span><br><span class="line">| data.roles             | data.example_rbac.role_has_permission |</span><br><span class="line">| input.action.operation | data.example_rbac.user_has_role       |</span><br><span class="line">| input.action.resource  |                                       |</span><br><span class="line">| input.subject.user     |                                       |</span><br><span class="line">+------------------------+---------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p><code>opa test</code> 用来跑测试，<code>-c</code>支持输出覆盖率，<code>--threshold</code> 可指定通过覆盖率</p>
+<h3 id="check-amp-fmt"><a href="#check-amp-fmt" class="headerlink" title="check &amp; fmt"></a>check &amp; fmt</h3><p><code>opa check</code> 是语法检查;<code>opa fmt</code>是格式化</p>
+<h2 id="vscode-opa"><a href="#vscode-opa" class="headerlink" title="vscode-opa"></a>vscode-opa</h2><p>命令虽少可还是要记啊，有没有不用敲命令这么费劲的</p>
+<p>有！官方强大的交互式编辑器扩展<strong>vscode-opa</strong>，了解下~~</p>
+<p>安装后只要在<code>vscode</code>的配置里指定<code>OPA</code>执行文件路径就可以用了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;opa.path&quot;: &quot;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;opa&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>它基本支持上述大部分命令功能：</p>
+<ul>
+<li>在保存时检查语法（Check Syntax on Save）</li>
+<li>计算包结果（Evaluate Packages）</li>
+<li>计算选择部分结果（Evaluate Selections）</li>
+<li>部分评估选择（Partially Evaluate Selections）</li>
+<li>对选择部分代码运行追踪（Trace Selections）</li>
+<li>对选择部分性能分析（Profile Selections）</li>
+<li>在工作区中运行测试（Run Tests in Workspace）</li>
+<li>切换工作区的测试覆盖（Toggle Coverage in Workspace）</li>
+<li>切换选择部分的测试覆盖（Toggle Coverage of Selections）</li>
+</ul>
+<p>其中评估（<code>Evaluate</code>)和测试覆盖显示（<code>Coverage</code>）在日常开发中很实用</p>
+<h3 id="快捷键配置"><a href="#快捷键配置" class="headerlink" title="快捷键配置"></a>快捷键配置</h3><p>这里可以配置用户快捷键方便直接调起命令：</p>
+<p>（官方推荐的前两个<code>Evaluate</code>的，后边<code>Test</code>相关的也可以加上）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;key&quot;</span>: <span class="string">&quot;cmd+e&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;opa.eval.selection&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;when&quot;</span>: <span class="string">&quot;editorLangId == rego&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;key&quot;</span>: <span class="string">&quot;shift+cmd+a&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;opa.eval.package&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;when&quot;</span>: <span class="string">&quot;editorLangId == rego&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;key&quot;</span>: <span class="string">&quot;shift+cmd+c&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;opa.test.coverage.workspace&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;when&quot;</span>: <span class="string">&quot;editorLangId == rego&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">&quot;key&quot;</span>: <span class="string">&quot;shift+cmd+t&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;opa.test.workspace&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;when&quot;</span>: <span class="string">&quot;editorLangId == rego&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip: 插件默认<strong>只取项目根目录</strong>的<code>input.json</code>作为输入</p>
+<p>配置<code>opa.bundleMode</code>默认为 true，则会<strong>只获取目录</strong>里的所有<code>data.&#123;json|yaml&#125;</code></p>
+<p>如果设置为 false，则会获取目录中所有<code>.&#123;json|yaml&#125;</code></p>
+</blockquote>
+<p>好了，现在可以优雅的使用<code>opa</code>开发了。</p>
+<p>下一篇我们来讲讲<code>OPA</code>的函数和虚拟文档，了解下他们各自适用的场景。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:null">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wangyangyangisme.github.io/posts/74b42414/">http://wangyangyangisme.github.io/posts/74b42414/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wangyangyangisme.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/opa/">opa</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ceadba08/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">OPA进阶-函数与虚拟文档</div></div></a></div><div class="next-post pull-right"><a href="/posts/75a3be3b/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OPA-重新定义规则引擎-入门篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-分布式利器Bundle</div></div></a></div><div><a href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-测试、性能分析和基准测试</div></div></a></div><div><a href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-简洁的推导式</div></div></a></div><div><a href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-函数与虚拟文档</div></div></a></div><div><a href="/posts/75a3be3b/" title="OPA-重新定义规则引擎-入门篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA-重新定义规则引擎-入门篇</div></div></a></div><div><a href="/posts/3fc956cc/" title="OPA-rego语法"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA-rego语法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">347</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8opa%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91"><span class="toc-text">如何优雅的使用opa进行开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#opa"><span class="toc-text">opa</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval"><span class="toc-text">eval</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deps"><span class="toc-text">deps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test"><span class="toc-text">test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#check-amp-fmt"><span class="toc-text">check &amp; fmt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vscode-opa"><span class="toc-text">vscode-opa</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-text">功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">快捷键配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-分布式利器Bundle"/></a><div class="content"><a class="title" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle">OPA进阶-分布式利器Bundle</a><time datetime="2022-03-02T09:48:44.000Z" title="发表于 2022-03-02 17:48:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-测试、性能分析和基准测试"/></a><div class="content"><a class="title" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试">OPA进阶-测试、性能分析和基准测试</a><time datetime="2022-03-02T09:45:44.000Z" title="发表于 2022-03-02 17:45:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-简洁的推导式"/></a><div class="content"><a class="title" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式">OPA进阶-简洁的推导式</a><time datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-函数与虚拟文档"/></a><div class="content"><a class="title" href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档">OPA进阶-函数与虚拟文档</a><time datetime="2022-03-02T09:35:44.000Z" title="发表于 2022-03-02 17:35:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/74b42414/" title="如何优雅的使用opa进行开发"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何优雅的使用opa进行开发"/></a><div class="content"><a class="title" href="/posts/74b42414/" title="如何优雅的使用opa进行开发">如何优雅的使用opa进行开发</a><time datetime="2022-03-02T09:32:44.000Z" title="发表于 2022-03-02 17:32:44">2022-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyangyangisme.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      true && mermaid.init()
+    })
+  }
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = '';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (false) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

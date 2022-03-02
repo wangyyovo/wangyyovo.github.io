@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>OPA进阶-简洁的推导式 | Blank</title><meta name="keywords" content="opa"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="OPA进阶-简洁的推导式我们将以实现判断配置文件数据的不同聚合方式为例展开。 用到的输入(配置文件列表)为： 1234567891011121314151617181920212223&#x2F;&#x2F; input.json&#x2F;&#x2F; posix为常见路径格式&#x2F;&#x2F; traditional-mac为mac的一种文件路径格式&amp;#123;  &quot;files&quot;: [  &amp;#123;    &quot;typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OPA进阶-简洁的推导式">
+<meta property="og:url" content="http://wangyangyangisme.github.io/posts/b0cdaf3c/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="OPA进阶-简洁的推导式我们将以实现判断配置文件数据的不同聚合方式为例展开。 用到的输入(配置文件列表)为： 1234567891011121314151617181920212223&#x2F;&#x2F; input.json&#x2F;&#x2F; posix为常见路径格式&#x2F;&#x2F; traditional-mac为mac的一种文件路径格式&amp;#123;  &quot;files&quot;: [  &amp;#123;    &quot;typ">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg">
+<meta property="article:published_time" content="2022-03-02T09:38:44.000Z">
+<meta property="article:modified_time" content="2022-03-02T09:38:44.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="opa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/favicon.ico"><link rel="canonical" href="http://wangyangyangisme.github.io/posts/b0cdaf3c/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章所描述的內容可能已经发生变化，请留意。"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OPA进阶-简洁的推导式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-02 17:38:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">347</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OPA进阶-简洁的推导式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-02T09:38:44.000Z" title="更新于 2022-03-02 17:38:44">2022-03-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/opa/">opa</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">934</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OPA进阶-简洁的推导式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="OPA进阶-简洁的推导式"><a href="#OPA进阶-简洁的推导式" class="headerlink" title="OPA进阶-简洁的推导式"></a>OPA进阶-简洁的推导式</h1><p>我们将以实现判断配置文件数据的不同聚合方式为例展开。</p>
+<p>用到的输入(配置文件列表)为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// input.json</span></span><br><span class="line"><span class="comment">// posix为常见路径格式</span></span><br><span class="line"><span class="comment">// traditional-mac为mac的一种文件路径格式</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;files&quot;</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;posix&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/Users/newbmiao/Documents/1.yaml&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;posix&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;/Users/newbmiao/Documents/2.yaml&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;traditional-mac&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;Macintosh HD:Users:newbmiao:Documents:3.yml&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;traditional-mac&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;Macintosh HD:Users:newbmiao:Documents:3.json&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="comprehensions"><a href="#comprehensions" class="headerlink" title="comprehensions"></a>comprehensions</h2><p>推导式（<code>comprehensions</code>）提供了一种从子查询构建复合值（<code>Composite Values</code>）的简洁方法。</p>
+<p>定义很晦涩，我们从例子来看会清晰许多</p>
+<h3 id="object-comprehensions"><a href="#object-comprehensions" class="headerlink" title="object comprehensions"></a>object comprehensions</h3><p>首先看一个按文件路径类型聚合文件的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import input.files</span><br><span class="line"></span><br><span class="line">group_files_by_type :&#x3D; &#123;type: paths |</span><br><span class="line">  file :&#x3D; files[_]</span><br><span class="line">  type :&#x3D; file.type</span><br><span class="line">  paths :&#x3D; [path |</span><br><span class="line">    tmp :&#x3D; files[_]</span><br><span class="line">    tmp.type &#x3D;&#x3D; type</span><br><span class="line">    path :&#x3D; tmp.path</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>即两层遍历，外层遍历获取<code>type</code></p>
+<p>内层遍历按<code>type</code>匹配推导出<code>paths</code>数组</p>
+<p>对应结果为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">opa eval -f values -d . -i input.json &quot;data.example_comprehensions.group_files_by_type&quot;</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;posix&quot;: [</span><br><span class="line">      &quot;&#x2F;Users&#x2F;newbmiao&#x2F;Documents&#x2F;1.yaml&quot;,</span><br><span class="line">      &quot;&#x2F;Users&#x2F;newbmiao&#x2F;Documents&#x2F;2.yaml&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;traditional-mac&quot;: [</span><br><span class="line">      &quot;Macintosh HD:Users:newbmiao:Documents:3.yml&quot;,</span><br><span class="line">      &quot;Macintosh HD:Users:newbmiao:Documents:3.json&quot;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>忽略实现细节，对象的推导式语法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &lt;key&gt;: &lt;term&gt; | &lt;body&gt; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义的<code>key</code>和<code>term</code>需要在<code>body</code>内赋值，最后会复合出一个对象，包含有所有满足的<code>&lt;key&gt;: &lt;term&gt;</code></p>
+<p>这里要注意的事<code>body</code>内条件要都满足才会返回</p>
+<h3 id="array-comprehensions"><a href="#array-comprehensions" class="headerlink" title="array comprehensions"></a>array comprehensions</h3><p>上边例子中<code>paths</code>是一个数组推导式</p>
+<p>其语法为: <code>[ &lt;term&gt; | &lt;body&gt; ]</code></p>
+<p>注意这里的<code>[]</code>， 只有数组推导式用方括号</p>
+<p>而且其内容是<strong>可重复的</strong></p>
+<p>对应再举一个将所有文件路径转为<code>posix</code>的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">convert_all_to_posix_path_array :&#x3D; [path |</span><br><span class="line">  path1 :&#x3D; [p |</span><br><span class="line">    file :&#x3D; files[_]</span><br><span class="line">    file.type &#x3D;&#x3D; &quot;posix&quot;</span><br><span class="line">    p :&#x3D; file.path</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  path2 :&#x3D; [p |</span><br><span class="line">    file :&#x3D; files[_]</span><br><span class="line">    file.type &#x3D;&#x3D; &quot;traditional-mac&quot;</span><br><span class="line">    p :&#x3D; replace(replace(file.path, &quot;Macintosh HD&quot;, &quot;&quot;), &quot;:&quot;, &quot;&#x2F;&quot;)</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  paths :&#x3D; array.concat(path1, path2)</span><br><span class="line">  path &#x3D; paths[_]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>这里按文件路径类型推导出<code>path1</code>和<code>path2</code>两个数组</p>
+<p>其内部对于<code>file.type</code>的判断达到了过滤匹配的作用</p>
+<h3 id="set-comprehensions"><a href="#set-comprehensions" class="headerlink" title="set comprehensions"></a>set comprehensions</h3><p>上边功能也可以用集合推导式实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">convert_all_to_posix_path_sets :&#x3D; &#123;path |</span><br><span class="line">  path1 :&#x3D; &#123;p |</span><br><span class="line">    file :&#x3D; files[_]</span><br><span class="line">    file.type &#x3D;&#x3D; &quot;posix&quot;</span><br><span class="line">    p :&#x3D; file.path</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  path2 :&#x3D; &#123;p |</span><br><span class="line">    file :&#x3D; files[_]</span><br><span class="line">    file.type &#x3D;&#x3D; &quot;traditional-mac&quot;</span><br><span class="line">    p :&#x3D; replace(replace(file.path, &quot;Macintosh HD&quot;, &quot;&quot;), &quot;:&quot;, &quot;&#x2F;&quot;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  paths :&#x3D; path1 | path2</span><br><span class="line">  path &#x3D; paths[_]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>集合推导式语法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &lt;term&gt; | &lt;body&gt; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其特点是<strong>不会重复</strong></p>
+<p>可以看出同样功能，集合做组合操作比较表意</p>
+<p>类似的，交集可以用<code>&amp;</code>,差集可以用<code>-</code></p>
+<p>以上就是<code>OPA</code>三类推导式的使用方式。推导式最大的特点就是简洁。</p>
+<p>一旦你熟悉了，就可以写出很多优雅的聚合方式。</p>
+<p>最后出一个题目，大家可以自己练习下(答案可以去<code>opa-koans</code>中查看)</p>
+<p>实现基于文件后缀聚合文件路径, 即输出为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;json&quot;: [</span><br><span class="line">    &quot;Macintosh HD:Users:newbmiao:Documents:3.json&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;yaml&quot;: [</span><br><span class="line">    &quot;&#x2F;Users&#x2F;newbmiao&#x2F;Documents&#x2F;1.yaml&quot;,</span><br><span class="line">    &quot;&#x2F;Users&#x2F;newbmiao&#x2F;Documents&#x2F;2.yaml&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;yml&quot;: [</span><br><span class="line">    &quot;Macintosh HD:Users:newbmiao:Documents:3.yml&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提示, 对于文件后缀可以用如下两种方式获取</p>
+<p>方式一：<code>hardcode</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extSets :&#x3D; [&quot;yaml&quot;, &quot;yml&quot;, &quot;json&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>方式二：<code>regex</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extSets :&#x3D; &#123;e |</span><br><span class="line">  e &#x3D; regex.find_all_string_submatch_n(&quot;.*\\.(.*)$&quot;, files[_].path, -1)[0][1]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:null">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wangyangyangisme.github.io/posts/b0cdaf3c/">http://wangyangyangisme.github.io/posts/b0cdaf3c/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wangyangyangisme.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/opa/">opa</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ba44c24c/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">OPA进阶-测试、性能分析和基准测试</div></div></a></div><div class="next-post pull-right"><a href="/posts/ceadba08/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OPA进阶-函数与虚拟文档</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-分布式利器Bundle</div></div></a></div><div><a href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-测试、性能分析和基准测试</div></div></a></div><div><a href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA进阶-函数与虚拟文档</div></div></a></div><div><a href="/posts/74b42414/" title="如何优雅的使用opa进行开发"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">如何优雅的使用opa进行开发</div></div></a></div><div><a href="/posts/75a3be3b/" title="OPA-重新定义规则引擎-入门篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA-重新定义规则引擎-入门篇</div></div></a></div><div><a href="/posts/3fc956cc/" title="OPA-rego语法"><img class="cover" src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-02</div><div class="title">OPA-rego语法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">347</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OPA%E8%BF%9B%E9%98%B6-%E7%AE%80%E6%B4%81%E7%9A%84%E6%8E%A8%E5%AF%BC%E5%BC%8F"><span class="toc-text">OPA进阶-简洁的推导式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#comprehensions"><span class="toc-text">comprehensions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#object-comprehensions"><span class="toc-text">object comprehensions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#array-comprehensions"><span class="toc-text">array comprehensions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set-comprehensions"><span class="toc-text">set comprehensions</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-分布式利器Bundle"/></a><div class="content"><a class="title" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle">OPA进阶-分布式利器Bundle</a><time datetime="2022-03-02T09:48:44.000Z" title="发表于 2022-03-02 17:48:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-测试、性能分析和基准测试"/></a><div class="content"><a class="title" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试">OPA进阶-测试、性能分析和基准测试</a><time datetime="2022-03-02T09:45:44.000Z" title="发表于 2022-03-02 17:45:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-简洁的推导式"/></a><div class="content"><a class="title" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式">OPA进阶-简洁的推导式</a><time datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-函数与虚拟文档"/></a><div class="content"><a class="title" href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档">OPA进阶-函数与虚拟文档</a><time datetime="2022-03-02T09:35:44.000Z" title="发表于 2022-03-02 17:35:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/74b42414/" title="如何优雅的使用opa进行开发"><img src="https://cdn.jsdelivr.net/gh/wangyangyangisme/CDN@latest/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何优雅的使用opa进行开发"/></a><div class="content"><a class="title" href="/posts/74b42414/" title="如何优雅的使用opa进行开发">如何优雅的使用opa进行开发</a><time datetime="2022-03-02T09:32:44.000Z" title="发表于 2022-03-02 17:32:44">2022-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyangyangisme.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      true && mermaid.init()
+    })
+  }
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
+    w.ChatraID = '';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (false) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
