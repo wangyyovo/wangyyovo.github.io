@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Butterfly 安裝文檔(七) 更新日誌 | Blank</title><meta name="keywords" content="hexo,butterfly,主題,doc,教程,文檔"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Butterfly安裝文檔-更新日誌">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Butterfly 安裝文檔(七) 更新日誌 | Blank</title><meta name="keywords" content="hexo,butterfly,主題,doc,教程,文檔"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Butterfly安裝文檔-更新日誌">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Butterfly 安裝文檔(七) 更新日誌">
 <meta property="og:url" content="https://wangyyovo.github.io/posts/198a4240/">
@@ -10,13 +10,13 @@
 <meta property="article:modified_time" content="2020-05-28T14:41:59.000Z">
 <meta property="article:author" content="Blank">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/198a4240/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/198a4240/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  localSearch: undefined,
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"距离上次更新已经过了","messageNext":"天，文章所描述的內容可能已经发生变化，请留意。"},
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -38,15 +38,14 @@
   lightbox: 'mediumZoom',
   Snackbar: undefined,
   source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
     justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
     }
   },
   isPhotoFigcaption: true,
   islazyload: false,
-  isanchor: false
+  isAnchor: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'Butterfly 安裝文檔(七) 更新日誌',
   isPost: true,
@@ -136,19 +135,14 @@
         }
       }
     
-    const fontSizeVal = saveToLocal.get('global-font-size')
-    if (fontSizeVal !== undefined) {
-      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
-    }
-    
     const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
         document.documentElement.classList.add('apple')
       }
     }
     detectApple()
-    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">350</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Butterfly 安裝文檔(七) 更新日誌</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-05-28T14:41:59.000Z" title="发表于 2020-05-28 22:41:59">2020-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-05-28T14:41:59.000Z" title="更新于 2020-05-28 22:41:59">2020-05-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">12.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>54分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Butterfly 安裝文檔(七) 更新日誌"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>📖  本教程更新於 2021 年 03 月 30 日，教程的內容針對最新<strong>穩定版</strong>而更新（如果你是舊版，教程會有些出入，請留意）</p>
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">350</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Butterfly 安裝文檔(七) 更新日誌</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-05-28T14:41:59.000Z" title="发表于 2020-05-28 22:41:59">2020-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-05-28T14:41:59.000Z" title="更新于 2020-05-28 22:41:59">2020-05-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">13.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>55分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Butterfly 安裝文檔(七) 更新日誌"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>📖  本教程更新於 2021 年 03 月 30 日，教程的內容針對最新<strong>穩定版</strong>而更新（如果你是舊版，教程會有些出入，請留意）</p>
 <p>🦋  Butterfly 已經更新到 <a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/releases/tag/3.7.1">3.7.1</a></p>
 </div>
 
@@ -160,25 +154,20 @@
 </div>
 
 <hr>
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.7.1 (2021/03/30)</span></div>
-    <div class="hide-content"><h2 id="3-7-1-2021-03-30"><a href="#3-7-1-2021-03-30" class="headerlink" title="3.7.1 (2021/03/30)"></a>3.7.1 (2021/03/30)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.7.1 (2021/03/30)</summary><div class="toggle-content"><h2 id="3-7-1-2021-x2F-03-x2F-30"><a href="#3-7-1-2021-x2F-03-x2F-30" class="headerlink" title="3.7.1 (2021&#x2F;03&#x2F;30)"></a>3.7.1 (2021&#x2F;03&#x2F;30)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復 github-issues 最新評論 獲取的url格式 bug</li>
 <li>修復當標題有符號&#39;時，disqus 和 disqusjs 無法加載的 bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.7.0 (2021/03/18)</span></div>
-    <div class="hide-content"><h2 id="3-7-0-2021-03-18"><a href="#3-7-0-2021-03-18" class="headerlink" title="3.7.0 (2021/03/18)"></a>3.7.0 (2021/03/18)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.7.0 (2021/03/18)</summary><div class="toggle-content"><h2 id="3-7-0-2021-x2F-03-x2F-18"><a href="#3-7-0-2021-x2F-03-x2F-18" class="headerlink" title="3.7.0 (2021&#x2F;03&#x2F;18)"></a>3.7.0 (2021&#x2F;03&#x2F;18)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>更改子目錄的寫法，與父目錄一致</p>
 </li>
 <li><p>移除 artitalk （如需要，請安裝 hexo-butterfly-artitalk)</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# Artitalk</span></span><br><span class="line"><span class="deletion">-# see https://artitalk.js.org/</span></span><br><span class="line"><span class="deletion">-artitalk:</span></span><br><span class="line"><span class="deletion">-  appId:</span></span><br><span class="line"><span class="deletion">-  appKey:</span></span><br><span class="line"><span class="deletion">-  option:</span></span><br><span class="line"></span><br><span class="line">CDN:</span><br><span class="line"><span class="deletion">-	artitalk: https://cdn.jsdelivr.net/npm/artitalk</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>katex_copytex 的js 和 css cdn 更換</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-katex_copytex: https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js</span></span><br><span class="line"><span class="deletion">-katex_copytex_css: https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+katex_copytex: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js</span></span><br><span class="line"><span class="addition">+katex_copytex_css: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-katex_copytex: https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js</span></span><br><span class="line"><span class="deletion">-katex_copytex_css: https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+katex_copytex: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js</span></span><br><span class="line"><span class="addition">+katex_copytex_css: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li><p>新增設置代碼高度限制，顯示展開按鈕</p>
@@ -196,14 +185,11 @@
 <li><p>增加 tags 標簽外掛 inlineImg</p>
 </li>
 <li><p>gitalk 增加 option 配置</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  createIssueManually: false # Gitalk will create a corresponding github issue for your every single page automatically</span><br><span class="line"><span class="addition">+  option:</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  createIssueManually: false # Gitalk will create a corresponding github issue for your every single page automatically</span><br><span class="line"><span class="addition">+  option:</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復prismjs 在 ios safari 下自動換行的bug</li>
-<li>修復默認代碼大小不會隨着字體放大/放小而改變的bug</li>
+<li>修復默認代碼大小不會隨着字體放大&#x2F;放小而改變的bug</li>
 <li>修復prismjs 無法識別的語言 顯示 null 而不是顯示 code 的 bug</li>
 <li>在完全沒有配置的情況下，運行時控制枱報null 的問題</li>
 </ol>
@@ -216,23 +202,20 @@
 <li>一句API 改為 https</li>
 <li>pug代碼優化</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.6.2 (2021/02/03)</span></div>
-    <div class="hide-content"><h2 id="3-6-2-2021-02-03"><a href="#3-6-2-2021-02-03" class="headerlink" title="3.6.2 (2021/02/03)"></a>3.6.2 (2021/02/03)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.6.2 (2021/02/03)</summary><div class="toggle-content"><h2 id="3-6-2-2021-x2F-02-x2F-03"><a href="#3-6-2-2021-x2F-02-x2F-03" class="headerlink" title="3.6.2 (2021&#x2F;02&#x2F;03)"></a>3.6.2 (2021&#x2F;02&#x2F;03)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>mathjax 和 katex 沒有加載js的bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.6.1 (2021/02/01)</span></div>
-    <div class="hide-content"><h2 id="3-6-1-2021-02-01"><a href="#3-6-1-2021-02-01" class="headerlink" title="3.6.1 (2021/02/01)"></a>3.6.1 (2021/02/01)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.6.1 (2021/02/01)</summary><div class="toggle-content"><h2 id="3-6-1-2021-x2F-02-x2F-01"><a href="#3-6-1-2021-x2F-02-x2F-01" class="headerlink" title="3.6.1 (2021&#x2F;02&#x2F;01)"></a>3.6.1 (2021&#x2F;02&#x2F;01)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>非ios設備下，手機頁面下文章頁有toc的界面出現滾動條</li>
 <li>非ios設備下，在layout標簽內的元素，如是position: fixed，其相對定位會更改 #482 #483</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.6.0 (2021/01/30)</span></div>
-    <div class="hide-content"><h2 id="3-6-0-2021-01-30"><a href="#3-6-0-2021-01-30" class="headerlink" title="3.6.0 (2021/01/30)"></a>3.6.0 (2021/01/30)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.6.0 (2021/01/30)</summary><div class="toggle-content"><h2 id="3-6-0-2021-x2F-01-x2F-30"><a href="#3-6-0-2021-x2F-01-x2F-30" class="headerlink" title="3.6.0 (2021&#x2F;01&#x2F;30)"></a>3.6.0 (2021&#x2F;01&#x2F;30)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li><p>增加首頁評論數顯示</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">comments:</span><br><span class="line">  ...</span><br><span class="line">  count: false # Display comment count in post&#x27;s top_img</span><br><span class="line"><span class="addition">+  card_post_count: false # Display comment count in Home Page</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -252,7 +235,7 @@
 <li><p>可配置最新評論的緩存時間</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">newest_comments:</span><br><span class="line">  enable: false</span><br><span class="line">  sort_order: # Don&#x27;t modify the setting unless you know how it works</span><br><span class="line">  limit: 6</span><br><span class="line"><span class="addition">+  storage: 10 # unit: mins, save data to localStorage</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>增加 post_pagination 配置(可關閉/配置分頁展示邏輯)</p>
+<li><p>增加 post_pagination 配置(可關閉&#x2F;配置分頁展示邏輯)</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# post_pagination (分頁)</span></span><br><span class="line"><span class="addition">+# value: 1 || 2 || false</span></span><br><span class="line"><span class="addition">+# 1: The &#x27;next post&#x27; will link to old post</span></span><br><span class="line"><span class="addition">+# 2: The &#x27;next post&#x27; will link to new post</span></span><br><span class="line"><span class="addition">+# false: disable pagination</span></span><br><span class="line"><span class="addition">+post_pagination: 1</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>文章版權右上角改為 版權icon</p>
@@ -261,18 +244,14 @@
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Disable all banner image</span></span><br><span class="line"><span class="addition">+disable_top_img: false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>增加 文章編輯</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Post edit</span></span><br><span class="line"><span class="addition">+# Easily browse and edit blog source code online.</span></span><br><span class="line"><span class="addition">+post_edit:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/</span></span><br><span class="line"><span class="addition">+  # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/</span></span><br><span class="line"><span class="addition">+  url:</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Post edit</span></span><br><span class="line"><span class="addition">+# Easily browse and edit blog source code online.</span></span><br><span class="line"><span class="addition">+post_edit:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/</span></span><br><span class="line"><span class="addition">+  # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/</span></span><br><span class="line"><span class="addition">+  url:</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復 文章頁面上滑子菜單圖標文字無法顯示的 bug #481</li>
 <li>修復在 chrome上，進入頁面時，頁面元素會出現模糊到清晰 的 bug #479</li>
 <li>修復夜間模式下，閲讀模式代碼塊背景顔色的顯示bug</li>
 <li>修復打賞按鈕字數過多導致Hover異常的bug #473</li>
-<li>修復評論裏  行內元素（表情/圖片）變成塊級元素（換行）的bug</li>
+<li>修復評論裏  行內元素（表情&#x2F;圖片）變成塊級元素（換行）的bug</li>
 <li>修復點擊toc後，滾動完toc的highlight在點擊的上一個元素</li>
 <li>修復子目錄下，打賞圖片跳轉鏈接會錯誤的bug</li>
 <li>修復文字點擊關閉random無效的bug</li>
@@ -300,15 +279,11 @@
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# Disable Baidu transformation on mobile devices (禁止百度轉碼)</span></span><br><span class="line"><span class="deletion">-disable_baidu_transformation: true</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-# Baidu Push (百度推送)</span></span><br><span class="line"><span class="deletion">-baidu_push: false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除 fragment_cache 配置（默認開啟）</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# Caches the contents in a fragment, speed up the generation (開啟hexo自帶的緩存,加快生成速度)</span></span><br><span class="line"><span class="deletion">-fragment_cache: true</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# Caches the contents in a fragment, speed up the generation (開啟hexo自帶的緩存,加快生成速度)</span></span><br><span class="line"><span class="deletion">-fragment_cache: true</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.5.1 (2020/12/31)</span></div>
-    <div class="hide-content"><h2 id="3-5-1-2020-12-31"><a href="#3-5-1-2020-12-31" class="headerlink" title="3.5.1 (2020/12/31)"></a>3.5.1 (2020/12/31)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.5.1 (2020/12/31)</summary><div class="toggle-content"><h2 id="3-5-1-2020-x2F-12-x2F-31"><a href="#3-5-1-2020-x2F-12-x2F-31" class="headerlink" title="3.5.1 (2020&#x2F;12&#x2F;31)"></a>3.5.1 (2020&#x2F;12&#x2F;31)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>twikoo增加 region 配置</li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
@@ -316,10 +291,9 @@
 <li>修復waline背景設置無效的bugs</li>
 <li>修復twikoo 廣州地域下，page 頁進入post頁，twikoo評論報錯的bugs</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.5.0 (2020/12/30)</span></div>
-    <div class="hide-content"><h2 id="3-5-0-2020-12-30"><a href="#3-5-0-2020-12-30" class="headerlink" title="3.5.0 (2020/12/30)"></a>3.5.0 (2020/12/30)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.5.0 (2020/12/30)</summary><div class="toggle-content"><h2 id="3-5-0-2020-x2F-12-x2F-30"><a href="#3-5-0-2020-x2F-12-x2F-30" class="headerlink" title="3.5.0 (2020&#x2F;12&#x2F;30)"></a>3.5.0 (2020&#x2F;12&#x2F;30)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li><p>aside 個人資料widget可關閉button</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line"> ...</span><br><span class="line">  card_author:</span><br><span class="line">    enable: true</span><br><span class="line">    description:</span><br><span class="line">    button:</span><br><span class="line"><span class="addition">+      enable: true</span></span><br><span class="line">      icon: fab fa-github</span><br><span class="line">      text: 主題 GitHub</span><br><span class="line">      link: https://github.com/jerryc127/hexo-theme-butterfly</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
@@ -345,9 +319,7 @@
 <li><p>增加waline評論數顯示</p>
 </li>
 <li><p>增加waline最新評論模塊</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">newest_comments:</span><br><span class="line">  enable: true</span><br><span class="line">	...</span><br><span class="line"><span class="addition">+  waline: false</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">newest_comments:</span><br><span class="line">  enable: true</span><br><span class="line">	...</span><br><span class="line"><span class="addition">+  waline: false</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a>Improvement</h3><ol>
 <li><p>最新評論url 增加描點</p>
@@ -355,33 +327,29 @@
 <li><p>html結構優化</p>
 </li>
 <li><p>修改newest_comments的leancloud為valine，並刪除其配置，改為讀取valine配置</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Aside widget - Newest Comments</span><br><span class="line">newest_comments:</span><br><span class="line">  ...</span><br><span class="line"><span class="deletion">-  leancloud:</span></span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="deletion">-    appId: # leancloud application app id</span></span><br><span class="line"><span class="deletion">-    appKey: # leancloud application app key</span></span><br><span class="line"><span class="deletion">-    serverURL: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line"><span class="deletion">-    default_avatar: # mp/identicon/monsterid/wavatar/retro/robohash/blank</span></span><br><span class="line"><span class="addition">+ valine: false</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Aside widget - Newest Comments</span><br><span class="line">newest_comments:</span><br><span class="line">  ...</span><br><span class="line"><span class="deletion">-  leancloud:</span></span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="deletion">-    appId: # leancloud application app id</span></span><br><span class="line"><span class="deletion">-    appKey: # leancloud application app key</span></span><br><span class="line"><span class="deletion">-    serverURL: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line"><span class="deletion">-    default_avatar: # mp/identicon/monsterid/wavatar/retro/robohash/blank</span></span><br><span class="line"><span class="addition">+ valine: false</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-</div></div>
+</div></details>
 
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.4.2 (2020/12/27)</span></div>
-    <div class="hide-content"><h2 id="3-4-2-2020-12-27"><a href="#3-4-2-2020-12-27" class="headerlink" title="3.4.2 (2020/12/27)"></a>3.4.2 (2020/12/27)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.4.2 (2020/12/27)</summary><div class="toggle-content"><h2 id="3-4-2-2020-x2F-12-x2F-27"><a href="#3-4-2-2020-x2F-12-x2F-27" class="headerlink" title="3.4.2 (2020&#x2F;12&#x2F;27)"></a>3.4.2 (2020&#x2F;12&#x2F;27)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復開啟 gitalk 評論數後與 toc 衝突的 bug #462</li>
 <li>修復 jquery 在一些介面仍然載入問題</li>
 <li>修復 medium zoom 報錯的 bug</li>
 </ol>
-</div></div>
+</div></details>
 
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.4.1 (2020/12/15)</span></div>
-    <div class="hide-content"><h2 id="3-4-1-2020-12-15"><a href="#3-4-1-2020-12-15" class="headerlink" title="3.4.1 (2020/12/15)"></a>3.4.1 (2020/12/15)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.4.1 (2020/12/15)</summary><div class="toggle-content"><h2 id="3-4-1-2020-x2F-12-x2F-15"><a href="#3-4-1-2020-x2F-12-x2F-15" class="headerlink" title="3.4.1 (2020&#x2F;12&#x2F;15)"></a>3.4.1 (2020&#x2F;12&#x2F;15)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復tabs 標簽外掛設為-1時，按鈕點擊沒反應的bugs</li>
 </ol>
-</div></div>
+</div></details>
 
 
 
- <div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.4.0 (2020/12/13)</span></div>
-    <div class="hide-content"><h2 id="3-4-0-2020-12-13"><a href="#3-4-0-2020-12-13" class="headerlink" title="3.4.0 (2020/12/13)"></a>3.4.0 (2020/12/13)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+ <details class="toggle" ><summary class="toggle-button" style="">3.4.0 (2020/12/13)</summary><div class="toggle-content"><h2 id="3-4-0-2020-x2F-12-x2F-13"><a href="#3-4-0-2020-x2F-12-x2F-13" class="headerlink" title="3.4.0 (2020&#x2F;12&#x2F;13)"></a>3.4.0 (2020&#x2F;12&#x2F;13)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li>去除 jQuery</li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
@@ -400,10 +368,7 @@
 <li><p>增加twikoo評論數顯示</p>
 </li>
 <li><p>增加toc簡潔模式</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  number: true</span><br><span class="line"><span class="addition">+  style_simple: false</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  number: true</span><br><span class="line"><span class="addition">+  style_simple: false</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復子目錄下，配置justifiedGallery CDN（相對鏈接）後，連接會無法訪問的bugs</li>
@@ -428,12 +393,11 @@
 <li>刪除ICP配置， 如需要，請使用custom_text配置</li>
 <li>刪除不必要的語言文件</li>
 </ol>
-</div></div>
+</div></details>
 
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.3.0 (2020/10/28)</span></div>
-    <div class="hide-content"><h2 id="3-3-0-2020-10-28"><a href="#3-3-0-2020-10-28" class="headerlink" title="3.3.0 (2020/10/28)"></a>3.3.0 (2020/10/28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.3.0 (2020/10/28)</summary><div class="toggle-content"><h2 id="3-3-0-2020-x2F-10-x2F-28"><a href="#3-3-0-2020-x2F-10-x2F-28" class="headerlink" title="3.3.0 (2020&#x2F;10&#x2F;28)"></a>3.3.0 (2020&#x2F;10&#x2F;28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li>只支持 hexo 5.0.0 及以上版本</li>
 <li>不再支持 butterfly.yml 寫法</li>
 </ol>
@@ -456,13 +420,11 @@
 </li>
 <li><p>文章標題改為居中</p>
 </li>
-<li><p>aside 可配置隱藏/增加按鈕可展開或收縮aside</p>
+<li><p>aside 可配置隱藏&#x2F;增加按鈕可展開或收縮aside</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="addition">+  hide: false</span></span><br><span class="line"><span class="addition">+  button: true</span></span><br><span class="line">  mobile: true # display on mobile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>增加Twikoo評論</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+twikoo:</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+twikoo:</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ol>
 <li>完善note標籤在readmode上的顯示</li>
@@ -472,7 +434,7 @@
 <li>canonical 改為hexo提供的函數生成</li>
 <li>ICP SEO優化 <a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly/pull/393">#393</a></li>
 <li>調大sidebar的寬度</li>
-<li>html結構調整，mobile-sidebar改為sidebar/search調整</li>
+<li>html結構調整，mobile-sidebar改為sidebar&#x2F;search調整</li>
 <li>滾動到評論按鈕只要用評論的頁面就出現</li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
@@ -486,44 +448,33 @@
 <li>移除豆瓣配置,如需配置，請使用 hexo-butterfly-douban</li>
 <li>刪除多餘的css和pug</li>
 </ol>
-</div></div>
+</div></details>
 
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.2.0 (2020/09/28)</span></div>
-    <div class="hide-content"><h2 id="3-2-0-2020-09-28"><a href="#3-2-0-2020-09-28" class="headerlink" title="3.2.0 (2020/09/28)"></a>3.2.0 (2020/09/28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.2.0 (2020/09/28)</summary><div class="toggle-content"><h2 id="3-2-0-2020-x2F-09-x2F-28"><a href="#3-2-0-2020-x2F-09-x2F-28" class="headerlink" title="3.2.0 (2020&#x2F;09&#x2F;28)"></a>3.2.0 (2020&#x2F;09&#x2F;28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>更改canvas_ribbon_piao 為 canvas_fluttering_ribbon</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-canvas_ribbon_piao:</span></span><br><span class="line"><span class="addition">+canvas_fluttering_ribbon:</span></span><br><span class="line">  enable: false</span><br><span class="line">  mobile: false</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>刪除特效js,改為cdn引入</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CDN:</span><br><span class="line">  # background effect</span><br><span class="line"><span class="deletion">-  canvas_ribbon: /js/third-party/canvas-ribbon.js</span></span><br><span class="line"><span class="deletion">-  canvas_ribbon_piao: /js/third-party/piao.js</span></span><br><span class="line"><span class="deletion">-  canvas_nest: /js/third-party/canvas-nest.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+  canvas_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js</span></span><br><span class="line"><span class="addition">+  canvas_fluttering_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js</span></span><br><span class="line"><span class="addition">+  canvas_nest: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js</span></span><br><span class="line"></span><br><span class="line">  # effect</span><br><span class="line"><span class="deletion">-  activate_power_mode: /js/third-party/activate-power-mode.js</span></span><br><span class="line"><span class="deletion">-  fireworks: /js/third-party/fireworks.js</span></span><br><span class="line"><span class="deletion">-  click_heart: /js/third-party/click_heart.js</span></span><br><span class="line"><span class="deletion">-  ClickShowText: /js/third-party/ClickShowText.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+  activate_power_mode: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js</span></span><br><span class="line"><span class="addition">+  fireworks: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js</span></span><br><span class="line"><span class="addition">+  click_heart: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js</span></span><br><span class="line"><span class="addition">+  ClickShowText: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CDN:</span><br><span class="line">  # background effect</span><br><span class="line"><span class="deletion">-  canvas_ribbon: /js/third-party/canvas-ribbon.js</span></span><br><span class="line"><span class="deletion">-  canvas_ribbon_piao: /js/third-party/piao.js</span></span><br><span class="line"><span class="deletion">-  canvas_nest: /js/third-party/canvas-nest.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+  canvas_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js</span></span><br><span class="line"><span class="addition">+  canvas_fluttering_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js</span></span><br><span class="line"><span class="addition">+  canvas_nest: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js</span></span><br><span class="line"></span><br><span class="line">  # effect</span><br><span class="line"><span class="deletion">-  activate_power_mode: /js/third-party/activate-power-mode.js</span></span><br><span class="line"><span class="deletion">-  fireworks: /js/third-party/fireworks.js</span></span><br><span class="line"><span class="deletion">-  click_heart: /js/third-party/click_heart.js</span></span><br><span class="line"><span class="deletion">-  ClickShowText: /js/third-party/ClickShowText.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+  activate_power_mode: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js</span></span><br><span class="line"><span class="addition">+  fireworks: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js</span></span><br><span class="line"><span class="addition">+  click_heart: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js</span></span><br><span class="line"><span class="addition">+  ClickShowText: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
-<li><p>可設置首頁文章不顯示內容/description</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Display the article introduction on homepage</span><br><span class="line"># 1: description</span><br><span class="line"># 2: both (if the description exists, it will show description, or show the auto_excerpt)</span><br><span class="line"># 3: auto_excerpt (default)</span><br><span class="line"><span class="addition">+# false: do not show the article introduction</span></span><br><span class="line">index_post_content:</span><br><span class="line">  method: 3</span><br><span class="line">  length: 500 # if you set method to 2 or 3, the length need to config</span><br></pre></td></tr></table></figure>
-
+<li><p>可設置首頁文章不顯示內容&#x2F;description</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Display the article introduction on homepage</span><br><span class="line"># 1: description</span><br><span class="line"># 2: both (if the description exists, it will show description, or show the auto_excerpt)</span><br><span class="line"># 3: auto_excerpt (default)</span><br><span class="line"><span class="addition">+# false: do not show the article introduction</span></span><br><span class="line"><span class="comment">index_post_content:</span></span><br><span class="line">  method: 3</span><br><span class="line">  length: 500 # if you set method to 2 or 3, the length need to config</span><br></pre></td></tr></table></figure>
 
 
 </li>
-</ol>
-<ol start="2">
 <li><p>主頁文章時間和文章頁文章時間可以配置顯示日期還是相對時間</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  page: # Home Page</span><br><span class="line"><span class="addition">+    date_format: relative # date/relative 顯示日期還是相對日期</span></span><br><span class="line">  post:</span><br><span class="line"><span class="addition">+    date_format: relative # date/relative 顯示日期還是相對日期</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-
 </li>
-</ol>
-<ol start="3">
-<li><p>top_img 可配置 （留空（默認色）/顏色（HEX值/RGB值/顔色單詞/漸變色)/圖片鏈接/ false（不顯示top_img））</p>
+<li><p>top_img 可配置 （留空（默認色）&#x2F;顏色（HEX值&#x2F;RGB值&#x2F;顔色單詞&#x2F;漸變色)&#x2F;圖片鏈接&#x2F; false（不顯示top_img））</p>
 </li>
-<li><p>footer可配置背景 [留空/false(默認色)/顏色（HEX值/RGB值/顔色單詞/漸變色)/圖片鏈接/true(跟top_img一樣)]</p>
+<li><p>footer可配置背景 [留空&#x2F;false(默認色)&#x2F;顏色（HEX值&#x2F;RGB值&#x2F;顔色單詞&#x2F;漸變色)&#x2F;圖片鏈接&#x2F;true(跟top_img一樣)]</p>
 </li>
-<li><p>網站背景可配置 （顏色（HEX值/RGB值/顔色單詞/漸變色)/漸變色/圖片鏈接）</p>
+<li><p>網站背景可配置 （顏色（HEX值&#x2F;RGB值&#x2F;顔色單詞&#x2F;漸變色)&#x2F;漸變色&#x2F;圖片鏈接）</p>
 </li>
 <li><p>增加 tag_per_img 配置（可為各個tag 單獨配置top_img）</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+tag_per_img:</span></span><br></pre></td></tr></table></figure>
@@ -531,29 +482,27 @@
 <li><p>增加 category_per_img 配置（可為各個category單獨配置top_img）</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+category_per_img:</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>note 標籤優化(可自定義icon圖標/可覆蓋配置中的style)</p>
+<li><p>note 標籤優化(可自定義icon圖標&#x2F;可覆蓋配置中的style)</p>
 </li>
-<li><p>夜間模式下，背景顔色/top-img/footer-bg 設置為顔色時，不再強制顯示黑色，而是改為遮罩降低亮度</p>
+<li><p>夜間模式下，背景顔色&#x2F;top-img&#x2F;footer-bg 設置為顔色時，不再強制顯示黑色，而是改為遮罩降低亮度</p>
 </li>
-<li><p>增加部分特效 Mobile設置（activate_power_mode/fireworks/click_heart/ClickShowText)</p>
+<li><p>增加部分特效 Mobile設置（activate_power_mode&#x2F;fireworks&#x2F;click_heart&#x2F;ClickShowText)</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">activate_power_mode:</span><br><span class="line">  ...</span><br><span class="line"><span class="addition">+  mobile: false</span></span><br><span class="line"></span><br><span class="line">fireworks:</span><br><span class="line">   ...</span><br><span class="line"><span class="addition">+  mobile: true</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-click_heart: false</span></span><br><span class="line"><span class="addition">+click_heart:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  mobile: false</span></span><br><span class="line"></span><br><span class="line">ClickShowText:</span><br><span class="line">  enable: false</span><br><span class="line">  ...</span><br><span class="line"><span class="addition">+  mobile: false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加 artitalk 説説插件</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Artitalk</span></span><br><span class="line"><span class="addition">+# see https://artitalk.js.org/</span></span><br><span class="line"><span class="addition">+artitalk:</span></span><br><span class="line"><span class="addition">+  appId:</span></span><br><span class="line"><span class="addition">+  appKey:</span></span><br><span class="line"><span class="addition">+  option:</span></span><br><span class="line"></span><br><span class="line">CDN:</span><br><span class="line"><span class="addition">+  artitalk: https://cdn.jsdelivr.net/npm/artitalk</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>網頁進入動畫效果可關閉</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Enter transitions (開啟網頁進入效果)</span></span><br><span class="line"><span class="addition">+enter_transitions: true</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Enter transitions (開啟網頁進入效果)</span></span><br><span class="line"><span class="addition">+enter_transitions: true</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ol>
 <li>preloader 在 pjax 下 每個頁面都會加載</li>
 <li>修改判斷，避免用户設置2個lightbox 而導致報錯（只能設置一個）</li>
-<li>精確時間顯示 （剛剛/幾分鐘前/幾小時前/幾天前/幾個月前）</li>
+<li>精確時間顯示 （剛剛&#x2F;幾分鐘前&#x2F;幾小時前&#x2F;幾天前&#x2F;幾個月前）</li>
 <li>刪除不必要的語言文件和css</li>
 <li>Open_Graph 改為 hexo 內置 生成</li>
 <li>當隱藏部分沒配置時，左下角設置按鈕會消失 #353</li>
-<li>aside 分類 收縮/展開 增加slide效果</li>
+<li>aside 分類 收縮&#x2F;展開 增加slide效果</li>
 <li>darkmode 字體顔色加深</li>
 <li>優化nav的進入，應該修復一些用户在本地測試中無法顯示nav的bugs</li>
 <li>最新評論 leancloud呼叫由js sdk 改為 rest api 呼叫。應用可以不與valine同一個</li>
@@ -578,17 +527,15 @@
 <h3 id="chore"><a href="#chore" class="headerlink" title="chore"></a>chore</h3><ol>
 <li>update hexo-renderer-stylus to 2.0.1</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.1.1 (2020/09/06)</span></div>
-    <div class="hide-content"><h2 id="3-1-1-2020-09-06"><a href="#3-1-1-2020-09-06" class="headerlink" title="3.1.1 (2020/09/06)"></a>3.1.1 (2020/09/06)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.1.1 (2020/09/06)</summary><div class="toggle-content"><h2 id="3-1-1-2020-x2F-09-x2F-06"><a href="#3-1-1-2020-x2F-09-x2F-06" class="headerlink" title="3.1.1 (2020&#x2F;09&#x2F;06)"></a>3.1.1 (2020&#x2F;09&#x2F;06)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復關閉last push date 後， 報 &#39;hour&#39; 找不到的bugs</li>
 <li>修復開啟 prismjs 後， 在低版本的 safari 會出現 js 報錯的 Bugs</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.1.0 (2020/08/31)</span></div>
-    <div class="hide-content"><h2 id="3-1-0-2020-08-31"><a href="#3-1-0-2020-08-31" class="headerlink" title="3.1.0 (2020/08/31)"></a>3.1.0 (2020/08/31)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.1.0 (2020/08/31)</summary><div class="toggle-content"><h2 id="3-1-0-2020-x2F-08-x2F-31"><a href="#3-1-0-2020-x2F-08-x2F-31" class="headerlink" title="3.1.0 (2020&#x2F;08&#x2F;31)"></a>3.1.0 (2020&#x2F;08&#x2F;31)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li>只支持 hexo 4.2.0 以上版本</li>
 <li>butterfly.yml 採用deepMerge, 與_config文件進行合併而不是替換</li>
 </ol>
@@ -602,7 +549,7 @@
 </li>
 <li><p>當寬度小於1024時，點擊toc滾動，增加滾動效果</p>
 </li>
-<li><p>可配置font-size/更改配置中 code-font 為 code-font-family</p>
+<li><p>可配置font-size&#x2F;更改配置中 code-font 為 code-font-family</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">font:</span><br><span class="line"><span class="addition">+  global-font-size:</span></span><br><span class="line"><span class="addition">+  code-font-size:</span></span><br><span class="line">   font-family:</span><br><span class="line"><span class="deletion">-   code-font:</span></span><br><span class="line"><span class="addition">+   code-font-family:</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>部分css由&#39;px&#39;改為&#39;em&#39;，適應font-size值改變而改變</p>
@@ -620,17 +567,11 @@
 <li><p>更改addtoany item的寫法</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">addtoany:</span><br><span class="line">  enable: false</span><br><span class="line"><span class="deletion">-  item:</span></span><br><span class="line"><span class="deletion">-    - facebook</span></span><br><span class="line"><span class="deletion">-    - twitter</span></span><br><span class="line"><span class="deletion">-    - wechat</span></span><br><span class="line"><span class="deletion">-    - sina_weibo</span></span><br><span class="line"><span class="deletion">-    - facebook_messenger</span></span><br><span class="line"><span class="deletion">-    - email</span></span><br><span class="line"><span class="deletion">-    - copy_link</span></span><br><span class="line"><span class="addition">+	item: facebook,twitter,wechat,sina_weibo,facebook_messenger,email,copy_link</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>增加最後更新時間顯示/增加post count 配置</p>
+<li><p>增加最後更新時間顯示&#x2F;增加post count 配置</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line"><span class="deletion">-  card_webinfo: true</span></span><br><span class="line"><span class="addition">+  card_webinfo:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    post_count: true</span></span><br><span class="line"><span class="addition">+    last_push_date: true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>增加 aside 最新評論部件</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+newest_comments:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  limit: 6</span></span><br><span class="line"><span class="addition">+  avatar: true</span></span><br><span class="line"><span class="addition">+  leancloud:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">++    appId: # leancloud application app id</span></span><br><span class="line"><span class="addition">+    appKey: # leancloud application app key</span></span><br><span class="line"><span class="addition">+    serverURL: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line"><span class="addition">+    default_avatar: mp # mp/identicon/monsterid/wavatar/retro/robohash/blank</span></span><br><span class="line"><span class="addition">+  github_issues:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">+    repo:</span></span><br><span class="line"><span class="addition">+  disqus:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">+    forum:</span></span><br><span class="line"><span class="addition">+    api_key:</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+newest_comments:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  limit: 6</span></span><br><span class="line"><span class="addition">+  avatar: true</span></span><br><span class="line"><span class="addition">+  leancloud:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">++    appId: # leancloud application app id</span></span><br><span class="line"><span class="addition">+    appKey: # leancloud application app key</span></span><br><span class="line"><span class="addition">+    serverURL: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line"><span class="addition">+    default_avatar: mp # mp/identicon/monsterid/wavatar/retro/robohash/blank</span></span><br><span class="line"><span class="addition">+  github_issues:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">+    repo:</span></span><br><span class="line"><span class="addition">+  disqus:</span></span><br><span class="line"><span class="addition">+    enable: false</span></span><br><span class="line"><span class="addition">+    forum:</span></span><br><span class="line"><span class="addition">+    api_key:</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h3><ol>
 <li>archives和card-post 改為flex佈局</li>
@@ -663,27 +604,24 @@
 <li>去除字體放大、縮小按鈕</li>
 <li>移除 代碼default主題</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.0.1 (2020/08/11)</span></div>
-    <div class="hide-content"><h2 id="3-0-1-2020-08-11"><a href="#3-0-1-2020-08-11" class="headerlink" title="3.0.1 (2020/08/11)"></a>3.0.1 (2020/08/11)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.0.1 (2020/08/11)</summary><div class="toggle-content"><h2 id="3-0-1-2020-x2F-08-x2F-11"><a href="#3-0-1-2020-x2F-08-x2F-11" class="headerlink" title="3.0.1 (2020&#x2F;08&#x2F;11)"></a>3.0.1 (2020&#x2F;08&#x2F;11)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復導航側邊欄沒有進入特效的Bugs</li>
 <li>修復Hexo 5.0.0 以下版本， toc遇到中文不會滾動的bugs</li>
 <li>修復pjax下，同時開啟Open_Graph_meta和Livere，Livere評論後台顯示的來源頁面與實際不同 的bugs</li>
 </ol>
-</div></div>
+</div></details>
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.0.0 (2020/08/05)</span></div>
-    <div class="hide-content"><h2 id="3-0-0-2020-08-05"><a href="#3-0-0-2020-08-05" class="headerlink" title="3.0.0 (2020/08/05)"></a>3.0.0 (2020/08/05)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.0.0 (2020/08/05)</summary><div class="toggle-content"><h2 id="3-0-0-2020-x2F-08-x2F-05"><a href="#3-0-0-2020-x2F-08-x2F-05" class="headerlink" title="3.0.0 (2020&#x2F;08&#x2F;05)"></a>3.0.0 (2020&#x2F;08&#x2F;05)</h2><h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復文章頁沒有lazyload的bugs</li>
 <li>修復文章頁沒有lazyload的bugs</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.0.0-RC2 (2020/08/01)</span></div>
-    <div class="hide-content"><h2 id="3-0-0-RC2-2020-08-01"><a href="#3-0-0-RC2-2020-08-01" class="headerlink" title="3.0.0-RC2 (2020/08/01)"></a>3.0.0-RC2 (2020/08/01)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
-<li><p>支持雙評論系統配置/評論配置整理/評論增加lazyload</p>
+<details class="toggle" ><summary class="toggle-button" style="">3.0.0-RC2 (2020/08/01)</summary><div class="toggle-content"><h2 id="3-0-0-RC2-2020-x2F-08-x2F-01"><a href="#3-0-0-RC2-2020-x2F-08-x2F-01" class="headerlink" title="3.0.0-RC2 (2020&#x2F;08&#x2F;01)"></a>3.0.0-RC2 (2020&#x2F;08&#x2F;01)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<li><p>支持雙評論系統配置&#x2F;評論配置整理&#x2F;評論增加lazyload</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+comments:</span></span><br><span class="line"><span class="addition">+  # Up to two comments system, the first will be shown as default</span></span><br><span class="line"><span class="addition">+  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Utterances/Facebook Comments</span></span><br><span class="line"><span class="addition">+  use:</span></span><br><span class="line"><span class="addition">+  # - Valine</span></span><br><span class="line"><span class="addition">+  # - Disqus</span></span><br><span class="line"><span class="addition">+  text: true # Display the comment name next to the button</span></span><br><span class="line"><span class="addition">+  # lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line"><span class="addition">+  # If you set it to false, the comment count will be invalid</span></span><br><span class="line"><span class="addition">+  lazyload: false</span></span><br><span class="line"><span class="addition">+  count: false # Display comment count in top_img</span></span><br><span class="line"></span><br><span class="line">disqus:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"><span class="deletion">-  count: false # dispaly comment count in top_img</span></span><br><span class="line"></span><br><span class="line">disqusjs:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"><span class="deletion">-  count: false # dispaly comment count in top_img</span></span><br><span class="line"></span><br><span class="line">livere:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"></span><br><span class="line">gitalk:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"><span class="deletion">-  count: false # dispaly comment count in top_img</span></span><br><span class="line"></span><br><span class="line">valine:</span><br><span class="line"><span class="deletion">-  enable: false # if you want use valine,please set this value is true</span></span><br><span class="line"><span class="deletion">-  count: false # dispaly comment count in top_img</span></span><br><span class="line"></span><br><span class="line">utterances:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"></span><br><span class="line">facebook_comments:</span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"><span class="deletion">-  count: false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>footer配置整理，修改部分用語  #279</p>
@@ -698,10 +636,8 @@
 <li><p>aside recent post可設置按發表時間或者更新時間排序</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line">  card_recent_post:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 5 # if set 0 will show all</span><br><span class="line"><span class="addition">+    sort: date # date or updated</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更換typed.js/meting CDN</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-typed: https://cdn.jsdelivr.net/npm/typed.js</span></span><br><span class="line"><span class="deletion">-meting_js: https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+typed: https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js</span></span><br><span class="line"><span class="addition">+meting_js: https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li><p>更換typed.js&#x2F;meting CDN</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-typed: https://cdn.jsdelivr.net/npm/typed.js</span></span><br><span class="line"><span class="deletion">-meting_js: https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+typed: https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js</span></span><br><span class="line"><span class="addition">+meting_js: https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li><p>增加文章過期提醒</p>
@@ -734,15 +670,15 @@
 <li><p>post-meta可以配置是否顯示文字</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line">  page: # Home Page</span><br><span class="line">    date_type: created # created or updated or both 主頁文章日期是創建日或者更新日或都顯示</span><br><span class="line">    categories: true # true or false 主頁是否顯示分類</span><br><span class="line">    tags: false # true or false 主頁是否顯示標籤</span><br><span class="line"><span class="addition">+    label: true # true or false 顯示描述性文字</span></span><br><span class="line">  post:</span><br><span class="line">    date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示</span><br><span class="line">    categories: true # true or false 文章頁是否顯示分類</span><br><span class="line">    tags: true # true or false 文章頁是否顯示標籤</span><br><span class="line"><span class="addition">+    label: true # true or false 顯示描述性文字</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>手機端post-meta調整顯示/支持顯示分類</p>
+<li><p>手機端post-meta調整顯示&#x2F;支持顯示分類</p>
 </li>
 <li><p>代碼框滾動條顔色隨代碼主題變化</p>
 </li>
-<li><p>頭像/打賞圖片 增加lazyload</p>
+<li><p>頭像&#x2F;打賞圖片 增加lazyload</p>
 </li>
 <li><p>提升highlight-tool的加載速度</p>
 </li>
-<li><p>disqus/disqusjs/facebook comments 可隨夜間模式按鈕切換而轉換主題</p>
+<li><p>disqus&#x2F;disqusjs&#x2F;facebook comments 可隨夜間模式按鈕切換而轉換主題</p>
 </li>
 <li><p>mathjax升級到3 #216</p>
 </li>
@@ -769,7 +705,7 @@
 <li>修復文章頁部分元素內文字溢出的Bugs</li>
 <li>調整當card-category有收縮按鈕時的顯示佈局</li>
 <li>修復配置PWA參數時，如果網站是子目錄時，會出現加載不到文件的bugs</li>
-<li>修復hexo douban插件 點擊上/下一頁出現圖片變為null的bugs</li>
+<li>修復hexo douban插件 點擊上&#x2F;下一頁出現圖片變為null的bugs</li>
 <li>適配hexo 5.0.0 修復toc點擊不會跳轉的bugs</li>
 <li>適配hexo 5.0.0 修復toc不會隨著文章而滾動的bugs</li>
 <li>修復Valine 的requiredFields設置為空 無效的bugs</li>
@@ -781,10 +717,9 @@
 <li>修復fancybox的alt會顯示undefined的bugs</li>
 <li>修復footer藍色背景下，icp 文字hover 文字變藍看不清的Bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>3.0.0-RC1 (2020/06/16)</span></div>
-    <div class="hide-content"><h2 id="3-0-0-RC1-2020-06-16"><a href="#3-0-0-RC1-2020-06-16" class="headerlink" title="3.0.0-RC1 (2020/06/16)"></a>3.0.0-RC1 (2020/06/16)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">3.0.0-RC1 (2020/06/16)</summary><div class="toggle-content"><h2 id="3-0-0-RC1-2020-x2F-06-x2F-16"><a href="#3-0-0-RC1-2020-x2F-06-x2F-16" class="headerlink" title="3.0.0-RC1 (2020&#x2F;06&#x2F;16)"></a>3.0.0-RC1 (2020&#x2F;06&#x2F;16)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>從3.0開始，不再對IE瀏覽器進行適配</p>
 </li>
 <li><p>強制使用fontawesome v5（會對一些自定義icon產生影響，請替換為V5圖標）</p>
@@ -792,7 +727,7 @@
 </li>
 <li><p>_config.yml 內容修改</p>
 <ol>
-<li><p>精簡baidu_push/instantpage/click_heart/readmode/footer_copyright/medium_zoom/fancybox配置</p>
+<li><p>精簡baidu_push&#x2F;instantpage&#x2F;click_heart&#x2F;readmode&#x2F;footer_copyright&#x2F;medium_zoom&#x2F;fancybox配置</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-baidu_push:</span></span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-instantpage:</span></span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-click_heart:</span></span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-readmode:</span></span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-footer_copyright:</span></span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-medium_zoom:</span></span><br><span class="line"><span class="deletion">-  enable: false</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-fancybox:</span></span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+baidu_push: false</span></span><br><span class="line"><span class="addition">+instantpage: true</span></span><br><span class="line"><span class="addition">+click_heart: false</span></span><br><span class="line"><span class="addition">+readmode: true</span></span><br><span class="line"><span class="addition">+footer_copyright: true</span></span><br><span class="line"><span class="addition">+medium_zoom: false</span></span><br><span class="line"><span class="addition">+fancybox: true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改runtimeshow 的start_date 為publish_date</p>
@@ -807,7 +742,7 @@
 <li><p>更改loading_bg為error_img，post-loading移到lazyload去</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-lodding_bg:</span></span><br><span class="line"><span class="addition">+error_img:</span></span><br><span class="line">  flink: /img/friend_404.gif #404後圖片</span><br><span class="line">  post_page: /img/404.jpg #404後圖片</span><br><span class="line"><span class="deletion">-  post: /img/loading.gif #加載動畫</span></span><br><span class="line"></span><br><span class="line">lazyload:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="addition">+  post: /img/loading.gif #加載動畫</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>pangu 的field配置只能配置site/post</p>
+<li><p>pangu 的field配置只能配置site&#x2F;post</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pangu:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="deletion">-  field: page # page/post</span></span><br><span class="line"><span class="addition">+  field: site # site/post</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>整合auto_open_sidebar到toc去</p>
@@ -820,11 +755,7 @@
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line"><span class="deletion">-  notify: false # valine mail notify (true/false) Deprecated in v1.4.0+</span></span><br><span class="line"><span class="deletion">-  verify: false # valine verify code (true/false) Deprecated in v1.4.0+</span></span><br><span class="line"></span><br><span class="line">translate:</span><br><span class="line"><span class="deletion">-  #博客網址</span></span><br><span class="line"><span class="deletion">-  cookieDomain: &#x27;https://xxx/&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>刪除twitter_meta配置</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# twitter分享自動帶上樣式</span></span><br><span class="line"><span class="deletion">-# -https://i.loli.net/2019/09/08/qm3RfvUCKbct1Wz.png</span></span><br><span class="line"><span class="deletion">-twitter_meta: true</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# twitter分享自動帶上樣式</span></span><br><span class="line"><span class="deletion">-# -https://i.loli.net/2019/09/08/qm3RfvUCKbct1Wz.png</span></span><br><span class="line"><span class="deletion">-twitter_meta: true</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -858,10 +789,10 @@
 </li>
 <li><p>新設計404頁面</p>
 </li>
-<li><p>aplayer js /css 可配置，在文章front-matter中設置aplayer. 防止aplayer在每個頁面都插入代碼</p>
+<li><p>aplayer js &#x2F;css 可配置，在文章front-matter中設置aplayer. 防止aplayer在每個頁面都插入代碼</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CDN:</span><br><span class="line"><span class="addition">+  # aplayer</span></span><br><span class="line"><span class="addition">+  aplayer_css: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css</span></span><br><span class="line"><span class="addition">+  aplayer_js: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js</span></span><br><span class="line"><span class="addition">+  meting_js: https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>增加在綫聊天 Chat Services (chatra/tidio/daovoice/gitter), 可配置主題chat按鈕替換原在綫聊天按鈕</p>
+<li><p>增加在綫聊天 Chat Services (chatra&#x2F;tidio&#x2F;daovoice&#x2F;gitter), 可配置主題chat按鈕替換原在綫聊天按鈕</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Chat Button [recommend]</span></span><br><span class="line"><span class="addition">+# It will create a button in the bottom right corner of website, and hide the origin button</span></span><br><span class="line"><span class="addition">+chat_btn: false</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# The origin chat button is displayed when scrolling up, and the button is hidden when scrolling down</span></span><br><span class="line"><span class="addition">+chat_hide_show: false</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# chatra</span></span><br><span class="line"><span class="addition">+# https://chatra.io/</span></span><br><span class="line"><span class="addition">+chatra:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  id:</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# tidio</span></span><br><span class="line"><span class="addition">+# https://www.tidio.com/</span></span><br><span class="line"><span class="addition">+tidio:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  public_key:</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# daovoice</span></span><br><span class="line"><span class="addition">+# http://daovoice.io/</span></span><br><span class="line"><span class="addition">+daovoice:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  app_id:</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# gitter</span></span><br><span class="line"><span class="addition">+# https://gitter.im/</span></span><br><span class="line"><span class="addition">+gitter:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  room:</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>可配置rightside按鈕與底部的距</p>
@@ -870,7 +801,7 @@
 <li><p>更換lazyload服務商</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CDN:</span><br><span class="line"><span class="deletion">-	lazyload: https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js</span></span><br><span class="line"><span class="addition">+	lazyload: https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>card-categories增加收縮/展開按鈕</p>
+<li><p>card-categories增加收縮&#x2F;展開按鈕</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line">  card_categories:</span><br><span class="line">    enable: true</span><br><span class="line">    limit: 8 # if set 0 will show all</span><br><span class="line"><span class="addition">+    expand: none # none/true/false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更改auto_excerpt為index_post_content，並擁有三種方法可選</p>
@@ -878,9 +809,9 @@
 </li>
 <li><p>可在post裏單獨設置 auto_open: false關掉sidebar自動打開 #232</p>
 </li>
-<li><p>友情鏈接界面代碼優化/增加分類描述/分類名字和描述可以不寫/友情鏈接yml寫法更改（舊的寫法依舊有效，沒影響）</p>
+<li><p>友情鏈接界面代碼優化&#x2F;增加分類描述&#x2F;分類名字和描述可以不寫&#x2F;友情鏈接yml寫法更改（舊的寫法依舊有效，沒影響）</p>
 </li>
-<li><p>文章/頁面font-matter 可設置highlight_shrink (true or false)</p>
+<li><p>文章&#x2F;頁面font-matter 可設置highlight_shrink (true or false)</p>
 </li>
 <li><p>代碼框優化</p>
 <ol>
@@ -891,10 +822,10 @@
 </li>
 <li><p>閲讀模式下去掉代碼高亮</p>
 </li>
-<li><p>disqusjs更新js/css版本，增加nocomment配置</p>
+<li><p>disqusjs更新js&#x2F;css版本，增加nocomment配置</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">disqusjs:</span><br><span class="line">  enable: false</span><br><span class="line">  shortname:</span><br><span class="line">  siteName:</span><br><span class="line">  apikey:</span><br><span class="line"><span class="deletion">-  api: https://disqus.skk.moe/disqus/ #一般情況下無需修改 API 地址</span></span><br><span class="line"><span class="addition">+  api:</span></span><br><span class="line"><span class="addition">+  nocomment: # display when a blog post or an article has no comment attached</span></span><br><span class="line">  admin:</span><br><span class="line">  adminLabel:</span><br><span class="line">  count: false # dispaly comment count in top_img</span><br><span class="line"></span><br><span class="line">CDN:</span><br><span class="line"><span class="deletion">-  disqusjs: https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqus.js</span></span><br><span class="line"><span class="deletion">-  disqusjs_css: https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqusjs.css</span></span><br><span class="line"><span class="addition">+  disqusjs: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js</span></span><br><span class="line"><span class="addition">+  disqusjs_css: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>打賞增加鏈接配置 /打賞寫法更改（舊寫法依然有用）#240</p>
+<li><p>打賞增加鏈接配置 &#x2F;打賞寫法更改（舊寫法依然有用）#240</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 打賞按鈕</span><br><span class="line">reward:</span><br><span class="line">  enable: true</span><br><span class="line">  QR_code:</span><br><span class="line"><span class="deletion">-    - itemlist:</span></span><br><span class="line"><span class="deletion">-        img: /img/wechat.jpg</span></span><br><span class="line"><span class="deletion">-        text: 微信</span></span><br><span class="line"><span class="deletion">-    - itemlist:</span></span><br><span class="line"><span class="deletion">-        img: /img/alipay.jpg</span></span><br><span class="line"><span class="deletion">-        text: 支付寶</span></span><br><span class="line"><span class="addition">+    - img: /img/wechat.jpg</span></span><br><span class="line"><span class="addition">+      link:</span></span><br><span class="line"><span class="addition">+      text: 微信</span></span><br><span class="line"><span class="addition">+    - img: /img/alipay.jpg</span></span><br><span class="line"><span class="addition">+      link:</span></span><br><span class="line"><span class="addition">+      text: 支付寶</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除JS-COOKIES </p>
@@ -905,21 +836,20 @@
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修正側邊欄目錄收縮、展開圖標不對齊的bugs</li>
-<li>修改部分用語(zh-CN/zh-TW/en)</li>
+<li>修改部分用語(zh-CN&#x2F;zh-TW&#x2F;en)</li>
 <li>修復card-categories和card-archives 邊緣點擊沒有跳轉的bugs</li>
 <li>修復網站是子目錄時，社交網站為相對地址時，地址生成錯誤的bugs</li>
 <li>修復最後一篇文章的Pagination沒有佔據全寬度的Bug</li>
 <li>修復推薦文章佈局在microsoft edge(舊版)顯示的Bug</li>
 <li>修復閲讀模式下 黑色代碼框下字體顯示不清楚 #223</li>
-<li>修復當blog_title_font不是設置google字體時，加載了preconnect  //fonts.googleapis.com 的bugs</li>
+<li>修復當blog_title_font不是設置google字體時，加載了preconnect  &#x2F;&#x2F;fonts.googleapis.com 的bugs</li>
 <li>修復設置copy為false時，會導致代碼複製也無法複製的bugs</li>
 <li>閲讀模式調整</li>
 <li>修復部分壓縮軟件壓縮html報錯的bugs</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.3.5(2020/05/01)</span></div>
-    <div class="hide-content"><h2 id="2-3-5-2020-05-01"><a href="#2-3-5-2020-05-01" class="headerlink" title="2.3.5 (2020/05/01)"></a>2.3.5 (2020/05/01)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.3.5(2020/05/01)</summary><div class="toggle-content"><h2 id="2-3-5-2020-x2F-05-x2F-01"><a href="#2-3-5-2020-x2F-05-x2F-01" class="headerlink" title="2.3.5 (2020&#x2F;05&#x2F;01)"></a>2.3.5 (2020&#x2F;05&#x2F;01)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li><p>beautify 可配置生效於全站還是post頁 #218</p>
  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beautify:</span><br><span class="line">  enable: true</span><br><span class="line"><span class="addition">+  field: post # site/post</span></span><br><span class="line">  title-prefix-icon: &#x27;\f0c1&#x27;</span><br><span class="line">  title-prefix-icon-color: &#x27;#F47466&#x27;</span><br></pre></td></tr></table></figure>
 </li>
@@ -927,54 +857,39 @@
  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-lazyload:</span></span><br><span class="line"><span class="deletion">-  enable: true</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+lazyload: true</span></span><br><span class="line"></span><br><span class="line">CDN:</span><br><span class="line"></span><br><span class="line"><span class="deletion">-  lazyload: https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js</span></span><br><span class="line"><span class="addition">+  lazyload: https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>增加文章anchor配置</p>
- <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ # anchor</span></span><br><span class="line"><span class="addition">+ # when you scroll in post , the url will update according to header id.</span></span><br><span class="line"><span class="addition">+ anchor: false</span></span><br></pre></td></tr></table></figure>
-
-</li>
+ <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ # anchor</span></span><br><span class="line"><span class="addition">+ # when you scroll in post , the url will update according to header id.</span></span><br><span class="line"><span class="addition">+ anchor: false</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Fix"><a href="#Fix" class="headerlink" title="Fix"></a>Fix</h3><ol>
 <li>修復當menu沒設置圖標時，會報Cannot read property &#39;trim&#39; of undefined 的bug</li>
 <li>修復meta description 自動生成文章前200文字時部分沒有轉義的bug</li>
 <li>修復開啟lazyload後，使用 無法顯示照片的bug</li>
 <li>修復tags頁標籤只顯示8個的bug</li>
-<li>修復當博客root不是&#39;/&#39;時,引用本地圖片會顯示不出的bug</li>
+<li>修復當博客root不是&#39;&#x2F;&#39;時,引用本地圖片會顯示不出的bug</li>
 <li>修復替換url hash 導致頁面跳動的bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.3.0(2020/04/26)</span></div>
-    <div class="hide-content"><h2 id="2-3-0-2020-04-26"><a href="#2-3-0-2020-04-26" class="headerlink" title="2.3.0(2020/04/26)"></a>2.3.0(2020/04/26)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.3.0(2020/04/26)</summary><div class="toggle-content"><h2 id="2-3-0-2020-x2F-04-x2F-26"><a href="#2-3-0-2020-x2F-04-x2F-26" class="headerlink" title="2.3.0(2020&#x2F;04&#x2F;26)"></a>2.3.0(2020&#x2F;04&#x2F;26)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>增加Facebook Comments</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# Facebook Comments Plugin</span></span><br><span class="line"><span class="addition">+# https://developers.facebook.com/docs/plugins/comments/</span></span><br><span class="line"><span class="addition">+facebook_comments:</span></span><br><span class="line"><span class="addition">+  enable: false</span></span><br><span class="line"><span class="addition">+  app_id:</span></span><br><span class="line"><span class="addition">+  user_id: # optional</span></span><br><span class="line"><span class="addition">+  pageSize: 10 # The number of comments to show</span></span><br><span class="line"><span class="addition">+  order_by: social # social/time/reverse_time</span></span><br><span class="line"><span class="addition">+  lang: en_US # Language en_US/zh_CN/zh_TW and so on</span></span><br><span class="line"><span class="addition">+  count: false</span></span><br></pre></td></tr></table></figure>
 
 
-
 </li>
-</ol>
-<ol start="2">
 <li><p>增加頁面加載動畫Preloader #193</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+# 加載動畫 Loading Animation</span></span><br><span class="line"><span class="addition">+preloader: false</span></span><br></pre></td></tr></table></figure>
 
 
-
 </li>
-</ol>
-<ol start="3">
-<li><p>aside card-tags可配置是否顯示顏色/aside subtitle可配置，優先顯示配置內容、沒有的顯示頁面subtitle #191 /aside widget 增加部分參數可配置/aside widget的Categories，Tags，post,Archives可配置limit/整合公告欄配置到aside去</p>
+<li><p>aside card-tags可配置是否顯示顏色&#x2F;aside subtitle可配置，優先顯示配置內容、沒有的顯示頁面subtitle #191 &#x2F;aside widget 增加部分參數可配置&#x2F;aside widget的Categories，Tags，post,Archives可配置limit&#x2F;整合公告欄配置到aside去</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">aside:</span><br><span class="line">  enable: true</span><br><span class="line">  mobile: true # 手機頁面( 顯示寬度 &lt; 768px )是否顯示aside內容</span><br><span class="line">  position: right # left or right</span><br><span class="line"><span class="deletion">-  card_author: true</span></span><br><span class="line"><span class="deletion">-  card_announcement: true</span></span><br><span class="line"><span class="deletion">-  card_recent_post: true</span></span><br><span class="line"><span class="deletion">-  card_categories: true</span></span><br><span class="line"><span class="deletion">-  card_tags: true</span></span><br><span class="line"><span class="deletion">-  card_archives: true</span></span><br><span class="line"><span class="addition">+  card_author:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    description:</span></span><br><span class="line"><span class="addition">+  card_announcement:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    content: This is my Blog</span></span><br><span class="line"><span class="addition">+  card_recent_post:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    limit: 5 # if set 0 will show all</span></span><br><span class="line"><span class="addition">+  card_categories:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    limit: 8 # if set 0 will show all</span></span><br><span class="line"><span class="addition">+  card_tags:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    limit: 40 # if set 0 will show all</span></span><br><span class="line"><span class="addition">+    color: false</span></span><br><span class="line"><span class="addition">+  card_archives:</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line"><span class="addition">+    type: monthly # yearly or monthly</span></span><br><span class="line"><span class="addition">+    format: MMMM YYYY # eg: YYYY年MM月</span></span><br><span class="line"><span class="addition">+    order: -1 # Sort of order. 1, asc for ascending; -1, desc for descending</span></span><br><span class="line"><span class="addition">+    limit: 8 # if set 0 will show all</span></span><br><span class="line">  card_webinfo: true</span><br><span class="line">  </span><br><span class="line"><span class="deletion">-# 網站公告</span></span><br><span class="line"><span class="deletion">-announcement:</span></span><br><span class="line"><span class="deletion">-  content: 感謝訪問本站，若喜歡請收藏 ^_^</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-
 </li>
-</ol>
-<ol start="4">
 <li><p>改CDN_USE為inject,可插入代碼到head或者bottom</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-# CDN</span></span><br><span class="line"><span class="deletion">-# 網站必須</span></span><br><span class="line"><span class="deletion">-# 可根據需要自行添加js/css</span></span><br><span class="line"><span class="deletion">-CDN_USE:</span></span><br><span class="line"><span class="deletion">-  css:</span></span><br><span class="line"><span class="deletion">-    - /css/index.css</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">-  js:</span></span><br><span class="line"><span class="deletion">-    - https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js #/js/third-party/jquery.min.js</span></span><br><span class="line"><span class="deletion">-    - /js/utils.js</span></span><br><span class="line"><span class="deletion">-    - /js/main.js</span></span><br><span class="line"></span><br><span class="line"><span class="addition">+# inject</span></span><br><span class="line"><span class="addition">+# 插入代碼到頭部&lt;/head&gt;之前 和 尾部&lt;/body&gt;之前</span></span><br><span class="line"><span class="addition">+inject:</span></span><br><span class="line"><span class="addition">+  head:</span></span><br><span class="line"><span class="addition">+  	# - &lt;link rel=&quot;stylesheet&quot; href=&quot;xxxxx&quot;&gt;</span></span><br><span class="line"><span class="addition">+  bottom:</span></span><br><span class="line"><span class="addition">+  	# - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"></span><br><span class="line"># CDN</span><br><span class="line"># 非必要不要修改</span><br><span class="line">CDN:</span><br><span class="line"><span class="addition">+  # main</span></span><br><span class="line"><span class="addition">+  main_css: /css/index.css</span></span><br><span class="line"><span class="addition">+  jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js</span></span><br><span class="line"><span class="addition">+  main: /js/main.js</span></span><br><span class="line"><span class="addition">+  utils: /js/utils.js</span></span><br></pre></td></tr></table></figure>
 
 
-
 </li>
-</ol>
-<ol start="5">
 <li><p>適配valine 1.4.5以上版本</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: false # if you want use valine,please set this value is true</span><br><span class="line">  appId: # leancloud application app id</span><br><span class="line">  appKey: # leancloud application app key</span><br><span class="line">  notify: false # valine mail notify (true/false) Deprecated in v1.4.0+</span><br><span class="line">  verify: false # valine verify code (true/false) Deprecated in v1.4.0+</span><br><span class="line">  pageSize: 10 # comment list page size</span><br><span class="line">  avatar: monsterid # gravatar style https://valine.js.org/#/avatar</span><br><span class="line">  lang: en # i18n: zh-CN/zh-TW/en/ja</span><br><span class="line">  placeholder: Please leave your footprints # valine comment input placeholder(like: Please leave your footprints )</span><br><span class="line">  guest_info: nick,mail,link #valine comment header info</span><br><span class="line">  recordIP: false # Record reviewer IP</span><br><span class="line">  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span><br><span class="line"><span class="addition">+  emojiCDN: # emoji CDN</span></span><br><span class="line"><span class="addition">+  enableQQ: false # enable the Nickname box to automatically get QQ Nickname and QQ Avatar</span></span><br><span class="line"><span class="addition">+  requiredFields: nick,mail # required fields nick/mail/link</span></span><br><span class="line">  bg: /img/comment_bg.png # valine background</span><br><span class="line">  count: false # dispaly comment count in top_img</span><br></pre></td></tr></table></figure>
 </li>
@@ -1015,20 +930,17 @@
 <li>修復文章頁替換url hash值而導致歷史記錄過多的問題</li>
 <li>修復DarkMode下，note標籤的顯示bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.2.5(2020/03/28)</span></div>
-    <div class="hide-content"><h2 id="2-2-5-2020-03-28"><a href="#2-2-5-2020-03-28" class="headerlink" title="2.2.5(2020/03/28)"></a>2.2.5(2020/03/28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.2.5(2020/03/28)</summary><div class="toggle-content"><h2 id="2-2-5-2020-x2F-03-x2F-28"><a href="#2-2-5-2020-x2F-03-x2F-28" class="headerlink" title="2.2.5(2020&#x2F;03&#x2F;28)"></a>2.2.5(2020&#x2F;03&#x2F;28)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>增加自動廣告位置</p>
  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ad:</span></span><br><span class="line"><span class="addition">+ index:</span></span><br><span class="line"><span class="addition">+ aside:</span></span><br><span class="line"><span class="addition">+ post:</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>增加圖片Figcaption顯示</p>
  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ photofigcaption: false</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>增加全站總字數顯示，可配置是否關閉wordcout閲讀時間/字數統計/全站總字數</p>
- <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: false</span><br><span class="line"><span class="addition">+  post_wordcount: true</span></span><br><span class="line"><span class="addition">+  min2read: true</span></span><br><span class="line"><span class="addition">+  total_wordcount: true</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li><p>增加全站總字數顯示，可配置是否關閉wordcout閲讀時間&#x2F;字數統計&#x2F;全站總字數</p>
+ <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wordcount:</span><br><span class="line">  enable: false</span><br><span class="line"><span class="addition">+  post_wordcount: true</span></span><br><span class="line"><span class="addition">+  min2read: true</span></span><br><span class="line"><span class="addition">+  total_wordcount: true</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>文章頁上滑出現的頂欄顯示目錄</li>
@@ -1051,11 +963,10 @@
 <li>修復display_mode設置dark沒有效果的bug</li>
 <li>評論增加夜間模式、文章頁判斷,減少不必要的js加載</li>
 </ol>
-</div></div>
+</div></details>
 
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.2.0 (2020/03/17)</span></div>
-    <div class="hide-content"><h2 id="2-2-0-2020-03-17"><a href="#2-2-0-2020-03-17" class="headerlink" title="2.2.0 (2020/03/17)"></a>2.2.0 (2020/03/17)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.2.0 (2020/03/17)</summary><div class="toggle-content"><h2 id="2-2-0-2020-x2F-03-x2F-17"><a href="#2-2-0-2020-x2F-03-x2F-17" class="headerlink" title="2.2.0 (2020&#x2F;03&#x2F;17)"></a>2.2.0 (2020&#x2F;03&#x2F;17)</h2><h3 id="Breaking-Change"><a href="#Breaking-Change" class="headerlink" title="Breaking Change"></a>Breaking Change</h3><ol>
 <li><p>不再支持hexo 4.0.0以下版本</p>
 </li>
 <li><p>添加hexo fragment_cache,加快生成速度</p>
@@ -1072,7 +983,7 @@
 <li><p>友情鏈接除列表外可自定義內容</p>
 </li>
 <li><p>可設置主頁標題距離頂部距離</p>
- <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 主頁設置</span><br><span class="line"># 默認top_img全屏，site_info在中間</span><br><span class="line"># 使用默認, 都無需填寫(建議默認)</span><br><span class="line"><span class="addition">+index_site_info_top: # 主頁標題距離頂部距離  例如 300px/300em/300rem/10%</span></span><br><span class="line">index_top_img_height: # 主頁top_img高度 例如 300px/300em/300rem  不能使用百分比</span><br></pre></td></tr></table></figure>
+ <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 主頁設置</span><br><span class="line"># 默認top_img全屏，site_info在中間</span><br><span class="line"># 使用默認, 都無需填寫(建議默認)</span><br><span class="line"><span class="addition">+index_site_info_top: # 主頁標題距離頂部距離  例如 300px/300em/300rem/10%</span></span><br><span class="line"><span class="comment">index_top_img_height: # 主頁top_img高度 例如 300px/300em/300rem  不能使用百分比</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>側邊欄可隱藏,可設置手機頁面是否隱藏</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-aside_mobile: true</span></span><br><span class="line"></span><br><span class="line">aside:</span><br><span class="line"><span class="addition">+  enable: true</span></span><br><span class="line"><span class="addition">+  mobile: true # 手機頁面( 顯示寬度 &lt; 768px )是否顯示aside內容</span></span><br><span class="line">  position: right # left or right</span><br><span class="line">  card_author: true</span><br></pre></td></tr></table></figure>
@@ -1114,14 +1025,12 @@
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#49B1F5&quot;</span><br><span class="line">  paginator: &quot;#00c4b6&quot;</span><br><span class="line">  button_hover: &quot;#FF7242&quot;</span><br><span class="line">  text_selection: &quot;#00c4b6&quot;</span><br><span class="line">  link_color: &quot;#99a9bf&quot;</span><br><span class="line">  meta_color: &#x27;#858585&#x27;</span><br><span class="line">  hr_color: &quot;#A4D8FA&quot;</span><br><span class="line"><span class="deletion">-  read-mode-bg_color: &#x27;#FAF9DE&#x27;</span></span><br><span class="line"><span class="deletion">-  inline-code-color: &#x27;#F47466&#x27;</span></span><br><span class="line"><span class="addition">+  code_foreground: &quot;#F47466&quot;</span></span><br><span class="line"><span class="addition">+  code_background: &quot;rgba(27, 31, 35, .05)&quot;</span></span><br><span class="line"><span class="addition">+  toc_color: &quot;#00c4b6&quot;</span></span><br><span class="line"><span class="addition">+  blockquote_padding_color: &quot;#49b1f5&quot;</span></span><br><span class="line"><span class="addition">+  blockquote_background_color: &quot;#49b1f5&quot;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>主頁文章增加tags和更新日期顯示，可以配置post_meta</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line"><span class="deletion">-  date_type: both # or created or updated 文章日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="deletion">-  categories: true # or false 是否顯示分類</span></span><br><span class="line"><span class="deletion">-  tags: true # or false 是否顯示標籤</span></span><br><span class="line"><span class="addition">+  page:</span></span><br><span class="line"><span class="addition">+    date_type: both # created or updated or both 主頁文章日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="addition">+    categories: true # true or false 主頁是否顯示分類</span></span><br><span class="line"><span class="addition">+    tags: true # true or false 主頁是否顯示標籤</span></span><br><span class="line"><span class="addition">+  post:</span></span><br><span class="line"><span class="addition">+    date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="addition">+    categories: true # true or false 文章頁是否顯示分類</span></span><br><span class="line"><span class="addition">+    tags: true # true or false 文章頁是否顯示標籤</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">post_meta:</span><br><span class="line"><span class="deletion">-  date_type: both # or created or updated 文章日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="deletion">-  categories: true # or false 是否顯示分類</span></span><br><span class="line"><span class="deletion">-  tags: true # or false 是否顯示標籤</span></span><br><span class="line"><span class="addition">+  page:</span></span><br><span class="line"><span class="addition">+    date_type: both # created or updated or both 主頁文章日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="addition">+    categories: true # true or false 主頁是否顯示分類</span></span><br><span class="line"><span class="addition">+    tags: true # true or false 主頁是否顯示標籤</span></span><br><span class="line"><span class="addition">+  post:</span></span><br><span class="line"><span class="addition">+    date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示</span></span><br><span class="line"><span class="addition">+    categories: true # true or false 文章頁是否顯示分類</span></span><br><span class="line"><span class="addition">+    tags: true # true or false 文章頁是否顯示標籤</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>適配IE</li>
 <li>增加一個Tag Plugins: 圖庫集</li>
-<li>增加一個Tag Plugins: tag-hide 功能 inline/block</li>
+<li>增加一個Tag Plugins: tag-hide 功能 inline&#x2F;block</li>
 <li>去除page頁開頭顯示與標題一樣的內容</li>
 <li>aside 公告欄設置，支持html代碼</li>
 <li>手機界面sidebar顯示進度條和加深對應的標題</li>
@@ -1154,10 +1063,9 @@
 <li>修復語言上的錯誤 #156</li>
 <li>修復主頁在safari桌面端，首頁滾動卡頓的bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.1.0 (2019/12/20)</span></div>
-    <div class="hide-content"><h2 id="2-1-0-2019-12-20"><a href="#2-1-0-2019-12-20" class="headerlink" title="2.1.0 (2019/12/20)"></a>2.1.0 (2019/12/20)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.1.0 (2019/12/20)</summary><div class="toggle-content"><h2 id="2-1-0-2019-x2F-12-x2F-20"><a href="#2-1-0-2019-x2F-12-x2F-20" class="headerlink" title="2.1.0 (2019&#x2F;12&#x2F;20)"></a>2.1.0 (2019&#x2F;12&#x2F;20)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>可設置隱藏文章</li>
 <li>適配 Hexo 的 Tag Plugins Code Block With marked lines 顯示</li>
 <li>可配置首頁 cover 顯示的位置</li>
@@ -1172,7 +1080,7 @@
 <li>優化 gitalk 在 dark mode 下的顯示</li>
 <li>文章頁，文章標題過長時，只顯示三行內容</li>
 <li>深色模式下，背景圖片加上蒙板</li>
-<li>優化深色/閲讀模式下，canvas 的顯示</li>
+<li>優化深色&#x2F;閲讀模式下，canvas 的顯示</li>
 <li>優化打賞的特效和移動到二維碼不會立刻消失</li>
 <li>優化 sub-menu 樣式</li>
 <li>修改 aside 的 tags 顏色，在深色模式下不會出現觀看困難</li>
@@ -1200,10 +1108,9 @@
 <li>修復深色模式下，切換 readmode 偶爾會無效的 bug</li>
 <li>修復在一些手機設備上，toc 和 menu 的按鈕顯示不對齊的 bug #72</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>2.0.0 (2019/11/03)</span></div>
-    <div class="hide-content"><h2 id="2-0-0-2019-11-03"><a href="#2-0-0-2019-11-03" class="headerlink" title="2.0.0 (2019/11/03)"></a>2.0.0 (2019/11/03)</h2><h3 id="Breaking-change"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">2.0.0 (2019/11/03)</summary><div class="toggle-content"><h2 id="2-0-0-2019-x2F-11-x2F-03"><a href="#2-0-0-2019-x2F-11-x2F-03" class="headerlink" title="2.0.0 (2019&#x2F;11&#x2F;03)"></a>2.0.0 (2019&#x2F;11&#x2F;03)</h2><h3 id="Breaking-change"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change</h3><ol>
 <li>手機端界面卡片化，同時，手機端也可以顯示側邊欄的內容</li>
 <li>修復當menu過多時，header界面出現錯亂的bug。當menu過多時，會變為sidebar模式</li>
 <li>增加medium-zoom大圖查看模式</li>
@@ -1220,7 +1127,7 @@
 <h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>文章頁面，字數統計、閲讀時長和閲讀量前面添加icon</li>
 <li>更改懶加載js</li>
-<li>升級typed.js/instantpage.js到最新版</li>
+<li>升級typed.js&#x2F;instantpage.js到最新版</li>
 <li>搜索和右下角按鈕添加退出特效</li>
 </ol>
 <h3 id="Fixed"><a href="#Fixed" class="headerlink" title="Fixed"></a>Fixed</h3><ol>
@@ -1230,7 +1137,7 @@
 <li>優化sidebar的打開速度</li>
 <li>修復文章頁標題左右邊距不平等的bug</li>
 <li>修復keywords讀取的bug</li>
-<li>修復當post/page 內容為空時，footer位置錯亂的bug</li>
+<li>修復當post&#x2F;page 內容為空時，footer位置錯亂的bug</li>
 <li>修復在手機safari，toc sidebar底部內容被遮擋的bug</li>
 <li>完善Dark mode,一些界面的配色</li>
 <li>修復 card-archives 查看更多 跳轉bug</li>
@@ -1239,10 +1146,9 @@
 <li>移除Gitment</li>
 <li>移除Gallery</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.2.0 (2019/09/24)</span></div>
-    <div class="hide-content"><h2 id="1-2-0-2019-09-24"><a href="#1-2-0-2019-09-24" class="headerlink" title="1.2.0 (2019/09/24)"></a>1.2.0 (2019/09/24)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.2.0 (2019/09/24)</summary><div class="toggle-content"><h2 id="1-2-0-2019-x2F-09-x2F-24"><a href="#1-2-0-2019-x2F-09-x2F-24" class="headerlink" title="1.2.0 (2019&#x2F;09&#x2F;24)"></a>1.2.0 (2019&#x2F;09&#x2F;24)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>更改手機頁面的menu和toc的顯示方式和顯示特效(ipad也能看TOC)</li>
 <li>可設置禁止複製網站內容</li>
 <li>可設置複製時，內容自動加上版權信息</li>
@@ -1272,15 +1178,14 @@
 <li>修復夜間模式下footer的顏色bug</li>
 <li>修復英文語言下，書籤英文顯示不完整的問題</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.1.5 (2019/09/08)</span></div>
-    <div class="hide-content"><h2 id="1-1-5-2019-09-08"><a href="#1-1-5-2019-09-08" class="headerlink" title="1.1.5 (2019/09/08)"></a>1.1.5 (2019/09/08)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.1.5 (2019/09/08)</summary><div class="toggle-content"><h2 id="1-1-5-2019-x2F-09-x2F-08"><a href="#1-1-5-2019-x2F-09-x2F-08" class="headerlink" title="1.1.5 (2019&#x2F;09&#x2F;08)"></a>1.1.5 (2019&#x2F;09&#x2F;08)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>Feature: 可設置內聯代碼塊樣式 #26</li>
 <li>Feature: 可設置夜間模式作為默認樣式</li>
 <li>Feature: 可設置是否顯示code language名稱</li>
 <li>Feature: 可設置是否展開或關閉代碼框</li>
-<li>Feature: 可設置背景圖片/顏色</li>
+<li>Feature: 可設置背景圖片&#x2F;顏色</li>
 <li>Feature: 可設置是否顯示footer背景</li>
 <li>Feature: 增加 canvas-nest.js</li>
 <li>Feature: 頭像可設置效果(轉圈圈)</li>
@@ -1299,10 +1204,9 @@
 <li>Fix: 修復代碼框 複製 和 代碼名 z-index bug #25</li>
 <li>Fix: 完善閲讀模式</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.1.0 (2019/08/29)</span></div>
-    <div class="hide-content"><h2 id="1-1-0-2019-08-29"><a href="#1-1-0-2019-08-29" class="headerlink" title="1.1.0 (2019/08/29)"></a>1.1.0 (2019/08/29)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.1.0 (2019/08/29)</summary><div class="toggle-content"><h2 id="1-1-0-2019-x2F-08-x2F-29"><a href="#1-1-0-2019-x2F-08-x2F-29" class="headerlink" title="1.1.0 (2019&#x2F;08&#x2F;29)"></a>1.1.0 (2019&#x2F;08&#x2F;29)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>Feature: 手機menu界面重新設計</li>
 <li>Feature: 文章頁增加美化(原 melody主題功能),並增加更改標題前綴圖標和顏色</li>
 <li>Feature: PC端增加直達評論按鈕</li>
@@ -1319,10 +1223,9 @@
 <h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h3><ol>
 <li>Remove: 去掉主題&quot;閲讀更多&quot;按鈕</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.0.8 (2019/08/11)</span></div>
-    <div class="hide-content"><h2 id="1-0-8-2019-08-11"><a href="#1-0-8-2019-08-11" class="headerlink" title="1.0.8 (2019/08/11)"></a>1.0.8 (2019/08/11)</h2><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.0.8 (2019/08/11)</summary><div class="toggle-content"><h2 id="1-0-8-2019-x2F-08-x2F-11"><a href="#1-0-8-2019-x2F-08-x2F-11" class="headerlink" title="1.0.8 (2019&#x2F;08&#x2F;11)"></a>1.0.8 (2019&#x2F;08&#x2F;11)</h2><ol>
 <li>Feature: 可關閉圖片懶加載</li>
 <li>Feature: 增加頁面排版，可選擇把右邊欄放在左邊</li>
 <li>Feature: 增加 Note (Bootstrap Callout) (移植於next主題)</li>
@@ -1332,10 +1235,9 @@
 <li>Fix: 修復代碼框部分語言沒有顯示正確的代碼語言</li>
 <li>Fix: 修復設置裏把Disqus註釋掉無法運行的bug</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.0.7 (2019/07/29)</span></div>
-    <div class="hide-content"><h2 id="1-0-7-2019-07-29"><a href="#1-0-7-2019-07-29" class="headerlink" title="1.0.7 (2019/07/29)"></a>1.0.7 (2019/07/29)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.0.7 (2019/07/29)</summary><div class="toggle-content"><h2 id="1-0-7-2019-x2F-07-x2F-29"><a href="#1-0-7-2019-x2F-07-x2F-29" class="headerlink" title="1.0.7 (2019&#x2F;07&#x2F;29)"></a>1.0.7 (2019&#x2F;07&#x2F;29)</h2><h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
 <li>Feature: add the option to change the site name font-family</li>
 <li>Feature: add the option to close instant-page</li>
 <li>Feature: the sidebar can auto scroll when the toc out of the screen</li>
@@ -1347,40 +1249,50 @@
 <li>Fix: the bugs of image display</li>
 <li>Fix: When the picture is loaded, the picture appears black frame</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.0.6 (2019/07/06)</span></div>
-    <div class="hide-content"><h2 id="1-0-6-2019-07-06"><a href="#1-0-6-2019-07-06" class="headerlink" title="1.0.6 (2019/07/06)"></a>1.0.6 (2019/07/06)</h2><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.0.6 (2019/07/06)</summary><div class="toggle-content"><h2 id="1-0-6-2019-x2F-07-x2F-06"><a href="#1-0-6-2019-x2F-07-x2F-06" class="headerlink" title="1.0.6 (2019&#x2F;07&#x2F;06)"></a>1.0.6 (2019&#x2F;07&#x2F;06)</h2><ol>
 <li>Feature: random cover #10</li>
 <li>Fix: valine lang not work</li>
 <li>Fix: archives page site name not change when the language change</li>
 <li>Fix: related posts url error</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.0.5 (2019/06/28)</span></div>
-    <div class="hide-content"><h2 id="1-0-5-2019-06-28"><a href="#1-0-5-2019-06-28" class="headerlink" title="1.0.5 (2019/06/28)"></a>1.0.5 (2019/06/28)</h2><ol>
+<details class="toggle" ><summary class="toggle-button" style="">1.0.5 (2019/06/28)</summary><div class="toggle-content"><h2 id="1-0-5-2019-x2F-06-x2F-28"><a href="#1-0-5-2019-x2F-06-x2F-28" class="headerlink" title="1.0.5 (2019&#x2F;06&#x2F;28)"></a>1.0.5 (2019&#x2F;06&#x2F;28)</h2><ol>
 <li>fix bugs of gitalk #9</li>
 <li>fix bugs of valine</li>
 <li>new look of the mobile menu</li>
 </ol>
-</div></div>
+</div></details>
 
-<div class="hide-toggle" ><div class="hide-button toggle-title" style=""><i class="fas fa-caret-right fa-fw"></i><span>1.0.0 (2019.06/17)</span></div>
-    <div class="hide-content"><h2 id="1-0-0-2019-06-17"><a href="#1-0-0-2019-06-17" class="headerlink" title="1.0.0 (2019.06/17)"></a>1.0.0 (2019.06/17)</h2><p>first release</p>
-</div></div>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:null">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/198a4240/">https://wangyyovo.github.io/posts/198a4240/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b37b5fe3/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/CODE-COLOR-COVER.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">自定義代碼配色</div></div></a></div><div class="next-post pull-right"><a href="/posts/4073eda/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/butterfly-docs-06-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Butterfly 安裝文檔(六) 進階教程</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">350</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/5ee696f6/" title="Windows11部署Docker"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/docker/4d51cecf7d26dfa720682ee0425872d5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows11部署Docker"/></a><div class="content"><a class="title" href="/posts/5ee696f6/" title="Windows11部署Docker">Windows11部署Docker</a><time datetime="2022-03-07T10:30:39.000Z" title="发表于 2022-03-07 18:30:39">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NATS-Server(JetStream)和NATS Streaming Server对比"/></a><div class="content"><a class="title" href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比">NATS-Server(JetStream)和NATS Streaming Server对比</a><time datetime="2022-03-03T10:22:20.000Z" title="发表于 2022-03-03 18:22:20">2022-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-分布式利器Bundle"/></a><div class="content"><a class="title" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle">OPA进阶-分布式利器Bundle</a><time datetime="2022-03-02T09:48:44.000Z" title="发表于 2022-03-02 17:48:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-测试、性能分析和基准测试"/></a><div class="content"><a class="title" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试">OPA进阶-测试、性能分析和基准测试</a><time datetime="2022-03-02T09:45:44.000Z" title="发表于 2022-03-02 17:45:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-简洁的推导式"/></a><div class="content"><a class="title" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式">OPA进阶-简洁的推导式</a><time datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://wangyangyangisme.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
-  if (window.mermaidJsLoad) mermaid.init()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
-      window.mermaidJsLoad = true
-      mermaid.initialize({
-        theme: 'default',
+<details class="toggle" ><summary class="toggle-button" style="">1.0.0 (2019.06/17)</summary><div class="toggle-content"><h2 id="1-0-0-2019-06-x2F-17"><a href="#1-0-0-2019-06-x2F-17" class="headerlink" title="1.0.0 (2019.06&#x2F;17)"></a>1.0.0 (2019.06&#x2F;17)</h2><p>first release</p>
+</div></details>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/198a4240/">https://wangyyovo.github.io/posts/198a4240/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Butterfly-docs-07-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b37b5fe3/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/CODE-COLOR-COVER.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">自定義代碼配色</div></div></a></div><div class="next-post pull-right"><a href="/posts/4073eda/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/butterfly-docs-06-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Butterfly 安裝文檔(六) 進階教程</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">350</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/5ee696f6/" title="Windows11部署Docker"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/docker/4d51cecf7d26dfa720682ee0425872d5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows11部署Docker"/></a><div class="content"><a class="title" href="/posts/5ee696f6/" title="Windows11部署Docker">Windows11部署Docker</a><time datetime="2022-03-07T10:30:39.000Z" title="发表于 2022-03-07 18:30:39">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NATS-Server(JetStream)和NATS Streaming Server对比"/></a><div class="content"><a class="title" href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比">NATS-Server(JetStream)和NATS Streaming Server对比</a><time datetime="2022-03-03T10:22:20.000Z" title="发表于 2022-03-03 18:22:20">2022-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-分布式利器Bundle"/></a><div class="content"><a class="title" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle">OPA进阶-分布式利器Bundle</a><time datetime="2022-03-02T09:48:44.000Z" title="发表于 2022-03-02 17:48:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-测试、性能分析和基准测试"/></a><div class="content"><a class="title" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试">OPA进阶-测试、性能分析和基准测试</a><time datetime="2022-03-02T09:45:44.000Z" title="发表于 2022-03-02 17:45:44">2022-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-简洁的推导式"/></a><div class="content"><a class="title" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式">OPA进阶-简洁的推导式</a><time datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
       })
-      true && mermaid.init()
-    })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
   }
-}</script><script>function loadValine () {
+})()</script><script>function loadValine () {
   function initValine () {
     const valine = new Valine(Object.assign({
       el: '#vcomment',
@@ -1398,8 +1310,8 @@
   else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
 }
 
-if ('Valine' === 'Valine' || !true) {
-  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
   else setTimeout(loadValine, 0)
 } else {
   function loadOtherComment () {
@@ -1409,46 +1321,7 @@ if ('Valine' === 'Valine' || !true) {
 POWERMODE.shake = true;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script>(function(d, w, c) {
-    w.ChatraID = '';
-    var s = d.createElement('script');
-    w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-    };
-    s.async = true;
-    s.src = 'https://call.chatra.io/chatra.js';
-    if (d.head) d.head.appendChild(s);
-})(document, window, 'Chatra');
-
-if (false) {
-  var chatBtnFn = () => {
-    var chatBtn = document.getElementById("chat_btn")
-    chatBtn.addEventListener("click", function(){
-      Chatra('openChat')
-    });
-  }
-  chatBtnFn()
-} else {
-  if (true) {
-    function chatBtnHide () {
-      Chatra('hide')
-    }
-    function chatBtnShow () {
-      Chatra('show')
-    }
-  }
-}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
-  'title',
-  '#config-diff',
-  '#body-wrap',
-  '#rightside-config-hide',
-  '#rightside-config-show',
-  '.js-pjax'
-]
-
-if (false) {
-  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-}
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
@@ -1461,10 +1334,11 @@ var pjax = new Pjax({
 document.addEventListener('pjax:send', function () {
 
   // removeEventListener scroll 
-  window.removeEventListener('scroll', window.tocScrollFn)
-  window.removeEventListener('scroll', scrollCollect)
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
 
   typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
   
   if (window.aplayers) {
     for (let i = 0; i < window.aplayers.length; i++) {
@@ -1480,6 +1354,7 @@ document.addEventListener('pjax:send', function () {
   const $bodyClassList = document.body.classList
   $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
 
+  typeof disqusjs === 'object' && disqusjs.destroy()
 })
 
 document.addEventListener('pjax:complete', function () {
@@ -1505,11 +1380,6 @@ document.addEventListener('pjax:complete', function () {
   typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
   typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // Analytics
-  if (false) {
-    MtaH5.pgv()
-  }
 
   // prismjs
   typeof Prism === 'object' && Prism.highlightAll()
