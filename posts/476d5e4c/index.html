@@ -192,17 +192,17 @@
 <h2 id="四-GoReplay工作流程"><a href="#四-GoReplay工作流程" class="headerlink" title="四. GoReplay工作流程"></a>四. <strong>GoReplay</strong>工作流程</h2><p>下面是goreplay官方之前公布的工作流程图，简单来讲就是goreplay捕捉线上流量，并将捕捉到的释放到指定测试服务器上。</p>
 <p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/golang/e0cf5354d1514ae1bdf94edc5450352b.png"></p>
 <p>最新GoReplay 官网上更新了一张更高逼规格的图解说明，如下图所示：</p>
-<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/55cf6c06fd88445eb9027470dd9354aa.png"></p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/golang/55cf6c06fd88445eb9027470dd9354aa.png"></p>
 <p>上述流程图展示的已经很详细了，我就不过多解释。</p>
 <blockquote>
 <p>注：Gor不是代理人，不需要将第三方工具放到关键路径上。相反，Gor只是默默地分析你的应用程序的流量，并不影响本身程序。</p>
 </blockquote>
 <h2 id="五-GoReplay支持的常用功能"><a href="#五-GoReplay支持的常用功能" class="headerlink" title="五. GoReplay支持的常用功能"></a>五. <strong>GoReplay</strong>支持的常用功能</h2><ul>
-<li>1、Gor 支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。</li>
-<li>2、Gor 还支持根据正则表达式过滤流量，这意味着可以单独测试某个 API 服务。</li>
-<li>3、Gor还可以修改 HTTP 请求头，比如替换 User-Agent, 或者增加某些 HTTP Header 。</li>
-<li>4、Gor 还可以把请求记录到文件，以备回放和分析。Gor 支持和 ElasticSearch 集成，将流量存入 ES 进行实时分析。</li>
-<li>5、上线前在预发布环境，使用线上真实的请求，检查是否准备发布的版本，是否具备发布标准。</li>
+<li>1､Gor 支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。</li>
+<li>2､Gor 还支持根据正则表达式过滤流量，这意味着可以单独测试某个 API 服务。</li>
+<li>3､Gor还可以修改 HTTP 请求头，比如替换 User-Agent, 或者增加某些 HTTP Header 。</li>
+<li>4､Gor 还可以把请求记录到文件，以备回放和分析。Gor 支持和 ElasticSearch 集成，将流量存入 ES 进行实时分析。</li>
+<li>5､上线前在预发布环境，使用线上真实的请求，检查是否准备发布的版本，是否具备发布标准。</li>
 <li>6､压力测试完成后，用线上真实的请求，加速后回放至测试环境，检查是否有报错等问题。</li>
 <li>7､用线上的流量转发到预发布或测试环境，检查相同流量下一些指标的反馈情况，检查核心数据是否需要改善。</li>
 <li>8、等等。</li>
