@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangyyovo.github.io/posts/5faac006/</loc>
+    
+    <lastmod>2022-06-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://wangyyovo.github.io/posts/7594185d/</loc>
     
     <lastmod>2022-06-12</lastmod>
@@ -3782,7 +3791,7 @@
   </url>
   
   <url>
-    <loc>https://wangyyovo.github.io/categories/log/</loc>
+    <loc>https://wangyyovo.github.io/categories/microservice/CI-CD/</loc>
     <lastmod>2022-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3790,13 +3799,6 @@
   
   <url>
     <loc>https://wangyyovo.github.io/categories/easy-tips/pattern/</loc>
-    <lastmod>2022-06-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wangyyovo.github.io/categories/microservice/CI-CD/</loc>
     <lastmod>2022-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3811,6 +3813,13 @@
   
   <url>
     <loc>https://wangyyovo.github.io/categories/microservice/k8s/</loc>
+    <lastmod>2022-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wangyyovo.github.io/categories/log/</loc>
     <lastmod>2022-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
