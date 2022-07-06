@@ -253,8 +253,11 @@
 <p>test2.go</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test2</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Test2 <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span></span><br><span class="line">	Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Test2)</span></span> EchoName() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> t.Name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Test2)</span></span> EchoAge() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> t.Age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>生成aar</p>
+<p>生成android aar</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd go-mobile-demo</span><br><span class="line"></span><br><span class="line">gomobile bind -target=android -ldflags=-extldflags=-Wl,-soname,libgojni.so -o demo.aar ./test1 ./test2</span><br></pre></td></tr></table></figure>
+
+<p>生成ios </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd go-mobile-demo</span><br><span class="line"></span><br><span class="line">gomobile bind -target=ios -ldflags=-extldflags=-Wl,-soname,libgojni.so -o demo.framework ./test1 ./test2</span><br></pre></td></tr></table></figure>
 
 
 
