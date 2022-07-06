@@ -1622,15 +1622,6 @@
   </url>
   
   <url>
-    <loc>https://wangyyovo.github.io/posts/20d25e39/</loc>
-    
-    <lastmod>2019-12-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://wangyyovo.github.io/posts/a0f58881/</loc>
     
     <lastmod>2019-12-07</lastmod>
@@ -1722,6 +1713,15 @@
   
   <url>
     <loc>https://wangyyovo.github.io/posts/15c93851/</loc>
+    
+    <lastmod>2019-12-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wangyyovo.github.io/posts/20d25e39/</loc>
     
     <lastmod>2019-12-07</lastmod>
     
@@ -3807,14 +3807,14 @@
   </url>
   
   <url>
-    <loc>https://wangyyovo.github.io/categories/easy-tips/pattern/</loc>
+    <loc>https://wangyyovo.github.io/categories/microservice/CI-CD/</loc>
     <lastmod>2022-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wangyyovo.github.io/categories/microservice/CI-CD/</loc>
+    <loc>https://wangyyovo.github.io/categories/easy-tips/pattern/</loc>
     <lastmod>2022-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
