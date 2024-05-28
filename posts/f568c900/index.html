@@ -1,0 +1,1901 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>html5标签 | Blank</title><meta name="keywords" content="other"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="html5标签基础   标签 描述    &lt;!DOCTYPE&gt; 定义文档类型。    表示文档是HTML   &lt;html&gt; 定义 HTML 文档。  浏览器会以特殊的方式来使用标题，并且通常把它放置在浏览器窗口的标题栏或状态栏上。同样，当把文档加入用户的链接列表或者收藏夹或书签列表时，标题将成为该文档链接的默认名称。(提示：&lt;title&gt; 标签是&lt;hea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5标签">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/f568c900/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="html5标签基础   标签 描述    &lt;!DOCTYPE&gt; 定义文档类型。    表示文档是HTML   &lt;html&gt; 定义 HTML 文档。  浏览器会以特殊的方式来使用标题，并且通常把它放置在浏览器窗口的标题栏或状态栏上。同样，当把文档加入用户的链接列表或者收藏夹或书签列表时，标题将成为该文档链接的默认名称。(提示：&lt;title&gt; 标签是&lt;hea">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/5.jpg">
+<meta property="article:published_time" content="2019-09-22T02:00:40.000Z">
+<meta property="article:modified_time" content="2019-09-22T02:00:40.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="other">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/5.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/f568c900/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'html5标签',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-22 10:00:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">html5标签</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-09-22T02:00:40.000Z" title="发表于 2019-09-22 10:00:40">2019-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-22T02:00:40.000Z" title="更新于 2019-09-22 10:00:40">2019-09-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/other/">other</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="html5标签"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="html5标签"><a href="#html5标签" class="headerlink" title="html5标签"></a>html5标签</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_doctype.asp">&lt;!DOCTYPE&gt;</a></td>
+<td>定义文档类型。    <!DOCTYPE html>表示文档是HTML</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_html.asp">&lt;html&gt;</a></td>
+<td>定义 HTML 文档。  浏览器会以特殊的方式来使用标题，并且通常把它放置在浏览器窗口的标题栏或状态栏上。同样，当把文档加入用户的链接列表或者收藏夹或书签列表时，标题将成为该文档链接的默认名称。(提示：&lt;title&gt; 标签是&lt;head&gt; 标签中唯一要求包含的东西。)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_title.asp">&lt;title&gt;</a></td>
+<td>定义文档的标题。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_body.asp">&lt;body&gt;</a></td>
+<td>定义文档的主体。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_hn.asp">&lt;h1&gt; to &lt;h6&gt;</a></td>
+<td>定义 HTML 标题。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_p.asp">&lt;p&gt;</a></td>
+<td>定义段落。p 元素会自动在其前后创建一些空白。浏览器会自动添加这些空间，您也可以在样式表中规定。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_br.asp">&lt;br&gt;</a></td>
+<td>定义简单的折行。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_hr.asp">&lt;hr&gt;</a></td>
+<td>定义水平线。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_comment.asp">&lt;!--...--&gt;</a></td>
+<td>定义注释。</td>
+</tr>
+</tbody></table>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_acronym.asp">&lt;acronym&gt;</a></td>
+<td align="left">定义只取首字母的缩写。（HTML5 中不支持 <acronym> 标签。请使用 <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_abbr.asp">&lt;abbr&gt;</a> 标签代替）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_abbr.asp">&lt;abbr&gt;</a></td>
+<td align="left">定义缩写。  （<code>&lt;abbr title=&quot;People&#39;s Republic of China&quot;&gt;PRC&lt;/abbr&gt; </code> 提示：可以在 <abbr> 标签中使用全局的 title 属性，这样就能够在鼠标指针移动到 <abbr> 元素上时显示出简称&#x2F;缩写的完整版本。）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_address.asp">&lt;address&gt;</a></td>
+<td align="left">定义文档作者或拥有者的联系信息。  提示：<address> 标签不应该用于描述通讯地址，除非它是联系信息的一部分。提示：<address> 元素通常连同其他信息被包含在 <footer> 元素中。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font_style.asp">&lt;b&gt;</a></td>
+<td align="left">定义粗体文本。 注释：根据 HTML5 规范，在没有其他合适标签更合适时，才应该把 <b> 标签作为最后的选项。HTML5 规范声明：应该使用 <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_hn.asp">&lt;h1&gt; - &lt;6&gt;</a> 来表示标题，使用 <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;em&gt;</a> 标签来表示强调的文本，应该使用 <a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;strong&gt;</a> 标签来表示重要文本，应该使用 <mark> 标签来表示标注的&#x2F;突出显示的文本。提示：您也能够使用 CSS &quot;<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/cssref/pr_font_weight.asp">font-weight</a>&quot; 属性来设置粗体文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_bdi.asp">&lt;bdi&gt;</a></td>
+<td align="left">定义文本的文本方向，使其脱离其周围文本的方向设置。<em>属性：</em>dir（ltr、rtl、auto）可选。规定 <bdi> 元素内的文本的文本方向。默认值：auto。<em>在发布用户评论或其他您无法完全控制的内容时，该标签很有用</em>。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_bdo.asp">&lt;bdo&gt;</a></td>
+<td align="left">定义文字方向。  <bdo dir="rtl">Here is some text</bdo>（文字从左输出）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font_style.asp">&lt;big&gt;</a></td>
+<td align="left">定义大号文本。  可以嵌套 <big> 标签来放大文本。每一个 <big> 标签都可以使字体大一号，直到上限 7 号文本，正如字体模型所定义的那样。然而，如果是最大号字体了，<big>标签就没效果了</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_blockquote.asp">&lt;blockquote&gt;</a></td>
+<td align="left">定义长的引用。  <blockquote> 标签定义块引用。<blockquote> 与 </blockquote> 之间的所有文本都会从常规文本中分离出来，经常会在左、右两边进行缩进（增加外边距），而且有时会使用斜体。也就是说，块引用拥有它们自己的空间。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_center.asp">&lt;center&gt;</a></td>
+<td align="left">不赞成使用。定义居中文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;cite&gt;</a></td>
+<td align="left">定义引用(citation)，可使用该标签对参考文献的引用进行定义，比如书籍或杂志的标题。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;code&gt;</a></td>
+<td align="left">定义计算机代码文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_del.asp">&lt;del&gt;</a></td>
+<td align="left">定义被删除文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;dfn&gt;</a></td>
+<td align="left">定义定义项目。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;em&gt;</a></td>
+<td align="left">定义强调文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font.asp">&lt;font&gt;</a></td>
+<td align="left">不赞成使用。定义文本的字体、尺寸和颜色</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font_style.asp">&lt;i&gt;</a></td>
+<td align="left">定义斜体文本。 标签定义与文本中其余部分不同的部分，并把这部分文本呈现为斜体文本。在没有其他元素可以使用时，比如 <b>, <cite>, <dfn>, <em>, <q>, <small>, <strong>，请使用 <i> 标签。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_ins.asp">&lt;ins&gt;</a></td>
+<td align="left">定义被插入文本。 提示：请与 <del> 标签一起使用，来描述对文档的更新和修正。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;kbd&gt;</a></td>
+<td align="left">定义键盘文本。它表示文本是从键盘上键入的。它经常用在与计算机相关的文档或手册中。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_mark.asp">&lt;mark&gt;</a></td>
+<td align="left">定义有记号的文本。 <p>Do not forget to buy <code>&lt;mark&gt;milk&lt;/mark&gt;</code> today.</p></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_meter.asp">&lt;meter&gt;</a></td>
+<td align="left">定义预定义范围内的度量。 <code>&lt;meter value=&quot;3&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;3/10&lt;/meter&gt;&lt;meter value=&quot;0.6&quot;&gt;60%&lt;/meter&gt;</code>（显示度量值）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_pre.asp">&lt;pre&gt;</a></td>
+<td align="left">定义预格式文本。  被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。<pre> 标签的一个常见应用就是用来表示计算机的源代码。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_progress.asp">&lt;progress&gt;</a></td>
+<td align="left">定义任何类型的任务的进度。<em>下载进度：</em> <code>&lt;progress value=&quot;22&quot; max=&quot;100&quot;&gt;...&lt;/progress&gt;</code></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_q.asp">&lt;q&gt;</a></td>
+<td align="left">定义短的引用。  浏览器经常会在这种引用的周围插入引号<code>&lt;p&gt;WWF&#39;s goal is to: &lt;q cite=&quot;http://www.wwf.org&quot;&gt;build a future where people live in harmony with nature &lt;/q&gt; we hope they succeed.&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_rp.asp">&lt;rp&gt;</a></td>
+<td align="left">定义若浏览器不支持 ruby 元素显示的内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_rt.asp">&lt;rt&gt;</a></td>
+<td align="left">定义 ruby 注释的解释。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_ruby.asp">&lt;ruby&gt;</a></td>
+<td align="left">定义 ruby 注释。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_s.asp">&lt;s&gt;</a></td>
+<td align="left">不赞成使用。定义加删除线的文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;samp&gt;</a></td>
+<td align="left">定义计算机代码样本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font_style.asp">&lt;small&gt;</a></td>
+<td align="left">定义小号文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_strike.asp">&lt;strike&gt;</a></td>
+<td align="left">不赞成使用。定义加删除线文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;strong&gt;</a></td>
+<td align="left">定义语气更为强烈的强调文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_sup.asp">&lt;sup&gt;</a></td>
+<td align="left">定义上标文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_sub.asp">&lt;sub&gt;</a></td>
+<td align="left">定义下标文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_time.asp">&lt;time&gt;</a></td>
+<td align="left">定义日期/时间。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_font_style.asp">&lt;tt&gt;</a></td>
+<td align="left">定义打字机文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_u.asp">&lt;u&gt;</a></td>
+<td align="left">不赞成使用。定义下划线文本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_phrase_elements.asp">&lt;var&gt;</a></td>
+<td align="left">定义文本的变量部分。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_wbr.asp">&lt;wbr&gt;</a></td>
+<td align="left">定义可能的换行符。提示：如果单词太长，或者您担心浏览器会在错误的位置换行，那么您可以使用 <wbr> 元素来添加 Word Break Opportunity（单词换行时机）。</td>
+</tr>
+</tbody></table>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_form.asp">&lt;form&gt;</a></td>
+<td align="left">定义供用户输入的 HTML 表单。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_input.asp">&lt;input&gt;</a></td>
+<td align="left">定义输入控件。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_textarea.asp">&lt;rtextarea&gt;</a></td>
+<td align="left">定义多行的文本输入控件。&lt;textarea&gt; 标签定义多行的文本输入控件。<strong>文本区中可容纳无限数量的文本，其中的文本的默认字体是等宽字体（通常是 Courier）。</strong>可以通过 cols 和 rows 属性来规定 textarea 的尺寸，不过更好的办法是使用 CSS 的 height 和 width 属性。<strong>注释：在文本输入区内的文本行间，用 "%OD%OA" （回车/换行）进行分隔。</strong>提示：可以通过 &lt;textarea&gt; 标签的 wrap 属性设置文本输入区内的换行模式。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_button.asp">&lt;button&gt;</a></td>
+<td align="left">定义按钮。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_select.asp">&lt;select&gt;</a></td>
+<td align="left">定义选择列表（下拉列表）。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_optgroup.asp">&lt;optgroup&gt;</a></td>
+<td align="left">定义选择列表中相关选项的组合。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_option.asp">&lt;option&gt;</a></td>
+<td align="left">定义选择列表中的选项。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_label.asp">&lt;label&gt;</a></td>
+<td align="left">定义 input 元素的标注。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_fieldset.asp">&lt;fieldset&gt;</a></td>
+<td align="left">定义围绕表单中元素的边框。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_legend.asp">&lt;legend&gt;</a></td>
+<td align="left">定义 fieldset 元素的标题。</td>
+</tr>
+<tr>
+<td align="left"><a href="">&lt;isindex&gt;</a></td>
+<td align="left">不赞成使用。定义与文档相关的可搜索索引。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_datalist.asp">&lt;datalist&gt;</a></td>
+<td align="left">定义下拉列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_keygen.asp">&lt;keygen&gt;</a></td>
+<td align="left">定义生成密钥。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_output.asp">&lt;output&gt;</a></td>
+<td align="left">定义输出的一些类型。</td>
+</tr>
+</tbody></table>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_frame.asp">&lt;frame&gt;</a></td>
+<td align="left">定义框架集的窗口或框架。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_frameset.asp">&lt;frameset&gt;</a></td>
+<td align="left">定义框架集。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_noframes.asp">&lt;noframes&gt;</a></td>
+<td align="left">定义针对不支持框架的用户的替代内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_iframe.asp">&lt;iframe&gt;</a></td>
+<td align="left">定义内联框架。</td>
+</tr>
+</tbody></table>
+<h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_img.asp">&lt;img&gt;</a></td>
+<td align="left">定义图像。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_map.asp">&lt;map&gt;</a></td>
+<td align="left">定义图像映射。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_area.asp">&lt;area&gt;</a></td>
+<td align="left">定义图像地图内部的区域。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_canvas.asp">&lt;canvas&gt;</a></td>
+<td align="left">定义图形。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_figcaption.asp">&lt;figcaption&gt;</a></td>
+<td align="left">定义 figure 元素的标题。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_figure.asp">&lt;figure&gt;</a></td>
+<td align="left">定义媒介内容的分组，以及它们的标题。</td>
+</tr>
+</tbody></table>
+<h2 id="音频-视频"><a href="#音频-视频" class="headerlink" title="音频 /视频"></a>音频 /视频</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_audio.asp">&lt;audio&gt;</a></td>
+<td align="left">定义声音内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_source.asp">&lt;source&gt;</a></td>
+<td align="left">定义媒介源。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_track.asp">&lt;track&gt;</a></td>
+<td align="left">定义用在媒体播放器中的文本轨道。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_video.asp">&lt;video&gt;</a></td>
+<td align="left">定义视频。</td>
+</tr>
+</tbody></table>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_a.asp">&lt;a&gt;</a></td>
+<td align="left">定义锚。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_link.asp">&lt;link&gt;</a></td>
+<td align="left">定义文档与外部资源的关系。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_nav.asp">&lt;nav&gt;</a></td>
+<td align="left">定义导航链接。</td>
+</tr>
+</tbody></table>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_ul.asp">&lt;ul&gt;</a></td>
+<td align="left">定义无序列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_ol.asp">&lt;ol&gt;</a></td>
+<td align="left">定义有序列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_li.asp">&lt;li&gt;</a></td>
+<td align="left">定义列表的项目。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_dir.asp">&lt;dir&gt;</a></td>
+<td align="left">不赞成使用。定义目录列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_dl.asp">&lt;dl&gt;</a></td>
+<td align="left">定义定义列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_dt.asp">&lt;dt&gt;</a></td>
+<td align="left">定义定义列表中的项目。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_dd.asp">&lt;dd&gt;</a></td>
+<td align="left">定义定义列表中项目的描述。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_menu.asp">&lt;menu&gt;</a></td>
+<td align="left">定义命令的菜单/列表。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_menuitem.asp">&lt;menuitem&gt;</a></td>
+<td align="left">定义用户可以从弹出菜单调用的命令/菜单项目。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_command.asp">&lt;command&gt;</a></td>
+<td align="left">定义命令按钮。</td>
+</tr>
+</tbody></table>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_table.asp">&lt;table&gt;</a></td>
+<td align="left">定义表格</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_caption.asp">&lt;caption&gt;</a></td>
+<td align="left">定义表格标题。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_th.asp">&lt;th&gt;</a></td>
+<td align="left">定义表格中的表头单元格。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_tr.asp">&lt;tr&gt;</a></td>
+<td align="left">定义表格中的行。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_td.asp">&lt;td&gt;</a></td>
+<td align="left">定义表格中的单元。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_thead.asp">&lt;thead&gt;</a></td>
+<td align="left">定义表格中的表头内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_tbody.asp">&lt;tbody&gt;</a></td>
+<td align="left">定义表格中的主体内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_tfoot.asp">&lt;tfoot&gt;</a></td>
+<td align="left">定义表格中的表注内容（脚注）。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_col.asp">&lt;col&gt;</a></td>
+<td align="left">定义表格中一个或多个列的属性值。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_colgroup.asp">&lt;colgroup&gt;</a></td>
+<td align="left">定义表格中供格式化的列组。</td>
+</tr>
+</tbody></table>
+<h2 id="样式-节"><a href="#样式-节" class="headerlink" title="样式/节"></a>样式/节</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_style.asp">&lt;style&gt;</a></td>
+<td align="left">定义文档的样式信息。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_div.asp">&lt;div&gt;</a></td>
+<td align="left">定义文档中的节。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_span.asp">&lt;span&gt;</a></td>
+<td align="left">定义文档中的节。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_header.asp">&lt;header&gt;</a></td>
+<td align="left">定义 section 或 page 的页眉。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_footer.asp">&lt;footer&gt;</a></td>
+<td align="left">定义 section 或 page 的页脚。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_section.asp">&lt;section&gt;</a></td>
+<td align="left">定义 section。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_article.asp">&lt;article&gt;</a></td>
+<td align="left">定义文章。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_aside.asp">&lt;aside&gt;</a></td>
+<td align="left">定义页面内容之外的内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_details.asp">&lt;details&gt;</a></td>
+<td align="left">定义元素的细节。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_dialog.asp">&lt;dialog&gt;</a></td>
+<td align="left">定义对话框或窗口。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_summary.asp">&lt;summary&gt;</a></td>
+<td align="left">为 &lt;details&gt; 元素定义可见的标题。</td>
+</tr>
+</tbody></table>
+<h2 id="元信息"><a href="#元信息" class="headerlink" title="元信息"></a>元信息</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_head.asp">&lt;head&gt;</a></td>
+<td align="left">定义关于文档的信息。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_meta.asp">&lt;meta&gt;</a></td>
+<td align="left">定义关于 HTML 文档的元信息。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_base.asp">&lt;base&gt;</a></td>
+<td align="left">定义页面中所有链接的默认地址或默认目标。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_basefont.asp">&lt;basefont&gt;</a></td>
+<td align="left">不赞成使用。定义页面中文本的默认字体、颜色或尺寸。</td>
+</tr>
+</tbody></table>
+<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_script.asp">&lt;script&gt;</a></td>
+<td align="left">定义客户端脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_noscript.asp">&lt;noscript&gt;</a></td>
+<td align="left">定义针对不支持客户端脚本的用户的替代内容。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_applet.asp">&lt;applet&gt;</a></td>
+<td align="left">不赞成使用。定义嵌入的 applet。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_embed.asp">&lt;embed&gt;</a></td>
+<td align="left">为外部应用程序（非 HTML）定义容器。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_object.asp">&lt;object&gt;</a></td>
+<td align="left">定义嵌入的对象。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/tag_param.asp">&lt;param&gt;</a></td>
+<td align="left">定义对象的参数。</td>
+</tr>
+</tbody></table>
+<h2 id="HTML-全局属性"><a href="#HTML-全局属性" class="headerlink" title="HTML 全局属性"></a>HTML 全局属性</h2><p># = HTML5 中添加的属性。</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_accesskey.asp">accesskey</a></td>
+<td align="left">规定激活元素的快捷键。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_class.asp">class</a></td>
+<td align="left">规定元素的一个或多个类名（引用样式表中的类）。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_contenteditable.asp">contenteditable</a> #</td>
+<td align="left">规定元素内容是否可编辑。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_contextmenu.asp">contextmenu</a> #</td>
+<td align="left">规定元素的上下文菜单。上下文菜单在用户点击元素时显示。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_data.asp">data-*</a> #</td>
+<td align="left">用于存储页面或应用程序的私有定制数据。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_dir.asp">dir</a></td>
+<td align="left">规定元素中内容的文本方向。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_draggable.asp">draggable</a> #</td>
+<td align="left">规定元素是否可拖动。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_dropzone.asp">dropzone</a> #</td>
+<td align="left">规定在拖动被拖动数据时是否进行复制、移动或链接。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_hidden.asp">hidden</a> #</td>
+<td align="left">规定元素仍未或不再相关。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_id.asp">id</a></td>
+<td align="left">规定元素的唯一 id。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_lang.asp">lang</a></td>
+<td align="left">规定元素内容的语言。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_spellcheck.asp">spellcheck</a> #</td>
+<td align="left">规定是否对元素进行拼写和语法检查。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_style.asp">style</a></td>
+<td align="left">规定元素的行内 CSS 样式。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_tabindex.asp">tabindex</a></td>
+<td align="left">规定元素的 tab 键次序。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_standard_title.asp">title</a></td>
+<td align="left">规定有关元素的额外信息。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/att_global_translate.asp">translate</a> #</td>
+<td align="left">规定是否应该翻译元素内容。</td>
+</tr>
+</tbody></table>
+<h2 id="全局事件属性"><a href="#全局事件属性" class="headerlink" title="全局事件属性"></a>全局事件属性</h2><p>HTML 4 增加了使事件在浏览器中触发动作的能力，比如当用户点击元素时启动 JavaScript。</p>
+<p>如需学习更多有关事件编程的知识，请访问我们的 JavaScript 教程。</p>
+<p>下面列出了添加到 HTML 元素以定义事件动作的全局事件属性。</p>
+<p># = HTML5 中添加的属性。</p>
+<h3 id="Window-事件属性"><a href="#Window-事件属性" class="headerlink" title="Window 事件属性"></a>Window 事件属性</h3><p>针对 window 对象触发的事件（应用到 &lt;body&gt; 标签）：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onafterprint.asp">onafterprint</a> #</td>
+<td align="left">script</td>
+<td align="left">文档打印之后运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onbeforeprint.asp">onbeforeprint</a> #</td>
+<td align="left">script</td>
+<td align="left">文档打印之前运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onbeforeunload #</td>
+<td align="left">script</td>
+<td align="left">文档卸载之前运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onerror #</td>
+<td align="left">script</td>
+<td align="left">在错误发生时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onhaschange #</td>
+<td align="left">script</td>
+<td align="left">当文档已改变时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onload.asp">onload</a></td>
+<td align="left">script</td>
+<td align="left">页面结束加载之后触发。</td>
+</tr>
+<tr>
+<td align="left">onmessage #</td>
+<td align="left">script</td>
+<td align="left">在消息被触发时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onoffline #</td>
+<td align="left">script</td>
+<td align="left">当文档离线时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ononline #</td>
+<td align="left">script</td>
+<td align="left">当文档上线时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onpagehide #</td>
+<td align="left">script</td>
+<td align="left">当窗口隐藏时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onpageshow #</td>
+<td align="left">script</td>
+<td align="left">当窗口成为可见时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onpopstate #</td>
+<td align="left">script</td>
+<td align="left">当窗口历史记录改变时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onredo #</td>
+<td align="left">script</td>
+<td align="left">当文档执行撤销（redo）时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onresize.asp">onresize</a></td>
+<td align="left">script</td>
+<td align="left">当浏览器窗口被调整大小时触发。</td>
+</tr>
+<tr>
+<td align="left">onstorage #</td>
+<td align="left">script</td>
+<td align="left">在 Web Storage 区域更新后运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onundo #</td>
+<td align="left">script</td>
+<td align="left">在文档执行 undo 时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onunload.asp">onunload</a></td>
+<td align="left">script</td>
+<td align="left">一旦页面已下载时触发（或者浏览器窗口已被关闭）。</td>
+</tr>
+</tbody></table>
+<h3 id="Form-事件"><a href="#Form-事件" class="headerlink" title="Form 事件"></a>Form 事件</h3><p>由 HTML 表单内的动作触发的事件（应用到几乎所有 HTML 元素，但最常用在 form 元素中）：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onblur.asp">onblur</a></td>
+<td align="left">script</td>
+<td align="left">元素失去焦点时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onchange.asp">onchange</a></td>
+<td align="left">script</td>
+<td align="left">在元素值被改变时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">oncontextmenu #</td>
+<td align="left">script</td>
+<td align="left">当上下文菜单被触发时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onfocus.asp">onfocus</a></td>
+<td align="left">script</td>
+<td align="left">当元素获得焦点时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onformchange #</td>
+<td align="left">script</td>
+<td align="left">在表单改变时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onforminput #</td>
+<td align="left">script</td>
+<td align="left">当表单获得用户输入时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">oninput #</td>
+<td align="left">script</td>
+<td align="left">当元素获得用户输入时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">oninvalid #</td>
+<td align="left">script</td>
+<td align="left">当元素无效时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onreset</td>
+<td align="left">script</td>
+<td align="left">当表单中的重置按钮被点击时触发。HTML5 中不支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onselect.asp">onselect</a></td>
+<td align="left">script</td>
+<td align="left">在元素中文本被选中后触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onsubmit.asp">onsubmit</a></td>
+<td align="left">script</td>
+<td align="left">在提交表单时触发。</td>
+</tr>
+</tbody></table>
+<h3 id="Keyboard-事件"><a href="#Keyboard-事件" class="headerlink" title="Keyboard 事件"></a>Keyboard 事件</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onkeydown.asp">onkeydown</a></td>
+<td align="left">script</td>
+<td align="left">在用户按下按键时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onkeypress.asp">onkeypress</a></td>
+<td align="left">script</td>
+<td align="left">在用户敲击按钮时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onkeyup.asp">onkeyup</a></td>
+<td align="left">script</td>
+<td align="left">当用户释放按键时触发。</td>
+</tr>
+</tbody></table>
+<h3 id="Mouse-事件"><a href="#Mouse-事件" class="headerlink" title="Mouse 事件"></a>Mouse 事件</h3><p>由鼠标或类似用户动作触发的事件：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onclick.asp">onclick</a></td>
+<td align="left">script</td>
+<td align="left">元素上发生鼠标点击时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_ondblclick.asp">ondblclick</a></td>
+<td align="left">script</td>
+<td align="left">元素上发生鼠标双击时触发。</td>
+</tr>
+<tr>
+<td align="left">ondrag #</td>
+<td align="left">script</td>
+<td align="left">元素被拖动时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondragend #</td>
+<td align="left">script</td>
+<td align="left">在拖动操作末端运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondragenter #</td>
+<td align="left">script</td>
+<td align="left">当元素元素已被拖动到有效拖放区域时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondragleave #</td>
+<td align="left">script</td>
+<td align="left">当元素离开有效拖放目标时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondragover #</td>
+<td align="left">script</td>
+<td align="left">当元素在有效拖放目标上正在被拖动时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondragstart #</td>
+<td align="left">script</td>
+<td align="left">在拖动操作开端运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondrop #</td>
+<td align="left">script</td>
+<td align="left">当被拖元素正在被拖放时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onmousedown.asp">onmousedown</a></td>
+<td align="left">script</td>
+<td align="left">当元素上按下鼠标按钮时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onmousemove.asp">onmousemove</a></td>
+<td align="left">script</td>
+<td align="left">当鼠标指针移动到元素上时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onmouseout.asp">onmouseout</a></td>
+<td align="left">script</td>
+<td align="left">当鼠标指针移出元素时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onmouseover.asp">onmouseover</a></td>
+<td align="left">script</td>
+<td align="left">当鼠标指针移动到元素上时触发。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/event_onmouseup.asp">onmouseup</a></td>
+<td align="left">script</td>
+<td align="left">当在元素上释放鼠标按钮时触发。</td>
+</tr>
+<tr>
+<td align="left">onmousewheel #</td>
+<td align="left">script</td>
+<td align="left">当鼠标滚轮正在被滚动时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onscroll #</td>
+<td align="left">script</td>
+<td align="left">当元素滚动条被滚动时运行的脚本。</td>
+</tr>
+</tbody></table>
+<h3 id="Media-事件"><a href="#Media-事件" class="headerlink" title="Media 事件"></a>Media 事件</h3><p>由媒介（比如视频、图像和音频）触发的事件（适用于所有 HTML 元素，但常见于媒介元素中，比如 &lt;audio&gt;、&lt;embed&gt;、&lt;img&gt;、&lt;object&gt; 以及&lt;video&gt;）:</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">onabort</td>
+<td align="left">script</td>
+<td align="left">在退出时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">oncanplay #</td>
+<td align="left">script</td>
+<td align="left">当文件就绪可以开始播放时运行的脚本（缓冲已足够开始时）。</td>
+</tr>
+<tr>
+<td align="left">oncanplaythrough #</td>
+<td align="left">script</td>
+<td align="left">当媒介能够无需因缓冲而停止即可播放至结尾时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ondurationchange #</td>
+<td align="left">script</td>
+<td align="left">当媒介长度改变时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onemptied #</td>
+<td align="left">script</td>
+<td align="left">当发生故障并且文件突然不可用时运行的脚本（比如连接意外断开时）。</td>
+</tr>
+<tr>
+<td align="left">onended #</td>
+<td align="left">script</td>
+<td align="left">当媒介已到达结尾时运行的脚本（可发送类似“感谢观看”之类的消息）。</td>
+</tr>
+<tr>
+<td align="left">onerror #</td>
+<td align="left">script</td>
+<td align="left">当在文件加载期间发生错误时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onloadeddata #</td>
+<td align="left">script</td>
+<td align="left">当媒介数据已加载时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onloadedmetadata #</td>
+<td align="left">script</td>
+<td align="left">当元数据（比如分辨率和时长）被加载时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onloadstart #</td>
+<td align="left">script</td>
+<td align="left">在文件开始加载且未实际加载任何数据前运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onpause #</td>
+<td align="left">script</td>
+<td align="left">当媒介被用户或程序暂停时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onplay #</td>
+<td align="left">script</td>
+<td align="left">当媒介已就绪可以开始播放时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onplaying #</td>
+<td align="left">script</td>
+<td align="left">当媒介已开始播放时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onprogress #</td>
+<td align="left">script</td>
+<td align="left">当浏览器正在获取媒介数据时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onratechange #</td>
+<td align="left">script</td>
+<td align="left">每当回放速率改变时运行的脚本（比如当用户切换到慢动作或快进模式）。</td>
+</tr>
+<tr>
+<td align="left">onreadystatechange #</td>
+<td align="left">script</td>
+<td align="left">每当就绪状态改变时运行的脚本（就绪状态监测媒介数据的状态）。</td>
+</tr>
+<tr>
+<td align="left">onseeked #</td>
+<td align="left">script</td>
+<td align="left">当 seeking 属性设置为 false（指示定位已结束）时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onseeking #</td>
+<td align="left">script</td>
+<td align="left">当 seeking 属性设置为 true（指示定位是活动的）时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onstalled #</td>
+<td align="left">script</td>
+<td align="left">在浏览器不论何种原因未能取回媒介数据时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onsuspend #</td>
+<td align="left">script</td>
+<td align="left">在媒介数据完全加载之前不论何种原因终止取回媒介数据时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">ontimeupdate #</td>
+<td align="left">script</td>
+<td align="left">当播放位置改变时（比如当用户快进到媒介中一个不同的位置时）运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onvolumechange #</td>
+<td align="left">script</td>
+<td align="left">每当音量改变时（包括将音量设置为静音）时运行的脚本。</td>
+</tr>
+<tr>
+<td align="left">onwaiting</td>
+<td align="left">script</td>
+<td align="left">当媒介已停止播放但打算继续播放时（比如当媒介暂停已缓冲更多数据）运行脚本</td>
+</tr>
+</tbody></table>
+<h2 id="HTML5-视频和音频的-DOM-参考手册"><a href="#HTML5-视频和音频的-DOM-参考手册" class="headerlink" title="HTML5 视频和音频的 DOM 参考手册"></a>HTML5 视频和音频的 DOM 参考手册</h2><p>HTML5 DOM 为 &lt;audio&gt; 和 &lt;video&gt; 元素提供了方法、属性和事件。</p>
+<p>这些方法、属性和事件允许您使用 JavaScript 来操作 &lt;audio&gt; 和 &lt;video&gt; 元素。</p>
+<h3 id="HTML5-Audio-Video-方法"><a href="#HTML5-Audio-Video-方法" class="headerlink" title="HTML5 Audio/Video 方法"></a>HTML5 Audio/Video 方法</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_met_addtexttrack.asp">addTextTrack()</a></td>
+<td align="left">向音频/视频添加新的文本轨道</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_met_canplaytype.asp">canPlayType()</a></td>
+<td align="left">检测浏览器是否能播放指定的音频/视频类型</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_met_load.asp">load()</a></td>
+<td align="left">重新加载音频/视频元素</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_met_play.asp">play()</a></td>
+<td align="left">开始播放音频/视频</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_met_pause.asp">pause()</a></td>
+<td align="left">暂停当前播放的音频/视频</td>
+</tr>
+</tbody></table>
+<h3 id="HTML5-Audio-Video-属性"><a href="#HTML5-Audio-Video-属性" class="headerlink" title="HTML5 Audio/Video 属性"></a>HTML5 Audio/Video 属性</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_audiotracks.asp">audioTracks</a></td>
+<td align="left">返回表示可用音轨的 AudioTrackList 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_autoplay.asp">autoplay</a></td>
+<td align="left">设置或返回是否在加载完成后随即播放音频/视频</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_buffered.asp">buffered</a></td>
+<td align="left">返回表示音频/视频已缓冲部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_controller.asp">controller</a></td>
+<td align="left">返回表示音频/视频当前媒体控制器的 MediaController 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_controls.asp">controls</a></td>
+<td align="left">设置或返回音频/视频是否显示控件（比如播放/暂停等）</td>
+</tr>
+<tr>
+<td align="left">crossOrigin</td>
+<td align="left">设置或返回音频/视频的 CORS 设置</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_currentsrc.asp">currentSrc</a></td>
+<td align="left">返回当前音频/视频的 URL</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_currenttime.asp">currentTime</a></td>
+<td align="left">设置或返回音频/视频中的当前播放位置（以秒计）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_defaultmuted.asp">defaultMuted</a></td>
+<td align="left">设置或返回音频/视频默认是否静音</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_defaultplaybackrate.asp">defaultPlaybackRate</a></td>
+<td align="left">设置或返回音频/视频的默认播放速度</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_duration.asp">duration</a></td>
+<td align="left">返回当前音频/视频的长度（以秒计）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_ended.asp">ended</a></td>
+<td align="left">返回音频/视频的播放是否已结束</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_error.asp">error</a></td>
+<td align="left">返回表示音频/视频错误状态的 MediaError 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_loop.asp">loop</a></td>
+<td align="left">设置或返回音频/视频是否应在结束时重新播放</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_mediagroup.asp">mediaGroup</a></td>
+<td align="left">设置或返回音频/视频所属的组合（用于连接多个音频/视频元素）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_muted.asp">muted</a></td>
+<td align="left">设置或返回音频/视频是否静音</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_networkstate.asp">networkState</a></td>
+<td align="left">返回音频/视频的当前网络状态</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_paused.asp">paused</a></td>
+<td align="left">设置或返回音频/视频是否暂停</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_playbackrate.asp">playbackRate</a></td>
+<td align="left">设置或返回音频/视频播放的速度</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_played.asp">played</a></td>
+<td align="left">返回表示音频/视频已播放部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_preload.asp">preload</a></td>
+<td align="left">设置或返回音频/视频是否应该在页面加载后进行加载</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_readystate.asp">readyState</a></td>
+<td align="left">返回音频/视频当前的就绪状态</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_seekable.asp">seekable</a></td>
+<td align="left">返回表示音频/视频可寻址部分的 TimeRanges 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_seeking.asp">seeking</a></td>
+<td align="left">返回用户是否正在音频/视频中进行查找</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_src.asp">src</a></td>
+<td align="left">设置或返回音频/视频元素的当前来源</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_startdate.asp">startDate</a></td>
+<td align="left">返回表示当前时间偏移的 Date 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_texttracks.asp">textTracks</a></td>
+<td align="left">返回表示可用文本轨道的 TextTrackList 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_videotracks.asp">videoTracks</a></td>
+<td align="left">返回表示可用视频轨道的 VideoTrackList 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_prop_volume.asp">volume</a></td>
+<td align="left">设置或返回音频/视频的音量</td>
+</tr>
+</tbody></table>
+<h3 id="HTML5-Audio-Video-事件"><a href="#HTML5-Audio-Video-事件" class="headerlink" title="HTML5 Audio/Video 事件"></a>HTML5 Audio/Video 事件</h3><table>
+<thead>
+<tr>
+<th align="left">事件</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">abort</td>
+<td align="left">当音频/视频的加载已放弃时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_canplay.asp">canplay</a></td>
+<td align="left">当浏览器可以播放音频/视频时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_canplaythrough.asp">canplaythrough</a></td>
+<td align="left">当浏览器可在不因缓冲而停顿的情况下进行播放时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_durationchange.asp">durationchange</a></td>
+<td align="left">当音频/视频的时长已更改时</td>
+</tr>
+<tr>
+<td align="left">emptied</td>
+<td align="left">当目前的播放列表为空时</td>
+</tr>
+<tr>
+<td align="left">ended</td>
+<td align="left">当目前的播放列表已结束时</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">当在音频/视频加载期间发生错误时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_loadeddata.asp">loadeddata</a></td>
+<td align="left">当浏览器已加载音频/视频的当前帧时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_loadedmetadata.asp">loadedmetadata</a></td>
+<td align="left">当浏览器已加载音频/视频的元数据时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_loadstart.asp">loadstart</a></td>
+<td align="left">当浏览器开始查找音频/视频时</td>
+</tr>
+<tr>
+<td align="left">pause</td>
+<td align="left">当音频/视频已暂停时</td>
+</tr>
+<tr>
+<td align="left">play</td>
+<td align="left">当音频/视频已开始或不再暂停时</td>
+</tr>
+<tr>
+<td align="left">playing</td>
+<td align="left">当音频/视频在已因缓冲而暂停或停止后已就绪时</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/av_event_progress.asp">progress</a></td>
+<td align="left">当浏览器正在下载音频/视频时</td>
+</tr>
+<tr>
+<td align="left">ratechange</td>
+<td align="left">当音频/视频的播放速度已更改时</td>
+</tr>
+<tr>
+<td align="left">seeked</td>
+<td align="left">当用户已移动/跳跃到音频/视频中的新位置时</td>
+</tr>
+<tr>
+<td align="left">seeking</td>
+<td align="left">当用户开始移动/跳跃到音频/视频中的新位置时</td>
+</tr>
+<tr>
+<td align="left">stalled</td>
+<td align="left">当浏览器尝试获取媒体数据，但数据不可用时</td>
+</tr>
+<tr>
+<td align="left">suspend</td>
+<td align="left">当浏览器刻意不获取媒体数据时</td>
+</tr>
+<tr>
+<td align="left">timeupdate</td>
+<td align="left">当目前的播放位置已更改时</td>
+</tr>
+<tr>
+<td align="left">volumechange</td>
+<td align="left">当音量已更改时</td>
+</tr>
+<tr>
+<td align="left">waiting</td>
+<td align="left">当视频由于需要缓冲下一帧而停止</td>
+</tr>
+</tbody></table>
+<h2 id="HTML-5-Canvas-参考手册"><a href="#HTML-5-Canvas-参考手册" class="headerlink" title="HTML 5 Canvas 参考手册"></a>HTML 5 Canvas 参考手册</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp">HTML 视频/音频</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/html_ref_dtd.asp">HTML 文档类型</a></li>
+</ul>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>HTML5 &lt;canvas&gt; 标签用于绘制图像（通过脚本，通常是 JavaScript）。</p>
+<p>不过，&lt;canvas&gt; 元素本身并没有绘制能力（它仅仅是图形的容器） - 您必须使用脚本来完成实际的绘图任务。</p>
+<p>getContext() 方法可返回一个对象，该对象提供了用于在画布上绘图的方法和属性。</p>
+<p>本手册提供完整的 getContext("2d") 对象属性和方法，可用于在画布上绘制文本、线条、矩形、圆形等等。</p>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p>Internet Explorer 9、Firefox、Opera、Chrome 以及 Safari 支持 &lt;canvas&gt; 及其属性和方法。</p>
+<p><strong>注释：</strong>Internet Explorer 8 以及更早的版本不支持&lt;canvas&gt; 元素。</p>
+<h3 id="颜色、样式和阴影"><a href="#颜色、样式和阴影" class="headerlink" title="颜色、样式和阴影"></a>颜色、样式和阴影</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_fillstyle.asp">fillStyle</a></td>
+<td align="left">设置或返回用于填充绘画的颜色、渐变或模式</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_strokestyle.asp">strokeStyle</a></td>
+<td align="left">设置或返回用于笔触的颜色、渐变或模式</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_shadowcolor.asp">shadowColor</a></td>
+<td align="left">设置或返回用于阴影的颜色</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_shadowblur.asp">shadowBlur</a></td>
+<td align="left">设置或返回用于阴影的模糊级别</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_shadowoffsetx.asp">shadowOffsetX</a></td>
+<td align="left">设置或返回阴影距形状的水平距离</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_shadowoffsety.asp">shadowOffsetY</a></td>
+<td align="left">设置或返回阴影距形状的垂直距离</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_createlineargradient.asp">createLinearGradient()</a></td>
+<td align="left">创建线性渐变（用在画布内容上）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_createpattern.asp">createPattern()</a></td>
+<td align="left">在指定的方向上重复指定的元素</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_createradialgradient.asp">createRadialGradient()</a></td>
+<td align="left">创建放射状/环形的渐变（用在画布内容上）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_addcolorstop.asp">addColorStop()</a></td>
+<td align="left">规定渐变对象中的颜色和停止位置</td>
+</tr>
+</tbody></table>
+<h3 id="线条样式"><a href="#线条样式" class="headerlink" title="线条样式"></a>线条样式</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_linecap.asp">lineCap</a></td>
+<td align="left">设置或返回线条的结束端点样式</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_linejoin.asp">lineJoin</a></td>
+<td align="left">设置或返回两条线相交时，所创建的拐角类型</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_linewidth.asp">lineWidth</a></td>
+<td align="left">设置或返回当前的线条宽度</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_miterlimit.asp">miterLimit</a></td>
+<td align="left">设置或返回最大斜接长度</td>
+</tr>
+</tbody></table>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_rect.asp">rect()</a></td>
+<td align="left">创建矩形</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_fillrect.asp">fillRect()</a></td>
+<td align="left">绘制“被填充”的矩形</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_strokerect.asp">strokeRect()</a></td>
+<td align="left">绘制矩形（无填充）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_clearrect.asp">clearRect()</a></td>
+<td align="left">在给定的矩形内清除指定的像素</td>
+</tr>
+</tbody></table>
+<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_fill.asp">fill()</a></td>
+<td align="left">填充当前绘图（路径）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_stroke.asp">stroke()</a></td>
+<td align="left">绘制已定义的路径</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_beginpath.asp">beginPath()</a></td>
+<td align="left">起始一条路径，或重置当前路径</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_moveto.asp">moveTo()</a></td>
+<td align="left">把路径移动到画布中的指定点，不创建线条</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_closepath.asp">closePath()</a></td>
+<td align="left">创建从当前点回到起始点的路径</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_lineto.asp">lineTo()</a></td>
+<td align="left">添加一个新点，然后在画布中创建从该点到最后指定点的线条</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_clip.asp">clip()</a></td>
+<td align="left">从原始画布剪切任意形状和尺寸的区域</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_quadraticcurveto.asp">quadraticCurveTo()</a></td>
+<td align="left">创建二次贝塞尔曲线</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_beziercurveto.asp">bezierCurveTo()</a></td>
+<td align="left">创建三次方贝塞尔曲线</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_arc.asp">arc()</a></td>
+<td align="left">创建弧/曲线（用于创建圆形或部分圆）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_arcto.asp">arcTo()</a></td>
+<td align="left">创建两切线之间的弧/曲线</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_ispointinpath.asp">isPointInPath()</a></td>
+<td align="left">如果指定的点位于当前路径中，则返回 true，否则返回 false</td>
+</tr>
+</tbody></table>
+<h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_scale.asp">scale()</a></td>
+<td align="left">缩放当前绘图至更大或更小</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_rotate.asp">rotate()</a></td>
+<td align="left">旋转当前绘图</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_translate.asp">translate()</a></td>
+<td align="left">重新映射画布上的 (0,0) 位置</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_transform.asp">transform()</a></td>
+<td align="left">替换绘图的当前转换矩阵</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_settransform.asp">setTransform()</a></td>
+<td align="left">将当前转换重置为单位矩阵。然后运行 transform()</td>
+</tr>
+</tbody></table>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_font.asp">font</a></td>
+<td align="left">设置或返回文本内容的当前字体属性</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_textalign.asp">textAlign</a></td>
+<td align="left">设置或返回文本内容的当前对齐方式</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_textbaseline.asp">textBaseline</a></td>
+<td align="left">设置或返回在绘制文本时使用的当前文本基线</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_filltext.asp">fillText()</a></td>
+<td align="left">在画布上绘制“被填充的”文本</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_stroketext.asp">strokeText()</a></td>
+<td align="left">在画布上绘制文本（无填充）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_measuretext.asp">measureText()</a></td>
+<td align="left">返回包含指定文本宽度的对象</td>
+</tr>
+</tbody></table>
+<h3 id="图像绘制"><a href="#图像绘制" class="headerlink" title="图像绘制"></a>图像绘制</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_drawimage.asp">drawImage()</a></td>
+<td align="left">向画布上绘制图像、画布或视频</td>
+</tr>
+</tbody></table>
+<h3 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_imagedata_width.asp">width</a></td>
+<td align="left">返回 ImageData 对象的宽度</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_imagedata_height.asp">height</a></td>
+<td align="left">返回 ImageData 对象的高度</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_imagedata_data.asp">data</a></td>
+<td align="left">返回一个对象，其包含指定的 ImageData 对象的图像数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_createimagedata.asp">createImageData()</a></td>
+<td align="left">创建新的、空白的 ImageData 对象</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_getimagedata.asp">getImageData()</a></td>
+<td align="left">返回 ImageData 对象，该对象为画布上指定的矩形复制像素数据</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_putimagedata.asp">putImageData()</a></td>
+<td align="left">把图像数据（从指定的 ImageData 对象）放回画布上</td>
+</tr>
+</tbody></table>
+<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_globalalpha.asp">globalAlpha</a></td>
+<td align="left">设置或返回绘图的当前 alpha 或透明值</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/canvas_globalcompositeoperation.asp">globalCompositeOperation</a></td>
+<td align="left">设置或返回新图像如何绘制到已有的图像上</td>
+</tr>
+</tbody></table>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">save()</td>
+<td align="left">保存当前环境的状态</td>
+</tr>
+<tr>
+<td align="left">restore()</td>
+<td align="left">返回之前保存过的路径状态和属性</td>
+</tr>
+<tr>
+<td align="left">createEvent()</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">getContext()</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">toDataURL()</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/f568c900/">https://wangyyovo.github.io/posts/f568c900/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/other/">other</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/e5a21adb/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">css3</div></div></a></div><div class="next-post pull-right"><a href="/posts/9db656e5/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/Code-Highlight-Style-test-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Code Highlight Style test</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/4acd24d6/" title="功能实现思路"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-04</div><div class="title">功能实现思路</div></div></a></div><div><a href="/posts/1c0373de/" title="小工具"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/5602a1a1d3e424d5bda4becc64568113.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-27</div><div class="title">小工具</div></div></a></div><div><a href="/posts/2b8a2699/" title="临时记录"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/e59935750e2f5c6245881a527ba9724a.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-27</div><div class="title">临时记录</div></div></a></div><div><a href="/posts/32c729de/" title="常用网址"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/dc10405c35531b0f8e503ec29acead5c.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-27</div><div class="title">常用网址</div></div></a></div><div><a href="/posts/4a17b156/" title="Hello World"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/729ec1c3071758c9cf65c190cf68801d.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-22</div><div class="title">Hello World</div></div></a></div><div><a href="/posts/e5a21adb/" title="css3"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-22</div><div class="title">css3</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#html5%E6%A0%87%E7%AD%BE"><span class="toc-text">html5标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F"><span class="toc-text">格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95"><span class="toc-text">表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-text">框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F"><span class="toc-text">图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91-%E8%A7%86%E9%A2%91"><span class="toc-text">音频 &#x2F;视频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F-%E8%8A%82"><span class="toc-text">样式&#x2F;节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E4%BF%A1%E6%81%AF"><span class="toc-text">元信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B"><span class="toc-text">编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7"><span class="toc-text">HTML 全局属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-text">全局事件属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Window-%E4%BA%8B%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-text">Window 事件属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Form-%E4%BA%8B%E4%BB%B6"><span class="toc-text">Form 事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Keyboard-%E4%BA%8B%E4%BB%B6"><span class="toc-text">Keyboard 事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mouse-%E4%BA%8B%E4%BB%B6"><span class="toc-text">Mouse 事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Media-%E4%BA%8B%E4%BB%B6"><span class="toc-text">Media 事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML5-%E8%A7%86%E9%A2%91%E5%92%8C%E9%9F%B3%E9%A2%91%E7%9A%84-DOM-%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-text">HTML5 视频和音频的 DOM 参考手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-Audio-Video-%E6%96%B9%E6%B3%95"><span class="toc-text">HTML5 Audio&#x2F;Video 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-Audio-Video-%E5%B1%9E%E6%80%A7"><span class="toc-text">HTML5 Audio&#x2F;Video 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5-Audio-Video-%E4%BA%8B%E4%BB%B6"><span class="toc-text">HTML5 Audio&#x2F;Video 事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-5-Canvas-%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-text">HTML 5 Canvas 参考手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81"><span class="toc-text">浏览器支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E3%80%81%E6%A0%B7%E5%BC%8F%E5%92%8C%E9%98%B4%E5%BD%B1"><span class="toc-text">颜色、样式和阴影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%9D%A1%E6%A0%B7%E5%BC%8F"><span class="toc-text">线条样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E5%BD%A2"><span class="toc-text">矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84"><span class="toc-text">路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2"><span class="toc-text">转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC"><span class="toc-text">文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E7%BB%98%E5%88%B6"><span class="toc-text">图像绘制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%83%8F%E7%B4%A0%E6%93%8D%E4%BD%9C"><span class="toc-text">像素操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%88%90"><span class="toc-text">合成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

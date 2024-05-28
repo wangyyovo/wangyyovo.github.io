@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网络游戏服务器开发框架浅谈 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络游戏服务器开发框架浅谈 LoginGate服务器 LoginServer服务器 GameGate服务器 GameServer服务器 IMServer服务器 AIServer服务器 CenterServer服务器 BillingServer服务器 WebServices服务器 DBServer服务器 GMServer服务器  LoginGate：登陆网关服务器，将所有的LoginServer服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络游戏服务器开发框架浅谈">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/2aaaf917/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="网络游戏服务器开发框架浅谈 LoginGate服务器 LoginServer服务器 GameGate服务器 GameServer服务器 IMServer服务器 AIServer服务器 CenterServer服务器 BillingServer服务器 WebServices服务器 DBServer服务器 GMServer服务器  LoginGate：登陆网关服务器，将所有的LoginServer服">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/gogameframework/46b816b0fd87ea84025e3807aeca2e77.jpg">
+<meta property="article:published_time" content="2019-09-27T07:16:35.000Z">
+<meta property="article:modified_time" content="2019-09-27T07:16:35.000Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/gogameframework/46b816b0fd87ea84025e3807aeca2e77.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/2aaaf917/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络游戏服务器开发框架浅谈',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-09-27 15:16:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/gogameframework/46b816b0fd87ea84025e3807aeca2e77.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络游戏服务器开发框架浅谈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-09-27T07:16:35.000Z" title="发表于 2019-09-27 15:16:35">2019-09-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-09-27T07:16:35.000Z" title="更新于 2019-09-27 15:16:35">2019-09-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/gogameframework/">gogameframework</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络游戏服务器开发框架浅谈"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="网络游戏服务器开发框架浅谈"><a href="#网络游戏服务器开发框架浅谈" class="headerlink" title="网络游戏服务器开发框架浅谈"></a>网络游戏服务器开发框架浅谈</h1><ol>
+<li>LoginGate服务器</li>
+<li>LoginServer服务器</li>
+<li>GameGate服务器</li>
+<li>GameServer服务器</li>
+<li>IMServer服务器</li>
+<li>AIServer服务器</li>
+<li>CenterServer服务器</li>
+<li>BillingServer服务器</li>
+<li>WebServices服务器</li>
+<li>DBServer服务器</li>
+<li>GMServer服务器</li>
+</ol>
+<p>LoginGate：登陆网关服务器，将所有的LoginServer服务器地址暴露给最终用户，每个LoginGate服务可以挂接n个LoginServer，将最终用户的所有请求转发给目标LoginServer。当最终用户通过此服务完成登陆后，会与该服务断开连接，断开连接前，服务器会将数据上报给GameGate服务。</p>
+<p>LoginServer：登陆服务器，仅作于内部服务与LoginGate进行连接，所有的最终用户请求由LoginGate过滤后，转发过来进行处理。与LoginGate的所有通信都是明文，即未加密数据。</p>
+<p>GameGate：游戏网关服务器，与LoginGate协作完成最终用户的登陆过程，每一个服务会连接到唯一一个LoginGate服务上进行注册，LoginGate会将以完成验证登陆的用户信息同步到所有已注册成功的GameGate上，根据注册不同的GameGate类型信息，LoginGate会发生不同的通过认证的最终用户信息。GameGate挂接n个GameServer服务到自身，此服务将所有注册到自身的GameServer信息发送给最终用户，提供用户选择具体的区或线路进行游戏（区和线路在不同的游戏设定中有不同的定义），在这里区的定义对应的是GameGate，每一个GameGate可以表示物理或逻辑上的多个游戏分区，每个分区由至少一个GameServer组成；线路定义为GameServer，每一个GameServer代表一条线路，线路之间互相不可见，但是可以通过IMServer进行一些扩展通信，例如公会、好友、聊天等服务可以设置透明通信或隐藏通信。透明通信由IMServer向目标GameServer转发请求，并进行处理；隐藏通信仅在当前GameServer进行处理，不会做跨越性操作。</p>
+<p>GameServer：游戏服务器，作为内部服务与GameGate协作处理最终用户的请求，这个服务主要处理游戏逻辑，例如战斗。此服务启动后，会根据配置文件的配置信息进行相应的服务注册，该服务启动成功后，会注册注册到GameGate和IMServer、AIServer服务器，它们分别提供最终用户游戏、交友、公会、聊天和智能体的移动、创建、销毁等服务。作为整个游戏的核心处理服务器，会处理掉大部分的用户交互服务请求，只有在不能处理的情况下，才会请求其它服务协同处理。</p>
+<p>IMServer：IM通信服务器，全称InstantMessaging（译为即时通讯），ICQ、MSN、QQ等聊天工具都属于此范畴。此服务的作用是提供物理或逻辑不同位置的GameServer上的最终用户通讯的一个媒介，用户成功登陆GameServer时，会将自己的好友、公会信息注册到此服务上，当需要跨GameServer服务时，共IMServer使用。此服务主要提供聊天、交友、交易、公会等社交类行为服务，该服务可以直接或间接的与最终用户进行通信，但最终用户无法直接与该服务进行通信，比如请求操作，所有的用户操作都由GameServer转发，IMServer可以选择性的直接反馈最终用户或通过GameServer反馈。</p>
+<p>AIServer：人工智能服务器，全称Artificial Intelligence（译为人工智能），例如现代服务性机器人（自动吸尘器、智能探测仪、智能防爆装置等）都属于人工智能范畴。这里的人工智能主要体现在游戏中的NPC、MONSTER等有行为表现物体。GameServer启动后会连接到此服务进行注册，并获取所需智能体的信息，以反馈给最终用户，并最终显示在用户应用程序中。该服务主要控制智能体的移动、攻击、创建、销毁等行为，另外包括在战斗中或非战斗状态下的行为，比如游走在街道上的商品小贩；在搜索到攻击目标时，主动或召集附近的战斗单位一起攻击用户，都属于该服务的工作内容。</p>
+<p>CenterServer：中心服务器，用于监控、更新已注册到此服务的状态，比如电信1区（傲视天地）服务器的运行状态等。此服务主要是管理除自身以外的所有服务程序的运行状态，以及时反馈给技术活运维人员。</p>
+<p>BillingServer：计费服务器，用于计算用户在游戏中的消耗、增值；比如XX在游戏中购买了一个双倍经验卡，消耗10金币，或者用户通过网站形式进行充值，都会通过该服务反馈给用户最终结果。</p>
+<p>WebServices：网站服务，主要用于网站与游戏之间的交互。比如XX用户通过网站进行充值服务，充值成功后，通知计费服务以响应用户操作；或通过网站进行游戏激活、礼品领取等，都需要此服务与游戏应用程序进行交互，以体现实时的变化。</p>
+<p>DBServer：用于全局数据维护，例如更新、查询、插入、删除操作；这些数据包含用户账号、充值、代金卷、点卡、月卡以及游戏中需要用到的角色数据。</p>
+<p>GMServer服务器：用于用户管理，GM拥有踢人、禁言、封闭账号、解除封闭账号、查询和修改账号注册资料等权限</p>
+<p>一般地，会把游戏服务器的架构划分如下三层：网络接入层、游戏逻辑层、数据存储层，这样划分的主要目的是：</p>
+<p>将底层通信与业务逻辑处理解耦合；<br>将业务逻辑处理与数据存储解耦合；<br>有利于运营部署与扩展；<br>游戏服务器开发框架整体视图，如下所示：</p>
+<p> <img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/game/aHR0cDovL2ltYWdlcy5jcHBibG9nLmNvbS9jcHBibG9nX2NvbS9rZW5rYW8vJUU2JUI4JUI4JUU2JTg4JThGJUU2JTlDJThEJUU1JThBJUExJUU1JTk5JUE4JUU1JUJDJTgwJUU1JThGJTkxJUU2JThBJTgwJUU2JTlDJUFGJUU1JUIwJThGJUU3JUJCJTkzLmpwZw.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/a-brief-history-of-the-game-server-architecture">游戏服务器架构的演进简史</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/erlib/article/details/46539069">游戏服务器架构演化史</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/2aaaf917/">https://wangyyovo.github.io/posts/2aaaf917/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/gogameframework/46b816b0fd87ea84025e3807aeca2e77.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/f4ec3e88/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/gogameframework/46b816b0fd87ea84025e3807aeca2e77.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">go语言游戏框架</div></div></a></div><div class="next-post pull-right"><a href="/posts/6b046cff/"><img class="next-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/git/26a8638fe67842f770903222e01476c5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Git打标签</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E6%B5%85%E8%B0%88"><span class="toc-text">网络游戏服务器开发框架浅谈</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

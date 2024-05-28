@@ -1,0 +1,482 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Blank">
+<meta property="og:url" content="https://wangyyovo.github.io/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Blank',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-05-29 02:11:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/photo/home_top_img.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Blank</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/posts/4acd24d6/" title="功能实现思路"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="功能实现思路"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/4acd24d6/" title="功能实现思路">功能实现思路</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-04T03:47:22.000Z" title="发表于 2021-02-04 11:47:22">2021-02-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/other/">other</a></span></div><div class="content"> 功能实现思路自定义表单系统 如何设计数据库
+
+
+一个表保存表单的元数据，如ID、名称、备注、添加时间、修改时间等等。每个表单一行记录。
+一个表保存表单元素的元数据，如ID、所属表单的ID、名称、样式、数据类型、顺序、备注等等。每个元素一条记录。
+以上是设计表单需要保存的数据，下面是填写表单要保存的数据。
+一个表保存表单数据记录的元数据，包括表单记录ID，对应的表单ID，填写人ID、填写时间、填写情况（是否填写完毕）等等。
+一个表保存填写填写的表单数据，包括所属的表单记录ID、对应的表单元素ID、所填写的数据。这个可以不需要单独的ID，由记录ID和元素ID组成联合主键（当然，你要用单独ID也未尝不可）。
+如果要保存历史记录，还要设计单独的表来保存。
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/43754419/" title="Go项目标准布局"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3dbff81debc23c9c8d5f4c31486779d5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Go项目标准布局"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/43754419/" title="Go项目标准布局">Go项目标准布局</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-17T02:10:12.000Z" title="发表于 2020-07-17 10:10:12">2020-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> Go 项目标准布局（结构）https://github.com/golang-standards/project-layout 项目总结了 Go 项目的布局，这是Go应用程序项目的基本布局，并不是Go核心开发团队定义的官方标准；但是，这是Go生态系统中的一种常见的项目布局模式。
+Go的目录&#x2F;cmd该目录用于存放 Go 项目的入口，即 main.go。一般来说，我们应该在 cmd 目录下创建子目录，子目录名称代表可执行程序的名称（例如&#x2F;cmd&#x2F;myapp）。上面列出的优秀开源项目基本上遵循了这一规则。一般来说，该目录中的代码应该尽可能少。如果认为该代码可以导入并在其他项目中使用，那么它应该位于&#x2F;pkg目录中。如果该代码不可重用，或者不希望其他人重用它，则将该代码放在&#x2F;internal目录中。通常有一个小的main函数可以导入和调用&#x2F; internal和&#x2F; pkg目录中的代码而不是其他内容。 有关示例，请参阅&#x2F; cmd目录。
+&#x2F;internal这是 Go 包的一个特性，放在该包中的代码，表明只希望项 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/d35e7d1d/" title="go知识图谱"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/a91a19eff20b2bb042a7ea0c92dbfc4b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go知识图谱"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d35e7d1d/" title="go知识图谱">go知识图谱</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-22T09:46:36.000Z" title="发表于 2019-11-22 17:46:36">2019-11-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> 
+https://www.processon.com/view/link/5a9ba4c8e4b0a9d22eb3bdf0#map
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/1ec523bf/" title="go常用库收集"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/0b507cd69da056d82b8b0bce8616d0c8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="go常用库收集"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/1ec523bf/" title="go常用库收集">go常用库收集</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-11-02T07:00:36.000Z" title="发表于 2019-11-02 15:00:36">2019-11-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> go常用库收集[文章]
+https://draveness.me/  
+https://github.com/ThreeKing2018/goutil.git  go util 是golang通用工具包,实现一站式,开箱即用 
+https://github.com/thinkeridea/go-extend.git  go语言扩展包，收集一些常用的操作函数，辅助更快的完成开发工作，并减少重复代码  
+https://github.com/yireyun/go-queue   无锁队列 
+[web 框架]https://gin-gonic.com/zh-cn/docs/https://beego.me/
+https://github.com/kataras/iris iris  Go语言 mvc 框架
+https://github.com/go-spring/go-spring 基于 IoC 实现的一套 GoLang 的应用程序框架
+https://github.com/aceld/zinxZinx 是一个基于Golang的轻量级并发服务器框架
+https://github.com/u ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/1c0373de/" title="小工具"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/5602a1a1d3e424d5bda4becc64568113.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小工具"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/1c0373de/" title="小工具">小工具</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-27T12:27:36.000Z" title="发表于 2019-09-27 20:27:36">2019-09-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/other/">other</a></span></div><div class="content"> http://www.rejetto.com/hfs/ 小型http服务器，可用于前端调试
+你可以通过下面链接发现更多的 Go 编辑器的插件:  https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins 
+
+http://www.q-dir.com/
+
+https://www.heidisql.com/
+
+https://cmder.net/ (https://github.com/cmderdev/cmder/releases)
+cmder.exe &#x2F;REGISTER ALL
+
+http://www.cygwin.com
+apt-cyg install nano
+cmder
+12task-&gt;Startup-&gt;Tasks-&gt;新增task（+）-&gt;Commands-&gt;cmd.exe /k &quot;C:\cygwin64\Cygwin.bat&quot;task-&gt;Startup-&gt;Environment-&gt;chcp gbk
+
+cygwin
+1234567891011 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/2b8a2699/" title="临时记录"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/e59935750e2f5c6245881a527ba9724a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="临时记录"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/2b8a2699/" title="临时记录">临时记录</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-27T08:29:36.000Z" title="发表于 2019-09-27 16:29:36">2019-09-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/other/">other</a></span></div><div class="content"> Go标准库所有方法使用示例，请注意这不是Go的中文版标准库(内含传送门)，持续更新examplehttps://github.com/zc2638/go-standard
+模拟浏览器登录操作https://studygolang.com/topics/900?fr=sidebar
+微服务https://studygolang.com/articles/13061?fr=sidebar
+https://ewanvalentine.io/tag/go/
+https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe
+https://www.cnblogs.com/52php/p/6060104.html GO项目收藏
+
+go-micro
+https://github.com/micro-in-cn/all-in-one  micro 特性全合一项目示例https://github.com/micro-in-cn/tutorials Micro教程系列
+https://www.wangtianyi. ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/32c729de/" title="常用网址"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/dc10405c35531b0f8e503ec29acead5c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常用网址"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/32c729de/" title="常用网址">常用网址</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-27T08:27:36.000Z" title="发表于 2019-09-27 16:27:36">2019-09-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/other/">other</a></span></div><div class="content"> 
+vite vitepress vue3.0 vuex vuerouter typescript flutter dart k8s docker drone argo go html5 css javascript electron java springboot redis mq nats etcd nsq
+
+http://www.bejson.com/     在线工具    json解析 base64编解码等等...https://unbug.github.io/codelf/    变量命名http://www.php.cn/                 在线文档
+https://www.bookstack.cn/  
+https://learngitbranching.js.org/?demo Git分支练习
+https://down.52pojie.cn/Tools/ 吾爱破解工具
+http://www.riaway.com/zb/ 装逼工具
+https://curl.haxx.se/docs/caextract.html 证书
+[web工具]https://www. ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/4a17b156/" title="Hello World"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/other/729ec1c3071758c9cf65c190cf68801d.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/4a17b156/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack sticky"></i><span class="sticky">置顶</span><span class="article-meta-separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-09-22T03:26:40.000Z" title="发表于 2019-09-22 11:26:40">2019-09-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/other/">other</a></span></div><div class="content"> Welcome to note
+
+
+Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/d14168d/" title="虚拟机问题合集"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span></div><div class="content"> 虚拟机问题合集Vmware网络无法连接
+123sudo service network-manager stopsudo vi  /var/lib/NetworkManager/NetworkManager.state   # NetworkingEnabled=truesudo service network-manager start</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> 用go语言编写移动端sdk和app开发
+window 11
+
+前言使用go开发sdk在Android，ios中调，这就需要用到gomobile这个工具来完成
+文档https://github.com/golang/go/wiki/Mobile
+安装Golanghttps://studygolang.com/dl
+https://studygolang.com/dl/golang/go1.18.3.windows-amd64.zip
+123456GOPROXY=https://goproxy.cnGOPATH=c:/gopath  # src bin pkgGOROOT=c:/goPATH=%GOPATH%/bin;%GOROOT%/bingo version
+
+
+
+安装JDK下载地址:https://www.oracle.com/java/technologies/downloads/#java8-windows
+现在下载jdk需要注册账号，http://bugmenot.com/view/oracle.com 这个网址有提供账号
+设置环境变量
+JAVA_HOME&#x3D;&lt; ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/5faac006/" title="在线编程IDE"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/other/">other</a></span></div><div class="content"> 在线编程IDEcode-server
+https://coder.com/docs/code-server/latest
+
+docker部署123456789mkdir -p ~/.configdocker run -it --name code-server -p 5001:8080 \  -v &quot;$HOME/.config:/home/coder/.config&quot; \  -v &quot;/root/code:/home/coder/project&quot; \  -u &quot;$(id -u):$(id -g)&quot; \  -e &quot;DOCKER_USER=$USER&quot; \  -e PASSWORD=&#x27;wyy&#x27; \  codercom/code-server:latest
+
+二进制部署12345678vi ~/.config/code-server/config.yamlbind-addr: 0.0.0.0:5001auth: passwordpassword: wyycert: falsenohup ./c ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/debug/">debug</a></span></div><div class="content"> 即时性能分析工具Pyroscope
+https://pyroscope.io/docs/installing-pyroscope-overview/
+https://pyroscope.io/blog/
+
+目前支持的语言
+
+Go
+Python
+eBPF
+Java
+Ruby
+Rust
+PHP
+.NET
+NodeJS
+
+分析go性能安装Pyroscope serverwindow暂不支持server
+二进制
+window管理员运行终端
+
+下载地址：https://github.com/pyroscope-io/pyroscope/releases
+1./pyroscope server --api-bind-addr=:5002 --adhoc-data-path /root/.local/share/pyroscope
+
+docker1docker run -it -p 4040:4040 pyroscope/pyroscope:latest server
+
+docker-compose
+12345678---services:  pyroscope:    image: &quot; ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> golang性能调试优化方法在 golang 程序中，有哪些内容需要调试优化？
+一般常规内容：
+
+cpu：程序对cpu的使用情况 - 使用时长，占比等
+内存：程序对cpu的使用情况 - 使用时长，占比，内存泄露等。如果在往里分，程序堆、栈使用情况
+I&#x2F;O：IO的使用情况 - 哪个程序IO占用时间比较长
+
+golang 程序中：
+
+goroutine：go的协程使用情况，调用链的情况
+goroutine leak：goroutine泄露检查
+go dead lock：死锁的检测分析
+data race detector：数据竞争分析，其实也与死锁分析有关
+
+golang 性能调试优化方法：
+
+Benchmark：基准测试，对特定代码的运行时间和内存信息等进行测试
+Profiling：程序分析，程序的运行画像，在程序执行期间，通过采样收集的数据对程序进行分析
+Trace：跟踪，在程序执行期间，通过采集发生的事件数据对程序进行分析
+
+profiling 和 trace 有啥区别？profiling 分析没有时间线，trace 分析有时间线。
+概要pprof 是 golang 官方 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/476d5e4c/" title="流量回放GoReplay"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流量回放GoReplay"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/476d5e4c/" title="流量回放GoReplay">流量回放GoReplay</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-12T02:55:36.000Z" title="发表于 2022-06-12 10:55:36">2022-06-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/golang/">golang</a></span></div><div class="content"> 流量回放GoReplay一. 线上引流产生背景日常大部分的测试工作都是在测试环境下，通过模拟用户的行为来对系统进行验证，包括功能以及性能。在这个过程中，你可能会遇到以下问题:
+
+用户访问行为比较复杂，模拟很难和用户行为一致，模拟不够真实。
+线下模拟场景有限，会出现业务覆盖不全的情况。
+
+线上引流方案的出现为上述问题提供了很好的解题思路，线上引流本质是：通过把线上的真实流量复制到线下环境，解决测试环境模拟不够真实，或覆盖不够全面的问题。
+二. 线上引流常见方案目前不少公司都对线上引流方案进行了许多实践探索，常见的有以下4种引流方式（不限）：
+
+
+
+引流方式
+实现方式
+优点
+缺点
+
+
+
+Nginx层流量复制
+安装lua-nginx-module、ngxdevelkit、headers-more-nginx-module模块，通过lua脚本实现把请求复制给测试环境。
+安装和部署还较为简单。
+需要开发lua脚本，且对资源有一定占用。
+
+
+基于业务代码层的引流
+将业务代码的调用封装成请求对象，异步的写入缓存中。引流工具通过读缓存中的请求，向测试环境发起请求。
+扩展性好，可定制化高。
+需要开发流 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/5ee696f6/" title="Windows11部署Docker"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/docker/4d51cecf7d26dfa720682ee0425872d5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows11部署Docker"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/5ee696f6/" title="Windows11部署Docker">Windows11部署Docker</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-07T10:30:39.000Z" title="发表于 2022-03-07 18:30:39">2022-03-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/docker/">docker</a></span></div><div class="content"> Windows11部署Docker
+https://docs.docker.com/desktop/windows/install/
+https://docs.microsoft.com/en-us/windows/wsl/basic-commands
+
+一、下载Docker for Windows到Docker官网下载 Docker for Windows,并安装
+二、安装WSL22.1、启动WSL
+以管理员身份在PowerShell中运行以下命令
+1dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+2.2、启动虚拟机功能
+以管理员身份在PowerShell中运行以下命令，运行后需重启计算机
+1dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+2.3、安装Linux内核更新包
+下载地址： wsl_update_x64.m ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NATS-Server(JetStream)和NATS Streaming Server对比"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/f9d1b0aa/" title="NATS-Server(JetStream)和NATS Streaming Server对比">NATS-Server(JetStream)和NATS Streaming Server对比</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-03T10:22:20.000Z" title="发表于 2022-03-03 18:22:20">2022-03-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/microservice/nats/">nats</a></span></div><div class="content"> NATS-Server(JetStream)和NATS Streaming Server对比在我吐槽了无数次之后，NATS JetStream终于结束了beta阶段正式进入RC阶段。终于官方也在最近刚刚正式回复了我正式版本在处理几个问题之后就会正式发布。那么在这个比较重要的NATS-Server特性发布之际聊一下NATS产品本身区别和新特性的使用，还有更多的潜在的区别。
+概念区分：NATS-Server &#x2F; NATS Streaming Server &#x2F; NATS JetStreamNATS-ServerNATS-Server（或者叫nats）是一个开源的、云原生的、高性能的消息传递系统，是NATS的最基础的产品。它的核心是一个发布&#x2F;订阅（Pub&#x2F;Sub）系统，客户端可以在不同集群中的服务间nats进行通讯，而不需要关注具体的消息在哪个服务上。换而言之，客户端可以在任意一个集群的服务端上发布消息，同时在任意集群客户端上尝试读取消息。在官方与其他同类消息队列产品功能对比中，我们也可以管窥一下产品的功能列表。nats支持多流多服务进行pub/sub ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-分布式利器Bundle"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/ee217f4a/" title="OPA进阶-分布式利器Bundle">OPA进阶-分布式利器Bundle</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-02T09:48:44.000Z" title="发表于 2022-03-02 17:48:44">2022-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/microservice/opa/">opa</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/opa/">opa</a></span></div><div class="content"> OPA进阶-分布式利器BundleBundle是OPA管理policy和data的一种方式。
+OPA实现的轻量级策略引擎，一开始就是为了云原生环境的service提供解耦的策略服务，分布式是必然要考虑的问题。
+在Bundle api的设计中，其实就全面考虑并体现了在分布式应用中如何更好的解耦策略引擎的管理。
+比如：
+
+如何做集中配置管理
+如何动态更新策略
+如何监控策略引擎节点的状态以及决策日志收集
+
+有了这些功能，再加上其高效的策略描述语言Rego，OPA才真正称得上是云原生时代的通用策略引擎。
+本文将带大家简单梳理一遍Bundle的组织方式、管理 api、及监控方式。
+考虑到一次性过完不易消化，文末会提供一个直接可实操的docker-compose版本的demo，将全面覆盖本文细节
+建议大家看完本文，本机运行去体验一下，会有更直观的理解。
+Bundle 文件组织方式下面我们先来看下Bundle的文件组织方式
+在Bundle下的data,只能被识别data.json和data.yaml的文件, 而其上边的目录会作为其数据前缀
+如下边roles/data.json (bundle/ex ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-测试、性能分析和基准测试"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/ba44c24c/" title="OPA进阶-测试、性能分析和基准测试">OPA进阶-测试、性能分析和基准测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-02T09:45:44.000Z" title="发表于 2022-03-02 17:45:44">2022-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/microservice/opa/">opa</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/opa/">opa</a></span></div><div class="content"> OPA进阶-测试、性能分析和基准测试OPA的测试（test）、性能分析（profile）和（benchmark）
+掌握他们，对于保证策略代码的质量和决策效率有很大的帮助
+1mkdir quick-start
+
+data.json
+123456789101112131415161718192021222324&#123;    &quot;roles&quot;: [        &#123;            &quot;operation&quot;: &quot;read&quot;,            &quot;resource&quot;: &quot;widgets&quot;,            &quot;name&quot;: &quot;widget-reader&quot;        &#125;,        &#123;            &quot;operation&quot;: &quot;write&quot;,            &quot;resource&quot;: &quot;widgets&quot;,     ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-简洁的推导式"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/b0cdaf3c/" title="OPA进阶-简洁的推导式">OPA进阶-简洁的推导式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-02T09:38:44.000Z" title="发表于 2022-03-02 17:38:44">2022-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/microservice/opa/">opa</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/opa/">opa</a></span></div><div class="content"> OPA进阶-简洁的推导式我们将以实现判断配置文件数据的不同聚合方式为例展开。
+用到的输入(配置文件列表)为：
+1234567891011121314151617181920212223// input.json// posix为常见路径格式// traditional-mac为mac的一种文件路径格式&#123;  &quot;files&quot;: [  &#123;    &quot;type&quot;: &quot;posix&quot;,    &quot;path&quot;: &quot;/Users/newbmiao/Documents/1.yaml&quot;  &#125;,  &#123;    &quot;type&quot;: &quot;posix&quot;,    &quot;path&quot;: &quot;/Users/newbmiao/Documents/2.yaml&quot;  &#125;,  &#123;    &quot;type&quot;: &quot;traditional-mac&quot;,    &quot;path&q ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档"><img class="post_bg" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/181a3c44c19e44a7e153e74abee69a73.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OPA进阶-函数与虚拟文档"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/ceadba08/" title="OPA进阶-函数与虚拟文档">OPA进阶-函数与虚拟文档</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-03-02T09:35:44.000Z" title="发表于 2022-03-02 17:35:44">2022-03-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/microservice/opa/">opa</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/opa/">opa</a></span></div><div class="content"> OPA进阶-函数与虚拟文档本文来讲讲OPA常用的函数（function）和虚拟文档（virtual document），以及他们使用的场景。
+我们将以实现判断配置文件为例展开。
+文章目录
+
+函数
+虚拟文档
+适用场景
+
+用到的输入(配置文件列表)为：
+1234567891011121314151617181920212223// input.json// posix为常见路径格式// traditional-mac为mac的一种文件路径格式&#123;  &quot;files&quot;: [  &#123;    &quot;type&quot;: &quot;posix&quot;,    &quot;path&quot;: &quot;/Users/newbmiao/Documents/1.yaml&quot;  &#125;,  &#123;    &quot;type&quot;: &quot;posix&quot;,    &quot;path&quot;: &quot;/Users/newbmiao/Documents/2.yaml&quot;  &#125;,  &# ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#content-inner">18</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Qt/"><span class="card-category-list-name">Qt</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/README/"><span class="card-category-list-name">README</span><span class="card-category-list-count">19</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/algorithm/"><span class="card-category-list-name">algorithm</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ansible/"><span class="card-category-list-name">ansible</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/architecture/"><span class="card-category-list-name">architecture</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/autojs/"><span class="card-category-list-name">autojs</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/c-c/"><span class="card-category-list-name">c/c++</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/casbin/"><span class="card-category-list-name">casbin</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/csharp/"><span class="card-category-list-name">csharp</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/docker/"><span class="card-category-list-name">docker</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item parent"><a class="card-category-list-link" href="/categories/easy-tips/"><span class="card-category-list-name">easy-tips</span><span class="card-category-list-count">10</span><i class="fas fa-caret-left "></i></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/easy-tips/pattern/"><span class="card-category-list-name">pattern</span><span class="card-category-list-count">10</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/flutter/"><span class="card-category-list-name">flutter</span><span class="card-category-list-count">16</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/frontend/"><span class="card-category-list-name">frontend</span><span class="card-category-list-count">31</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/gogameframework/"><span class="card-category-list-name">gogameframework</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/goland/"><span class="card-category-list-name">goland</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/golang/"><span class="card-category-list-name">golang</span><span class="card-category-list-count">39</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/grpc/"><span class="card-category-list-name">grpc</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hexo/"><span class="card-category-list-name">hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/java/"><span class="card-category-list-name">java</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/log/"><span class="card-category-list-name">log</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item parent"><a class="card-category-list-link" href="/categories/microservice/"><span class="card-category-list-name">microservice</span><span class="card-category-list-count">56</span><i class="fas fa-caret-left "></i></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/CI-CD/"><span class="card-category-list-name">CI/CD</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/consul/"><span class="card-category-list-name">consul</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/etcd/"><span class="card-category-list-name">etcd</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/k8s/"><span class="card-category-list-name">k8s</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/mqtt/"><span class="card-category-list-name">mqtt</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/nats/"><span class="card-category-list-name">nats</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/nsq/"><span class="card-category-list-name">nsq</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/opa/"><span class="card-category-list-name">opa</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/microservice/prometheus/"><span class="card-category-list-name">prometheus</span><span class="card-category-list-count">2</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/mysql/"><span class="card-category-list-name">mysql</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/net/"><span class="card-category-list-name">net</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/nginx/"><span class="card-category-list-name">nginx</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/other/"><span class="card-category-list-name">other</span><span class="card-category-list-count">10</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/pattern/"><span class="card-category-list-name">pattern</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/pay/"><span class="card-category-list-name">pay</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/protobuf/"><span class="card-category-list-name">protobuf</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/puremvc/"><span class="card-category-list-name">puremvc</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/redis/"><span class="card-category-list-name">redis</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/shell/"><span class="card-category-list-name">shell</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ssl/"><span class="card-category-list-name">ssl</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/test/"><span class="card-category-list-name">test</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/toml/"><span class="card-category-list-name">toml</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/typescript/"><span class="card-category-list-name">typescript</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/ubuntu/"><span class="card-category-list-name">ubuntu</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/vagrant/"><span class="card-category-list-name">vagrant</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/vpn/"><span class="card-category-list-name">vpn</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/vscode/"><span class="card-category-list-name">vscode</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/wordpress/"><span class="card-category-list-name">wordpress</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/yaml/"><span class="card-category-list-name">yaml</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/architecture/" style="font-size: 1.36em; color: rgb(135, 80, 175)">architecture</a><a href="/tags/DDD/" style="font-size: 1.15em; color: rgb(191, 37, 98)">DDD</a><a href="/tags/docker/" style="font-size: 1.39em; color: rgb(155, 78, 70)">docker</a><a href="/tags/git/" style="font-size: 1.3em; color: rgb(172, 179, 162)">git</a><a href="/tags/flutter/" style="font-size: 1.39em; color: rgb(50, 181, 88)">flutter</a><a href="/tags/other/" style="font-size: 1.33em; color: rgb(53, 126, 4)">other</a><a href="/tags/github/" style="font-size: 1.15em; color: rgb(145, 99, 6)">github</a><a href="/tags/gitbook/" style="font-size: 1.15em; color: rgb(168, 27, 163)">gitbook</a><a href="/tags/golang/" style="font-size: 1.18em; color: rgb(81, 163, 67)">golang</a><a href="/tags/debug/" style="font-size: 1.18em; color: rgb(5, 134, 19)">debug</a><a href="/tags/golangci-lint/" style="font-size: 1.15em; color: rgb(10, 140, 66)">golangci-lint</a><a href="/tags/linux/" style="font-size: 1.27em; color: rgb(68, 133, 130)">linux</a><a href="/tags/xposed/" style="font-size: 1.15em; color: rgb(147, 55, 33)">xposed</a><a href="/tags/nginx/" style="font-size: 1.15em; color: rgb(88, 65, 8)">nginx</a><a href="/tags/mysql/" style="font-size: 1.15em; color: rgb(80, 0, 142)">mysql</a><a href="/tags/pattern/" style="font-size: 1.45em; color: rgb(120, 61, 19)">pattern</a><a href="/tags/python/" style="font-size: 1.15em; color: rgb(151, 25, 81)">python</a><a href="/tags/README/" style="font-size: 1.42em; color: rgb(45, 83, 126)">README</a><a href="/tags/ssl/" style="font-size: 1.21em; color: rgb(106, 186, 172)">ssl</a><a href="/tags/typescript/" style="font-size: 1.27em; color: rgb(15, 81, 103)">typescript</a><a href="/tags/vagrant/" style="font-size: 1.18em; color: rgb(82, 109, 142)">vagrant</a><a href="/tags/dns/" style="font-size: 1.18em; color: rgb(182, 27, 173)">dns</a><a href="/tags/bind9/" style="font-size: 1.18em; color: rgb(178, 35, 68)">bind9</a><a href="/tags/ubuntu/" style="font-size: 1.15em; color: rgb(68, 154, 95)">ubuntu</a><a href="/tags/vpn/" style="font-size: 1.15em; color: rgb(63, 28, 73)">vpn</a><a href="/tags/wordpress/" style="font-size: 1.15em; color: rgb(27, 47, 192)">wordpress</a><a href="/tags/Drone/" style="font-size: 1.15em; color: rgb(34, 106, 49)">Drone</a><a href="/tags/gogs/" style="font-size: 1.15em; color: rgb(89, 93, 23)">gogs</a><a href="/tags/jenkins/" style="font-size: 1.15em; color: rgb(71, 181, 120)">jenkins</a><a href="/tags/log/" style="font-size: 1.24em; color: rgb(21, 120, 118)">log</a><a href="/tags/harbor/" style="font-size: 1.15em; color: rgb(129, 8, 68)">harbor</a><a href="/tags/k8s/" style="font-size: 1.33em; color: rgb(61, 74, 126)">k8s</a><a href="/tags/argocd/" style="font-size: 1.15em; color: rgb(35, 145, 36)">argocd</a><a href="/tags/mqtt/" style="font-size: 1.15em; color: rgb(130, 88, 109)">mqtt</a><a href="/tags/opa/" style="font-size: 1.36em; color: rgb(58, 82, 114)">opa</a><a href="/tags/redis/" style="font-size: 1.15em; color: rgb(20, 11, 16)">redis</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">2022年07月</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">2022年06月</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">2022年03月</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">2022年02月</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/01/"><span class="card-archive-list-date">2022年01月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">2021年12月</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">2021年11月</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">2021年10月</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">2021年09月</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">2021年08月</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">2021年07月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">2021年06月</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">356</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2019-09-22T02:47:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">1165.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-05-28T18:11:54.536Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    window.typed = new Typed("#subtitle", {
+      strings: ["Never put off till tomorrow what you can do today"],
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = 'Never put off till tomorrow what you can do today'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

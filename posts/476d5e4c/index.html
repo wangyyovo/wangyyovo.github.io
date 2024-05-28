@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>流量回放GoReplay | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="流量回放GoReplay一. 线上引流产生背景日常大部分的测试工作都是在测试环境下，通过模拟用户的行为来对系统进行验证，包括功能以及性能。在这个过程中，你可能会遇到以下问题:  用户访问行为比较复杂，模拟很难和用户行为一致，模拟不够真实。 线下模拟场景有限，会出现业务覆盖不全的情况。  线上引流方案的出现为上述问题提供了很好的解题思路，线上引流本质是：通过把线上的真实流量复制到线下环境，解决测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流量回放GoReplay">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/476d5e4c/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="流量回放GoReplay一. 线上引流产生背景日常大部分的测试工作都是在测试环境下，通过模拟用户的行为来对系统进行验证，包括功能以及性能。在这个过程中，你可能会遇到以下问题:  用户访问行为比较复杂，模拟很难和用户行为一致，模拟不够真实。 线下模拟场景有限，会出现业务覆盖不全的情况。  线上引流方案的出现为上述问题提供了很好的解题思路，线上引流本质是：通过把线上的真实流量复制到线下环境，解决测试">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg">
+<meta property="article:published_time" content="2022-06-12T02:55:36.000Z">
+<meta property="article:modified_time" content="2022-06-12T02:55:36.000Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/476d5e4c/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '流量回放GoReplay',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 10:55:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">流量回放GoReplay</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T02:55:36.000Z" title="发表于 2022-06-12 10:55:36">2022-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-12T02:55:36.000Z" title="更新于 2022-06-12 10:55:36">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="流量回放GoReplay"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="流量回放GoReplay"><a href="#流量回放GoReplay" class="headerlink" title="流量回放GoReplay"></a>流量回放GoReplay</h1><h2 id="一-线上引流产生背景"><a href="#一-线上引流产生背景" class="headerlink" title="一. 线上引流产生背景"></a>一. 线上引流产生背景</h2><p>日常大部分的测试工作都是在测试环境下，通过模拟用户的行为来对系统进行验证，包括功能以及性能。在这个过程中，你可能会遇到以下问题:</p>
+<ul>
+<li>用户访问行为比较复杂，模拟很难和用户行为一致，模拟不够真实。</li>
+<li>线下模拟场景有限，会出现业务覆盖不全的情况。</li>
+</ul>
+<p>线上引流方案的出现为上述问题提供了很好的解题思路，<strong>线上引流本质是</strong>：通过把线上的真实流量复制到线下环境，解决测试环境模拟不够真实，或覆盖不够全面的问题。</p>
+<h2 id="二-线上引流常见方案"><a href="#二-线上引流常见方案" class="headerlink" title="二. 线上引流常见方案"></a>二. 线上引流常见方案</h2><p>目前不少公司都对线上引流方案进行了许多实践探索，常见的有以下4种引流方式（不限）：</p>
+<table>
+<thead>
+<tr>
+<th>引流方式</th>
+<th>实现方式</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Nginx层流量复制</strong></td>
+<td>安装lua-nginx-module、ngxdevelkit、headers-more-nginx-module模块，通过lua脚本实现把请求复制给测试环境。</td>
+<td>安装和部署还较为简单。</td>
+<td>需要开发lua脚本，且对资源有一定占用。</td>
+</tr>
+<tr>
+<td><strong>基于业务代码层的引流</strong></td>
+<td>将业务代码的调用封装成请求对象，异步的写入缓存中。引流工具通过读缓存中的请求，向测试环境发起请求。</td>
+<td>扩展性好，可定制化高。</td>
+<td>需要开发流量复制工具，工作量较大，且对工作本身的性能要求较高。</td>
+</tr>
+<tr>
+<td><strong>基于访问日志回放</strong></td>
+<td>线上系统记录访问日志，引流工具通过解析日志，向测试环境发起请求。</td>
+<td>离线方式，对线上影响小。</td>
+<td>需要开发日志解析工具，且解析的开销会较大。</td>
+</tr>
+<tr>
+<td><strong>基于TCP&#x2F;IP层的引流</strong></td>
+<td>目前已开源的工具有TcpCopy</td>
+<td>安装、部署使用都较为简单。</td>
+<td>安装、部署使用都较为简单。</td>
+</tr>
+</tbody></table>
+<p>上述的几种引流方式各有利弊，有的是需要自己开发相应的工具来支持。而今天给大家</p>
+<p>介绍的是另外一款简单易用，学习成本低的引流工具<strong>GoReplay</strong>。</p>
+<h2 id="三-推荐一款引流工具：GoReplay"><a href="#三-推荐一款引流工具：GoReplay" class="headerlink" title="三. 推荐一款引流工具：GoReplay"></a>三. 推荐一款引流工具：<strong>GoReplay</strong></h2><p>Gor，又称为GoReplay，是采用Golang 编写的一个开源的 HTTP 实时流量复制工具。它只需要在 LB 或者 入口服务器上执行一个进程，就可以把生产环境的流量复制到任何地方，比如 Staging 环境、Dev 环境。常用于压测及线上问题复现。</p>
+<blockquote>
+<p>注：Golang 是采用Gor 实现且开源的，意味着可以方便的集成到自己的架构中，可以用在压力测试平台、实时流量分析、应用层防火墙等方面。</p>
+</blockquote>
+<h2 id="四-GoReplay工作流程"><a href="#四-GoReplay工作流程" class="headerlink" title="四. GoReplay工作流程"></a>四. <strong>GoReplay</strong>工作流程</h2><p>下面是goreplay官方之前公布的工作流程图，简单来讲就是goreplay捕捉线上流量，并将捕捉到的释放到指定测试服务器上。</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/golang/e0cf5354d1514ae1bdf94edc5450352b.png"></p>
+<p>最新GoReplay 官网上更新了一张更高逼规格的图解说明，如下图所示：</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/golang/55cf6c06fd88445eb9027470dd9354aa.png"></p>
+<p>上述流程图展示的已经很详细了，我就不过多解释。</p>
+<blockquote>
+<p>注：Gor不是代理人，不需要将第三方工具放到关键路径上。相反，Gor只是默默地分析你的应用程序的流量，并不影响本身程序。</p>
+</blockquote>
+<h2 id="五-GoReplay支持的常用功能"><a href="#五-GoReplay支持的常用功能" class="headerlink" title="五. GoReplay支持的常用功能"></a>五. <strong>GoReplay</strong>支持的常用功能</h2><ul>
+<li>1､Gor 支持流量的放大和缩小、频率限制，这样不需要搭建和生产环境一致的服务器集群也可以正确测试。</li>
+<li>2､Gor 还支持根据正则表达式过滤流量，这意味着可以单独测试某个 API 服务。</li>
+<li>3､Gor还可以修改 HTTP 请求头，比如替换 User-Agent, 或者增加某些 HTTP Header 。</li>
+<li>4､Gor 还可以把请求记录到文件，以备回放和分析。Gor 支持和 ElasticSearch 集成，将流量存入 ES 进行实时分析。</li>
+<li>5､上线前在预发布环境，使用线上真实的请求，检查是否准备发布的版本，是否具备发布标准。</li>
+<li>6､压力测试完成后，用线上真实的请求，加速后回放至测试环境，检查是否有报错等问题。</li>
+<li>7､用线上的流量转发到预发布或测试环境，检查相同流量下一些指标的反馈情况，检查核心数据是否需要改善。</li>
+<li>8、等等。</li>
+</ul>
+<h2 id="六-下载安装GoReplay"><a href="#六-下载安装GoReplay" class="headerlink" title="六. 下载安装GoReplay"></a>六. 下载安装<strong>GoReplay</strong></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载包</span></span><br><span class="line">wget https://github.com/buger/goreplay/releases/download/1.3.3/gor-1.3.3_windows.zip</span><br></pre></td></tr></table></figure>
+
+<p>也可以进入到官网下载地址：<code>https://github.com/buger/goreplay/releases</code>下载最新的Gor二进制文件（支持Windows，Linux x64和Mac OS提供预编译的二进制文件），或者可以自行编译。</p>
+<p><strong>获取gor版本：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/buger/goreplay/releases</span><br></pre></td></tr></table></figure>
+
+<p><strong>源码地址：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/buger/goreplay</span><br></pre></td></tr></table></figure>
+
+<p><strong>官方使用文档：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/buger/goreplay/wiki</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-GoReplay-常用命令用法"><a href="#七-GoReplay-常用命令用法" class="headerlink" title="七. GoReplay 常用命令用法"></a>七. <strong>GoReplay</strong> 常用命令用法</h2><p><strong>输入参数：</strong></p>
+<ul>
+<li><code>--input-raw</code>  用于捕获HTTP流量，需要指定IP地址或接口和应用程序端口。</li>
+<li><code>--input-file</code>  接收通过<code>--output-file</code>保存流量的文件</li>
+<li><code>--input-tcp</code>  将多个 Goreplay 实例获取的流量聚集到一个 Goreplay 实例。</li>
+</ul>
+<p><strong>输出参数：</strong></p>
+<ul>
+<li><code>--output-http</code>  重放HTTP流量到给定的端点，接受基础URL。</li>
+<li><code>--output-file</code>  录制流量时指定的存储文件</li>
+<li><code>--output-tcp</code> 将获取的流量转移至另外的 Goreplay 实例，并与其一起使用<code>--input-tcp</code>。</li>
+<li><code>--output-stdout</code>  用于调试，输出所有数据到stdout。</li>
+</ul>
+<p><strong>其它参数：</strong></p>
+<ul>
+<li><p><code>--input-file-loop</code> 无限循环，而不是读完这个文件就停止了</p>
+</li>
+<li><p><code>--output-http-workers</code> 并发请求数</p>
+</li>
+<li><p><code>--http-allow-header</code> 允许的Header头</p>
+</li>
+<li><p><code>--http-disallow-header</code> 不允许的Header头</p>
+</li>
+</ul>
+<ul>
+<li><code>--http-allow-method</code> 允许的请求方法，传入值为GET，POST，OPTIONS等</li>
+<li><code>--http-allow-url</code> url白名单，其他请求将会被丢弃</li>
+<li><code>--http-disallow-url</code> 黑名单，其他的请求会被捕获到</li>
+<li><code>--split-output true</code> 按照轮训方式分割流量</li>
+</ul>
+<h2 id="八-GoReplay-常用实践场景"><a href="#八-GoReplay-常用实践场景" class="headerlink" title="八. GoReplay 常用实践场景"></a>八. <strong>GoReplay</strong> 常用实践场景</h2><p><strong>1、流量实时复制引流（--input-raw 拦截端口配合--output-http输出），例如</strong>将本机80端口的HTTP流量实时复制到targer_server:8080。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80 --output-http &quot;http://target_server:8080&quot;</span><br></pre></td></tr></table></figure>
+
+<p>2､<strong>控制台输出</strong>，获取经过本地8080端口的请求流量，然后打印到控制台。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :8080 --output-stdout</span><br></pre></td></tr></table></figure>
+
+<p>上述命令将监控8080端口上所有的流量，并通过终端stdout输出。你可以通过浏览器或者curl访问8080端口，然后在终端查看gor输出所有的http请求。</p>
+<p>3､<strong>先录制后回放</strong>，将捕捉流量保存到文件中，然后释放到其它机器，有时候实时同步流量是很难做到的, 所以Goreplay提供了这种先保存后回放的模式：</p>
+<p>第一步, 通过--output-file保存流量:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :8080 --output-file=requests.gor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述命令将8080端口的流量，保存到requests.gor文件中(必须是.gor后缀，其它后缀经测释放时有问题)。</p>
+</blockquote>
+<p>第二步,回放保存的流量:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-file requests.gor --output-http=&quot;http://localhost:8081&quot;</span><br></pre></td></tr></table></figure>
+
+<p>上述命令将释放所有保存在requests.gor中的请求通过相同的时间顺序释放到服务器<a target="_blank" rel="noopener" href="http://localhost:8081/">http://localhost:8081</a></p>
+<p>4、<strong>过滤指定请求方法</strong>，如果目标服务器使用的库与线上机器一样，且只需要引流Get方法的请求。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80  --http-allow-method GET --output-http &quot;http://target_server:8080&quot;</span><br></pre></td></tr></table></figure>
+
+<p>5､<strong>请求过滤</strong>，当你需要捕捉指定路径的请求流量时，可以使用该机制， 如只同步&#x2F;api路径下的请求</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :8080 --output-http staging.com --http-allow-url /api</span><br></pre></td></tr></table></figure>
+
+<p>只收集请求头中符合 api-version 为 1.0x 的请求</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^1\.0\d</span><br></pre></td></tr></table></figure>
+
+<p>6､<strong>限速机制</strong>，由于生产服务器配置一般远高于测试服务器配置，所以直接将生产服务器全部流量同步到测试服务器是不可行的，goreplay提供了两种策略：</p>
+<p><strong>a. 限制每秒的请求数</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gor  --input-tcp :28020 --output-http &quot;http://staging.com|10&quot;# (每秒请求数限制10个以内)</span><br><span class="line">gor  --input-raw :80 --output-tcp &quot;replay.local:28020|10%&quot;  # (每秒请求数限制10%以内)</span><br></pre></td></tr></table></figure>
+
+<p>b. <strong>基于Header或Url的参数限制一些请求</strong>，为指定的header或者url的请求设定限制的百分比。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gor  --input-raw :80 --output-tcp &quot;replay.local:28020|10%&quot; --http-header-limiter &quot;X-API-KEY: 10%&quot;</span><br><span class="line">gor  --input-raw :80 --output-tcp &quot;replay.local:28020|10%&quot; --http-param-limiter &quot;api_key: 10%&quot;</span><br></pre></td></tr></table></figure>
+
+<p>7、<strong>流量加压</strong>，当需要对线上服务进行整体性能压测时，可将线上请求扩大N倍，进行引流，将请求扩大1倍，也可缩小，调整&quot;|&quot;后面的百分比即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80  --http-allow-method GET --output-http &quot;http://target_server:8080|200%&quot;</span><br></pre></td></tr></table></figure>
+
+<p>8、<strong>只复制某个URL请求</strong>，--http-allow-url参数，-http-allow-url参数可用正则表达式（--output-http-url-regexp在gor 0.16已经过期，使用--http-allow-url代替）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :8080 --http-allow-method GET --output-http &quot;http://target_server:8080&quot; --http-allow-url mall.*hotword</span><br></pre></td></tr></table></figure>
+
+<p>9、<strong>多目标服务器的流量复制引流</strong>，有点类似nginx的mirror。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80 --output-http &quot;http://target_server:8080&quot; --output-http &quot;http://target_server2:8080&quot;</span><br></pre></td></tr></table></figure>
+
+<p>10、<strong>将流量转发到多个端点</strong>，默认情况下，它会将相同的流量发送到所有输出。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-tcp :28020 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>11、将相同的流量发送到多个站点，并且<strong>平分所有流量</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80 --output-http &quot;http://staging.com&quot;  --output-http &quot;http://dev.com&quot; --split-output true</span><br></pre></td></tr></table></figure>
+
+<p>12、HTTP超时，默认情况下，http请求和响应的超时时间为5秒。你可以像这样覆盖它：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-tcp replay.local:28020 --output-http http://staging.com --output-http-timeout 30s</span><br></pre></td></tr></table></figure>
+
+<p>13、基本身份验证，如果您的开发或登台环境受基本身份验证保护，那么可以在重放期间注入这些凭据：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-raw :80 --output-http &quot;http://user:pass@staging.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>14、<strong>性能压力测试</strong>，可以将流量复制到文件，然后再对他们进行回放。回放的时候，流量会维持原始的时间间隔。如果你使用了百分比来进行速率限制，那么回放的速率会相应的增加或减少。有了这种速率限制，gor就可以用来进行压力测试。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gor --input-file &quot;requests.gor|200%&quot; --output-http &quot;staging.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>目前，<code>input-file</code>仅在使用基于百分比的限制器时才支持此功能。与默认限制器不同<code>input-file</code>，它不会降低请求速度，而会减慢速度或加速请求发射。</p>
+<p>15 、<strong>录制与回放</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gor --input-raw :8000 --output-file=requests.gor</span><br></pre></td></tr></table></figure>
+
+<p>执行录制命令后，将会创建新文件并不断向其写入所有捕获的请求。</p>
+<p>16、<strong>流量回放</strong>，重播来自文件的请求。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gor --input-file requests.gor --output-http=&quot;http://localhost:8001&quot;</span><br></pre></td></tr></table></figure>
+
+<p>您应该看到所有记录到<a href="http://localhost:8001的请求，并且它们将以相同的顺序重播，并且与录制的时间完全相同。">http://localhost:8001的请求，并且它们将以相同的顺序重播，并且与录制的时间完全相同。</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/476d5e4c/">https://wangyyovo.github.io/posts/476d5e4c/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/82a7aa7c/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">golang性能调试优化方法</div></div></a></div><div class="next-post pull-right"><a href="/posts/5ee696f6/"><img class="next-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/docker/4d51cecf7d26dfa720682ee0425872d5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Windows11部署Docker</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%9B%9E%E6%94%BEGoReplay"><span class="toc-text">流量回放GoReplay</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BA%BF%E4%B8%8A%E5%BC%95%E6%B5%81%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="toc-text">一. 线上引流产生背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%BA%BF%E4%B8%8A%E5%BC%95%E6%B5%81%E5%B8%B8%E8%A7%81%E6%96%B9%E6%A1%88"><span class="toc-text">二. 线上引流常见方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%8E%A8%E8%8D%90%E4%B8%80%E6%AC%BE%E5%BC%95%E6%B5%81%E5%B7%A5%E5%85%B7%EF%BC%9AGoReplay"><span class="toc-text">三. 推荐一款引流工具：GoReplay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-GoReplay%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">四. GoReplay工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-GoReplay%E6%94%AF%E6%8C%81%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-text">五. GoReplay支持的常用功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85GoReplay"><span class="toc-text">六. 下载安装GoReplay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-GoReplay-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="toc-text">七. GoReplay 常用命令用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-GoReplay-%E5%B8%B8%E7%94%A8%E5%AE%9E%E8%B7%B5%E5%9C%BA%E6%99%AF"><span class="toc-text">八. GoReplay 常用实践场景</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

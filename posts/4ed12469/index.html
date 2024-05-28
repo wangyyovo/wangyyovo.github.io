@@ -1,0 +1,542 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>基于NATS JetStream构建分布式事件流系统 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于NATS JetStream构建分布式事件流系统  【译文】原文地址本文我将简要介绍NATS JetStream项目，它是一个来自NATS生态的分布式事件流系统。简言之，NATS JetStream是一个以发布&#x2F;订阅作为消息传递模式的分布式流媒体系统。当我在咨询工作中向我的客户介绍NATS时，对NATS、NATS Streaming和新推出的NATS JetStream的不同感到困">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于NATS JetStream构建分布式事件流系统">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/4ed12469/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="基于NATS JetStream构建分布式事件流系统  【译文】原文地址本文我将简要介绍NATS JetStream项目，它是一个来自NATS生态的分布式事件流系统。简言之，NATS JetStream是一个以发布&#x2F;订阅作为消息传递模式的分布式流媒体系统。当我在咨询工作中向我的客户介绍NATS时，对NATS、NATS Streaming和新推出的NATS JetStream的不同感到困">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg">
+<meta property="article:published_time" content="2022-02-28T10:42:20.000Z">
+<meta property="article:modified_time" content="2022-02-28T10:42:20.000Z">
+<meta property="article:author" content="Blank">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/4ed12469/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于NATS JetStream构建分布式事件流系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-28 18:42:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于NATS JetStream构建分布式事件流系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-28T10:42:20.000Z" title="发表于 2022-02-28 18:42:20">2022-02-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-28T10:42:20.000Z" title="更新于 2022-02-28 18:42:20">2022-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/">microservice</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/microservice/nats/">nats</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于NATS JetStream构建分布式事件流系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="基于NATS-JetStream构建分布式事件流系统"><a href="#基于NATS-JetStream构建分布式事件流系统" class="headerlink" title="基于NATS JetStream构建分布式事件流系统"></a>基于NATS JetStream构建分布式事件流系统</h1><p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/nats/21436181-4e8d0e32c6c32e8c.png"></p>
+<blockquote>
+<p>【译文】<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://shijuvar.medium.com/building-distributed-event-streaming-systems-in-go-with-nats-jetstream-3938e6dc7a13">原文地址</a><br>本文我将简要介绍NATS JetStream项目，它是一个来自NATS生态的分布式事件流系统。简言之，NATS JetStream是一个以发布&#x2F;订阅作为消息传递模式的分布式流媒体系统。当我在咨询工作中向我的客户介绍NATS时，对NATS、NATS Streaming和新推出的NATS JetStream的不同感到困惑。我将简要介绍这三个产品，然后通过一个非常简单的示例深入介绍NATS JetStream。</p>
+</blockquote>
+<h4 id="从NATS服务到NATS-JetStream来理解NATS生态"><a href="#从NATS服务到NATS-JetStream来理解NATS生态" class="headerlink" title="从NATS服务到NATS JetStream来理解NATS生态"></a>从NATS服务到NATS JetStream来理解NATS生态</h4><p>NAT云原生消息分发系统提供了一个基于“最多一次”交付模型的简单NATS服务，该服务将已发布的消息转发给消费者，而对已发布的消息不进行任何持久性处理，其性能处于行业领先地位。对于某些类型的应用程序，如果不需要事件流平台，那么基本的NATS平台就足够了并且还能获得高性能。使用“最多一次”发布模型，如果消息服务在转发数据给订阅者过程中，订阅者系统故障的话，消息将会丢失，因此无法保证已发布的消息的传递。</p>
+<p>后来NATS生态添加了第二个消息发布可选方案：NATS流，这是一个基于NATS生态构建的高性能、轻量级、可靠的流平台。当使用NATS流发布消息时,发布的消息被持久化到一个可定制的存储中,由于具备发布者和订阅者提供ACK消息、发布者速率限制和每个订阅者速率匹配&#x2F;限制的能力，这样我们可以重用发布的消息为消费者提供“At-least-once-delivery”模式。基础NATS和NATS流都是用Go编写的。虽然NATS Streaming非常高性能和轻量化，但在某些能力和成熟度方面，它没有像Kafka这样的分布式流系统那么强大。与此同时，随着NATS 2.0的出现，NATS的生态系统也得到了很大的发展，NATS 2.0提供了分布式安全、去中心化管理、多租户、更大的网络、全球可扩展以及安全的数据共享。但NATS流在适应NATS 2.0方面存在很多限制，而且流系统还没有发展到能够应对下一代物联网和边缘计算的挑战。</p>
+<p>NATS 2.0的下一代NATS流被称为NATS JetStream。因此，如果你想使用流系统来构建分布式系统、物联网和边缘计算，那么最好基于NATS使用NATS JetStream。官方对NATS流的支持将于2023年6月结束。因此，如果不想持久化发布的消息，请选择基本的NATS;如果希望将消息持久化到持久化存储中，并通过ACK、速率匹配&#x2F;限制等方式重复来自持久化存储的消息，请使用NATS JetStream。NATS JetStream是用Go编写的。</p>
+<h5 id="NATS-JetStream"><a href="#NATS-JetStream" class="headerlink" title="NATS JetStream"></a>NATS JetStream</h5><p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/nats/21436181-dedfec18af3e72ca.png"></p>
+<p>NATS JetStream是NATS生态系统的下一代流系统，为NATS 2.0打造，具有分布式安全、多租户和水平扩展能力。</p>
+<h4 id="什么是分布式事件流系统？"><a href="#什么是分布式事件流系统？" class="headerlink" title="什么是分布式事件流系统？"></a>什么是分布式事件流系统？</h4><p>流系统允许您从分布式系统和微服务、物联网传感器、边缘设备和软件应用程序中捕获事件流，并将这些流持久化到存储中。因为将这些事件流持久化到持久化存储中，就可以使用事件驱动的结构回放这些事件流，以便检索、处理和响应这些事件流。使用NATS JetStream，流将由生产者系统发布，通过持久化重放消息并通过消费系统发布。简而言之，NATS JetStream是一个以发布&#x2F;订阅作为消息传递模式的分布式流系统。</p>
+<p>尽管现有的流技术很多，其中一些流技术在某些方面比较擅长，但大多数技术还没有经过很大的发展，无法应对未来的计算场景，尤其是物联网和边缘计算。例如，当您使用物联网和边缘计算发布和订阅消息时，您可能需要更好的安全模型。您可能需要多租户和对多个部署模型的支持。NATS JetStream就是为解决这些问题而设计的，这些问题我们在今天的流技术堆栈中已经看到了。</p>
+<h4 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h4><p>NATS的官方文档列出了NATS JetStream的设计目标:</p>
+<ul>
+<li><p>系统必须易于配置和操作，易于观察。</p>
+</li>
+<li><p>系统必须是安全的，并且在NATS 2.0安全模型下运行良好。</p>
+</li>
+<li><p>系统必须能水平扩展，并适用于高摄取率。</p>
+</li>
+<li><p>系统必须支持多个用例。</p>
+</li>
+<li><p>系统必须能自愈并高可用。</p>
+</li>
+<li><p>系统必须有一个接近NATS核心的API。</p>
+</li>
+<li><p>系统必须允许NATS消息成为流的一部分。</p>
+</li>
+<li><p>系统必须显示与有效载荷无关的行为。</p>
+</li>
+<li><p>系统不能有第三方依赖关系。</p>
+</li>
+</ul>
+<h4 id="用于运行NATS服务和NATS-JetStream服的简单可执行文件"><a href="#用于运行NATS服务和NATS-JetStream服的简单可执行文件" class="headerlink" title="用于运行NATS服务和NATS JetStream服的简单可执行文件"></a>用于运行NATS服务和NATS JetStream服的简单可执行文件</h4><p>安装<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/nats-io/nats-server">NATS Server v2.2.2</a>，您可以使用相同的可执行文件“nats-server”运行基本的NATS服务(没有持久性)和NATS JetStream服务。当你运行nats-server可执行文件时，它将作为基本的NATS服务运行，当你运行带有-js参数的nats-server可执行文件或配置启用JetStream时，它将运行启用了JetStream子系统的NATS服务。<br>以下是JetStream的配置文件:<br>清单1。启用JetStream子系统</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> jetstream &#123;</span><br><span class="line">    </span><br><span class="line">    store_dir: &quot;/data/nats-server&quot;</span><br><span class="line"></span><br><span class="line">    max_memory_store: 1073741824</span><br><span class="line"></span><br><span class="line">    max_file_store: 10737418240</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置为NATS服务启用了JetStream子系统，并将&#x2F;data&#x2F; nats-server目录配置为持久化流的存储目录。<br>在这里，我们使用js.conf文件运行带有JetStream子系统的nats-server:<br>清单2。使用js.conf文件运行NATS服务器</p>
+<p>图1所示。NATS JetStream服务正在运行:</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/nats/2022-03-03_183014.png"></p>
+<h4 id="使用单个NATS客户端SDK与NATS和NATS-JetStream工作"><a href="#使用单个NATS客户端SDK与NATS和NATS-JetStream工作" class="headerlink" title="使用单个NATS客户端SDK与NATS和NATS JetStream工作"></a>使用单个NATS客户端SDK与NATS和NATS JetStream工作</h4><p>我们使用单独的客户端sdk与NATS服务和NATS流媒体服务一起工作。但Go SDK <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/nats-io/nats.go">nats.go</a>v1.11.0版本中，你可以使用相同的库来处理基本的NATS和NATS JetStream。<br>下面是从NATS连接创建JetStream上下文的代码:<br>清单3。创建JetStream上下文</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &quot;github.com/nats-io/nats.go&quot;</span><br><span class="line">nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line">js, err := nc.JetStream()</span><br></pre></td></tr></table></figure>
+
+<p>JetStreamContext允许JetStream消息和流管理。一旦创建了JetStreamContext，就可以通过使用其发布和订阅api轻松地使用JetStream。</p>
+<h4 id="JetStream流"><a href="#JetStream流" class="headerlink" title="JetStream流"></a>JetStream流</h4><p>在JetStream中，事件流以Streams存储，其中多个相关的主题存储在一个Stream中。例如，当你在构建一个订单处理系统时，可以考虑“ORDERS”作为一个Stream，在这里可以使用与Stream相关的主题比如“ORDERS.created”、“ORDERS.approved&quot;、“ORDERS.rejected&quot;、“ORDER.payment.debited&quot;和“ORDERS.shiped&quot;，来发布和消费事件流。因此所有这些相关的主题都属于“ORDERS”这个Stream。<br>下图显示了在服务器上以存储文件形式存储的“ORDERS”流。<br>图2。订单流存储</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/nats/2022-03-03_183942.png" alt="img"></p>
+<h4 id="拉式消费者和推式消费者"><a href="#拉式消费者和推式消费者" class="headerlink" title="拉式消费者和推式消费者"></a>拉式消费者和推式消费者</h4><p>JetStream提供了两种消费者(订阅者)系统:基于拉的消费者和基于推的消费者。基于Pull的消费者让JetStream从消费者系统中提取消息。基于pull的消费者系统就像工作队列。因为JetStream提供了ACK(确认)机制，所以可以轻松地水平扩展基于Pull的消费者系统，而不会出现消息重复的问题。拉式订阅是NATS生态系统的新功能。基于Push的消费者使JetStream将消息推送到消费者系统，这对于监控系统来说是一个很好的选择。<br>以下是来自NATS文档的JetStream混合推&#x2F;拉订单处理架构:</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/nats/21436181-d8581bf962a150d6.png"></p>
+<p>原图链接: <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://docs.nats.io/jetstream/concepts">https://docs.nats.io/jetstream/concepts</a></p>
+<h4 id="通配符订阅"><a href="#通配符订阅" class="headerlink" title="通配符订阅"></a>通配符订阅</h4><p>NATS流的消费者不支持通配符订阅。庆幸的是在JetStream中支持通配符订阅。下面的代码块显示了通配符订阅:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line">js, _ := nc.JetStream()</span><br><span class="line">js.Subscribe(<span class="string">&quot;ORDERS.*&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(msg *nats.Msg)</span></span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="NATS命令行"><a href="#NATS命令行" class="headerlink" title="NATS命令行"></a>NATS命令行</h4><p>NATS生态系统为管理需求提供了一个新的NATS CLI工具。你可以从源代码安装或使用Homebrew tap。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">brew tap nats-io/nats-tools</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">brew install nats-io/nats-tools/nats</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="一个NATS-JetStream的示例"><a href="#一个NATS-JetStream的示例" class="headerlink" title="一个NATS JetStream的示例"></a>一个NATS JetStream的示例</h4><p>让我们是用 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/nats-io/nats.go">nats.go</a>Go客户端SDK编写一个简单的示例来理解如何使用NATS JetStream。<br>配置最新版本NATS服务和nats.go客户端SDK：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Go client latest</span> </span><br><span class="line">go get github.com/nats-io/nats.go/@latest</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">For latest NATS Server, add /v2 at the end</span></span><br><span class="line">go get github.com/nats-io/nats-server/v2</span><br></pre></td></tr></table></figure>
+
+<h4 id="例子演示"><a href="#例子演示" class="headerlink" title="例子演示"></a>例子演示</h4><p>在这个例子中，使用Stream ”ORDERS“作为主题”ORDERS.*的流。为了演示，我们用“ORDERS.created&quot;和&quot;ORDERS.approved&quot;主题来发布消息。一个系统用“ORDERS.created&quot;主题发布消息。一个基于Pull消费者将订阅该主题的消息，并基于这个事件做一些处理之后，进一步在&quot;ORDERS.approved&quot;主题上发布消息。另一个基于Push的消费者使用“ORDERS.*”通配符订阅消息，因此所有“ORDERS”上的流都被订阅。</p>
+<h4 id="使用JetStreamContext创建流"><a href="#使用JetStreamContext创建流" class="headerlink" title="使用JetStreamContext创建流"></a>使用JetStreamContext创建流</h4><p>我们首先创建一个流“ORDERS”，用于主题“ORDERS.*”。您可以使用管理工具(如NATS CLI)或使用NATS客户端sdk来创建Stream。这里我们使用nats.go创建Stream。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">   streamName  = <span class="string">&quot;ORDERS&quot;</span></span><br><span class="line">   streamSubjects = <span class="string">&quot;ORDERS.*&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createStream</span><span class="params">(js nats.JetStreamContext)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">   </span><br><span class="line">   stream, err := js.StreamInfo(streamName)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      log.Println(err)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> stream == <span class="literal">nil</span> &#123;</span><br><span class="line">      log.Printf(<span class="string">&quot;creating stream %q and subjects %q&quot;</span>, streamName, streamSubjects)</span><br><span class="line">      _, err = js.AddStream(&amp;nats.StreamConfig&#123;</span><br><span class="line">         Name:     streamName,</span><br><span class="line">         Subjects: []<span class="type">string</span>&#123;streamSubjects&#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> err</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码块中，如果流不存在，我们就使用JetStreamContext的AddStream方法创建一个新的流。JetStreamContext可以通过调用NATS连接对象的JetStream方法来创建。<br>从NATS连接创建JetStreamContext，然后调用createStream方法创建一个Stream。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line"></span><br><span class="line">js, err := nc.JetStream()</span><br><span class="line">err = createStream(js)</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件发布流"><a href="#事件发布流" class="headerlink" title="事件发布流"></a>事件发布流</h4><p>下面的代码块以“ORDERS”为主题发布消息(事件流)，目的是“让消费者系统知道新订单被放到了我们的分布式系统环境中，这样消费者系统就可以通过执行自己的操作和发布其他事件集来响应这些事件。<br>发布主题为“ORDERS.created”的消息：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> (</span><br><span class="line">   subjectName =<span class="string">&quot;ORDERS.created&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createOrder</span><span class="params">(js nats.JetStreamContext)</span></span> <span class="type">error</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> order model.Order</span><br><span class="line">   <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">      order = model.Order&#123;</span><br><span class="line">         OrderID:    i,</span><br><span class="line">         CustomerID: <span class="string">&quot;Cust-&quot;</span> + strconv.Itoa(i),</span><br><span class="line">         Status:     <span class="string">&quot;created&quot;</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      orderJSON, _ := json.Marshal(order)</span><br><span class="line">      _, err := js.Publish(subjectName, orderJSON)</span><br><span class="line">      <span class="keyword">if</span> err!=<span class="literal">nil</span> &#123;</span><br><span class="line">         <span class="keyword">return</span> err</span><br><span class="line">      &#125;</span><br><span class="line">      log.Printf(<span class="string">&quot;Order with OrderID:%d has been published\n&quot;</span>,i)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是在我们的例子中使用的Order结构体:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Order <span class="keyword">struct</span> &#123;</span><br><span class="line">   OrderID    <span class="type">int</span></span><br><span class="line">   CustomerID <span class="type">string</span></span><br><span class="line">   Status     <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是示例完整代码块，它创建了Stream并在主题“ORDERS.created”上发布消息:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"> <span class="string">&quot;encoding/json&quot;</span></span><br><span class="line"> <span class="string">&quot;log&quot;</span></span><br><span class="line"> <span class="string">&quot;strconv&quot;</span></span><br><span class="line"></span><br><span class="line"> <span class="string">&quot;github.com/nats-io/nats.go&quot;</span></span><br><span class="line"></span><br><span class="line"> <span class="string">&quot;github.com/shijuvar/go-distsys/jsdemo/model&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line"> streamName  = <span class="string">&quot;ORDERS&quot;</span></span><br><span class="line"> streamSubjects = <span class="string">&quot;ORDERS.*&quot;</span></span><br><span class="line"> subjectName =<span class="string">&quot;ORDERS.created&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"> </span><br><span class="line"> nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line"> </span><br><span class="line"> js, err := nc.JetStream()</span><br><span class="line"> checkErr(err)</span><br><span class="line"> </span><br><span class="line"> err = createStream(js)</span><br><span class="line"> checkErr(err)</span><br><span class="line"> </span><br><span class="line"> err= createOrder(js)</span><br><span class="line"> checkErr(err)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createOrder</span><span class="params">(js nats.JetStreamContext)</span></span> <span class="type">error</span>&#123;</span><br><span class="line"> <span class="keyword">var</span> order model.Order</span><br><span class="line"> <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++ &#123;</span><br><span class="line">    order = model.Order&#123;</span><br><span class="line">       OrderID:    i,</span><br><span class="line">       CustomerID: <span class="string">&quot;Cust-&quot;</span> + strconv.Itoa(i),</span><br><span class="line">       Status:     <span class="string">&quot;created&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    orderJSON, _ := json.Marshal(order)</span><br><span class="line">    _, err := js.Publish(subjectName, orderJSON)</span><br><span class="line">    <span class="keyword">if</span> err!=<span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    log.Printf(<span class="string">&quot;Order with OrderID:%d has been published\n&quot;</span>,i)</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">createStream</span><span class="params">(js nats.JetStreamContext)</span></span> <span class="type">error</span> &#123;</span><br><span class="line"> </span><br><span class="line"> stream, err := js.StreamInfo(streamName)</span><br><span class="line"> <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Println(err)</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">if</span> stream == <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Printf(<span class="string">&quot;creating stream %q and subjects %q&quot;</span>, streamName, streamSubjects)</span><br><span class="line">    _, err = js.AddStream(&amp;nats.StreamConfig&#123;</span><br><span class="line">       Name:     streamName,</span><br><span class="line">       Subjects: []<span class="type">string</span>&#123;streamSubjects&#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkErr</span><span class="params">(err <span class="type">error</span>)</span></span> &#123;</span><br><span class="line"> <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基于拉的消费者对事件的反应"><a href="#基于拉的消费者对事件的反应" class="headerlink" title="基于拉的消费者对事件的反应"></a>基于拉的消费者对事件的反应</h4><p>一个基于Pull的消费者从主题“ORDERS”中订阅消息的例子。最终通过主题“ORDERS.approved”发布消息。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">&quot;context&quot;</span></span><br><span class="line">   <span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">   <span class="string">&quot;log&quot;</span></span><br><span class="line">   <span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line">   <span class="string">&quot;github.com/nats-io/nats.go&quot;</span></span><br><span class="line"></span><br><span class="line">   <span class="string">&quot;github.com/shijuvar/go-distsys/jsdemo/model&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">   subSubjectName =<span class="string">&quot;ORDERS.created&quot;</span></span><br><span class="line">   pubSubjectName =<span class="string">&quot;ORDERS.approved&quot;</span></span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   </span><br><span class="line">   nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line">   js, err := nc.JetStream()</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      log.Fatal(err)</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   sub, _ := js.PullSubscribe(subSubjectName, <span class="string">&quot;order-review&quot;</span>, nats.PullMaxWaiting(<span class="number">128</span>))</span><br><span class="line">   ctx, cancel := context.WithTimeout(context.Background(), <span class="number">10</span>*time.Second)</span><br><span class="line">   <span class="keyword">defer</span> cancel()</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span> &#123;</span><br><span class="line">      <span class="keyword">select</span> &#123;</span><br><span class="line">      <span class="keyword">case</span> &lt;-ctx.Done():</span><br><span class="line">         <span class="keyword">return</span></span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">      &#125;</span><br><span class="line">      msgs, _ := sub.Fetch(<span class="number">10</span>, nats.Context(ctx))</span><br><span class="line">      <span class="keyword">for</span> _, msg := <span class="keyword">range</span> msgs &#123;</span><br><span class="line">         msg.Ack()</span><br><span class="line">         <span class="keyword">var</span> order model.Order</span><br><span class="line">         err := json.Unmarshal(msg.Data, &amp;order)</span><br><span class="line">         <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Fatal(err)</span><br><span class="line">         &#125;</span><br><span class="line">         log.Println(<span class="string">&quot;order-review service&quot;</span>)</span><br><span class="line">         log.Printf(<span class="string">&quot;OrderID:%d, CustomerID: %s, Status:%s\n&quot;</span>, order.OrderID, order.CustomerID, order.Status)</span><br><span class="line">         reviewOrder(js,order)</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reviewOrder</span><span class="params">(js nats.JetStreamContext, order model.Order)</span></span> &#123;</span><br><span class="line">   </span><br><span class="line">   order.Status =<span class="string">&quot;approved&quot;</span></span><br><span class="line">   orderJSON, _ := json.Marshal(order)</span><br><span class="line">   _, err := js.Publish(pubSubjectName, orderJSON)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      log.Fatal(err)</span><br><span class="line">   &#125;</span><br><span class="line">   log.Printf(<span class="string">&quot;Order with OrderID:%d has been %s\n&quot;</span>,order.OrderID, order.Status)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>JetStreamContext的PullSubscribe方法创建了一个可以获取消息的订阅。它将返回一个Subscription对象。Subscription的Fetch方法从流中为Pull消费者提取一批消息。msg.Ack()向服务器发出手动确认。</p>
+<h4 id="基于Push的消费者使用通配符订阅"><a href="#基于Push的消费者使用通配符订阅" class="headerlink" title="基于Push的消费者使用通配符订阅"></a>基于Push的消费者使用通配符订阅</h4><p>在下面示例中，另一个消费者是一个基于Push的订阅者，它使用通配符订阅消息。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">   <span class="string">&quot;log&quot;</span></span><br><span class="line">   <span class="string">&quot;runtime&quot;</span></span><br><span class="line"></span><br><span class="line">   <span class="string">&quot;github.com/nats-io/nats.go&quot;</span></span><br><span class="line"></span><br><span class="line">   <span class="string">&quot;github.com/shijuvar/go-distsys/jsdemo/model&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   </span><br><span class="line">   nc, _ := nats.Connect(nats.DefaultURL)</span><br><span class="line">   js, err := nc.JetStream()</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      log.Fatal(err)</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   js.Subscribe(<span class="string">&quot;ORDERS.*&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(msg *nats.Msg)</span></span> &#123;</span><br><span class="line">      msg.Ack()</span><br><span class="line">      <span class="keyword">var</span> order model.Order</span><br><span class="line">      err := json.Unmarshal(msg.Data, &amp;order)</span><br><span class="line">      <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">         log.Fatal(err)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      log.Printf(<span class="string">&quot;monitor service subscribes from subject:%s\n&quot;</span>, msg.Subject)</span><br><span class="line">      log.Printf(<span class="string">&quot;OrderID:%d, CustomerID: %s, Status:%s\n&quot;</span>, order.OrderID, order.CustomerID, order.Status)</span><br><span class="line">   &#125;, nats.Durable(<span class="string">&quot;monitor&quot;</span>),nats.ManualAck())</span><br><span class="line"></span><br><span class="line">   runtime.Goexit()</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于已经在NATS和NATS流媒体服务器上工作过的NATS开发人员来说，订阅API是一个非常熟悉的API。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>当我们考虑使用分布式流系统作为构建分布式系统、基于微服务的分布式系统、基于物联网的系统、下一代Edge系统的核心架构时，可以考虑使用NATS JetStream。在未来的计算中，处理大量的事件流和消息流将是一个巨大的挑战，特别是边缘计算。 NATS JetStream提供了分布式安全、多租户和水平扩展能力。在NATS JetStream的早期版本中，一些设计目标没有通过集群选项实现。但随着后来的发布和改进，我希望NATS JetStream能够实现所有的设计目标，成为一种极具竞争力的流技术。考虑到简单性和适应性边缘架构，我肯定会选择NATS JetStream而不是Kafka，并等待这个技术更加成熟。</p>
+<h2 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h2><h3 id="StreamConfig全属性"><a href="#StreamConfig全属性" class="headerlink" title="StreamConfig全属性"></a>StreamConfig全属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MaxAge</td>
+<td>流中消息的最大年龄，以微秒为单位</td>
+</tr>
+<tr>
+<td>MaxBytes</td>
+<td>流的最大存储容量，当合并的流大小超过这个大小时，旧的消息就会被删除</td>
+</tr>
+<tr>
+<td>MaxMsgSize</td>
+<td>流能接收的最大消息尺寸</td>
+</tr>
+<tr>
+<td>MaxMsgs</td>
+<td>流中能存储的最大消息条数，当数量超过这个值时，旧的消息就会被删除</td>
+</tr>
+<tr>
+<td>MaxConsumers</td>
+<td>流最多能有多少个消费者，为<code>-1</code>时无限制</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>流的名称，<strong>不能</strong>带有空格，tab或者<code>.</code></td>
+</tr>
+<tr>
+<td>NoAck</td>
+<td>禁用流接收的消息的ACK</td>
+</tr>
+<tr>
+<td>Replicas</td>
+<td>消息在集群中的副本数量，最大值为5</td>
+</tr>
+<tr>
+<td>Retention</td>
+<td>消息的保留策略，有<code>LimitsPolicy</code>(默认)，<code>InterestPolicy</code>，<code>WorkQueuePolicy</code></td>
+</tr>
+<tr>
+<td>Discard</td>
+<td>当流触及限制后，<code>DiscardNew</code>策略会拒绝新的消息，<code>DiscardOld</code>(默认)会删除旧的消息</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>消息的存储方式，有<code>file</code>和<code>memory</code>两种</td>
+</tr>
+<tr>
+<td>Subjects</td>
+<td>待消费的<code>subjects</code>集合，支持通配符</td>
+</tr>
+<tr>
+<td>Duplicates</td>
+<td>消息去重使用的时间窗</td>
+</tr>
+</tbody></table>
+<h3 id="保留策略-Retention"><a href="#保留策略-Retention" class="headerlink" title="保留策略(Retention)"></a>保留策略(Retention)</h3><table>
+<thead>
+<tr>
+<th>保留策略</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LimitsPolicy</code></td>
+<td>对消息的数量、存储容量和年龄进行限制</td>
+</tr>
+<tr>
+<td><code>WorkQueuePolicy</code></td>
+<td>直到被一个观察者消耗之前，消息都会保存</td>
+</tr>
+<tr>
+<td><code>InterestPolicy</code></td>
+<td>只要有消费者处于活跃状态，消息就会被保存下来</td>
+</tr>
+</tbody></table>
+<p>上面提到的<code>MaxMsgs</code>，<code>MaxMsgs</code>，<code>MaxAge</code>用来对消息进行限制，它们也是<code>LimitsPolicy</code>策略仅能使用的属性。</p>
+<p>在<code>WorkQueuePolicy</code>策略下，一旦有消费者收到确认，消息就会被立即删除。而启用<code>InterestPolicy</code>时，如果没有消费者在线就会立即将消息删除。</p>
+<p>需要注意，在<code>WorkQueuePolicy</code>和<code>InterestPolicy</code>下，<code>MaxMsgs</code>，<code>MaxMsgs</code>，<code>MaxAge</code>这三个属性依然是生效的，并且是作为前置条件存在。</p>
+<h3 id="确认模型-Acknowledgement-Models"><a href="#确认模型-Acknowledgement-Models" class="headerlink" title="确认模型(Acknowledgement Models)"></a>确认模型(Acknowledgement Models)</h3><p>消费者有三种确认模式:</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AckExplicit</code></td>
+<td>要求每个消息都进行手动确认，这也是拉模型下唯一支持的方式</td>
+</tr>
+<tr>
+<td><code>AckAll</code></td>
+<td>这个模式下，如果你确认了第<code>100</code>个消息，那么<code>1</code>-<code>99</code>个消息都会自动确认，适用于批处理任务，以减少确认带来的额外开销</td>
+</tr>
+<tr>
+<td><code>AckNone</code></td>
+<td>不支持任何确认</td>
+</tr>
+</tbody></table>
+<h3 id="ConsumerConfig的配置属性列表"><a href="#ConsumerConfig的配置属性列表" class="headerlink" title="ConsumerConfig的配置属性列表"></a>ConsumerConfig的配置属性列表</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AckPolicy</td>
+<td>消息的确认方式，支持<code>AckNone``, ``AckAll</code> 和 <code>AckExplicit</code></td>
+</tr>
+<tr>
+<td>AckWait</td>
+<td>在消息被重新投递之前，允许消息在多长时间之内处于未确认状态</td>
+</tr>
+<tr>
+<td>DeliverPolicy</td>
+<td>消费者的起始位置策略，支持<code>DeliverAll</code>, <code>DeliverLast</code>, <code>DeliverNew</code>, <code>DeliverByStartSequence</code> 和<code>DeliverByStartTime</code></td>
+</tr>
+<tr>
+<td>DeliverySubject</td>
+<td>传递观察到的消息的subject，如果没有设置的话，会创建一个拉模式的消费者</td>
+</tr>
+<tr>
+<td>Durable</td>
+<td>消费者的名称</td>
+</tr>
+<tr>
+<td>FilterSubject</td>
+<td>当从一个有许多subject或通配符的流中消费时，只选择一个特定的传入subject，支持通配符。</td>
+</tr>
+<tr>
+<td>MaxDeliver</td>
+<td>特定消息的最大传递次数，以此来避免使你的系统陷入崩溃的毒药类型的消息（如陷入死循环）</td>
+</tr>
+<tr>
+<td>OptStartSeq</td>
+<td>当第一次从流中消费消息时，从集合中的这个特定的消息开始读取</td>
+</tr>
+<tr>
+<td>ReplayPolicy</td>
+<td>消息的发送方式，支持<code>ReplayInstant</code>和<code>ReplayOriginal</code></td>
+</tr>
+<tr>
+<td>SampleFrequency</td>
+<td>确认的消息应占观测样本的百分比，区间为0-100</td>
+</tr>
+<tr>
+<td>OptStartTime</td>
+<td>当第一次从流中消费消息时，从这个时间或之后的消息开始</td>
+</tr>
+<tr>
+<td>RateLimit</td>
+<td>以bit&#x2F;s为单位的消息传递速率</td>
+</tr>
+<tr>
+<td>MaxAckPending</td>
+<td>未确认的最大消息数量，一旦达到此限制，将暂停发送消息</td>
+</tr>
+</tbody></table>
+<h3 id="消费者起始位置-Consumer-Starting-Position"><a href="#消费者起始位置-Consumer-Starting-Position" class="headerlink" title="消费者起始位置(Consumer Starting Position)"></a>消费者起始位置(Consumer Starting Position)</h3><p>配置消费者时可以决定从什么位置开始消费，NATS支持以下<code>DeliverPolicy</code>:</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>all</code></td>
+<td>传递所有可用的消息</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>传递最近的消息，类似于<code>tail -n 1 -f</code></td>
+</tr>
+<tr>
+<td><code>new</code></td>
+<td>只传递在订阅之后新到来的消息</td>
+</tr>
+<tr>
+<td><code>by_start_time</code></td>
+<td>传递特定时间之后的消息，需要设置<code>OptStartTime</code></td>
+</tr>
+<tr>
+<td><code>by_start_sequence</code></td>
+<td>从流中特定序号的消息开始，需要设置<code>OptStartSeq</code></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/4ed12469/">https://wangyyovo.github.io/posts/4ed12469/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/a3a9c33/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/nats/285494672816019cfb027039031cb3ca.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Nats JetStream</div></div></a></div><div class="next-post pull-right"><a href="/posts/b7af1a36/"><img class="next-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/microservice/791c1e6fcd278681840f1a9a88278d35.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Go服务监控搭建入门</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ENATS-JetStream%E6%9E%84%E5%BB%BA%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%B3%BB%E7%BB%9F"><span class="toc-text">基于NATS JetStream构建分布式事件流系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8ENATS%E6%9C%8D%E5%8A%A1%E5%88%B0NATS-JetStream%E6%9D%A5%E7%90%86%E8%A7%A3NATS%E7%94%9F%E6%80%81"><span class="toc-text">从NATS服务到NATS JetStream来理解NATS生态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#NATS-JetStream"><span class="toc-text">NATS JetStream</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E4%BB%B6%E6%B5%81%E7%B3%BB%E7%BB%9F%EF%BC%9F"><span class="toc-text">什么是分布式事件流系统？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">设计目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E8%BF%90%E8%A1%8CNATS%E6%9C%8D%E5%8A%A1%E5%92%8CNATS-JetStream%E6%9C%8D%E7%9A%84%E7%AE%80%E5%8D%95%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-text">用于运行NATS服务和NATS JetStream服的简单可执行文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%95%E4%B8%AANATS%E5%AE%A2%E6%88%B7%E7%AB%AFSDK%E4%B8%8ENATS%E5%92%8CNATS-JetStream%E5%B7%A5%E4%BD%9C"><span class="toc-text">使用单个NATS客户端SDK与NATS和NATS JetStream工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JetStream%E6%B5%81"><span class="toc-text">JetStream流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%BC%8F%E6%B6%88%E8%B4%B9%E8%80%85%E5%92%8C%E6%8E%A8%E5%BC%8F%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-text">拉式消费者和推式消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6%E8%AE%A2%E9%98%85"><span class="toc-text">通配符订阅</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NATS%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-text">NATS命令行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AANATS-JetStream%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">一个NATS JetStream的示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%E6%BC%94%E7%A4%BA"><span class="toc-text">例子演示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8JetStreamContext%E5%88%9B%E5%BB%BA%E6%B5%81"><span class="toc-text">使用JetStreamContext创建流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%8F%91%E5%B8%83%E6%B5%81"><span class="toc-text">事件发布流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%8B%89%E7%9A%84%E6%B6%88%E8%B4%B9%E8%80%85%E5%AF%B9%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8F%8D%E5%BA%94"><span class="toc-text">基于拉的消费者对事件的反应</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EPush%E7%9A%84%E6%B6%88%E8%B4%B9%E8%80%85%E4%BD%BF%E7%94%A8%E9%80%9A%E9%85%8D%E7%AC%A6%E8%AE%A2%E9%98%85"><span class="toc-text">基于Push的消费者使用通配符订阅</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%B1%9E%E6%80%A7"><span class="toc-text">常见属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#StreamConfig%E5%85%A8%E5%B1%9E%E6%80%A7"><span class="toc-text">StreamConfig全属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E7%95%99%E7%AD%96%E7%95%A5-Retention"><span class="toc-text">保留策略(Retention)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%A8%A1%E5%9E%8B-Acknowledgement-Models"><span class="toc-text">确认模型(Acknowledgement Models)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConsumerConfig%E7%9A%84%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%88%97%E8%A1%A8"><span class="toc-text">ConsumerConfig的配置属性列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE-Consumer-Starting-Position"><span class="toc-text">消费者起始位置(Consumer Starting Position)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

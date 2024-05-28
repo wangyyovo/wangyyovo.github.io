@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>链式调用 | Go设计模式实战 | Blank</title><meta name="keywords" content="pattern"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="链式调用 | Go设计模式实战 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。 http:&#x2F;&#x2F;tigerb.cn&#x2F;  前言本系列主要分享，如何在我们的真实业务场景中使用设计模式。 本系列文章主要采用如下结构：  什么是「XX设计模式」？ 什么真实业务场景可以使用「XX设计模式」？ 怎么用「XX设计模式」？  本文主要介绍「责任链模式」如何在真实业务场景中使用。 什么是「责">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链式调用 | Go设计模式实战">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/c59af70a/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="链式调用 | Go设计模式实战 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。 http:&#x2F;&#x2F;tigerb.cn&#x2F;  前言本系列主要分享，如何在我们的真实业务场景中使用设计模式。 本系列文章主要采用如下结构：  什么是「XX设计模式」？ 什么真实业务场景可以使用「XX设计模式」？ 怎么用「XX设计模式」？  本文主要介绍「责任链模式」如何在真实业务场景中使用。 什么是「责">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/7cafd87912a3c76e474bd165477c95b2.jpg">
+<meta property="article:published_time" content="2021-05-16T06:30:57.000Z">
+<meta property="article:modified_time" content="2021-05-16T06:30:57.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="pattern">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/7cafd87912a3c76e474bd165477c95b2.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/c59af70a/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '链式调用 | Go设计模式实战',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-16 14:30:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/7cafd87912a3c76e474bd165477c95b2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">链式调用 | Go设计模式实战</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-16T06:30:57.000Z" title="发表于 2021-05-16 14:30:57">2021-05-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-16T06:30:57.000Z" title="更新于 2021-05-16 14:30:57">2021-05-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/easy-tips/">easy-tips</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/easy-tips/pattern/">pattern</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="链式调用 | Go设计模式实战"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="链式调用-Go设计模式实战"><a href="#链式调用-Go设计模式实战" class="headerlink" title="链式调用 | Go设计模式实战"></a>链式调用 | Go设计模式实战</h1><blockquote>
+<p>嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。</p>
+<p><a target="_blank" rel="noopener" href="http://tigerb.cn/">http://tigerb.cn/</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本系列主要分享，如何在我们的真实业务场景中使用设计模式。</p>
+<p>本系列文章主要采用如下结构：</p>
+<ul>
+<li>什么是「XX设计模式」？</li>
+<li>什么真实业务场景可以使用「XX设计模式」？</li>
+<li>怎么用「XX设计模式」？</li>
+</ul>
+<p>本文主要介绍「责任链模式」如何在真实业务场景中使用。</p>
+<h2 id="什么是「责任链模式」？"><a href="#什么是「责任链模式」？" class="headerlink" title="什么是「责任链模式」？"></a>什么是「责任链模式」？</h2><blockquote>
+<p>首先把一系列业务按职责划分成不同的对象，接着把这一系列对象构成一个链，然后在这一系列对象中传递请求对象，直到被处理为止。</p>
+</blockquote>
+<p>我们从概念中可以看出责任链模式有如下明显的优势：</p>
+<ul>
+<li>按职责划分：解耦</li>
+<li>对象链：逻辑清晰</li>
+</ul>
+<p>但是有一点<code>直到被处理为止</code>，代表最终只会被一个实际的业务对象执行了实际的业务逻辑，明显适用的场景并不多。但是除此之外，上面的那两点优势还是让人很心动，所以，为了适用于目前所接触的绝大多数业务场景，把概念进行了简单的调整，如下：</p>
+<blockquote>
+<p>首先把一系列业务按职责划分成不同的对象，接着把这一系列对象构成一个链，直到“链路结束”为止。(结束：异常结束，或链路执行完毕结束)</p>
+</blockquote>
+<p>简单的<code>直到“链路结束”为止</code>转换可以让我们把责任链模式适用于任何复杂的业务场景。</p>
+<p>以下是责任链模式的具体优势：</p>
+<ul>
+<li>直观：一眼可观的业务调用过程</li>
+<li>无限扩展：可无限扩展的业务逻辑</li>
+<li>高度封装：复杂业务代码依然高度封装</li>
+<li>极易被修改：复杂业务代码下修改代码只需要专注对应的业务类(结构体)文件即可，以及极易被调整的业务执行顺序</li>
+</ul>
+<h2 id="什么真实业务场景可以用「责任链模式-改-」？"><a href="#什么真实业务场景可以用「责任链模式-改-」？" class="headerlink" title="什么真实业务场景可以用「责任链模式(改)」？"></a>什么真实业务场景可以用「责任链模式(改)」？</h2><p>满足如下要求的场景:</p>
+<blockquote>
+<p>业务极度复杂的所有场景</p>
+</blockquote>
+<p>任何杂乱无章的业务代码，都可以使用责任链模式(改)去重构、设计。</p>
+<blockquote>
+<p>我们有哪些真实业务场景可以用「责任链模式(改)」呢？</p>
+</blockquote>
+<p>比如电商系统的下单接口，随着业务发展不断的发展，该接口会充斥着各种各样的业务逻辑。</p>
+<h2 id="怎么用「责任链模式-改-」？"><a href="#怎么用「责任链模式-改-」？" class="headerlink" title="怎么用「责任链模式(改)」？"></a>怎么用「责任链模式(改)」？</h2><p>关于怎么用，完全可以生搬硬套我总结的使用设计模式的四个步骤：</p>
+<ul>
+<li>业务梳理</li>
+<li>业务流程图</li>
+<li>代码建模</li>
+<li>代码demo</li>
+</ul>
+<h4 id="业务梳理"><a href="#业务梳理" class="headerlink" title="业务梳理"></a>业务梳理</h4><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>逻辑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>参数校验</td>
+</tr>
+<tr>
+<td>2</td>
+<td>获取地址信息</td>
+</tr>
+<tr>
+<td>3</td>
+<td>地址信息校验</td>
+</tr>
+<tr>
+<td>4</td>
+<td>获取购物车数据</td>
+</tr>
+<tr>
+<td>5</td>
+<td>获取商品库存信息</td>
+</tr>
+<tr>
+<td>6</td>
+<td>商品库存校验</td>
+</tr>
+<tr>
+<td>7</td>
+<td>获取优惠信息</td>
+</tr>
+<tr>
+<td>8</td>
+<td>获取运费信息</td>
+</tr>
+<tr>
+<td>9</td>
+<td>使用优惠信息</td>
+</tr>
+<tr>
+<td>10</td>
+<td>扣库存</td>
+</tr>
+<tr>
+<td>11</td>
+<td>清理购物车</td>
+</tr>
+<tr>
+<td>12</td>
+<td>写订单表</td>
+</tr>
+<tr>
+<td>13</td>
+<td>写订单商品表</td>
+</tr>
+<tr>
+<td>14</td>
+<td>写订单优惠信息表</td>
+</tr>
+<tr>
+<td>XX</td>
+<td>以及未来会增加的逻辑...</td>
+</tr>
+</tbody></table>
+<p>业务的不断发展变化的：</p>
+<ul>
+<li>新的业务被增加</li>
+<li>旧的业务被修改</li>
+</ul>
+<p>比如增加的新的业务，订金预售：</p>
+<ul>
+<li>在<code>4|获取购物车数据</code>后，需要校验商品参见订金预售活动的有效性等逻辑。</li>
+<li>等等逻辑</li>
+</ul>
+<blockquote>
+<p>注：流程不一定完全准确</p>
+</blockquote>
+<h4 id="业务流程图"><a href="#业务流程图" class="headerlink" title="业务流程图"></a>业务流程图</h4><p>我们通过梳理的文本业务流程得到了如下的业务流程图：</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/easy-tips/20200327205310.png"></p>
+<h4 id="代码建模"><a href="#代码建模" class="headerlink" title="代码建模"></a>代码建模</h4><p>责任链模式主要类主要包含如下特性：</p>
+<ul>
+<li>成员属性<ul>
+<li><code>nextHandler</code>: 下一个等待被调用的对象实例 -&gt; 稳定不变的</li>
+</ul>
+</li>
+<li>成员方法<ul>
+<li><code>SetNext</code>: 把下一个对象的实例绑定到当前对象的<code>nextHandler</code>属性上 -&gt; 稳定不变的</li>
+<li><code>Do</code>: 当前对象业务逻辑入口 -&gt; 变化的</li>
+<li><code>Run</code>: 调用当前对象的<code>Do</code>，<code>nextHandler</code>不为空则调用<code>nextHandler.Do</code> -&gt; 稳定不变的</li>
+</ul>
+</li>
+</ul>
+<p>套用到下单接口伪代码实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">一个父类(抽象类)：</span><br><span class="line"></span><br><span class="line">- 成员属性</span><br><span class="line">	+ `nextHandler`: 下一个等待被调用的对象实例</span><br><span class="line">- 成员方法</span><br><span class="line">	+ 实体方法`SetNext`: 实现把下一个对象的实例绑定到当前对象的`nextHandler`属性上</span><br><span class="line">	+ 抽象方法`Do`: 当前对象业务逻辑入口</span><br><span class="line">	+ 实体方法`Run`: 实现调用当前对象的`Do`，`nextHandler`不为空则调用`nextHandler.Do`</span><br><span class="line"></span><br><span class="line">子类一(参数校验)</span><br><span class="line">- 继承抽象类父类</span><br><span class="line">- 实现抽象方法`Do`：具体的参数校验逻辑</span><br><span class="line"></span><br><span class="line">子类二(获取地址信息)</span><br><span class="line">- 继承抽象类父类</span><br><span class="line">- 实现抽象方法`Do`：具体获取地址信息的逻辑</span><br><span class="line"></span><br><span class="line">子类三(获取购物车数据)</span><br><span class="line">- 继承抽象类父类</span><br><span class="line">- 实现抽象方法`Do`：具体获取购物车数据的逻辑</span><br><span class="line"></span><br><span class="line">......略</span><br><span class="line"></span><br><span class="line">子类X(以及未来会增加的逻辑)</span><br><span class="line">- 继承抽象类父类</span><br><span class="line">- 实现抽象方法`Do`：以及未来会增加的逻辑</span><br></pre></td></tr></table></figure>
+
+<p>但是，golang里没有的继承的概念，要复用成员属性<code>nextHandler</code>、成员方法<code>SetNext</code>、成员方法<code>Run</code>怎么办呢？我们使用<code>合成复用</code>的特性变相达到“继承复用”的目的，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">一个接口(interface)：</span><br><span class="line"></span><br><span class="line">- 抽象方法`SetNext`: 待实现把下一个对象的实例绑定到当前对象的`nextHandler`属性上</span><br><span class="line">- 抽象方法`Do`: 待实现当前对象业务逻辑入口</span><br><span class="line">- 抽象方法`Run`: 待实现调用当前对象的`Do`，`nextHandler`不为空则调用`nextHandler.Do`</span><br><span class="line"></span><br><span class="line">一个基础结构体：</span><br><span class="line"></span><br><span class="line">- 成员属性</span><br><span class="line">	+ `nextHandler`: 下一个等待被调用的对象实例</span><br><span class="line">- 成员方法</span><br><span class="line">	+ 实体方法`SetNext`: 实现把下一个对象的实例绑定到当前对象的`nextHandler`属性上</span><br><span class="line">	+ 实体方法`Run`: 实现调用当前对象的`Do`，`nextHandler`不为空则调用`nextHandler.Do`</span><br><span class="line"></span><br><span class="line">子类一(参数校验)</span><br><span class="line">- 合成复用基础结构体</span><br><span class="line">- 实现抽象方法`Do`：具体的参数校验逻辑</span><br><span class="line"></span><br><span class="line">子类二(获取地址信息)</span><br><span class="line">- 合成复用基础结构体</span><br><span class="line">- 实现抽象方法`Do`：具体获取地址信息的逻辑</span><br><span class="line"></span><br><span class="line">子类三(获取购物车数据)</span><br><span class="line">- 合成复用基础结构体</span><br><span class="line">- 实现抽象方法`Do`：具体获取购物车数据的逻辑</span><br><span class="line"></span><br><span class="line">......略</span><br><span class="line"></span><br><span class="line">子类X(以及未来会增加的逻辑)</span><br><span class="line">- 合成复用基础结构体</span><br><span class="line">- 实现抽象方法`Do`：以及未来会增加的逻辑</span><br></pre></td></tr></table></figure>
+
+<p>同时得到了我们的UML图：</p>
+<p><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/blog/easy-tips/20200328220913.jpg"></p>
+<h4 id="代码demo"><a href="#代码demo" class="headerlink" title="代码demo"></a>代码demo</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">//---------------</span></span><br><span class="line"><span class="comment">//我的代码没有`else`系列</span></span><br><span class="line"><span class="comment">//责任链模式</span></span><br><span class="line"><span class="comment">//@auhtor TIGERB&lt;https://github.com/TIGERB&gt;</span></span><br><span class="line"><span class="comment">//---------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;runtime&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Context Context</span></span><br><span class="line"><span class="keyword">type</span> Context <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handler 处理</span></span><br><span class="line"><span class="keyword">type</span> Handler <span class="keyword">interface</span> &#123;</span><br><span class="line">	<span class="comment">// 自身的业务</span></span><br><span class="line">	Do(c *Context) <span class="type">error</span></span><br><span class="line">	<span class="comment">// 设置下一个对象</span></span><br><span class="line">	SetNext(h Handler) Handler</span><br><span class="line">	<span class="comment">// 执行</span></span><br><span class="line">	Run(c *Context) <span class="type">error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Next 抽象出来的 可被合成复用的结构体</span></span><br><span class="line"><span class="keyword">type</span> Next <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 下一个对象</span></span><br><span class="line">	nextHandler Handler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetNext 实现好的 可被复用的SetNext方法</span></span><br><span class="line"><span class="comment">// 返回值是下一个对象 方便写成链式代码优雅</span></span><br><span class="line"><span class="comment">// 例如 nullHandler.SetNext(argumentsHandler).SetNext(signHandler).SetNext(frequentHandler)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Next)</span></span> SetNext(h Handler) Handler &#123;</span><br><span class="line">	n.nextHandler = h</span><br><span class="line">	<span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Run 执行</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Next)</span></span> Run(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 由于go无继承的概念 这里无法执行当前handler的Do</span></span><br><span class="line">	<span class="comment">// n.Do(c)</span></span><br><span class="line">	<span class="keyword">if</span> n.nextHandler != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 合成复用下的变种</span></span><br><span class="line">		<span class="comment">// 执行下一个handler的Do</span></span><br><span class="line">		<span class="keyword">if</span> err = (n.nextHandler).Do(c); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 执行下一个handler的Run</span></span><br><span class="line">		<span class="keyword">return</span> (n.nextHandler).Run(c)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NullHandler 空Handler</span></span><br><span class="line"><span class="comment">// 由于go无继承的概念 作为链式调用的第一个载体 设置实际的下一个对象</span></span><br><span class="line"><span class="keyword">type</span> NullHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next的`nextHandler`成员属性、`SetNext`成员方法、`Run`成员方法</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 空Handler的Do</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NullHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 空Handler 这里什么也不做 只是载体 do nothing...</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ArgumentsHandler 校验参数的handler</span></span><br><span class="line"><span class="keyword">type</span> ArgumentsHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *ArgumentsHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;校验参数成功...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AddressInfoHandler 地址信息handler</span></span><br><span class="line"><span class="keyword">type</span> AddressInfoHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *AddressInfoHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;获取地址信息...&quot;</span>)</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;地址信息校验...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CartInfoHandler 获取购物车数据handler</span></span><br><span class="line"><span class="keyword">type</span> CartInfoHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *CartInfoHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;获取购物车数据...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// StockInfoHandler 商品库存handler</span></span><br><span class="line"><span class="keyword">type</span> StockInfoHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *StockInfoHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;获取商品库存信息...&quot;</span>)</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;商品库存校验...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PromotionInfoHandler 获取优惠信息handler</span></span><br><span class="line"><span class="keyword">type</span> PromotionInfoHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *PromotionInfoHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;获取优惠信息...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ShipmentInfoHandler 获取运费信息handler</span></span><br><span class="line"><span class="keyword">type</span> ShipmentInfoHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *ShipmentInfoHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;获取运费信息...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PromotionUseHandler 使用优惠信息handler</span></span><br><span class="line"><span class="keyword">type</span> PromotionUseHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *PromotionUseHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用优惠信息...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// StockSubtractHandler 库存操作handler</span></span><br><span class="line"><span class="keyword">type</span> StockSubtractHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *StockSubtractHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;扣库存...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CartDelHandler 清理购物车handler</span></span><br><span class="line"><span class="keyword">type</span> CartDelHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *CartDelHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;清理购物车...&quot;</span>)</span><br><span class="line">	<span class="comment">// err = fmt.Errorf(&quot;CartDelHandler.Do fail&quot;)</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DBTableOrderHandler 写订单表handler</span></span><br><span class="line"><span class="keyword">type</span> DBTableOrderHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *DBTableOrderHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;写订单表...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DBTableOrderSkusHandler 写订单商品表handler</span></span><br><span class="line"><span class="keyword">type</span> DBTableOrderSkusHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *DBTableOrderSkusHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;写订单商品表...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DBTableOrderPromotionsHandler 写订单优惠信息表handler</span></span><br><span class="line"><span class="keyword">type</span> DBTableOrderPromotionsHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *DBTableOrderPromotionsHandler)</span></span> Do(c *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;写订单优惠信息表...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取正在运行的函数名</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">runFuncName</span><span class="params">()</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	pc := <span class="built_in">make</span>([]<span class="type">uintptr</span>, <span class="number">1</span>)</span><br><span class="line">	runtime.Callers(<span class="number">2</span>, pc)</span><br><span class="line">	f := runtime.FuncForPC(pc[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">return</span> f.Name()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 初始化空handler</span></span><br><span class="line">	nullHandler := &amp;NullHandler&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 链式调用 代码是不是很优雅</span></span><br><span class="line">	<span class="comment">// 很明显的链 逻辑关系一览无余</span></span><br><span class="line">	nullHandler.SetNext(&amp;ArgumentsHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;AddressInfoHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;CartInfoHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;StockInfoHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;PromotionInfoHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;ShipmentInfoHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;PromotionUseHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;StockSubtractHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;CartDelHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;DBTableOrderHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;DBTableOrderSkusHandler&#123;&#125;).</span><br><span class="line">		SetNext(&amp;DBTableOrderPromotionsHandler&#123;&#125;)</span><br><span class="line">		<span class="comment">//无限扩展代码...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 开始执行业务</span></span><br><span class="line">	<span class="keyword">if</span> err := nullHandler.Run(&amp;Context&#123;&#125;); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 异常</span></span><br><span class="line">		fmt.Println(<span class="string">&quot;Fail | Error:&quot;</span> + err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 成功</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;Success&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Running] go run &quot;../easy-tips/go/src/patterns/responsibility/responsibility-order-submit.go&quot;</span><br><span class="line">main.(*ArgumentsHandler).Do 校验参数成功...</span><br><span class="line">main.(*AddressInfoHandler).Do 获取地址信息...</span><br><span class="line">main.(*AddressInfoHandler).Do 地址信息校验...</span><br><span class="line">main.(*CartInfoHandler).Do 获取购物车数据...</span><br><span class="line">main.(*StockInfoHandler).Do 获取商品库存信息...</span><br><span class="line">main.(*StockInfoHandler).Do 商品库存校验...</span><br><span class="line">main.(*PromotionInfoHandler).Do 获取优惠信息...</span><br><span class="line">main.(*ShipmentInfoHandler).Do 获取运费信息...</span><br><span class="line">main.(*PromotionUseHandler).Do 使用优惠信息...</span><br><span class="line">main.(*StockSubtractHandler).Do 扣库存...</span><br><span class="line">main.(*CartDelHandler).Do 清理购物车...</span><br><span class="line">main.(*DBTableOrderHandler).Do 写订单表...</span><br><span class="line">main.(*DBTableOrderSkusHandler).Do 写订单商品表...</span><br><span class="line">main.(*DBTableOrderPromotionsHandler).Do 写订单优惠信息表...</span><br><span class="line">Success</span><br></pre></td></tr></table></figure>
+
+<h4 id="demo2"><a href="#demo2" class="headerlink" title="demo2"></a>demo2</h4><p>middlewares</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">//---------------</span></span><br><span class="line"><span class="comment">//我的代码没有`else`系列</span></span><br><span class="line"><span class="comment">//责任链模式</span></span><br><span class="line"><span class="comment">//@auhtor TIGERB&lt;https://github.com/TIGERB&gt;</span></span><br><span class="line"><span class="comment">//---------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Context Context</span></span><br><span class="line"><span class="keyword">type</span> Context <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Handler 处理</span></span><br><span class="line"><span class="keyword">type</span> Handler <span class="keyword">interface</span> &#123;</span><br><span class="line">	<span class="comment">// 自身的业务</span></span><br><span class="line">	Do(c *Context) <span class="type">error</span></span><br><span class="line">	<span class="comment">// 设置下一个对象</span></span><br><span class="line">	SetNext(h Handler) Handler</span><br><span class="line">	<span class="comment">// 执行</span></span><br><span class="line">	Run(c *Context)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Next 抽象出来的 可被合成复用的结构体</span></span><br><span class="line"><span class="keyword">type</span> Next <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 下一个对象</span></span><br><span class="line">	nextHandler Handler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetNext 实现好的 可被复用的SetNext方法</span></span><br><span class="line"><span class="comment">// 返回值是下一个对象 方便写成链式代码优雅</span></span><br><span class="line"><span class="comment">// 例如 nullHandler.SetNext(argumentsHandler).SetNext(signHandler).SetNext(frequentHandler)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Next)</span></span> SetNext(h Handler) Handler &#123;</span><br><span class="line">	n.nextHandler = h</span><br><span class="line">	<span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Run 执行</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Next)</span></span> Run(c *Context) &#123;</span><br><span class="line">	<span class="comment">// 由于go无继承的概念 这里无法执行当前handler的Do</span></span><br><span class="line">	<span class="comment">// n.Do(c)</span></span><br><span class="line">	<span class="keyword">if</span> n.nextHandler != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 合成复用下的变种</span></span><br><span class="line">		<span class="comment">// 执行下一个handler的Do</span></span><br><span class="line">		(n.nextHandler).Do(c)</span><br><span class="line">		<span class="comment">// 执行下一个handler的Run</span></span><br><span class="line">		(n.nextHandler).Run(c)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NullHandler 空Handler</span></span><br><span class="line"><span class="comment">// 由于go无继承的概念 作为链式调用的第一个载体 设置实际的下一个对象</span></span><br><span class="line"><span class="keyword">type</span> NullHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next的`nextHandler`成员属性、`SetNext`成员方法、`Run`成员方法</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 空Handler的Do</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NullHandler)</span></span> Do(c *Context) <span class="type">error</span> &#123;</span><br><span class="line">	<span class="comment">// 空Handler 这里什么也不做 只是载体 do nothing...</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SignHandler 校验请求签名的handler</span></span><br><span class="line"><span class="keyword">type</span> SignHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验请求签名逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *SignHandler)</span></span> Do(c *Context) <span class="type">error</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;校验签名成功...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ArgumentsHandler 校验参数的handler</span></span><br><span class="line"><span class="keyword">type</span> ArgumentsHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Next</span></span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验参数的逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *ArgumentsHandler)</span></span> Do(c *Context) <span class="type">error</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;校验参数成功...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// FrequentHandler 校验请求频率的hanlder</span></span><br><span class="line"><span class="keyword">type</span> FrequentHandler <span class="keyword">struct</span> &#123;</span><br><span class="line">	Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 校验请求频率逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *FrequentHandler)</span></span> Do(c *Context) <span class="type">error</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;校验请求频率成功...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 初始化空handler</span></span><br><span class="line">	nullHandler := &amp;NullHandler&#123;&#125;</span><br><span class="line">	<span class="comment">// 初始化参数handler</span></span><br><span class="line">	argumentsHandler := &amp;ArgumentsHandler&#123;&#125;</span><br><span class="line">	<span class="comment">// 初始化签名handler</span></span><br><span class="line">	signHandler := &amp;SignHandler&#123;&#125;</span><br><span class="line">	<span class="comment">// 初始化频率handler</span></span><br><span class="line">	frequentHandler := &amp;FrequentHandler&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 链式调用 代码是不是很优雅</span></span><br><span class="line">	<span class="comment">// 很明显的链 逻辑关系一览无余</span></span><br><span class="line">	nullHandler.SetNext(argumentsHandler).SetNext(signHandler).SetNext(frequentHandler)</span><br><span class="line">	nullHandler.Run(&amp;Context&#123;&#125;)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">&quot;----------------------&quot;</span>)</span><br><span class="line"></span><br><span class="line">	middlewares := <span class="built_in">make</span>([]Handler, <span class="number">0</span>)</span><br><span class="line">	middlewares = <span class="built_in">append</span>(middlewares, nullHandler)</span><br><span class="line">	middlewares = <span class="built_in">append</span>(middlewares, argumentsHandler)</span><br><span class="line">	middlewares = <span class="built_in">append</span>(middlewares, signHandler)</span><br><span class="line">	middlewares = <span class="built_in">append</span>(middlewares, frequentHandler)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k, handler := <span class="keyword">range</span> middlewares &#123;</span><br><span class="line">		<span class="keyword">if</span> k == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		middlewares[k<span class="number">-1</span>].SetNext(handler)</span><br><span class="line">	&#125;</span><br><span class="line">	nullHandler.Run(&amp;Context&#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>最后总结下，「责任链模式(改)」抽象过程的核心是：</p>
+<ul>
+<li>按职责划分：业务逻辑归类，收敛的过程。</li>
+<li>对象链：把收敛之后的业务对象构成对象链，依次被执行。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">特别说明：</span><br><span class="line">1. 我的代码没有`else`，只是一个在代码合理设计的情况下自然而然无限接近或者达到的结果，并不是一个硬性的目标，务必较真。</span><br><span class="line">2. 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。</span><br></pre></td></tr></table></figure>
+
+<h1 id="文章列表"><a href="#文章列表" class="headerlink" title="文章列表"></a>文章列表</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/template">代码模板 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/responsibility">链式调用 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/composite">代码组件 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/observer">订阅通知 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/strategy">客户决策 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns/state">状态变换 | Go设计模式实战</a></li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/patterns">Go设计模式实战系列 更多文章 点击此处查看</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/c59af70a/">https://wangyyovo.github.io/posts/c59af70a/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/pattern/">pattern</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/7cafd87912a3c76e474bd165477c95b2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/b38a76c0/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/993a5094eb951ac5b1359eb6cb1f9f17.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">代码组件 | Go设计模式实战</div></div></a></div><div class="next-post pull-right"><a href="/posts/e7bf6f31/"><img class="next-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/80bf7b06eeb7aad62e8a1ed8b282fdec.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">代码模板 | Go设计模式实战</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/54deb0e2/" title="图解设计模式"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/cb75d9300b44131b6a0afbab792f48cd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">图解设计模式</div></div></a></div><div><a href="/posts/88f78d2f/" title="面向对象的设计过程"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/6d6dbbdcfa655b5d965f52adb35443ae.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">面向对象的设计过程</div></div></a></div><div><a href="/posts/bfac6395/" title="工厂模式 | Go设计模式实战"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/296967057d2691c0c7ed919799d75416.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">工厂模式 | Go设计模式实战</div></div></a></div><div><a href="/posts/11cee220/" title="并发组件 | Go设计模式实战"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/9f7060cd83cb8a5c5c9c199ae048d1f0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">并发组件 | Go设计模式实战</div></div></a></div><div><a href="/posts/20ee7783/" title="状态变换 | Go设计模式实战"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/c6e2f99790804a5b20eb687085df1fb6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">状态变换 | Go设计模式实战</div></div></a></div><div><a href="/posts/aee36e49/" title="客户决策 | Go设计模式实战"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/e671379624222b1599a340edb6dbce75.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-16</div><div class="title">客户决策 | Go设计模式实战</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8-Go%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E6%88%98"><span class="toc-text">链式调用 | Go设计模式实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F%E3%80%8D%EF%BC%9F"><span class="toc-text">什么是「责任链模式」？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E7%9C%9F%E5%AE%9E%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E5%8F%AF%E4%BB%A5%E7%94%A8%E3%80%8C%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F-%E6%94%B9-%E3%80%8D%EF%BC%9F"><span class="toc-text">什么真实业务场景可以用「责任链模式(改)」？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%94%A8%E3%80%8C%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F-%E6%94%B9-%E3%80%8D%EF%BC%9F"><span class="toc-text">怎么用「责任链模式(改)」？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%A2%B3%E7%90%86"><span class="toc-text">业务梳理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">业务流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%BB%BA%E6%A8%A1"><span class="toc-text">代码建模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81demo"><span class="toc-text">代码demo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#demo2"><span class="toc-text">demo2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">文章列表</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

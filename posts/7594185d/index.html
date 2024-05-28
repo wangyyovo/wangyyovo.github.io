@@ -1,0 +1,991 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>即时性能分析工具Pyroscope | Blank</title><meta name="keywords" content="debug"><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="即时性能分析工具Pyroscope https:&#x2F;&#x2F;pyroscope.io&#x2F;docs&#x2F;installing-pyroscope-overview&#x2F; https:&#x2F;&#x2F;pyroscope.io&#x2F;blog&#x2F;  目前支持的语言  Go Python eBPF Java Ruby Rust PHP .NET NodeJS  分析go性能安装Pyroscope serverwindow暂不支持server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="即时性能分析工具Pyroscope">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/7594185d/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="即时性能分析工具Pyroscope https:&#x2F;&#x2F;pyroscope.io&#x2F;docs&#x2F;installing-pyroscope-overview&#x2F; https:&#x2F;&#x2F;pyroscope.io&#x2F;blog&#x2F;  目前支持的语言  Go Python eBPF Java Ruby Rust PHP .NET NodeJS  分析go性能安装Pyroscope serverwindow暂不支持server">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg">
+<meta property="article:published_time" content="2022-06-12T08:07:36.000Z">
+<meta property="article:modified_time" content="2022-06-12T08:07:36.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="debug">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg"><link rel="shortcut icon" href="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/7594185d/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '即时性能分析工具Pyroscope',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-12 16:07:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blank</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-coffee"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置-1</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li><li><a class="site-page child" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li><li><a class="site-page child" href="/posts/507c070f/"><span> 📑 Aplayer教程</span></a></li><li><a class="site-page child" href="/posts/2df239ce/"><span> 📑 標籤外掛</span></a></li><li><a class="site-page child" href="/posts/b37b5fe3/"><span> 📑 自定義代碼配色</span></a></li><li><a class="site-page child" href="/posts/ea33ab97/"><span> 📑 自定義側邊欄</span></a></li><li><a class="site-page child" href="/posts/89757140/"><span> 📑 Markdown</span></a></li><li><a class="site-page child" href="/posts/9db656e5/"><span> 📑 代码高亮测试</span></a></li><li><a class="site-page child" href="/posts/c9711c19/"><span> 📑 當設置top_img為false時</span></a></li><li><a class="site-page child" href="/posts/39b121ef/"><span> 📑 Hexo內置標籤外掛</span></a></li><li><a class="site-page child" href="/posts/7670b080/"><span> 📑 Butterfly 美化/優化/魔改 教程合集</span></a></li><li><a class="site-page child" href="/posts/913b2502/"><span> 📑 没有封面</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">即时性能分析工具Pyroscope</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-12T08:07:36.000Z" title="更新于 2022-06-12 16:07:36">2022-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/golang/">golang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>25分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="即时性能分析工具Pyroscope"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="\assets\js\APlayer.min.js"> </script><h1 id="即时性能分析工具Pyroscope"><a href="#即时性能分析工具Pyroscope" class="headerlink" title="即时性能分析工具Pyroscope"></a>即时性能分析工具Pyroscope</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/installing-pyroscope-overview/">https://pyroscope.io/docs/installing-pyroscope-overview/</a></p>
+<p><a target="_blank" rel="noopener" href="https://pyroscope.io/blog/">https://pyroscope.io/blog/</a></p>
+</blockquote>
+<p>目前支持的语言</p>
+<ul>
+<li>Go</li>
+<li>Python</li>
+<li>eBPF</li>
+<li>Java</li>
+<li>Ruby</li>
+<li>Rust</li>
+<li>PHP</li>
+<li>.NET</li>
+<li>NodeJS</li>
+</ul>
+<h2 id="分析go性能"><a href="#分析go性能" class="headerlink" title="分析go性能"></a>分析go性能</h2><h3 id="安装Pyroscope-server"><a href="#安装Pyroscope-server" class="headerlink" title="安装Pyroscope server"></a>安装Pyroscope server</h3><p>window暂不支持server</p>
+<h4 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h4><blockquote>
+<p>window管理员运行终端</p>
+</blockquote>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/pyroscope-io/pyroscope/releases">https://github.com/pyroscope-io/pyroscope/releases</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./pyroscope server --api-bind-addr=:5002 --adhoc-data-path /root/.local/share/pyroscope</span><br></pre></td></tr></table></figure>
+
+<h4 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p 4040:4040 pyroscope/pyroscope:latest server</span><br></pre></td></tr></table></figure>
+
+<p>docker-compose</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">pyroscope:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;pyroscope/pyroscope:latest&quot;</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;4040:4040&quot;</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;server&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="在Go里面安装agent"><a href="#在Go里面安装agent" class="headerlink" title="在Go里面安装agent"></a>在Go里面安装agent</h3><p><a target="_blank" rel="noopener" href="https://github.com/pyroscope-io/pyroscope/tree/main/examples/golang-push">https://github.com/pyroscope-io/pyroscope/tree/main/examples/golang-push</a></p>
+<h4 id="push模式"><a href="#push模式" class="headerlink" title="push模式"></a>push模式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;runtime/pprof&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/pyroscope-io/client/pyroscope&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//go:noinline</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">work</span><span class="params">(n <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// revive:disable:empty-block this is fine because this is a example app, not real production code</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// revive:enable:empty-block</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fastFunction</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">	pyroscope.TagWrapper(c, pyroscope.Labels(<span class="string">&quot;function&quot;</span>, <span class="string">&quot;fast&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		work(<span class="number">20000000</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">slowFunction</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// standard pprof.Do wrappers work as well</span></span><br><span class="line">	pprof.Do(c, pprof.Labels(<span class="string">&quot;function&quot;</span>, <span class="string">&quot;slow&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		work(<span class="number">80000000</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	serverAddress := os.Getenv(<span class="string">&quot;PYROSCOPE_SERVER_ADDRESS&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> serverAddress == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		serverAddress = <span class="string">&quot;http://localhost:4040&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	pyroscope.Start(pyroscope.Config&#123;</span><br><span class="line">		ApplicationName: <span class="string">&quot;test.golang.app&quot;</span>,</span><br><span class="line">		ServerAddress:   serverAddress,</span><br><span class="line">		Logger:          pyroscope.StandardLogger,</span><br><span class="line">	&#125;)</span><br><span class="line">	pyroscope.TagWrapper(context.Background(), pyroscope.Labels(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			fastFunction(c)</span><br><span class="line">			slowFunction(c)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run test.go</span><br></pre></td></tr></table></figure>
+
+<h4 id="pull模式"><a href="#pull模式" class="headerlink" title="pull模式"></a>pull模式</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/golang-pull-mode/">https://pyroscope.io/docs/golang-pull-mode/</a></p>
+<p><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/server-configuration/">https://pyroscope.io/docs/server-configuration/</a></p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;math&quot;</span></span><br><span class="line">	<span class="string">&quot;math/rand&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	_ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPrime</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">2</span>); i &lt;= n; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> i*i &gt; n &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> n%i == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">slow</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">int64</span> &#123;</span><br><span class="line">	sum := <span class="type">int64</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">1</span>); i &lt;= n; i++ &#123;</span><br><span class="line">		sum += i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fast</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">int64</span> &#123;</span><br><span class="line">	sum := <span class="type">int64</span>(<span class="number">0</span>)</span><br><span class="line">	root := <span class="type">int64</span>(math.Sqrt(<span class="type">float64</span>(n)))</span><br><span class="line">	<span class="keyword">for</span> a := <span class="type">int64</span>(<span class="number">1</span>); a &lt;= n; a += root &#123;</span><br><span class="line">		b := a + root - <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> n &lt; b &#123;</span><br><span class="line">			b = n</span><br><span class="line">		&#125;</span><br><span class="line">		sum += (b - a + <span class="number">1</span>) * (a + b) / <span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">	base := rand.Int63n(<span class="number">1000000</span>) + <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">0</span>); i &lt; <span class="number">40000000</span>; i++ &#123;</span><br><span class="line">		n := rand.Int63n(<span class="number">10000</span>) + <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> isPrime(base + i) &#123;</span><br><span class="line">			slow(n)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fast(n)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		log.Println(http.ListenAndServe(<span class="string">&quot;:6060&quot;</span>, <span class="literal">nil</span>))</span><br><span class="line">	&#125;()</span><br><span class="line">	run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>&#x2F;etc&#x2F;pyroscope&#x2F;server.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">mkdir</span> <span class="string">-p</span> <span class="string">/etc/pyroscope/</span></span><br><span class="line"><span class="string">vi</span> <span class="string">/etc/pyroscope/server.yml</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># A list of scrape configurations.</span></span><br><span class="line"><span class="attr">scrape-configs:</span></span><br><span class="line">  <span class="comment"># The job name assigned to scraped profiles by default.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job-name:</span> <span class="string">pyroscope</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The list of profiles to be scraped from the targets.</span></span><br><span class="line">    <span class="attr">enabled-profiles:</span> [<span class="string">cpu</span>, <span class="string">mem</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># List of labeled statically configured targets for this job.</span></span><br><span class="line">    <span class="attr">static-configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">application:</span> <span class="string">test.app.www</span></span><br><span class="line">        <span class="attr">spy-name:</span> <span class="string">gospy</span></span><br><span class="line">        <span class="attr">targets:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:6060</span></span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">env:</span> <span class="string">dev</span></span><br></pre></td></tr></table></figure>
+
+<p>启动go程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run test.go</span><br></pre></td></tr></table></figure>
+
+<p>启动pyroscope server</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./pyroscope server --api-bind-addr=:5002 --adhoc-data-path /root/.local/share/pyroscope --config /etc/pyroscope/server.yml</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="dhoc-profiling-使用方式"><a href="#dhoc-profiling-使用方式" class="headerlink" title="dhoc profiling 使用方式"></a>dhoc profiling 使用方式</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/pyroscope-io/pyroscope/tree/main/examples/adhoc">https://github.com/pyroscope-io/pyroscope/tree/main/examples/adhoc</a></p>
+</blockquote>
+<p>不需要Pyroscope server，在本地进行性能测试产生数据。</p>
+<h4 id="push模式-1"><a href="#push模式-1" class="headerlink" title="push模式"></a>push模式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;runtime/pprof&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/pyroscope-io/client/pyroscope&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//go:noinline</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">work</span><span class="params">(n <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// revive:disable:empty-block this is fine because this is a example app, not real production code</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// revive:enable:empty-block</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fastFunction</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">	pyroscope.TagWrapper(c, pyroscope.Labels(<span class="string">&quot;function&quot;</span>, <span class="string">&quot;fast&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		work(<span class="number">20000000</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">slowFunction</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// standard pprof.Do wrappers work as well</span></span><br><span class="line">	pprof.Do(c, pprof.Labels(<span class="string">&quot;function&quot;</span>, <span class="string">&quot;slow&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		work(<span class="number">80000000</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	serverAddress := os.Getenv(<span class="string">&quot;PYROSCOPE_SERVER_ADDRESS&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> serverAddress == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">		serverAddress = <span class="string">&quot;http://localhost:4040&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	pyroscope.Start(pyroscope.Config&#123;</span><br><span class="line">		ApplicationName: <span class="string">&quot;test.golang.app&quot;</span>,</span><br><span class="line">		ServerAddress:   serverAddress,</span><br><span class="line">		Logger:          pyroscope.StandardLogger,</span><br><span class="line">	&#125;)</span><br><span class="line">	pyroscope.TagWrapper(context.Background(), pyroscope.Labels(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>), <span class="function"><span class="keyword">func</span><span class="params">(c context.Context)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			fastFunction(c)</span><br><span class="line">			slowFunction(c)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pyroscope adhoc --data-path ./ --output-format pprof --push go run test.go</span></span><br><span class="line">pyroscope adhoc --output-format pprof --data-path ./ go run test.go</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="pull模式-1"><a href="#pull模式-1" class="headerlink" title="pull模式"></a>pull模式</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;math&quot;</span></span><br><span class="line">	<span class="string">&quot;math/rand&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	_ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPrime</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">2</span>); i &lt;= n; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> i*i &gt; n &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> n%i == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">slow</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">int64</span> &#123;</span><br><span class="line">	sum := <span class="type">int64</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">1</span>); i &lt;= n; i++ &#123;</span><br><span class="line">		sum += i</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fast</span><span class="params">(n <span class="type">int64</span>)</span></span> <span class="type">int64</span> &#123;</span><br><span class="line">	sum := <span class="type">int64</span>(<span class="number">0</span>)</span><br><span class="line">	root := <span class="type">int64</span>(math.Sqrt(<span class="type">float64</span>(n)))</span><br><span class="line">	<span class="keyword">for</span> a := <span class="type">int64</span>(<span class="number">1</span>); a &lt;= n; a += root &#123;</span><br><span class="line">		b := a + root - <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> n &lt; b &#123;</span><br><span class="line">			b = n</span><br><span class="line">		&#125;</span><br><span class="line">		sum += (b - a + <span class="number">1</span>) * (a + b) / <span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">	base := rand.Int63n(<span class="number">1000000</span>) + <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="type">int64</span>(<span class="number">0</span>); i &lt; <span class="number">40000000</span>; i++ &#123;</span><br><span class="line">		n := rand.Int63n(<span class="number">10000</span>) + <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> isPrime(base + i) &#123;</span><br><span class="line">			slow(n)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fast(n)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		log.Println(http.ListenAndServe(<span class="string">&quot;:6060&quot;</span>, <span class="literal">nil</span>))</span><br><span class="line">	&#125;()</span><br><span class="line">	run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">go run test.go &amp;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pyroscope adhoc --url localhost:6060</span></span><br><span class="line">pyroscope adhoc  --application-name wangyangyang.app --data-path ./ --output-format pprof --url localhost:6060 go run test.go</span><br></pre></td></tr></table></figure>
+
+
+
+<p>执行完毕后，你可以看到在同一层目录多了很多 HTML 文件，而这些文件就可以分享给其他同事参考，先相当方便来当作团队协作的工具。</p>
+<p> 除了点开 HTML 文件之外，大家也可以用 pyroscope CLI 在本机端打开 Server 服务，此時 Server服务回去读取家目录內 <code>~/.pyroscope/pyroscope/</code> 位置，里面存放每次生成的 Profiling JSON 格式数据。打开<code>http://localhost:4040</code>可以查看</p>
+<h2 id="Server配置"><a href="#Server配置" class="headerlink" title="Server配置"></a>Server配置</h2><p>有 3 种方式来配置 pyroscope。配置优先级按以下顺序评估： </p>
+<ul>
+<li><p>命令行参数 </p>
+</li>
+<li><p>环境变量 </p>
+</li>
+<li><p>配置文件</p>
+</li>
+</ul>
+<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>这是配置 pyroscope 的最简单方法。对于命令行参数和默认值的列表，运行<code>pyroscope server -help</code>：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>adhoc-data-path</td>
+<td>OS dependent</td>
+<td>pyroscope 存储临时配置文件的目录</td>
+</tr>
+<tr>
+<td>analytics-opt-out</td>
+<td>false</td>
+<td>禁用分析</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>info</td>
+<td>日志级别: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>badger-log-level</td>
+<td>error</td>
+<td>日志级别: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>storage-path</td>
+<td>&#x2F;var&#x2F;lib&#x2F;pyroscope</td>
+<td>pyroscope 存储分析数据的目录</td>
+</tr>
+<tr>
+<td>api-bind-addr</td>
+<td>:4040</td>
+<td>用于数据采集和 Web UI 访问端口</td>
+</tr>
+<tr>
+<td>base-url</td>
+<td></td>
+<td>当服务器位于具有不同路径的反向代理后面时的基本 URL</td>
+</tr>
+<tr>
+<td>cache-evict-threshold</td>
+<td>0.25</td>
+<td>Percentage of memory at which cache evictions start.</td>
+</tr>
+<tr>
+<td>cache-evict-volume</td>
+<td>0.33</td>
+<td>Percentage of cache that is evicted per eviction run.</td>
+</tr>
+<tr>
+<td>badger-no-truncate</td>
+<td>false</td>
+<td>Indicates whether value log files should be truncated to delete corrupt data, if any.</td>
+</tr>
+<tr>
+<td>disable-pprof-endpoint</td>
+<td>false</td>
+<td>Disables &#x2F;debug&#x2F;pprof route.</td>
+</tr>
+<tr>
+<td>max-nodes-serialization</td>
+<td>2048</td>
+<td>Max number of nodes used when saving profiles to disk.</td>
+</tr>
+<tr>
+<td>max-nodes-render</td>
+<td>8192</td>
+<td>Max number of nodes used to display data on the frontend.</td>
+</tr>
+<tr>
+<td>no-adhoc-ui</td>
+<td>false</td>
+<td>Disable the adhoc UI interface.</td>
+</tr>
+<tr>
+<td>hide-applications</td>
+<td>[]</td>
+<td>Please don&#39;t use, this will soon be deprecated.</td>
+</tr>
+<tr>
+<td>retention</td>
+<td>0s</td>
+<td>Sets the maximum amount of time the profiling data is stored for. Data before this threshold is deleted. Disabled by default.</td>
+</tr>
+<tr>
+<td>exemplars-retention</td>
+<td>0s</td>
+<td>Sets the maximum amount of time profile exemplars are stored for. Data before this threshold is deleted. Disabled by default.</td>
+</tr>
+<tr>
+<td>retention-levels</td>
+<td>{}</td>
+<td>Specifies how long the profiling data is stored per aggregation level. Disabled by default.</td>
+</tr>
+<tr>
+<td>tls-certificate-file</td>
+<td>&quot;&quot;</td>
+<td>Location of TLS Certificate file (.crt).</td>
+</tr>
+<tr>
+<td>tls-key-file</td>
+<td>&quot;&quot;</td>
+<td>Location of TLS Private key file (.key).</td>
+</tr>
+</tbody></table>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量必须具有<code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_API_BIND_ADDR=:9999 pyroscope server</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>配置文件以 YAML 格式存储。默认配置文件路径位于：</p>
+<ul>
+<li><code>/etc/pyroscope/server.yml</code> on Linux</li>
+<li><code>/usr/local/etc/pyroscope/server.yml</code> on Intel macOS</li>
+<li><code>/opt/homebrew/etc/pyroscope/server.yml</code> on M1 macOS</li>
+</ul>
+<p><strong>windows不支持server</strong></p>
+<p>您可以使用 <code>-config &lt;path&gt;</code> 参数覆盖默认配置文件，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyroscope server -config my-custom-config.yml</span><br></pre></td></tr></table></figure>
+
+<p>或环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_CONFIG=/tmp/pyroscope-server.yml pyroscope server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># Disables analytics.</span></span><br><span class="line"><span class="attr">analytics-opt-out:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log level: debug|info|warn|error.</span></span><br><span class="line"><span class="attr">log-level:</span> <span class="string">&quot;info&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log level: debug|info|warn|error.</span></span><br><span class="line"><span class="attr">badger-log-level:</span> <span class="string">&quot;error&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Directory where pyroscope stores profiling data.</span></span><br><span class="line"><span class="attr">storage-path:</span> <span class="string">&quot;/var/lib/pyroscope&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Port for the HTTP server used for data ingestion and web UI.</span></span><br><span class="line"><span class="attr">api-bind-addr:</span> <span class="string">&quot;:4040&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Base URL for when the server is behind a reverse proxy with a different path.</span></span><br><span class="line"><span class="attr">base-url:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Percentage of memory at which cache evictions start.</span></span><br><span class="line"><span class="attr">cache-evict-threshold:</span> <span class="string">&quot;0.25&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Percentage of cache that is evicted per eviction run.</span></span><br><span class="line"><span class="attr">cache-evict-volume:</span> <span class="string">&quot;0.33&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Database configuration. By default, Pyroscope Server uses embedded sqlite3 database.</span></span><br><span class="line"><span class="attr">database:</span></span><br><span class="line">  <span class="comment"># Indicates the database type. Supported DB engines: sqlite3.</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">&quot;sqlite3&quot;</span></span><br><span class="line">  <span class="comment"># Database connection string. Specific to the engine.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">&quot;/var/lib/pyroscope/pyroscope.db&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Indicates whether value log files should be truncated to delete corrupt data, if any.</span></span><br><span class="line"><span class="attr">badger-no-truncate:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Disables /debug/pprof route.</span></span><br><span class="line"><span class="attr">disable-pprof-endpoint:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Max number of nodes used when saving profiles to disk.</span></span><br><span class="line"><span class="attr">max-nodes-serialization:</span> <span class="string">&quot;2048&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Max number of nodes used to display data on the frontend.</span></span><br><span class="line"><span class="attr">max-nodes-render:</span> <span class="string">&quot;8192&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Please don&#x27;t use, this will soon be deprecated.</span></span><br><span class="line"><span class="attr">hide-applications:</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># Sets the maximum amount of time the profiling data is stored for. Data before this threshold is deleted. Disabled by default.</span></span><br><span class="line"><span class="attr">retention:</span> <span class="string">&quot;0s&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sets the maximum amount of time profile exemplars are stored for. Data before this threshold is deleted. Disabled by default.</span></span><br><span class="line"><span class="attr">exemplars-retention:</span> <span class="string">&quot;0s&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specifies how long the profiling data is stored per aggregation level. Disabled by default.</span></span><br><span class="line"><span class="attr">retention-levels:</span> &#123;&#125;</span><br><span class="line"><span class="comment"># 0: 720h  # 30 days</span></span><br><span class="line"><span class="comment"># 1: 2160h # 90 days</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Metrics export rules.</span></span><br><span class="line"><span class="attr">metrics-export-rules:</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># A list of scrape configurations.</span></span><br><span class="line"><span class="attr">scrape-configs:</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># Location of TLS Certificate file (.crt).</span></span><br><span class="line"><span class="attr">tls-certificate-file:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Location of TLS Private key file (.key).</span></span><br><span class="line"><span class="attr">tls-key-file:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Agent配置"><a href="#Agent配置" class="headerlink" title="Agent配置"></a>Agent配置</h2><p>有 3 种配置 Pyroscope 代理的方法。配置优先级按以下顺序评估： </p>
+<ul>
+<li><p>命令行参数</p>
+</li>
+<li><p>环境变量 </p>
+</li>
+<li><p>配置文件</p>
+</li>
+</ul>
+<p>根据 Pyroscope 代理的运行方式，配置选项会有所不同</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/agent-configuration-exec/"><code>pyroscope exec</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/agent-configuration-connect/"><code>pyroscope connect</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/agent-configuration-agent/"><code>pyroscope agent</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://pyroscope.io/docs/agent-configuration-adhoc/"><code>pyroscope adhoc</code></a></li>
+</ul>
+<h3 id="命令行参数-1"><a href="#命令行参数-1" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>配置文件以 YAML 格式存储。您可以使用 <code>-config &lt;path&gt;</code> 参数指定配置文件位置，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyroscope agent -config /tmp/my-config.yml &#123;args&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者一个环境变量，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_CONFIG=/tmp/my-config.yml pyroscope exec &#123;args&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="环境变量-1"><a href="#环境变量-1" class="headerlink" title="环境变量"></a>环境变量</h3><p>环境变量必须具有 <code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_API_BIND_ADDR=:9999 pyroscope server</span><br></pre></td></tr></table></figure>
+
+<h3 id="pyroscope-exec"><a href="#pyroscope-exec" class="headerlink" title="pyroscope exec"></a>pyroscope exec</h3><p>该命令生成一个新进程并附加配置的探查器。一旦 pyroscope exec 退出，子进程也会退出，反之亦然。此命令可用于测试、作为 docker 入口点或作为 systemd 服务单元命令。</p>
+<h4 id="命令行参数-2"><a href="#命令行参数-2" class="headerlink" title="命令行参数"></a>命令行参数</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spy-name</td>
+<td>auto</td>
+<td>Name of the profiler you want to use. Supported ones are: pyspy, rbspy, phpspy, dotnetspy, ebpfspy.</td>
+</tr>
+<tr>
+<td>application-name</td>
+<td></td>
+<td>Application name used when uploading profiling data.</td>
+</tr>
+<tr>
+<td>sample-rate</td>
+<td>100</td>
+<td>Sample rate for the profiler in Hz. 100 means reading 100 times per second.</td>
+</tr>
+<tr>
+<td>detect-subprocesses</td>
+<td>true</td>
+<td>Makes pyroscope keep track of and profile subprocesses of the main process.</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>info</td>
+<td>Log level: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>server-address</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040</a></td>
+<td>Address of the pyroscope server.</td>
+</tr>
+<tr>
+<td>auth-token</td>
+<td></td>
+<td>Authorization token used to upload profiling data.</td>
+</tr>
+<tr>
+<td>upstream-threads</td>
+<td>4</td>
+<td>Number of upload threads.</td>
+</tr>
+<tr>
+<td>upstream-request-timeout</td>
+<td>10s</td>
+<td>Profile upload timeout.</td>
+</tr>
+<tr>
+<td>no-logging</td>
+<td>false</td>
+<td>Disables logging from pyroscope.</td>
+</tr>
+<tr>
+<td>no-root-drop</td>
+<td>false</td>
+<td>Disables permissions drop when ran under root. use this one if you want to run your command as root.</td>
+</tr>
+<tr>
+<td>user-name</td>
+<td></td>
+<td>Starts process under specified user name.</td>
+</tr>
+<tr>
+<td>group-name</td>
+<td></td>
+<td>Starts process under specified group name.</td>
+</tr>
+<tr>
+<td>pyspy-blocking</td>
+<td>false</td>
+<td>Enables blocking mode for pyspy.</td>
+</tr>
+<tr>
+<td>rbspy-blocking</td>
+<td>false</td>
+<td>Enables blocking mode for rbspy.</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>{}</td>
+<td>Tag in key&#x3D;value form. The flag may be specified multiple times.</td>
+</tr>
+</tbody></table>
+<div class="note modern"><p><strong>application-name</strong>可以在规范中描述中指定。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app&#123;env=staging,region=us-west-1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>明确指定的标签优先。</p>
+</div>
+
+
+
+<h4 id="环境变量-2"><a href="#环境变量-2" class="headerlink" title="环境变量"></a>环境变量</h4><p>环境变量必须具有 <code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_APPLICATION_NAME=my.awesome.app</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="pyroscope-connect"><a href="#pyroscope-connect" class="headerlink" title="pyroscope connect"></a>pyroscope connect</h3><p>该命令将探查器附加到 PID 或操作系统指定的已运行进程（例如，ebpf 集成）。</p>
+<h4 id="命令行参数-3"><a href="#命令行参数-3" class="headerlink" title="命令行参数"></a>命令行参数</h4><p>参数与 <code>pyroscope exec</code> 相同，只是 <code>pyroscope connect</code> 需要指定 <code>-pid</code>：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spy-name</td>
+<td>auto</td>
+<td>Name of the profiler you want to use. Supported ones are: pyspy, rbspy, phpspy, dotnetspy, ebpfspy.</td>
+</tr>
+<tr>
+<td>application-name</td>
+<td></td>
+<td>Application name used when uploading profiling data.</td>
+</tr>
+<tr>
+<td>sample-rate</td>
+<td>100</td>
+<td>Sample rate for the profiler in Hz. 100 means reading 100 times per second.</td>
+</tr>
+<tr>
+<td>detect-subprocesses</td>
+<td>true</td>
+<td>Makes pyroscope keep track of and profile subprocesses of the main process.</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>info</td>
+<td>Log level: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>server-address</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040</a></td>
+<td>Address of the pyroscope server.</td>
+</tr>
+<tr>
+<td>auth-token</td>
+<td></td>
+<td>Authorization token used to upload profiling data.</td>
+</tr>
+<tr>
+<td>upstream-threads</td>
+<td>4</td>
+<td>Number of upload threads.</td>
+</tr>
+<tr>
+<td>upstream-request-timeout</td>
+<td>10s</td>
+<td>Profile upload timeout.</td>
+</tr>
+<tr>
+<td>no-logging</td>
+<td>false</td>
+<td>Disables logging from pyroscope.</td>
+</tr>
+<tr>
+<td>pid</td>
+<td>0</td>
+<td>PID of the process you want to profile. Pass -1 to profile the whole system (only supported by ebpfspy).</td>
+</tr>
+<tr>
+<td>pyspy-blocking</td>
+<td>false</td>
+<td>Enables blocking mode for pyspy.</td>
+</tr>
+<tr>
+<td>rbspy-blocking</td>
+<td>false</td>
+<td>Enables blocking mode for rbspy.</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>{}</td>
+<td>Tag in key&#x3D;value form. The flag may be specified multiple times.</td>
+</tr>
+</tbody></table>
+<div class="note modern"><p><strong>application-name</strong>可以在规范中描述中指定。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app&#123;env=staging,region=us-west-1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>明确指定的标签优先。</p>
+</div>
+
+
+
+<h4 id="环境变量-3"><a href="#环境变量-3" class="headerlink" title="环境变量"></a>环境变量</h4><p>环境变量必须具有 <code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_APPLICATION_NAME=my.awesome.app</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="pyroscope-agent"><a href="#pyroscope-agent" class="headerlink" title="pyroscope agent"></a>pyroscope agent</h3><p>该命令持续跟踪配置的目标并将分析器附加到它们。此命令主要应该在诸如 systemd 或 Windows 服务控制管理器之类的服务管理器的上下文中运行，或者在事先不知道目标应用程序时运行。</p>
+<div class="note modern"><p>pyroscope agent命令仅在 Windows 上受支持。</p>
+</div>
+
+<h4 id="命令行参数-4"><a href="#命令行参数-4" class="headerlink" title="命令行参数"></a>命令行参数</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>log-file-path</td>
+<td></td>
+<td>Log file path.</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>info</td>
+<td>Log level: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>no-logging</td>
+<td>false</td>
+<td>Disables logging from pyroscope.</td>
+</tr>
+<tr>
+<td>server-address</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040</a></td>
+<td>Address of the pyroscope server.</td>
+</tr>
+<tr>
+<td>auth-token</td>
+<td></td>
+<td>Authorization token used to upload profiling data.</td>
+</tr>
+<tr>
+<td>upstream-threads</td>
+<td>4</td>
+<td>Number of upload threads.</td>
+</tr>
+<tr>
+<td>upstream-request-timeout</td>
+<td>10s</td>
+<td>Profile upload timeout.</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>{}</td>
+<td>Tag key value pairs.</td>
+</tr>
+</tbody></table>
+<h4 id="配置文件选项"><a href="#配置文件选项" class="headerlink" title="配置文件选项"></a>配置文件选项</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># Log file path.</span></span><br><span class="line"><span class="attr">log-file-path:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log level: debug|info|warn|error.</span></span><br><span class="line"><span class="attr">log-level:</span> <span class="string">&quot;info&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Disables logging from pyroscope.</span></span><br><span class="line"><span class="attr">no-logging:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Address of the pyroscope server.</span></span><br><span class="line"><span class="attr">server-address:</span> <span class="string">&quot;http://localhost:4040&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Authorization token used to upload profiling data.</span></span><br><span class="line"><span class="attr">auth-token:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of upload threads.</span></span><br><span class="line"><span class="attr">upstream-threads:</span> <span class="string">&quot;4&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Profile upload timeout.</span></span><br><span class="line"><span class="attr">upstream-request-timeout:</span> <span class="string">&quot;10s&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List of targets to be profiled.</span></span><br><span class="line"><span class="attr">targets:</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># Tag key value pairs.</span></span><br><span class="line"><span class="attr">tags:</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>目标描述要分析的应用程序。目前唯一支持的类型是系统服务。 请注意，不能使用命令行参数的同时使用环境变量指定目标。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># Name of the system service to be profiled.</span></span><br><span class="line"><span class="attr">service-name:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Name of the profiler you want to use. Supported ones are: pyspy, rbspy, phpspy, dotnetspy, ebpfspy.</span></span><br><span class="line"><span class="attr">spy-name:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Application name used when uploading profiling data.</span></span><br><span class="line"><span class="attr">application-name:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sample rate for the profiler in Hz. 100 means reading 100 times per second.</span></span><br><span class="line"><span class="attr">sample-rate:</span> <span class="string">&quot;100&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Makes pyroscope keep track of and profile subprocesses of the main process.</span></span><br><span class="line"><span class="attr">detect-subprocesses:</span> <span class="string">&quot;true&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enables blocking mode for pyspy.</span></span><br><span class="line"><span class="attr">pyspy-blocking:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enables blocking mode for rbspy.</span></span><br><span class="line"><span class="attr">rbspy-blocking:</span> <span class="string">&quot;false&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div class="note modern"><p><strong>application-name</strong>可以在规范中描述中指定。例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app&#123;env=staging,region=us-west-1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>明确指定的标签优先。</p>
+</div>
+
+
+
+<h4 id="环境变量-4"><a href="#环境变量-4" class="headerlink" title="环境变量"></a>环境变量</h4><p>环境变量必须具有 <code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_APPLICATION_NAME=my.awesome.app</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>此示例显示了如何分析名称为 <code>MyService</code> 的系统服务：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">log-level:</span> <span class="string">&quot;debug&quot;</span></span><br><span class="line"><span class="attr">server-address:</span> <span class="string">http://pyroscope-server:4040</span></span><br><span class="line"><span class="attr">targets:</span></span><br><span class="line"> <span class="bullet">-</span> <span class="attr">application-name:</span> <span class="string">my.dotnet.svc</span></span><br><span class="line">   <span class="attr">spy-name:</span> <span class="string">dotnetspy</span></span><br><span class="line">   <span class="attr">service-name:</span> <span class="string">MyService</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="pyroscope-adhoc"><a href="#pyroscope-adhoc" class="headerlink" title="pyroscope adhoc"></a>pyroscope adhoc</h3><p>此命令将分析数据保存到文件中，而不是将其发送到服务器。它以两种方式生成这些文件：</p>
+<ul>
+<li>Pyroscope 默认以本机格式和数据目录存储分析数据。然后，这些配置文件可用于使用 pyroscope UI（“Adhoc Profiling”部分）进行分析，这需要一个正在运行的 pyroscope 服务器。可以使用 --no-json-output 禁用此输出。 </li>
+<li>Pyroscope 还以外部格式生成分析数据。根据生成的配置文件的数量，pyroscope 将在运行 pyroscope 的目录中生成文件或目录。当前支持的格式是独立的 HTML（然后可以共享或直接在浏览器中打开进行分析）、pprof 或折叠（最后两种可以共享并与 pyroscope UI 或其他工具一起使用）。标志 --output-format 用于指定此格式。</li>
+</ul>
+<p><code>pyroscope adhoc</code> 对于测试短期程序（脚本、基准等）很有用，它还可以轻松共享分析结果。 </p>
+<p>有多种方法可以收集分析数据（它支持所有代理模式），但并非所有方法都适用于所有语言。使用它的最佳方式取决于几个因素：语言支持什么，分析进程如何启动，以及分析进程如何提供分析数据。</p>
+<p>不同的支持方式是：</p>
+<ul>
+<li>exec: 这是 <code>pyroscope exec</code> 的 adhoc 版本，pyroscope 为分析的程序创建不同的进程，并使用 spy 直接收集分析数据。但它仅适用于<code>spy</code>可用的语言。当提供<code>spy</code>（使用--spy-name）或自动检测到spy时，这是默认设置。 </li>
+<li>connect: 这是 <code>pyroscope connec</code>t 的临时版本。它与 exec 类似，但它监视一个通过 --pid 标志指示的 arlaedy 正在运行的进程。 </li>
+<li>push: Pyroscope 为分析程序创建一个不同的进程，并启动一个带有采集数据端点的 HTTP 服务器。使用其 HTTP API 分析已经与 Pyroscope 集成的程序很有用。当没有检测到spy并且没有提供 --url 标志时，默认使用推送模式。它也可以用 --push 标志覆盖默认的执行模式。</li>
+<li>pull: 这是拉模式的临时版本，pyroscope 会定期连接到指定的 URL，通过 --url 尝试以任何支持的格式检索分析数据。参数是可选的，如果提供，它们用于在轮询 URL 之前启动新进程。</li>
+</ul>
+<h4 id="命令行参数-5"><a href="#命令行参数-5" class="headerlink" title="命令行参数"></a>命令行参数</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Adhoc type</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>analytics-opt-out</td>
+<td>false</td>
+<td>all</td>
+<td>Disables analytics.</td>
+</tr>
+<tr>
+<td>spy-name</td>
+<td>auto</td>
+<td>exec, connect</td>
+<td>Name of the profiler you want to use. Supported ones are: pyspy, rbspy, phpspy, dotnetspy, ebpfspy. Used in <code>exec</code> and <code>connect</code> modes.</td>
+</tr>
+<tr>
+<td>application-name</td>
+<td></td>
+<td>all</td>
+<td>Application name used when saving profiling data.</td>
+</tr>
+<tr>
+<td>sample-rate</td>
+<td>100</td>
+<td>exec, connect</td>
+<td>Sample rate for the profiler in Hz. 100 means reading 100 times per second.</td>
+</tr>
+<tr>
+<td>detect-subprocesses</td>
+<td>true</td>
+<td>exec, connect</td>
+<td>Makes pyroscope keep track of and profile subprocesses of the main process.</td>
+</tr>
+<tr>
+<td>log-level</td>
+<td>info</td>
+<td>all</td>
+<td>Log level: debug|info|warn|error.</td>
+</tr>
+<tr>
+<td>no-logging</td>
+<td>false</td>
+<td>all</td>
+<td>Disables logging from pyroscope.</td>
+</tr>
+<tr>
+<td>pid</td>
+<td>0</td>
+<td>connect</td>
+<td>PID of the process you want to profile. Pass -1 to profile the whole system (only supported by ebpfspy).</td>
+</tr>
+<tr>
+<td>pyspy-blocking</td>
+<td>false</td>
+<td>exec, connect</td>
+<td>Enables blocking mode for pyspy.</td>
+</tr>
+<tr>
+<td>rbspy-blocking</td>
+<td>false</td>
+<td>exec, connect</td>
+<td>Enables blocking mode for rbspy.</td>
+</tr>
+<tr>
+<td>push</td>
+<td>false</td>
+<td>push</td>
+<td>Use push mode, exposing an ingestion endpoint for the profiled program to use.</td>
+</tr>
+<tr>
+<td>url</td>
+<td></td>
+<td>pull</td>
+<td>URL to gather profiling data from.</td>
+</tr>
+<tr>
+<td>output-format</td>
+<td>json</td>
+<td>all</td>
+<td>Format to export profiling data, supported formats are: html, pprof, collapsed, none.</td>
+</tr>
+<tr>
+<td>no-json-output</td>
+<td>false</td>
+<td>all</td>
+<td>disables generating native JSON file(s) in pyroscope data directory.</td>
+</tr>
+<tr>
+<td>data-path</td>
+<td>OS dependent</td>
+<td>all</td>
+<td>Directory where pyroscope stores adhoc profiles.</td>
+</tr>
+<tr>
+<td>max-nodes-render</td>
+<td>8192</td>
+<td>all</td>
+<td>Max number of nodes used to display data on the frontend.</td>
+</tr>
+<tr>
+<td>max-nodes-serialization</td>
+<td>2048</td>
+<td>all</td>
+<td>Max number of nodes used when saving profiles to disk.</td>
+</tr>
+</tbody></table>
+<h4 id="环境变量-5"><a href="#环境变量-5" class="headerlink" title="环境变量"></a>环境变量</h4><p>环境变量必须具有 <code>PYROSCOPE_</code> 前缀并采用 <code>UPPER_SNAKE_CASE</code> 格式，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYROSCOPE_APPLICATION_NAME=my.awesome.app</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p><a target="_blank" rel="noopener" href="https://github.com/pyroscope-io/pyroscope/tree/main/examples/adhoc">adhoc examples</a> </p>
+<h2 id="admin配置"><a href="#admin配置" class="headerlink" title="admin配置"></a>admin配置</h2><h3 id="删除应用"><a href="#删除应用" class="headerlink" title="删除应用"></a>删除应用</h3><p>要删除应用程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pyroscope admin app delete <span class="variable">$APP_NAME</span></span></span><br></pre></td></tr></table></figure>
+
+<p>系统将要求您确认该应用名称：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">Are you sure you want to delete the app <span class="string">&#x27;myapp&#x27;</span>? This action can not be reversed.</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">Type <span class="string">&#x27;myapp&#x27;</span> to confirm (without quotes).</span></span><br><span class="line">myapp</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">Deleted app <span class="string">&#x27;myapp&#x27;</span>.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果您希望跳过该验证，可以使用 --force 标志：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pyroscope admin app delete myapp --force</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">Deleted app <span class="string">&#x27;myapp&#x27;</span>.</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，使用 30 分钟的超时。您可以通过传递<code> --timeout</code> 标志来覆盖该行为。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">pyroscope admin app delete myapp --force --<span class="built_in">timeout</span>=10s</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">Deleted app <span class="string">&#x27;myapp&#x27;</span>.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h3><p>在执行该操作时，数据库将被锁定以进行写入，这意味着可能会删除大量分析数据，具体取决于命令运行所需的时间（尽管我们尝试最小化它持有锁定的时间）。</p>
+<h2 id="FlameQL"><a href="#FlameQL" class="headerlink" title="FlameQL"></a>FlameQL</h2><p>本文档介绍了 FlameQL，这是一种 Pyroscope 查询语言，使用户能够探索分析数据。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p>Pyroscope 存储与应用程序关联的分析数据。一个应用程序可能有多种不同的配置文件类型，例如：cpu、alloc_space、inuse_space 等。通常，分析器报告通过程序采样收集的数据，因此每个样本描述一个程序调用堆栈，以及在一个位置，例如源文件&#x2F;行或函数名。</p>
+<p>每个样本也由元数据描述，允许用户查询和聚合收集的分析数据。在 pyroscope 中，我们使用标签为收集的样本设置任意键值。如果您熟悉 Prometheus，您可能会将其视为标签。标签是数据结构的可选部分；当涉及到查询时，它们变得非常有用。</p>
+<div class="note modern"><p>为确保最佳性能，建议将唯一标签值的数量保持在较低水平。特别是，请考虑避免使用标识符和请求范围的值。</p>
+</div>
+
+
+
+<p>给定一个应用程序名称和一个标签集，使用以下符号标识完全限定名称：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;application_name&gt;[&#123;[&lt;tag_key&gt;=&lt;tag_value&gt;[,&lt;tag_key&gt;=&lt;tag_value&gt;]]&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>例如，标记为区域 us-west-1 和 env staging 的 my-awesome-app 应用程序实例的 CPU 配置文件的完全限定名称采用以下形式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;env=staging,region=us-west-1&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="note modern"><p>摄取数据时，Pyroscope 代理会添加一个名称后缀来指定配置文件类型：<application_name>.<profile_type>。</p>
+</div>
+
+<p><strong>约束</strong></p>
+<p>标签键可能包含 ASCII 字母、数字和<code> _</code>。应用程序名称可能包含 ASCII 字母、数字、<code>_</code>、<code>-</code> 和 <code>.</code>.</p>
+<p><strong>保留的标签键</strong></p>
+<p>以下密钥保留供内部使用，不应使用：</p>
+<ul>
+<li><code>__name__</code></li>
+</ul>
+<h3 id="查询表达式语言"><a href="#查询表达式语言" class="headerlink" title="查询表达式语言"></a>查询表达式语言</h3><p>FlameQL 中的查询表示如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;application_name&gt;[&#123;[&lt;tag_matcher&gt;[,&lt;tag_matcher&gt;]]&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>在最简单的形式中，仅指定应用程序名称。例如，考虑最简单的查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app</span><br></pre></td></tr></table></figure>
+
+<p>这样的查询将返回 <code>my.awesome.app</code> 的所有实例的聚合数据。到目前为止，只有 <code>sum</code> 聚合可用 - 生成的配置文件将是所有找到的配置文件的合并</p>
+<p>可以通过在花括号 (<code>&#123;&#125;)</code> 中附加一个逗号分隔的标签匹配器列表来过滤要聚合的实例——标签匹配器是指定条件以根据相关标签包含或排除维度的表达式。</p>
+<p>支持的操作符：</p>
+<ul>
+<li><code>=</code> 必须完全等于提供的字符串</li>
+<li><code>=~</code> 必须正则表达式匹配提供的字符串</li>
+<li><code>!=</code> 不能等于提供的字符串</li>
+<li><code>!~</code> 不得与提供的字符串进行正则表达式匹配</li>
+</ul>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><p>无论标签如何，所有应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu</span><br></pre></td></tr></table></figure>
+
+<p>无论标签如何，所有应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>带有 env&#x3D;staging 标记的应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;env=&quot;staging&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>未使用 env&#x3D;staging 标记的应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;env!=&quot;staging&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 env&#x3D;staging AND region&#x3D;us-west-1 标记的应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;env=&quot;staging&quot;,region=&quot;us-west-1&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>未使用 env&#x3D;staging 标记且区域标记值等于 us-west-1 或 eu-west-1 的应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;env!=&quot;staging&quot;,region=~&quot;us-west-1|eu-west-1&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>带有以 us 开头且不包含 west 的标签区域的应用程序实例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my.awesome.app.cpu&#123;region=~&quot;us.*&quot;,region!~&quot;.*west.*&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/7594185d/">https://wangyyovo.github.io/posts/7594185d/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/debug/">debug</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/ShareJS/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/5faac006/"><img class="prev-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">在线编程IDE</div></div></a></div><div class="next-post pull-right"><a href="/posts/82a7aa7c/"><img class="next-cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">golang性能调试优化方法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/d797347b/" title="goland远程调试"><img class="cover" src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-30</div><div class="title">goland远程调试</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Blank</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">356</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">54</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangyyovo" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B3%E6%97%B6%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7Pyroscope"><span class="toc-text">即时性能分析工具Pyroscope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90go%E6%80%A7%E8%83%BD"><span class="toc-text">分析go性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Pyroscope-server"><span class="toc-text">安装Pyroscope server</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">二进制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Go%E9%87%8C%E9%9D%A2%E5%AE%89%E8%A3%85agent"><span class="toc-text">在Go里面安装agent</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#push%E6%A8%A1%E5%BC%8F"><span class="toc-text">push模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pull%E6%A8%A1%E5%BC%8F"><span class="toc-text">pull模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dhoc-profiling-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">dhoc profiling 使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#push%E6%A8%A1%E5%BC%8F-1"><span class="toc-text">push模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pull%E6%A8%A1%E5%BC%8F-1"><span class="toc-text">pull模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server%E9%85%8D%E7%BD%AE"><span class="toc-text">Server配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agent%E9%85%8D%E7%BD%AE"><span class="toc-text">Agent配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-1"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyroscope-exec"><span class="toc-text">pyroscope exec</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-2"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-2"><span class="toc-text">环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyroscope-connect"><span class="toc-text">pyroscope connect</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-3"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-3"><span class="toc-text">环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyroscope-agent"><span class="toc-text">pyroscope agent</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-4"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9"><span class="toc-text">配置文件选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-4"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pyroscope-adhoc"><span class="toc-text">pyroscope adhoc</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0-5"><span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-5"><span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#admin%E9%85%8D%E7%BD%AE"><span class="toc-text">admin配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%BA%94%E7%94%A8"><span class="toc-text">删除应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AD%A6%E5%91%8A"><span class="toc-text">警告</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FlameQL"><span class="toc-text">FlameQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">数据模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80"><span class="toc-text">查询表达式语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-text">示例</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/82a7aa7c/" title="golang性能调试优化方法"><img src="https://raw.githubusercontents.com/wangyyovo/CDN/master/cover/common/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="golang性能调试优化方法"/></a><div class="content"><a class="title" href="/posts/82a7aa7c/" title="golang性能调试优化方法">golang性能调试优化方法</a><time datetime="2022-06-12T03:00:36.000Z" title="发表于 2022-06-12 11:00:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Blank</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wangyyovo.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.js" type="module"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '49gEIIGN7uRbL6vHhieSpBzM-MdYXbMMI',
+      appKey: 'uqts0urLKwikYQ0fKmIkMHBE',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/MetingJS/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
