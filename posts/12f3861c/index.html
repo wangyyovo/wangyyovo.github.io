@@ -166,7 +166,7 @@
 </blockquote>
 <p>微服务架构，这个在几年前还算比较前卫的技术在如今遍地开花。得益于开源社区的支持，我们可以轻松地利用 Spring Cloud 以及 Docker 容器化快速搭建一个微服务架构的原型。不管是成熟的互联网公司、创业公司还是个人开发者，对于微服务架构的接纳程度都相当高，微服务架构的广泛应用也自然促进了技术本身更好的发展以及更多的实践。本文将结合项目实践，剖析在微服务的背景下，如何通过前后端分离的方式开发移动应用。</p>
 <p>对于微服务本身，我们可以参考 Martin Fowler 对 <a href="https://link.zhihu.com/?target=https://martinfowler.com/articles/microservices.html">Microservice</a> 的阐述。简单说来，微服务是一种架构风格。通过对特定业务领域的分析与建模，将复杂的应用分解成小而专一、耦合度低并且高度自治的一组服务。微服务中的每个服务都是很小的应用，这些应用服务相互独立并且可部署。微服务通过对复杂应用的拆分，达到简化应用的目的，而这些耦合度较低的服务则通过 API 形式进行通信，所以服务之间对外暴露的都是 API，不管是对资源的获取还是修改。</p>
-<p>微服务架构的这种理念，和前后端分离的理念不谋而合，前端应用控制自己所有的 UI 层面的逻辑，而数据层面则通过对微服务系统的 API 调用完成。以 JSP (Java Server Pages) 为代表的前后端交互方式也逐渐退出历史舞台。前后端分离的迅速发展也得益于前端 Web 框架 (Angular, React 等) 的不断涌现，单页面应用(Single Page Application)迅速成为了一种前端开发标准范式。加之移动互联网的发展，不管是 Mobile Native 开发方式，还是 React Native &#x2F; PhoneGap 之流代表的 Hybrid 应用开发方式，前后端分离让 Web 和移动应用成为了<strong>客户端。</strong>客户端只需要通过 API 进行资源的查询以及修改即可。</p>
+<p>微服务架构的这种理念，和前后端分离的理念不谋而合，前端应用控制自己所有的 UI 层面的逻辑，而数据层面则通过对微服务系统的 API 调用完成。以 JSP (Java Server Pages) 为代表的前后端交互方式也逐渐退出历史舞台。前后端分离的迅速发展也得益于前端 Web 框架 (Angular, React 等) 的不断涌现，单页面应用(Single Page Application)迅速成为了一种前端开发标准范式。加之移动互联网的发展，不管是 Mobile Native 开发方式，还是 React Native &#x2F; PhoneGap 之流代表的 Hybrid 应用开发方式，前后端分离让 Web 和移动应用成为了**客户端。**客户端只需要通过 API 进行资源的查询以及修改即可。</p>
 <h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a>GraphQL</h2><p>一种用于 API 的查询语言</p>
 <p>GraphQL 既是一种用于 API 的查询语言也是一个满足你数据查询的运行时。 GraphQL 对你的 API 中的数据提供了一套易于理解的完整描述，使得客户端能够准确地获得它需要的数据，而且没有任何冗余，也让 API 更容易地随着时间推移而演进，还能用于构建强大的开发者工具。</p>
 <h2 id="GraphQL优缺点"><a href="#GraphQL优缺点" class="headerlink" title="GraphQL优缺点"></a>GraphQL优缺点</h2><h3 id="GraphQL-的优点"><a href="#GraphQL-的优点" class="headerlink" title="GraphQL 的优点"></a>GraphQL 的优点</h3><p>接下来会列举在应用中使用 GraphQL 的主要优点。</p>
@@ -238,11 +238,11 @@
 
 <p>GraphQL 服务端能够通过添加 deprecationReason，自动将某个字段标注为弃用状态。并且基于 GraphQL 高度的可扩展性，如果不需要某个数据，那么只需要使用新的字段或者结构即可，老的弃用字段给老的客户端提供服务，所有新的客户端使用新的字段获取相关信息。并且考虑到所有的 graphql 请求，都是按照 POST <code>/graphql</code> 发送请求，所以在 GraphQL 中是无须进行版本化的。</p>
 <h3 id="GraphQL-和-REST"><a href="#GraphQL-和-REST" class="headerlink" title="GraphQL 和 REST"></a>GraphQL 和 REST</h3><p>对于 GraphQL 和 REST 之间的对比，主要有如下不同：</p>
-<p><strong>1. 数据获取：</strong>REST 缺乏可扩展性， GraphQL 能够按需获取。GraphQL API 调用时，payload 是可以扩展的;</p>
-<p><strong>2. API 调用：</strong>REST 针对每种资源的操作都是一个 endpoint, GraphQL 只需要一个 endpoint( &#x2F;graphql), 只是 post body 不一样;</p>
-<p><strong>3. 复杂数据请求：</strong>REST 对于嵌套的复杂数据需要多次调用，GraphQL 一次调用, 减少网络开销；</p>
-<p><strong>4. 错误码处理：</strong>REST 能够精确返回HTTP错误码，GraphQL 统一返回200，对错误信息进行包装；</p>
-<p><strong>5. 版本号：</strong>REST通过 v1&#x2F;v2 实现，GraphQL 通过 Schema 扩展实现；</p>
+<p>**1. 数据获取：**REST 缺乏可扩展性， GraphQL 能够按需获取。GraphQL API 调用时，payload 是可以扩展的;</p>
+<p>**2. API 调用：**REST 针对每种资源的操作都是一个 endpoint, GraphQL 只需要一个 endpoint( &#x2F;graphql), 只是 post body 不一样;</p>
+<p>**3. 复杂数据请求：**REST 对于嵌套的复杂数据需要多次调用，GraphQL 一次调用, 减少网络开销；</p>
+<p>**4. 错误码处理：**REST 能够精确返回HTTP错误码，GraphQL 统一返回200，对错误信息进行包装；</p>
+<p>**5. 版本号：**REST通过 v1&#x2F;v2 实现，GraphQL 通过 Schema 扩展实现；</p>
 <h2 id="微服务-GraphQL-BFF-实践"><a href="#微服务-GraphQL-BFF-实践" class="headerlink" title="微服务 + GraphQL + BFF 实践"></a>微服务 + GraphQL + BFF 实践</h2><p>在微服务下基于 GraphQL 构建 BFF，我们在项目中已经开始了相关的实践。在我们项目对应的业务场景下，微服务后台有近 10 个微服务，客户端包括针对不同角色的4个 App 以及一个 Web 端。对于每种类型的 App，都有一个 BFF 与之对应。每种 BFF 只服务于这个 App。BFF 解析到客户端请求之后，会通过 BFF 端的服务发现，去对应的微服务后台通过 CQRS 的方式进行数据查询或修改。</p>
 <h3 id="1-BFF-端技术栈"><a href="#1-BFF-端技术栈" class="headerlink" title="1. BFF 端技术栈"></a>1. BFF 端技术栈</h3><p><img src="https://cdn.jsdelivr.net/gh/wangyyovo/CDN@master/blog/microserive/bff6.jpg" alt="img"></p>
 <p>我们使用 GraphQL-express 框架构建项目的 BFF 端，然后通过 Docker 进行部署。BFF 和微服务后台之间，还是通过 registrator 和 Consul 进行服务注册和发现。</p>
