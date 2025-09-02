@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go命令 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="go 1.12  1.go build编译包和依赖用法:go build [-o output] [-i] [build flags] [packages]  -o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c  -i 安装相应的包，编译+go install  -a 更新全部已经是最新的包的，但是对标准包不适用  -n 把需要执行的编译命令打印">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Go命令 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="go 1.12  1.go build编译包和依赖用法:go build [-o output] [-i] [build flags] [packages]  -o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c -i 安装相应的包，编译+go install -a 更新全部已经是最新的包的，但是对标准包不适用 -n 把需要执行的编译命令打印出来，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go命令">
 <meta property="og:url" content="https://wangyyovo.github.io/posts/61252b9/">
 <meta property="og:site_name" content="Blank">
-<meta property="og:description" content="go 1.12  1.go build编译包和依赖用法:go build [-o output] [-i] [build flags] [packages]  -o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c  -i 安装相应的包，编译+go install  -a 更新全部已经是最新的包的，但是对标准包不适用  -n 把需要执行的编译命令打印">
+<meta property="og:description" content="go 1.12  1.go build编译包和依赖用法:go build [-o output] [-i] [build flags] [packages]  -o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c -i 安装相应的包，编译+go install -a 更新全部已经是最新的包的，但是对标准包不适用 -n 把需要执行的编译命令打印出来，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/wangyyovo/CDN@master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg">
 <meta property="article:published_time" content="2019-09-27T12:55:36.000Z">
@@ -164,69 +164,40 @@
 </blockquote>
 <h2 id="1-go-build"><a href="#1-go-build" class="headerlink" title="1.go build"></a>1.go build</h2><p>编译包和依赖<br>用法:<code>go build [-o output] [-i] [build flags] [packages]</code></p>
 <ul>
-<li><p>-o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c</p>
-</li>
-<li><p>-i 安装相应的包，编译+go install</p>
-</li>
-<li><p>-a 更新全部已经是最新的包的，但是对标准包不适用</p>
-</li>
-<li><p>-n 把需要执行的编译命令打印出来，但是不执行</p>
-</li>
-<li><p>-p n 指定可以并行可运行的编译数目，默认是CPU数目</p>
-</li>
-<li><p>-race 开启编译的时候自动检测数据竞争的情况，目前只支持64位的机器</p>
-</li>
-<li><p>-v 打印出来我们正在编译的包名</p>
-</li>
-<li><p>-msan 启用与内存清理程序的操作。仅在linux &#x2F; amd64，linux &#x2F; arm64上支持并且只有Clang &#x2F; LLVM作为主机C编译器。</p>
-</li>
-<li><p>-work 打印出来编译时候的临时文件夹名称，并且如果已经存在的话就不要删除</p>
-</li>
-<li><p>-x 打印出来执行的命令，其实就是和-n的结果类似，只是这个会执行</p>
-</li>
-<li><p>-ccflags &#39;arg list&#39; 传递参数给5c, 6c, 8c 调用</p>
-</li>
-<li><p>-compiler name 指定相应的编译器，gccgo还是gc</p>
-</li>
-<li><p>-gccgoflags &#39;arg list&#39; 传递参数给gccgo编译连接调用</p>
-</li>
-<li><p>-gcflags &#39;arg list&#39; 传递参数给5g, 6g, 8g 调用</p>
-</li>
-<li><p>-installsuffix suffix 为了和默认的安装包区别开来，采用这个前缀来重新安装那些依赖的包，-race的时候默认已经是-installsuffix race,大家可以通过-n命令来验证</p>
-</li>
-<li><p>-ldflags &#39;flag list&#39; 传递参数给5l, 6l, 8l 调用</p>
-</li>
-<li><p>-linkshared 链接共享库 -buildmode&#x3D;共享。</p>
-</li>
-<li><p>-mod mode 模块下载模式使用：readonly，release或vendor。有关更多信息，请参阅“go help modules”。</p>
-</li>
-<li><p>-pkgdir dir 从dir安装并加载所有包</p>
-</li>
-<li><p>-tags &#39;tag list&#39; 设置在编译的时候可以适配的那些tag，详细的tag限制参考里面的 Build Constraints</p>
-</li>
-<li><p>-toolexec&#39;cmd args&#39; 用于调用vet和asm等工具链程序的程序。例如，go命令将运行&#39;cmd args &#x2F; path &#x2F; to &#x2F; asm &lt;asm的参数&gt;&#39;,而不是运行asm。</p>
+<li>-o 指定输出的文件名，可以带上路径，例如 go build -o a&#x2F;b&#x2F;c</li>
+<li>-i 安装相应的包，编译+go install</li>
+<li>-a 更新全部已经是最新的包的，但是对标准包不适用</li>
+<li>-n 把需要执行的编译命令打印出来，但是不执行</li>
+<li>-p n 指定可以并行可运行的编译数目，默认是CPU数目</li>
+<li>-race 开启编译的时候自动检测数据竞争的情况，目前只支持64位的机器</li>
+<li>-v 打印出来我们正在编译的包名</li>
+<li>-msan 启用与内存清理程序的操作。仅在linux &#x2F; amd64，linux &#x2F; arm64上支持并且只有Clang &#x2F; LLVM作为主机C编译器。</li>
+<li>-work 打印出来编译时候的临时文件夹名称，并且如果已经存在的话就不要删除</li>
+<li>-x 打印出来执行的命令，其实就是和-n的结果类似，只是这个会执行</li>
+<li>-ccflags &#39;arg list&#39; 传递参数给5c, 6c, 8c 调用</li>
+<li>-compiler name 指定相应的编译器，gccgo还是gc</li>
+<li>-gccgoflags &#39;arg list&#39; 传递参数给gccgo编译连接调用</li>
+<li>-gcflags &#39;arg list&#39; 传递参数给5g, 6g, 8g 调用</li>
+<li>-installsuffix suffix 为了和默认的安装包区别开来，采用这个前缀来重新安装那些依赖的包，-race的时候默认已经是-installsuffix race,大家可以通过-n命令来验证</li>
+<li>-ldflags &#39;flag list&#39; 传递参数给5l, 6l, 8l 调用</li>
+<li>-linkshared 链接共享库 -buildmode&#x3D;共享。</li>
+<li>-mod mode 模块下载模式使用：readonly，release或vendor。有关更多信息，请参阅“go help modules”。</li>
+<li>-pkgdir dir 从dir安装并加载所有包</li>
+<li>-tags &#39;tag list&#39; 设置在编译的时候可以适配的那些tag，详细的tag限制参考里面的 Build Constraints</li>
+<li>-toolexec&#39;cmd args&#39; 用于调用vet和asm等工具链程序的程序。例如，go命令将运行&#39;cmd args &#x2F; path &#x2F; to &#x2F; asm &lt;asm的参数&gt;&#39;,而不是运行asm。</li>
+</ul>
 <h2 id="2-go-clean"><a href="#2-go-clean" class="headerlink" title="2.go clean"></a>2.go clean</h2><p>删除掉执行其它命令时产生的一些文件和目录</p>
-</li>
-<li><p>_obj&#x2F; 旧的object目录，由Makefiles遗留</p>
-</li>
-<li><p>_test&#x2F; 旧的test目录，由Makefiles遗留</p>
-</li>
-<li><p>_testmain.go 旧的gotest文件，由Makefiles遗留</p>
-</li>
-<li><p>test.out 旧的test记录，由Makefiles遗留</p>
-</li>
-<li><p>build.out 旧的test记录，由Makefiles遗留</p>
-</li>
-<li><p>*.[568ao] object文件，由Makefiles遗留</p>
-</li>
-<li><p>DIR(.exe) 由 go build 产生</p>
-</li>
-<li><p>DIR.test(.exe) 由 go test -c 产生</p>
-</li>
-<li><p>MAINFILE(.exe) 由 go build MAINFILE.go产生</p>
-</li>
-<li><p>*.so</p>
-</li>
+<ul>
+<li>_obj&#x2F; 旧的object目录，由Makefiles遗留</li>
+<li>_test&#x2F; 旧的test目录，由Makefiles遗留</li>
+<li>_testmain.go 旧的gotest文件，由Makefiles遗留</li>
+<li>test.out 旧的test记录，由Makefiles遗留</li>
+<li>build.out 旧的test记录，由Makefiles遗留</li>
+<li>*.[568ao] object文件，由Makefiles遗留</li>
+<li>DIR(.exe) 由 go build 产生</li>
+<li>DIR.test(.exe) 由 go test -c 产生</li>
+<li>MAINFILE(.exe) 由 go build MAINFILE.go产生</li>
+<li>*.so</li>
 </ul>
 <p>clean选项</p>
 <ul>

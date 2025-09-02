@@ -196,17 +196,17 @@
 </ul>
 <h3 id="listen-peer-urls"><a href="#listen-peer-urls" class="headerlink" title="--listen-peer-urls"></a>--listen-peer-urls</h3><p>用于监听伙伴通讯的URL列表。这个标记告诉 etcd 在特定的 scheme:&#x2F;&#x2F;IP:port  组合上从它的伙伴接收进来的请求。scheme 可是 http 或者 https。如果IP被指定为0.0.0.0,etcd  在所有接口上监听给定端口。如果给定IP地址和端口，etcd  将监听在给定端口和接口上。多个URL可以用来指定多个地址和端口来监听。etcd将从任何列出来的地址和端口上应答请求。</p>
 <ul>
-<li>默认: &quot;<a href="http://localhost:2380&quot;">http://localhost:2380&quot;</a></li>
+<li>默认: &quot;<a target="_blank" rel="noopener" href="http://localhost:2380/">http://localhost:2380</a>&quot;</li>
 <li>环境变量: ETCD_LISTEN_PEER_URLS</li>
-<li>例子: &quot;<a href="http://10.0.0.1:2380&quot;">http://10.0.0.1:2380&quot;</a></li>
-<li>无效例子: &quot;<a href="http://example.com:2380&quot;">http://example.com:2380&quot;</a> (对于绑定域名无效)</li>
+<li>例子: &quot;<a target="_blank" rel="noopener" href="http://10.0.0.1:2380/">http://10.0.0.1:2380</a>&quot;</li>
+<li>无效例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2380/">http://example.com:2380</a>&quot; (对于绑定域名无效)</li>
 </ul>
 <h3 id="listen-client-urls"><a href="#listen-client-urls" class="headerlink" title="--listen-client-urls"></a>--listen-client-urls</h3><p>用于监听客户端通讯的URL列表。这个标记告诉 etcd 在特定的 scheme:&#x2F;&#x2F;IP:port  组合上从客户端接收进来的请求。scheme 可是 http 或者 https。如果IP被指定为 0.0.0.0,etcd  在所有接口上监听给定端口。如果给定IP地址和端口，etcd 将监听在给定端口和接口上。多个 URL 可以用来指定多个地址和端口来监听。etcd  将从任何列出来的地址和端口上应答请求。</p>
 <ul>
-<li>默认: &quot;<a href="http://localhost:2379&quot;">http://localhost:2379&quot;</a></li>
+<li>默认: &quot;<a target="_blank" rel="noopener" href="http://localhost:2379/">http://localhost:2379</a>&quot;</li>
 <li>环境变量: ETCD_LISTEN_CLIENT_URLS</li>
-<li>例子: &quot;<a href="http://10.0.0.1:2379&quot;">http://10.0.0.1:2379&quot;</a></li>
-<li>无效例子: &quot;<a href="http://example.com:2379&quot;">http://example.com:2379&quot;</a> (对于绑定域名无效)</li>
+<li>例子: &quot;<a target="_blank" rel="noopener" href="http://10.0.0.1:2379/">http://10.0.0.1:2379</a>&quot;</li>
+<li>无效例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2379/">http://example.com:2379</a>&quot; (对于绑定域名无效)</li>
 </ul>
 <h3 id="max-snapshots"><a href="#max-snapshots" class="headerlink" title="--max-snapshots"></a>--max-snapshots</h3><ul>
 <li>保持的快照文件的最大数量 (0 表示不限制)</li>
@@ -269,13 +269,13 @@
 <p><code>--discovery</code> 前缀标记在使用<a target="_blank" rel="noopener" href="https://github.com/doczhcn/etcd/blob/master/documentation/op-guide/clustering.md#discovery">发现服务</a>需要设置.</p>
 <h3 id="initial-advertise-peer-urls"><a href="#initial-advertise-peer-urls" class="headerlink" title="--initial-advertise-peer-urls"></a>--initial-advertise-peer-urls</h3><p>列出这个成员的伙伴 URL 以便通告给集群的其他成员。这些地方用于在集群中通讯 etcd 数据。至少有一个必须对所有集群成员可以路由的。这些 URL 可以包含域名。</p>
 <ul>
-<li>默认: &quot;<a href="http://localhost:2380&quot;">http://localhost:2380&quot;</a></li>
+<li>默认: &quot;<a target="_blank" rel="noopener" href="http://localhost:2380/">http://localhost:2380</a>&quot;</li>
 <li>环境变量: ETCD_INITIAL_ADVERTISE_PEER_URLS</li>
-<li>例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2380/">http://example.com:2380</a>, <a href="http://10.0.0.1:2380&quot;">http://10.0.0.1:2380&quot;</a></li>
+<li>例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2380/">http://example.com:2380</a>, <a target="_blank" rel="noopener" href="http://10.0.0.1:2380/">http://10.0.0.1:2380</a>&quot;</li>
 </ul>
 <h3 id="initial-cluster"><a href="#initial-cluster" class="headerlink" title="--initial-cluster"></a>--initial-cluster</h3><p>为启动初始化集群配置。</p>
 <ul>
-<li>默认: &quot;default&#x3D;<a href="http://localhost:2380&quot;">http://localhost:2380&quot;</a></li>
+<li>默认: &quot;default&#x3D;<a target="_blank" rel="noopener" href="http://localhost:2380/">http://localhost:2380</a>&quot;</li>
 <li>环境变量: ETCD_INITIAL_CLUSTER</li>
 <li>key是每个提供的节点的 <code>--name</code> 标记的值. 默认为这个 key 使用 <code>default</code> 因为这是 <code>--name</code> 标记的默认值.</li>
 </ul>
@@ -291,9 +291,9 @@
 </ul>
 <h3 id="advertise-client-urls"><a href="#advertise-client-urls" class="headerlink" title="--advertise-client-urls"></a>--advertise-client-urls</h3><p>列出这个成员的客户端URL，通告给集群中的其他成员。这些 URL 可以包含域名。</p>
 <ul>
-<li>默认: &quot;<a href="http://localhost:2379&quot;">http://localhost:2379&quot;</a></li>
+<li>默认: &quot;<a target="_blank" rel="noopener" href="http://localhost:2379/">http://localhost:2379</a>&quot;</li>
 <li>环境变量: ETCD_ADVERTISE_CLIENT_URLS</li>
-<li>例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2379/">http://example.com:2379</a>, <a href="http://10.0.0.1:2379&quot;">http://10.0.0.1:2379&quot;</a></li>
+<li>例子: &quot;<a target="_blank" rel="noopener" href="http://example.com:2379/">http://example.com:2379</a>, <a target="_blank" rel="noopener" href="http://10.0.0.1:2379/">http://10.0.0.1:2379</a>&quot;</li>
 </ul>
 <p>小心，如果来自集群成员的通告 URL 比如 <a target="_blank" rel="noopener" href="http://localhost:2379/">http://localhost:2379</a> 正在使用 etcd 的 proxy 特性。这将导致循环，因为代理将转发请求给它自己直到它的资源(内存，文件描述符)最终耗尽。</p>
 <h3 id="discovery"><a href="#discovery" class="headerlink" title="--discovery"></a>--discovery</h3><p>用于启动集群的发现URL。</p>
