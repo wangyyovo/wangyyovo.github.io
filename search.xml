@@ -4679,7 +4679,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以cf为例：</span><br><span class="line">SAVED_CF_Key=&#x27;8155245808e9ee11af&#x27;</span><br><span class="line">SAVED_CF_Email=&#x27;develop@xx.com&#x27;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-ZeroSSL账号"><a href="#2-ZeroSSL账号" class="headerlink" title="2.ZeroSSL账号"></a>2.ZeroSSL账号</h2><p>申请ZeroSSL证书之前需要再官网注册账号，地址：<a href="https://zerossl.com/%EF%BC%8C%E6%AD%A4%E5%A4%84%E6%B3%A8%E5%86%8C%E7%9A%84%E5%9C%B0%E5%9D%80%E9%9C%80%E8%A6%81%E5%9C%A8acme%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E6%97%B6%E6%B3%A8%E5%86%8C%EF%BC%8C%E6%89%8D%E8%83%BD%E7%94%B3%E8%AF%B7%EF%BC%81">https://zerossl.com/，此处注册的地址需要在acme申请域名时注册，才能申请！</a></p>
-<p>例如我的注册账号是：<a href="mailto:&#97;&#98;&#x63;&#64;&#x78;&#x78;&#46;&#99;&#x6f;&#x6d;">abc@xx.com</a></p>
+<p>例如我的注册账号是：<a href="mailto:&#x61;&#98;&#x63;&#x40;&#x78;&#x78;&#x2e;&#99;&#111;&#x6d;">abc@xx.com</a></p>
 <h2 id="3-Freenom"><a href="#3-Freenom" class="headerlink" title="3.Freenom"></a>3.Freenom</h2><p>免费的域名，地址：<a href="https://www.freenom.com,然后绑定服务器ip/">https://www.freenom.com，然后绑定服务器IP</a></p>
 <h2 id="4-注册zerossl账号"><a href="#4-注册zerossl账号" class="headerlink" title="4.注册zerossl账号"></a>4.注册zerossl账号</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">acme.sh  --register-account  -m abc@xx.com --server zerossl</span><br></pre></td></tr></table></figure>
 
@@ -5954,7 +5954,7 @@
 <li>description: xxxxxxxxx ## pub库简介</li>
 <li>homepage:<a href="https://link.segmentfault.com/?url=https://github.com/xxxx">https://github.com/xxxx</a> ## pub库git地址</li>
 <li>publish_to:<a href="https://link.segmentfault.com/?url=http://pub.100tal.com/">http://pub.100tal.com/</a> ## 私有pub库上传地址 如果不是私有pub仓库 不用配置</li>
-<li>author:xxx<a href="mailto:&#x78;&#x78;&#x78;&#64;&#x31;&#48;&#x30;&#x74;&#97;&#108;&#46;&#x63;&#x6f;&#109;">xxx@100tal.com</a> ## pub库作者</li>
+<li>author:xxx<a href="mailto:&#x78;&#120;&#120;&#64;&#x31;&#x30;&#48;&#x74;&#x61;&#108;&#x2e;&#x63;&#x6f;&#x6d;">xxx@100tal.com</a> ## pub库作者</li>
 <li>检测配置文件:<br>flutter packages pub publish --dry-run</li>
 <li>发布<br>flutter packages pub publish</li>
 </ul>
@@ -12749,7 +12749,7 @@
 <p><strong>Output.txt:</strong> 执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateA.</span><br><span class="line">ConcreteStateA handles request1.</span><br><span class="line">ConcreteStateA wants to change the state of the context.</span><br><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateB.</span><br><span class="line">ConcreteStateB handles request2.</span><br><span class="line">ConcreteStateB wants to change the state of the context.</span><br><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateA.</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><p><strong>真实世界示例</strong></p>
 <p>尽管状态机和状态模式自身在开发者中非常流行， 但是我却想不到任何 PHP 中的实际应用来作为该模式在真实世界的示例。</p>
-<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x72;&#101;&#102;&#x61;&#99;&#x74;&#111;&#x72;&#105;&#110;&#x67;&#46;&#x67;&#117;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
+<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#x74;&#64;&#114;&#x65;&#x66;&#x61;&#99;&#116;&#x6f;&#x72;&#x69;&#110;&#x67;&#x2e;&#x67;&#x75;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
 <p><strong>复杂度：</strong> ★☆☆</p>
 <p><strong>流行度：</strong> ★★☆</p>
 <p><strong>使用示例：</strong> 在 Python 语言中， 状态模式通常被用于将基于 <code>switch</code>语句的大型状态机转换为对象。</p>
@@ -13375,7 +13375,7 @@
 <p><strong>Output.txt:</strong> 执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Originator: My initial state is: Super-duper-super-puper-super. </span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: srGIngezAEboNPDjBkuvymJKUtMSFX</span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: UwCZQaHJOiERLlchyVuMbXNtpqTgWF</span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: incqsdoJXkbDUuVOvRFYyKBgfzwZCQ</span><br><span class="line"></span><br><span class="line">Caretaker: Here&#x27;s the list of mementos:</span><br><span class="line">2018-06-04 14:50:39 / (Super-dup...)</span><br><span class="line">2018-06-04 14:50:39 / (srGIngezA...)</span><br><span class="line">2018-06-04 14:50:39 / (UwCZQaHJO...)</span><br><span class="line"></span><br><span class="line">Client: Now, let&#x27;s rollback!</span><br><span class="line"></span><br><span class="line">Caretaker: Restoring state to: 2018-06-04 14:50:39 / (UwCZQaHJO...)</span><br><span class="line">Originator: My state has changed to: UwCZQaHJOiERLlchyVuMbXNtpqTgWF</span><br><span class="line"></span><br><span class="line">Client: Once more!</span><br><span class="line"></span><br><span class="line">Caretaker: Restoring state to: 2018-06-04 14:50:39 / (srGIngezA...)</span><br><span class="line">Originator: My state has changed to: srGIngezAEboNPDjBkuvymJKUtMSFX</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><p><strong>真实世界示例</strong></p>
 <p>由于绝大部分 PHP 脚本是单线程运行， 且会话时间非常有限， 因此你需要将对象的状态保存在比 RAM 更持久的存储设备中。 一般情况下， 通过序列化生成快照也完全没有问题。 因此， 我想不到任何该模式在 PHP 中的实际示例。</p>
-<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#112;&#x70;&#111;&#114;&#116;&#x40;&#x72;&#101;&#102;&#x61;&#99;&#x74;&#x6f;&#x72;&#x69;&#110;&#x67;&#x2e;&#x67;&#117;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
+<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#x70;&#x70;&#x6f;&#x72;&#116;&#x40;&#114;&#101;&#x66;&#97;&#99;&#116;&#111;&#114;&#105;&#x6e;&#x67;&#x2e;&#x67;&#x75;&#x72;&#117;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
 <p><strong>复杂度：</strong> ★★★</p>
 <p><strong>流行度：</strong> ★☆☆</p>
 <p><strong>使用示例：</strong> 备忘录的基本功能可用序列化来实现， 这在 Python 语言中很常见。 尽管备忘录不是生成对象状态快照的唯一或最有效的方法， 但它能在保护原始对象的结构不暴露给其他对象的情况下保存对象状态的备份。</p>
@@ -26612,7 +26612,7 @@
 <p><img src="https://oss.012700.xyz/butterfly/2024/09/73515338-e6874d80-442f-11ea-9d07-725d37002985.png" alt="73515338-e6874d80-442f-11ea-9d07-725d37002985.png"></p>
 <blockquote>
 <p>cheerio 版本錯誤，請安裝 0.22.0 版本</p>
-<p>npm install <a href="mailto:&#x63;&#x68;&#x65;&#101;&#x72;&#x69;&#111;&#64;&#x30;&#x2e;&#50;&#50;&#x2e;&#48;">cheerio@0.22.0</a> --save</p>
+<p>npm install <a href="mailto:&#x63;&#x68;&#101;&#101;&#114;&#x69;&#x6f;&#64;&#x30;&#x2e;&#50;&#x32;&#x2e;&#48;">cheerio@0.22.0</a> --save</p>
 </blockquote>
 <h3 id="搜索欄在底部"><a href="#搜索欄在底部" class="headerlink" title="搜索欄在底部"></a>搜索欄在底部</h3><p>hexo deploy 後搜索欄在頁面底部</p>
 <blockquote>
@@ -35209,22 +35209,6 @@ another task : 24d
       </tags>
   </entry>
   <entry>
-    <title>architecture</title>
-    <url>/posts/74995efa/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/architecture.of.internet-product">architecture.of.internet-product</a> 互联网公司技术架构，微信&#x2F;淘宝&#x2F;微博&#x2F;腾讯&#x2F;阿里&#x2F;美团点评&#x2F;百度&#x2F;Google&#x2F;Facebook&#x2F;Amazon&#x2F;eBay的架构</p>
-<p><a href="https://github.com/wangyangyangisme/architecture.taobao-alibaba">architecture.taobao-alibaba</a> 互联网公司架构: 淘宝技术架构，阿里巴巴技术架构 </p>
-<p><a href="https://github.com/wangyangyangisme/architecture.wechat-tencent">architecture.wechat-tencent</a> 互联网公司架构: 微信技术架构， 腾讯技术架构 </p>
-<p><a href="https://github.com/wangyangyangisme/architecture.meituan-dianping">architecture.meituan-dianping</a> 互联网公司架构: 美团点评技术架构 </p>
-<p><a href="https://github.com/wangyangyangisme/architect-awesome">architect-awesome</a> 后端架构师技术图谱</p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>awesome</title>
     <url>/posts/20d25e39/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/sindresorhus/awesome">awesome</a> 各awesome列表</p>
@@ -35269,6 +35253,22 @@ another task : 24d
       </tags>
   </entry>
   <entry>
+    <title>architecture</title>
+    <url>/posts/74995efa/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/architecture.of.internet-product">architecture.of.internet-product</a> 互联网公司技术架构，微信&#x2F;淘宝&#x2F;微博&#x2F;腾讯&#x2F;阿里&#x2F;美团点评&#x2F;百度&#x2F;Google&#x2F;Facebook&#x2F;Amazon&#x2F;eBay的架构</p>
+<p><a href="https://github.com/wangyangyangisme/architecture.taobao-alibaba">architecture.taobao-alibaba</a> 互联网公司架构: 淘宝技术架构，阿里巴巴技术架构 </p>
+<p><a href="https://github.com/wangyangyangisme/architecture.wechat-tencent">architecture.wechat-tencent</a> 互联网公司架构: 微信技术架构， 腾讯技术架构 </p>
+<p><a href="https://github.com/wangyangyangisme/architecture.meituan-dianping">architecture.meituan-dianping</a> 互联网公司架构: 美团点评技术架构 </p>
+<p><a href="https://github.com/wangyangyangisme/architect-awesome">architect-awesome</a> 后端架构师技术图谱</p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>embbeded</title>
     <url>/posts/a0f58881/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="lvgl-GUI"><a href="#lvgl-GUI" class="headerlink" title="[lvgl GUI]"></a>[lvgl GUI]</h1><p><a href="https://github.com/wangyangyangisme/lvgl">lvgl</a></p>
@@ -35279,36 +35279,6 @@ another task : 24d
 <p><a href="https://github.com/wangyangyangisme/lv_utils">lv_utils</a></p>
 <p><a href="https://littlevgl.com/">https://littlevgl.com/</a></p>
 <p><a href="https://github.com/wangyangyangisme/PH7">PH7</a> 嵌入式php7 c库<br><a href="https://github.com/wangyangyangisme/sod">sod</a> 嵌入式计算机视觉和机器学习库<br><a href="https://github.com/wangyangyangisme/vedis">vedis</a> 嵌入式redis库</p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>game</title>
-    <url>/posts/15c93851/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>博客</p>
-<p><a href="https://www.lfzxb.top/">https://www.lfzxb.top</a><br><a href="https://acgmart.com/">https://acgmart.com</a></p>
-<p>框架</p>
-<p><a href="https://github.com/egametang/ET">https://github.com/egametang/ET</a></p>
-<p><a href="https://github.com/LeagueSandbox/GameServer">https://github.com/LeagueSandbox/GameServer</a></p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo</title>
-    <url>/posts/ab21860c/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/Weibo-Picture-Store">Weibo-Picture-Store</a> 新浪微博图床 Chrome 扩展，支持同步到微相册<br><a href="https://github.com/wangyangyangisme/hexo-theme-butterfly">hexo-theme-butterfly</a> hexo主题 目前使用<br><a href="https://github.com/wangyangyangisme/hexo-theme-snippet">hexo-theme-snippet</a> hexo主题</p>
-<p><a href="https://github.com/wangyangyangisme/HexoEditor">HexoEditor</a> hexo markdown editor<br><a href="https://github.com/wangyangyangisme/hexo-admin">hexo-admin</a> An Admin Interface for Hexo</p>
-<p><a href="https://github.com/wangyangyangisme/PicGo">PicGo</a> 图片上传</p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -35599,6 +35569,36 @@ another task : 24d
 <p><a href="https://github.com/wyyrepo/nitro-plugins">https://github.com/wyyrepo/nitro-plugins</a></p>
 <p><a href="https://github.com/wyyrepo/protoc-gen-nitro">https://github.com/wyyrepo/protoc-gen-nitro</a></p>
 <p><a href="https://github.com/wyyrepo/nitro-examples">https://github.com/wyyrepo/nitro-examples</a></p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>game</title>
+    <url>/posts/15c93851/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>博客</p>
+<p><a href="https://www.lfzxb.top/">https://www.lfzxb.top</a><br><a href="https://acgmart.com/">https://acgmart.com</a></p>
+<p>框架</p>
+<p><a href="https://github.com/egametang/ET">https://github.com/egametang/ET</a></p>
+<p><a href="https://github.com/LeagueSandbox/GameServer">https://github.com/LeagueSandbox/GameServer</a></p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo</title>
+    <url>/posts/ab21860c/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/Weibo-Picture-Store">Weibo-Picture-Store</a> 新浪微博图床 Chrome 扩展，支持同步到微相册<br><a href="https://github.com/wangyangyangisme/hexo-theme-butterfly">hexo-theme-butterfly</a> hexo主题 目前使用<br><a href="https://github.com/wangyangyangisme/hexo-theme-snippet">hexo-theme-snippet</a> hexo主题</p>
+<p><a href="https://github.com/wangyangyangisme/HexoEditor">HexoEditor</a> hexo markdown editor<br><a href="https://github.com/wangyangyangisme/hexo-admin">hexo-admin</a> An Admin Interface for Hexo</p>
+<p><a href="https://github.com/wangyangyangisme/PicGo">PicGo</a> 图片上传</p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -35965,6 +35965,26 @@ another task : 24d
       </tags>
   </entry>
   <entry>
+    <title>web</title>
+    <url>/posts/15c93851/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/redis">redis</a> Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部 分场合可以对关系数据库起到很好的补充作用。</p>
+<p>[模板网站]</p>
+<p><a href="https://www.22vd.com/29906.html">https://www.22vd.com/29906.html</a> | <a href="https://www.2kss.com/">https://www.2kss.com/</a></p>
+<p><a href="http://www.cssmoban.com/">http://www.cssmoban.com/</a></p>
+<p><a href="https://www.mycodes.net/">https://www.mycodes.net/</a></p>
+<p><a href="http://www.bootstrapmb.com/tag/houtaihtml">http://www.bootstrapmb.com/tag/houtaihtml</a></p>
+<p><a href="https://www.metcms.cn/">https://www.metcms.cn/</a></p>
+<p>[elemet表单生成器]</p>
+<p><a href="https://github.com/JakHuang/form-generator">https://github.com/JakHuang/form-generator</a><br><a href="https://github.com/GavinZhuLei/vue-form-making">https://github.com/GavinZhuLei/vue-form-making</a></p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue</title>
     <url>/posts/c0add594/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="vue库"><a href="#vue库" class="headerlink" title="vue库"></a>vue库</h1><p><a href="https://github.com/wangyangyangisme/awesome-vue">awesome-vue</a></p>
@@ -35978,26 +35998,6 @@ another task : 24d
 <h1 id="vue学习资料"><a href="#vue学习资料" class="headerlink" title="vue学习资料"></a>vue学习资料</h1><p><a href="https://github.com/wangyangyangisme/vue2.0-source">vue源码分析 -- 基于 2.2.6版本</a><br><a href="https://github.com/wangyangyangisme/Vue">总结 vue 工作学习一年经验 </a><br><a href="https://github.com/wangyangyangisme/learnVue">Vue.js 源码解析</a><br><a href="https://github.com/wangyangyangisme/vue-1">vue源码逐行注释分析</a> vue源码逐行注释分析+40多m的vue源码程序流程图思维导图 （diff部分待后续更新）<br><a href="https://github.com/wangyangyangisme/vue-analysis">Vue.js 技术揭秘</a> <a href="https://ustbhuangyi.github.io/vue-analysis/">https://ustbhuangyi.github.io/vue-analysis/</a></p>
 <h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><a href="https://github.com/antvis/G6">GitHub - antvis&#x2F;G6: ♾ A Graph Visualization Framework in JavaScript</a></p>
 <h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p><a href="https://github.com/guozhaolong/antd-etable">GitHub - guozhaolong&#x2F;antd-etable: Editable Table base on Ant Design</a></p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>web</title>
-    <url>/posts/15c93851/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/redis">redis</a> Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，在部 分场合可以对关系数据库起到很好的补充作用。</p>
-<p>[模板网站]</p>
-<p><a href="https://www.22vd.com/29906.html">https://www.22vd.com/29906.html</a> | <a href="https://www.2kss.com/">https://www.2kss.com/</a></p>
-<p><a href="http://www.cssmoban.com/">http://www.cssmoban.com/</a></p>
-<p><a href="https://www.mycodes.net/">https://www.mycodes.net/</a></p>
-<p><a href="http://www.bootstrapmb.com/tag/houtaihtml">http://www.bootstrapmb.com/tag/houtaihtml</a></p>
-<p><a href="https://www.metcms.cn/">https://www.metcms.cn/</a></p>
-<p>[elemet表单生成器]</p>
-<p><a href="https://github.com/JakHuang/form-generator">https://github.com/JakHuang/form-generator</a><br><a href="https://github.com/GavinZhuLei/vue-form-making">https://github.com/GavinZhuLei/vue-form-making</a></p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -45982,6 +45982,18 @@ another task : 24d
       </categories>
   </entry>
   <entry>
+    <title>hey压力测试</title>
+    <url>/posts/367e975e/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="hey压力测试"><a href="#hey压力测试" class="headerlink" title="hey压力测试"></a>hey压力测试</h1><h2 id="1-hey工具下载"><a href="#1-hey工具下载" class="headerlink" title="1. hey工具下载"></a>1. hey工具下载</h2><p><a href="https://github.com/rakyll/hey">https://github.com/rakyll/hey</a></p>
+<h2 id="2-hey参数说明"><a href="#2-hey参数说明" class="headerlink" title="2. hey参数说明"></a>2. hey参数说明</h2><p>有关hey命令的使用，我们可以通过帮助命令进行查看。如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Usage: hey [options...] &lt;url&gt;</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -n  Number of requests to run. Default is 200.</span><br><span class="line">  -c  Number of workers to run concurrently. Total number of requests cannot</span><br><span class="line">      be smaller than the concurrency level. Default is 50.</span><br><span class="line">  -q  Rate limit, in queries per second (QPS) per worker. Default is no rate limit.</span><br><span class="line">  -z  Duration of application to send requests. When duration is reached,</span><br><span class="line">      application stops and exits. If duration is specified, n is ignored.</span><br><span class="line">      Examples: -z 10s -z 3m.</span><br><span class="line">  -o  Output type. If none provided, a summary is printed.</span><br><span class="line">      &quot;csv&quot; is the only supported alternative. Dumps the response</span><br><span class="line">      metrics in comma-separated values format.</span><br><span class="line"></span><br><span class="line">  -m  HTTP method, one of GET, POST, PUT, DELETE, HEAD, OPTIONS.</span><br><span class="line">  -H  Custom HTTP header. You can specify as many as needed by repeating the flag.</span><br><span class="line">      For example, -H &quot;Accept: text/html&quot; -H &quot;Content-Type: application/xml&quot; .</span><br><span class="line">  -t  Timeout for each request in seconds. Default is 20, use 0 for infinite.</span><br><span class="line">  -A  HTTP Accept header.</span><br><span class="line">  -d  HTTP request body.</span><br><span class="line">  -D  HTTP request body from file. For example, /home/user/file.txt or ./file.txt.</span><br><span class="line">  -T  Content-type, defaults to &quot;text/html&quot;.</span><br><span class="line">  -a  Basic authentication, username:password.</span><br><span class="line">  -x  HTTP Proxy address as host:port.</span><br><span class="line">  -h2 Enable HTTP/2.</span><br><span class="line"></span><br><span class="line">  -host	HTTP Host header.</span><br><span class="line"></span><br><span class="line">  -disable-compression  Disable compression.</span><br><span class="line">  -disable-keepalive    Disable keep-alive, prevents re-use of TCP</span><br><span class="line">                        connections between different HTTP requests.</span><br><span class="line">  -disable-redirects    Disable following of HTTP redirects</span><br><span class="line">  -cpus                 Number of used cpu cores.</span><br><span class="line">                        (default for current machine is 8 cores)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ab压力测试</title>
     <url>/posts/367e975e/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="ab压力测试"><a href="#ab压力测试" class="headerlink" title="ab压力测试"></a>ab压力测试</h1><h2 id="1-ab工具下载"><a href="#1-ab工具下载" class="headerlink" title="1. ab工具下载"></a>1. ab工具下载</h2><p>windows：<a href="https://www.apachehaus.com/cgi-bin/download.plx">https://www.apachehaus.com/cgi-bin/download.plx</a></p>
@@ -46148,18 +46160,6 @@ another task : 24d
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">加上-t 100 -n失效，不加-p 是get，加-p 是post , post.txt中是json格式的请求数据</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">一共请求500次,50个并发同时请求</span></span><br><span class="line">ab.exe -n 500 -c 50 -s 30 -p ./post.txt -H &quot;uid:239669662739070977&quot; -H &quot;token:239669662739070977vwR4RIIFLohhpzRK&quot;  -H &quot;appid:1&quot; -T &#x27;application/json&#x27; localhost:8081/v1/ddgx/dd/lasttimecandidate</span><br></pre></td></tr></table></figure>
 
 <h2 id="5-问题"><a href="#5-问题" class="headerlink" title="5. 问题"></a>5. 问题</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Windows 环境测试post接口报错</span><br><span class="line">错误消息： Counld not stat POST data file (post.txt): Partial results are valid but processing is incomplete</span><br><span class="line">错误原因： windows环境暂不支持用ab来测试post接口</span><br><span class="line">解决方法： 使用linux环境，测试post请求一切正常，请求体支持application/json格式</span><br><span class="line"></span><br><span class="line">Linux 环境并发数1500以上，运行报错</span><br><span class="line">错误消息： socket：Too many open files (24)</span><br><span class="line">错误原因： 进程打开了超过系统限制的文件数量以及通讯链接数，默认值是1024，使用ulimit -n 就可以查看。</span><br><span class="line">解决方法： 设置较大的系统最大文件数量值，如： ulimit -n 2048</span><br><span class="line">参考链接： too many open files(打开的文件过多)解决方法</span><br><span class="line"></span><br><span class="line">Linux 环境并发数3000，运行报错</span><br><span class="line">错误消息： Connection timed out (110)</span><br><span class="line">错误原因： 连接超时</span><br><span class="line">解决方法： 接口服务系统支持有限，不支持这么多并发，优化系统</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>hey压力测试</title>
-    <url>/posts/367e975e/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="hey压力测试"><a href="#hey压力测试" class="headerlink" title="hey压力测试"></a>hey压力测试</h1><h2 id="1-hey工具下载"><a href="#1-hey工具下载" class="headerlink" title="1. hey工具下载"></a>1. hey工具下载</h2><p><a href="https://github.com/rakyll/hey">https://github.com/rakyll/hey</a></p>
-<h2 id="2-hey参数说明"><a href="#2-hey参数说明" class="headerlink" title="2. hey参数说明"></a>2. hey参数说明</h2><p>有关hey命令的使用，我们可以通过帮助命令进行查看。如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Usage: hey [options...] &lt;url&gt;</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -n  Number of requests to run. Default is 200.</span><br><span class="line">  -c  Number of workers to run concurrently. Total number of requests cannot</span><br><span class="line">      be smaller than the concurrency level. Default is 50.</span><br><span class="line">  -q  Rate limit, in queries per second (QPS) per worker. Default is no rate limit.</span><br><span class="line">  -z  Duration of application to send requests. When duration is reached,</span><br><span class="line">      application stops and exits. If duration is specified, n is ignored.</span><br><span class="line">      Examples: -z 10s -z 3m.</span><br><span class="line">  -o  Output type. If none provided, a summary is printed.</span><br><span class="line">      &quot;csv&quot; is the only supported alternative. Dumps the response</span><br><span class="line">      metrics in comma-separated values format.</span><br><span class="line"></span><br><span class="line">  -m  HTTP method, one of GET, POST, PUT, DELETE, HEAD, OPTIONS.</span><br><span class="line">  -H  Custom HTTP header. You can specify as many as needed by repeating the flag.</span><br><span class="line">      For example, -H &quot;Accept: text/html&quot; -H &quot;Content-Type: application/xml&quot; .</span><br><span class="line">  -t  Timeout for each request in seconds. Default is 20, use 0 for infinite.</span><br><span class="line">  -A  HTTP Accept header.</span><br><span class="line">  -d  HTTP request body.</span><br><span class="line">  -D  HTTP request body from file. For example, /home/user/file.txt or ./file.txt.</span><br><span class="line">  -T  Content-type, defaults to &quot;text/html&quot;.</span><br><span class="line">  -a  Basic authentication, username:password.</span><br><span class="line">  -x  HTTP Proxy address as host:port.</span><br><span class="line">  -h2 Enable HTTP/2.</span><br><span class="line"></span><br><span class="line">  -host	HTTP Host header.</span><br><span class="line"></span><br><span class="line">  -disable-compression  Disable compression.</span><br><span class="line">  -disable-keepalive    Disable keep-alive, prevents re-use of TCP</span><br><span class="line">                        connections between different HTTP requests.</span><br><span class="line">  -disable-redirects    Disable following of HTTP redirects</span><br><span class="line">  -cpus                 Number of used cpu cores.</span><br><span class="line">                        (default for current machine is 8 cores)</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>test</category>
@@ -50995,6 +50995,43 @@ another task : 24d
       </categories>
   </entry>
   <entry>
+    <title>网络游戏服务器开发框架浅谈</title>
+    <url>/posts/2aaaf917/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="网络游戏服务器开发框架浅谈"><a href="#网络游戏服务器开发框架浅谈" class="headerlink" title="网络游戏服务器开发框架浅谈"></a>网络游戏服务器开发框架浅谈</h1><ol>
+<li>LoginGate服务器</li>
+<li>LoginServer服务器</li>
+<li>GameGate服务器</li>
+<li>GameServer服务器</li>
+<li>IMServer服务器</li>
+<li>AIServer服务器</li>
+<li>CenterServer服务器</li>
+<li>BillingServer服务器</li>
+<li>WebServices服务器</li>
+<li>DBServer服务器</li>
+<li>GMServer服务器</li>
+</ol>
+<p>LoginGate：登陆网关服务器，将所有的LoginServer服务器地址暴露给最终用户，每个LoginGate服务可以挂接n个LoginServer，将最终用户的所有请求转发给目标LoginServer。当最终用户通过此服务完成登陆后，会与该服务断开连接，断开连接前，服务器会将数据上报给GameGate服务。</p>
+<p>LoginServer：登陆服务器，仅作于内部服务与LoginGate进行连接，所有的最终用户请求由LoginGate过滤后，转发过来进行处理。与LoginGate的所有通信都是明文，即未加密数据。</p>
+<p>GameGate：游戏网关服务器，与LoginGate协作完成最终用户的登陆过程，每一个服务会连接到唯一一个LoginGate服务上进行注册，LoginGate会将以完成验证登陆的用户信息同步到所有已注册成功的GameGate上，根据注册不同的GameGate类型信息，LoginGate会发生不同的通过认证的最终用户信息。GameGate挂接n个GameServer服务到自身，此服务将所有注册到自身的GameServer信息发送给最终用户，提供用户选择具体的区或线路进行游戏（区和线路在不同的游戏设定中有不同的定义），在这里区的定义对应的是GameGate，每一个GameGate可以表示物理或逻辑上的多个游戏分区，每个分区由至少一个GameServer组成；线路定义为GameServer，每一个GameServer代表一条线路，线路之间互相不可见，但是可以通过IMServer进行一些扩展通信，例如公会、好友、聊天等服务可以设置透明通信或隐藏通信。透明通信由IMServer向目标GameServer转发请求，并进行处理；隐藏通信仅在当前GameServer进行处理，不会做跨越性操作。</p>
+<p>GameServer：游戏服务器，作为内部服务与GameGate协作处理最终用户的请求，这个服务主要处理游戏逻辑，例如战斗。此服务启动后，会根据配置文件的配置信息进行相应的服务注册，该服务启动成功后，会注册注册到GameGate和IMServer、AIServer服务器，它们分别提供最终用户游戏、交友、公会、聊天和智能体的移动、创建、销毁等服务。作为整个游戏的核心处理服务器，会处理掉大部分的用户交互服务请求，只有在不能处理的情况下，才会请求其它服务协同处理。</p>
+<p>IMServer：IM通信服务器，全称InstantMessaging（译为即时通讯），ICQ、MSN、QQ等聊天工具都属于此范畴。此服务的作用是提供物理或逻辑不同位置的GameServer上的最终用户通讯的一个媒介，用户成功登陆GameServer时，会将自己的好友、公会信息注册到此服务上，当需要跨GameServer服务时，共IMServer使用。此服务主要提供聊天、交友、交易、公会等社交类行为服务，该服务可以直接或间接的与最终用户进行通信，但最终用户无法直接与该服务进行通信，比如请求操作，所有的用户操作都由GameServer转发，IMServer可以选择性的直接反馈最终用户或通过GameServer反馈。</p>
+<p>AIServer：人工智能服务器，全称Artificial Intelligence（译为人工智能），例如现代服务性机器人（自动吸尘器、智能探测仪、智能防爆装置等）都属于人工智能范畴。这里的人工智能主要体现在游戏中的NPC、MONSTER等有行为表现物体。GameServer启动后会连接到此服务进行注册，并获取所需智能体的信息，以反馈给最终用户，并最终显示在用户应用程序中。该服务主要控制智能体的移动、攻击、创建、销毁等行为，另外包括在战斗中或非战斗状态下的行为，比如游走在街道上的商品小贩；在搜索到攻击目标时，主动或召集附近的战斗单位一起攻击用户，都属于该服务的工作内容。</p>
+<p>CenterServer：中心服务器，用于监控、更新已注册到此服务的状态，比如电信1区（傲视天地）服务器的运行状态等。此服务主要是管理除自身以外的所有服务程序的运行状态，以及时反馈给技术活运维人员。</p>
+<p>BillingServer：计费服务器，用于计算用户在游戏中的消耗、增值；比如XX在游戏中购买了一个双倍经验卡，消耗10金币，或者用户通过网站形式进行充值，都会通过该服务反馈给用户最终结果。</p>
+<p>WebServices：网站服务，主要用于网站与游戏之间的交互。比如XX用户通过网站进行充值服务，充值成功后，通知计费服务以响应用户操作；或通过网站进行游戏激活、礼品领取等，都需要此服务与游戏应用程序进行交互，以体现实时的变化。</p>
+<p>DBServer：用于全局数据维护，例如更新、查询、插入、删除操作；这些数据包含用户账号、充值、代金卷、点卡、月卡以及游戏中需要用到的角色数据。</p>
+<p>GMServer服务器：用于用户管理，GM拥有踢人、禁言、封闭账号、解除封闭账号、查询和修改账号注册资料等权限</p>
+<p>一般地，会把游戏服务器的架构划分如下三层：网络接入层、游戏逻辑层、数据存储层，这样划分的主要目的是：</p>
+<p>将底层通信与业务逻辑处理解耦合；<br>将业务逻辑处理与数据存储解耦合；<br>有利于运营部署与扩展；<br>游戏服务器开发框架整体视图，如下所示：</p>
+<p> <img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/blog/game/aHR0cDovL2ltYWdlcy5jcHBibG9nLmNvbS9jcHBibG9nX2NvbS9rZW5rYW8vJUU2JUI4JUI4JUU2JTg4JThGJUU2JTlDJThEJUU1JThBJUExJUU1JTk5JUE4JUU1JUJDJTgwJUU1JThGJTkxJUU2JThBJTgwJUU2JTlDJUFGJUU1JUIwJThGJUU3JUJCJTkzLmpwZw.jpg"></p>
+<p><a href="https://www.infoq.cn/article/a-brief-history-of-the-game-server-architecture">游戏服务器架构的演进简史</a></p>
+<p><a href="https://blog.csdn.net/erlib/article/details/46539069">游戏服务器架构演化史</a></p>
+]]></content>
+      <categories>
+        <category>gogameframework</category>
+      </categories>
+  </entry>
+  <entry>
     <title>go语言游戏框架</title>
     <url>/posts/f4ec3e88/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>【服务器框架】</p>
@@ -51038,43 +51075,6 @@ another task : 24d
 <p><a href="https://github.com/Lallassu/gizmo">https://github.com/Lallassu/gizmo</a> base <a href="https://github.com/faiface/pixel">pixel)</a></p>
 <p><a href="https://github.com/anaseto/boohu">https://github.com/anaseto/boohu</a></p>
 <p><a href="https://github.com/harbdog/raycaster-go">https://github.com/harbdog/raycaster-go</a>  Golang conversion of raycaster engine using the Ebiten 2D Game Library         </p>
-]]></content>
-      <categories>
-        <category>gogameframework</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>网络游戏服务器开发框架浅谈</title>
-    <url>/posts/2aaaf917/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="网络游戏服务器开发框架浅谈"><a href="#网络游戏服务器开发框架浅谈" class="headerlink" title="网络游戏服务器开发框架浅谈"></a>网络游戏服务器开发框架浅谈</h1><ol>
-<li>LoginGate服务器</li>
-<li>LoginServer服务器</li>
-<li>GameGate服务器</li>
-<li>GameServer服务器</li>
-<li>IMServer服务器</li>
-<li>AIServer服务器</li>
-<li>CenterServer服务器</li>
-<li>BillingServer服务器</li>
-<li>WebServices服务器</li>
-<li>DBServer服务器</li>
-<li>GMServer服务器</li>
-</ol>
-<p>LoginGate：登陆网关服务器，将所有的LoginServer服务器地址暴露给最终用户，每个LoginGate服务可以挂接n个LoginServer，将最终用户的所有请求转发给目标LoginServer。当最终用户通过此服务完成登陆后，会与该服务断开连接，断开连接前，服务器会将数据上报给GameGate服务。</p>
-<p>LoginServer：登陆服务器，仅作于内部服务与LoginGate进行连接，所有的最终用户请求由LoginGate过滤后，转发过来进行处理。与LoginGate的所有通信都是明文，即未加密数据。</p>
-<p>GameGate：游戏网关服务器，与LoginGate协作完成最终用户的登陆过程，每一个服务会连接到唯一一个LoginGate服务上进行注册，LoginGate会将以完成验证登陆的用户信息同步到所有已注册成功的GameGate上，根据注册不同的GameGate类型信息，LoginGate会发生不同的通过认证的最终用户信息。GameGate挂接n个GameServer服务到自身，此服务将所有注册到自身的GameServer信息发送给最终用户，提供用户选择具体的区或线路进行游戏（区和线路在不同的游戏设定中有不同的定义），在这里区的定义对应的是GameGate，每一个GameGate可以表示物理或逻辑上的多个游戏分区，每个分区由至少一个GameServer组成；线路定义为GameServer，每一个GameServer代表一条线路，线路之间互相不可见，但是可以通过IMServer进行一些扩展通信，例如公会、好友、聊天等服务可以设置透明通信或隐藏通信。透明通信由IMServer向目标GameServer转发请求，并进行处理；隐藏通信仅在当前GameServer进行处理，不会做跨越性操作。</p>
-<p>GameServer：游戏服务器，作为内部服务与GameGate协作处理最终用户的请求，这个服务主要处理游戏逻辑，例如战斗。此服务启动后，会根据配置文件的配置信息进行相应的服务注册，该服务启动成功后，会注册注册到GameGate和IMServer、AIServer服务器，它们分别提供最终用户游戏、交友、公会、聊天和智能体的移动、创建、销毁等服务。作为整个游戏的核心处理服务器，会处理掉大部分的用户交互服务请求，只有在不能处理的情况下，才会请求其它服务协同处理。</p>
-<p>IMServer：IM通信服务器，全称InstantMessaging（译为即时通讯），ICQ、MSN、QQ等聊天工具都属于此范畴。此服务的作用是提供物理或逻辑不同位置的GameServer上的最终用户通讯的一个媒介，用户成功登陆GameServer时，会将自己的好友、公会信息注册到此服务上，当需要跨GameServer服务时，共IMServer使用。此服务主要提供聊天、交友、交易、公会等社交类行为服务，该服务可以直接或间接的与最终用户进行通信，但最终用户无法直接与该服务进行通信，比如请求操作，所有的用户操作都由GameServer转发，IMServer可以选择性的直接反馈最终用户或通过GameServer反馈。</p>
-<p>AIServer：人工智能服务器，全称Artificial Intelligence（译为人工智能），例如现代服务性机器人（自动吸尘器、智能探测仪、智能防爆装置等）都属于人工智能范畴。这里的人工智能主要体现在游戏中的NPC、MONSTER等有行为表现物体。GameServer启动后会连接到此服务进行注册，并获取所需智能体的信息，以反馈给最终用户，并最终显示在用户应用程序中。该服务主要控制智能体的移动、攻击、创建、销毁等行为，另外包括在战斗中或非战斗状态下的行为，比如游走在街道上的商品小贩；在搜索到攻击目标时，主动或召集附近的战斗单位一起攻击用户，都属于该服务的工作内容。</p>
-<p>CenterServer：中心服务器，用于监控、更新已注册到此服务的状态，比如电信1区（傲视天地）服务器的运行状态等。此服务主要是管理除自身以外的所有服务程序的运行状态，以及时反馈给技术活运维人员。</p>
-<p>BillingServer：计费服务器，用于计算用户在游戏中的消耗、增值；比如XX在游戏中购买了一个双倍经验卡，消耗10金币，或者用户通过网站形式进行充值，都会通过该服务反馈给用户最终结果。</p>
-<p>WebServices：网站服务，主要用于网站与游戏之间的交互。比如XX用户通过网站进行充值服务，充值成功后，通知计费服务以响应用户操作；或通过网站进行游戏激活、礼品领取等，都需要此服务与游戏应用程序进行交互，以体现实时的变化。</p>
-<p>DBServer：用于全局数据维护，例如更新、查询、插入、删除操作；这些数据包含用户账号、充值、代金卷、点卡、月卡以及游戏中需要用到的角色数据。</p>
-<p>GMServer服务器：用于用户管理，GM拥有踢人、禁言、封闭账号、解除封闭账号、查询和修改账号注册资料等权限</p>
-<p>一般地，会把游戏服务器的架构划分如下三层：网络接入层、游戏逻辑层、数据存储层，这样划分的主要目的是：</p>
-<p>将底层通信与业务逻辑处理解耦合；<br>将业务逻辑处理与数据存储解耦合；<br>有利于运营部署与扩展；<br>游戏服务器开发框架整体视图，如下所示：</p>
-<p> <img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/blog/game/aHR0cDovL2ltYWdlcy5jcHBibG9nLmNvbS9jcHBibG9nX2NvbS9rZW5rYW8vJUU2JUI4JUI4JUU2JTg4JThGJUU2JTlDJThEJUU1JThBJUExJUU1JTk5JUE4JUU1JUJDJTgwJUU1JThGJTkxJUU2JThBJTgwJUU2JTlDJUFGJUU1JUIwJThGJUU3JUJCJTkzLmpwZw.jpg"></p>
-<p><a href="https://www.infoq.cn/article/a-brief-history-of-the-game-server-architecture">游戏服务器架构的演进简史</a></p>
-<p><a href="https://blog.csdn.net/erlib/article/details/46539069">游戏服务器架构演化史</a></p>
 ]]></content>
       <categories>
         <category>gogameframework</category>
