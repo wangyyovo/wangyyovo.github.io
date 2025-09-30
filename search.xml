@@ -4679,7 +4679,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以cf为例：</span><br><span class="line">SAVED_CF_Key=&#x27;8155245808e9ee11af&#x27;</span><br><span class="line">SAVED_CF_Email=&#x27;develop@xx.com&#x27;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-ZeroSSL账号"><a href="#2-ZeroSSL账号" class="headerlink" title="2.ZeroSSL账号"></a>2.ZeroSSL账号</h2><p>申请ZeroSSL证书之前需要再官网注册账号，地址：<a href="https://zerossl.com/%EF%BC%8C%E6%AD%A4%E5%A4%84%E6%B3%A8%E5%86%8C%E7%9A%84%E5%9C%B0%E5%9D%80%E9%9C%80%E8%A6%81%E5%9C%A8acme%E7%94%B3%E8%AF%B7%E5%9F%9F%E5%90%8D%E6%97%B6%E6%B3%A8%E5%86%8C%EF%BC%8C%E6%89%8D%E8%83%BD%E7%94%B3%E8%AF%B7%EF%BC%81">https://zerossl.com/，此处注册的地址需要在acme申请域名时注册，才能申请！</a></p>
-<p>例如我的注册账号是：<a href="mailto:&#97;&#98;&#x63;&#64;&#x78;&#x78;&#46;&#x63;&#x6f;&#x6d;">abc@xx.com</a></p>
+<p>例如我的注册账号是：<a href="mailto:&#97;&#98;&#x63;&#64;&#x78;&#x78;&#46;&#99;&#x6f;&#x6d;">abc@xx.com</a></p>
 <h2 id="3-Freenom"><a href="#3-Freenom" class="headerlink" title="3.Freenom"></a>3.Freenom</h2><p>免费的域名，地址：<a href="https://www.freenom.com,然后绑定服务器ip/">https://www.freenom.com，然后绑定服务器IP</a></p>
 <h2 id="4-注册zerossl账号"><a href="#4-注册zerossl账号" class="headerlink" title="4.注册zerossl账号"></a>4.注册zerossl账号</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">acme.sh  --register-account  -m abc@xx.com --server zerossl</span><br></pre></td></tr></table></figure>
 
@@ -5954,7 +5954,7 @@
 <li>description: xxxxxxxxx ## pub库简介</li>
 <li>homepage:<a href="https://link.segmentfault.com/?url=https://github.com/xxxx">https://github.com/xxxx</a> ## pub库git地址</li>
 <li>publish_to:<a href="https://link.segmentfault.com/?url=http://pub.100tal.com/">http://pub.100tal.com/</a> ## 私有pub库上传地址 如果不是私有pub仓库 不用配置</li>
-<li>author:xxx<a href="mailto:&#120;&#120;&#120;&#x40;&#49;&#x30;&#48;&#x74;&#x61;&#x6c;&#x2e;&#99;&#111;&#109;">xxx@100tal.com</a> ## pub库作者</li>
+<li>author:xxx<a href="mailto:&#x78;&#x78;&#x78;&#64;&#x31;&#48;&#x30;&#x74;&#97;&#108;&#46;&#x63;&#x6f;&#109;">xxx@100tal.com</a> ## pub库作者</li>
 <li>检测配置文件:<br>flutter packages pub publish --dry-run</li>
 <li>发布<br>flutter packages pub publish</li>
 </ul>
@@ -12749,7 +12749,7 @@
 <p><strong>Output.txt:</strong> 执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateA.</span><br><span class="line">ConcreteStateA handles request1.</span><br><span class="line">ConcreteStateA wants to change the state of the context.</span><br><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateB.</span><br><span class="line">ConcreteStateB handles request2.</span><br><span class="line">ConcreteStateB wants to change the state of the context.</span><br><span class="line">Context: Transition to RefactoringGuru\State\Conceptual\ConcreteStateA.</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><p><strong>真实世界示例</strong></p>
 <p>尽管状态机和状态模式自身在开发者中非常流行， 但是我却想不到任何 PHP 中的实际应用来作为该模式在真实世界的示例。</p>
-<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#x73;&#x75;&#x70;&#x70;&#x6f;&#x72;&#x74;&#x40;&#114;&#x65;&#x66;&#x61;&#x63;&#116;&#x6f;&#114;&#x69;&#x6e;&#103;&#x2e;&#103;&#117;&#x72;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
+<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x72;&#101;&#102;&#x61;&#99;&#x74;&#111;&#x72;&#105;&#110;&#x67;&#46;&#x67;&#117;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
 <p><strong>复杂度：</strong> ★☆☆</p>
 <p><strong>流行度：</strong> ★★☆</p>
 <p><strong>使用示例：</strong> 在 Python 语言中， 状态模式通常被用于将基于 <code>switch</code>语句的大型状态机转换为对象。</p>
@@ -13375,7 +13375,7 @@
 <p><strong>Output.txt:</strong> 执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Originator: My initial state is: Super-duper-super-puper-super. </span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: srGIngezAEboNPDjBkuvymJKUtMSFX</span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: UwCZQaHJOiERLlchyVuMbXNtpqTgWF</span><br><span class="line"></span><br><span class="line">Caretaker: Saving Originator&#x27;s state...</span><br><span class="line">Originator: I&#x27;m doing something important.</span><br><span class="line">Originator: and my state has changed to: incqsdoJXkbDUuVOvRFYyKBgfzwZCQ</span><br><span class="line"></span><br><span class="line">Caretaker: Here&#x27;s the list of mementos:</span><br><span class="line">2018-06-04 14:50:39 / (Super-dup...)</span><br><span class="line">2018-06-04 14:50:39 / (srGIngezA...)</span><br><span class="line">2018-06-04 14:50:39 / (UwCZQaHJO...)</span><br><span class="line"></span><br><span class="line">Client: Now, let&#x27;s rollback!</span><br><span class="line"></span><br><span class="line">Caretaker: Restoring state to: 2018-06-04 14:50:39 / (UwCZQaHJO...)</span><br><span class="line">Originator: My state has changed to: UwCZQaHJOiERLlchyVuMbXNtpqTgWF</span><br><span class="line"></span><br><span class="line">Client: Once more!</span><br><span class="line"></span><br><span class="line">Caretaker: Restoring state to: 2018-06-04 14:50:39 / (srGIngezA...)</span><br><span class="line">Originator: My state has changed to: srGIngezAEboNPDjBkuvymJKUtMSFX</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><p><strong>真实世界示例</strong></p>
 <p>由于绝大部分 PHP 脚本是单线程运行， 且会话时间非常有限， 因此你需要将对象的状态保存在比 RAM 更持久的存储设备中。 一般情况下， 通过序列化生成快照也完全没有问题。 因此， 我想不到任何该模式在 PHP 中的实际示例。</p>
-<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#x70;&#112;&#111;&#114;&#x74;&#64;&#114;&#x65;&#102;&#x61;&#x63;&#x74;&#111;&#114;&#x69;&#110;&#x67;&#x2e;&#x67;&#117;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
+<p>但是， 如果你曾在项目中使用过该模式， 欢迎通过<a href="https://refactoring.userecho.com/">论坛</a>或邮件<a href="mailto:&#115;&#117;&#112;&#x70;&#111;&#114;&#116;&#x40;&#x72;&#101;&#102;&#x61;&#99;&#x74;&#x6f;&#x72;&#x69;&#110;&#x67;&#x2e;&#x67;&#117;&#114;&#x75;">support@refactoring.guru</a>分享你的经验。 谢谢！</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><p><strong>在 Python 中使用模式</strong></p>
 <p><strong>复杂度：</strong> ★★★</p>
 <p><strong>流行度：</strong> ★☆☆</p>
 <p><strong>使用示例：</strong> 备忘录的基本功能可用序列化来实现， 这在 Python 语言中很常见。 尽管备忘录不是生成对象状态快照的唯一或最有效的方法， 但它能在保护原始对象的结构不暴露给其他对象的情况下保存对象状态的备份。</p>
@@ -26612,7 +26612,7 @@
 <p><img src="https://oss.012700.xyz/butterfly/2024/09/73515338-e6874d80-442f-11ea-9d07-725d37002985.png" alt="73515338-e6874d80-442f-11ea-9d07-725d37002985.png"></p>
 <blockquote>
 <p>cheerio 版本錯誤，請安裝 0.22.0 版本</p>
-<p>npm install <a href="mailto:&#99;&#x68;&#x65;&#x65;&#114;&#x69;&#111;&#x40;&#x30;&#x2e;&#50;&#x32;&#x2e;&#48;">cheerio@0.22.0</a> --save</p>
+<p>npm install <a href="mailto:&#x63;&#x68;&#x65;&#101;&#x72;&#x69;&#111;&#64;&#x30;&#x2e;&#50;&#50;&#x2e;&#48;">cheerio@0.22.0</a> --save</p>
 </blockquote>
 <h3 id="搜索欄在底部"><a href="#搜索欄在底部" class="headerlink" title="搜索欄在底部"></a>搜索欄在底部</h3><p>hexo deploy 後搜索欄在頁面底部</p>
 <blockquote>
@@ -35304,6 +35304,20 @@ another task : 24d
       </tags>
   </entry>
   <entry>
+    <title>hexo</title>
+    <url>/posts/ab21860c/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/Weibo-Picture-Store">Weibo-Picture-Store</a> 新浪微博图床 Chrome 扩展，支持同步到微相册<br><a href="https://github.com/wangyangyangisme/hexo-theme-butterfly">hexo-theme-butterfly</a> hexo主题 目前使用<br><a href="https://github.com/wangyangyangisme/hexo-theme-snippet">hexo-theme-snippet</a> hexo主题</p>
+<p><a href="https://github.com/wangyangyangisme/HexoEditor">HexoEditor</a> hexo markdown editor<br><a href="https://github.com/wangyangyangisme/hexo-admin">hexo-admin</a> An Admin Interface for Hexo</p>
+<p><a href="https://github.com/wangyangyangisme/PicGo">PicGo</a> 图片上传</p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>go</title>
     <url>/posts/b6689356/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -35594,11 +35608,11 @@ another task : 24d
       </tags>
   </entry>
   <entry>
-    <title>hexo</title>
-    <url>/posts/ab21860c/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/Weibo-Picture-Store">Weibo-Picture-Store</a> 新浪微博图床 Chrome 扩展，支持同步到微相册<br><a href="https://github.com/wangyangyangisme/hexo-theme-butterfly">hexo-theme-butterfly</a> hexo主题 目前使用<br><a href="https://github.com/wangyangyangisme/hexo-theme-snippet">hexo-theme-snippet</a> hexo主题</p>
-<p><a href="https://github.com/wangyangyangisme/HexoEditor">HexoEditor</a> hexo markdown editor<br><a href="https://github.com/wangyangyangisme/hexo-admin">hexo-admin</a> An Admin Interface for Hexo</p>
-<p><a href="https://github.com/wangyangyangisme/PicGo">PicGo</a> 图片上传</p>
+    <title>interview</title>
+    <url>/posts/cf1d3c34/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/huihut/interview">interview</a> C&#x2F;C++面试知识总结</p>
+<p><a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese">Algorithm</a> 2018&#x2F;2019&#x2F;校招&#x2F;春招&#x2F;秋招&#x2F;算法&#x2F;机器学习(Machine Learning)&#x2F;深度学习(Deep Learning)&#x2F;自然语言处理(NLP)&#x2F;C&#x2F;C++&#x2F;Python&#x2F;面试笔记</p>
+<p><a href="https://github.com/zhengjianglong915/note-of-interview">note-of-interview</a> 《互联网面试笔记》收集和分析互联网常见面试题，并将这些面试知识整理成文方便大家查阅。主要是面向java程序员，但基础知识部分不同语言程序员(c,c++,python等）都可以参考</p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -35657,20 +35671,6 @@ another task : 24d
       </tags>
   </entry>
   <entry>
-    <title>interview</title>
-    <url>/posts/cf1d3c34/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/huihut/interview">interview</a> C&#x2F;C++面试知识总结</p>
-<p><a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese">Algorithm</a> 2018&#x2F;2019&#x2F;校招&#x2F;春招&#x2F;秋招&#x2F;算法&#x2F;机器学习(Machine Learning)&#x2F;深度学习(Deep Learning)&#x2F;自然语言处理(NLP)&#x2F;C&#x2F;C++&#x2F;Python&#x2F;面试笔记</p>
-<p><a href="https://github.com/zhengjianglong915/note-of-interview">note-of-interview</a> 《互联网面试笔记》收集和分析互联网常见面试题，并将这些面试知识整理成文方便大家查阅。主要是面向java程序员，但基础知识部分不同语言程序员(c,c++,python等）都可以参考</p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>library</title>
     <url>/posts/a18098bc/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/wav2letter">wav2letter</a> facebook语音识别库</p>
@@ -35702,6 +35702,31 @@ another task : 24d
     <url>/posts/7fa71aba/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><a href="https://github.com/wangyangyangisme/listen1">listen1</a> 多个网站的在线音乐 网易云音乐，QQ音乐，虾米音乐...</p>
 <p><a href="http://jaywcjlove.github.io/github-rank/Github">中国和全球用户排名，全球仓库 Star 最多排名</a></p>
+]]></content>
+      <categories>
+        <category>README</category>
+      </categories>
+      <tags>
+        <tag>README</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>unity</title>
+    <url>/posts/9659d57/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>[unity开发框架]</p>
+<p><a href="https://github.com/CatLib">CatLib</a></p>
+<p><a href="https://github.com/wangyangyangisme/GameFramework">GameFramework</a></p>
+<p><a href="https://github.com/wangyangyangisme/UnityGameFramework">UnityGameFramework</a></p>
+<p><a href="https://github.com/wangyangyangisme/StarForce">StarForce</a> GameFramework的例子</p>
+<p><a href="https://github.com/wangyangyangisme/QFramework">QFramework</a></p>
+<p><a href="https://github.com/wangyangyangisme/ET">ET</a> Unity3D Client And C# Server Framework</p>
+<p><a href="https://github.com/wangyangyangisme/ET-Modules">ET-Modules</a> ET的Module</p>
+<p><a href="https://github.com/wangyangyangisme/kcp-bulild">kcp-bulild</a> Unity3D中可靠UDP网络库kcp的各平台动态库构建项目</p>
+<p><a href="https://github.com/wangyangyangisme/KSFramework">KSFramework</a></p>
+<p><a href="https://github.com/wangyangyangisme/unity-volume-rendering">unity-volume-rendering</a> 3D纹理渲染体数据 医疗</p>
+<p><a href="https://github.com/wangyangyangisme/glTF">glTF</a> 3D图形界的JPEG</p>
+<p><a href="https://github.com/wangyangyangisme/Unity5Effects">Unity5Effects</a> 很赞的特效</p>
+<p><a href="https://github.com/wangyangyangisme/MeshDGP">MeshDGP</a> c#实现的网格操作（good）</p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -35931,31 +35956,6 @@ another task : 24d
 <h1 id="Android"><a href="#Android" class="headerlink" title="[Android]"></a>[Android]</h1><p><a href="https://github.com/wangyangyangisme/StandardQtOnAndroid">StandardQtOnAndroid</a>  QtQuick 开发安卓的模板项目</p>
 <p><a href="https://github.com/wangyangyangisme/quicknative">quicknative</a>   封装了 Android 和 IOS 的原生对话框</p>
 <p><a href="https://github.com/wangyangyangisme/QtForAndroid">QtForAndroid</a></p>
-]]></content>
-      <categories>
-        <category>README</category>
-      </categories>
-      <tags>
-        <tag>README</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>unity</title>
-    <url>/posts/9659d57/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>[unity开发框架]</p>
-<p><a href="https://github.com/CatLib">CatLib</a></p>
-<p><a href="https://github.com/wangyangyangisme/GameFramework">GameFramework</a></p>
-<p><a href="https://github.com/wangyangyangisme/UnityGameFramework">UnityGameFramework</a></p>
-<p><a href="https://github.com/wangyangyangisme/StarForce">StarForce</a> GameFramework的例子</p>
-<p><a href="https://github.com/wangyangyangisme/QFramework">QFramework</a></p>
-<p><a href="https://github.com/wangyangyangisme/ET">ET</a> Unity3D Client And C# Server Framework</p>
-<p><a href="https://github.com/wangyangyangisme/ET-Modules">ET-Modules</a> ET的Module</p>
-<p><a href="https://github.com/wangyangyangisme/kcp-bulild">kcp-bulild</a> Unity3D中可靠UDP网络库kcp的各平台动态库构建项目</p>
-<p><a href="https://github.com/wangyangyangisme/KSFramework">KSFramework</a></p>
-<p><a href="https://github.com/wangyangyangisme/unity-volume-rendering">unity-volume-rendering</a> 3D纹理渲染体数据 医疗</p>
-<p><a href="https://github.com/wangyangyangisme/glTF">glTF</a> 3D图形界的JPEG</p>
-<p><a href="https://github.com/wangyangyangisme/Unity5Effects">Unity5Effects</a> 很赞的特效</p>
-<p><a href="https://github.com/wangyangyangisme/MeshDGP">MeshDGP</a> c#实现的网格操作（good）</p>
 ]]></content>
       <categories>
         <category>README</category>
@@ -36604,182 +36604,6 @@ another task : 24d
       </categories>
   </entry>
   <entry>
-    <title>C动态库的编写及调用</title>
-    <url>/posts/4b16202d/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="C动态库的编写及调用"><a href="#C动态库的编写及调用" class="headerlink" title="C动态库的编写及调用"></a>C动态库的编写及调用</h1><h2 id="GCC常用编译选项"><a href="#GCC常用编译选项" class="headerlink" title="GCC常用编译选项"></a>GCC常用编译选项</h2><h3 id="1、总体编译选项"><a href="#1、总体编译选项" class="headerlink" title="1、总体编译选项"></a>1、总体编译选项</h3><table>
-<thead>
-<tr>
-<th>选项名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-c</td>
-<td>只是编译不链接，生成目标文件.o</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>只是编译不汇编，生成汇编代码</td>
-</tr>
-<tr>
-<td>-E</td>
-<td>只进行预编译，不做其他处理</td>
-</tr>
-<tr>
-<td>-g</td>
-<td>在可执行程序中包含标准调试信息</td>
-</tr>
-<tr>
-<td>-o file</td>
-<td>把输出文件输出到file里</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>打印出编译器内部编译各过程的命令行信息和编译器的版本</td>
-</tr>
-<tr>
-<td>-I dir</td>
-<td>在头文件的搜索路径列表中添加dir目录</td>
-</tr>
-<tr>
-<td>-L dir</td>
-<td>在库文件的搜索路径列表中添加dir目录</td>
-</tr>
-<tr>
-<td>-static</td>
-<td>链接静态库</td>
-</tr>
-<tr>
-<td>-llibrary</td>
-<td>连接名为library的库文件</td>
-</tr>
-</tbody></table>
-<h3 id="2、其他常用编译选项"><a href="#2、其他常用编译选项" class="headerlink" title="2、其他常用编译选项"></a>2、其他常用编译选项</h3><table>
-<thead>
-<tr>
-<th align="left">选项名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">-ansi</td>
-<td>支持符合ANSI标准的C程序</td>
-</tr>
-<tr>
-<td align="left">-pedantic</td>
-<td>允许发出ANSI C标准所列的全部警告信息</td>
-</tr>
-<tr>
-<td align="left">-pedantic-error</td>
-<td>允许发出ANSI C标准所列的全部错误信息</td>
-</tr>
-<tr>
-<td align="left">-Wall</td>
-<td>允许发出gcc提供的所有有用的报警信息</td>
-</tr>
-<tr>
-<td align="left">-Werror</td>
-<td>把所有的告警信息转化为错误信息，并在告警发生时终止编译过程</td>
-</tr>
-<tr>
-<td align="left">-O</td>
-<td>主要进行线程跳转（Thread Jump）和延迟退栈（Deferred Stack Pops）两种优化</td>
-</tr>
-<tr>
-<td align="left">-O2</td>
-<td>除了完成所有“-O1”级别的优化之外，同时还要进行一些额外的调整工作，如处理器指令调度等</td>
-</tr>
-<tr>
-<td align="left">-O3</td>
-<td>还包括循环展开和其他一些与处理器特性相关的优化工作</td>
-</tr>
-<tr>
-<td align="left">-static</td>
-<td>指示链接器构建一个完全链接的可执行程序，即链接静态库而不链接动态库</td>
-</tr>
-<tr>
-<td align="left">-fPIC</td>
-<td>指示链接器创建一个共享的目标文件，即so文件</td>
-</tr>
-<tr>
-<td align="left">-shared</td>
-<td>生成动态库，一般和上面的-fPIC一起使用</td>
-</tr>
-</tbody></table>
-<h2 id="编写DLL"><a href="#编写DLL" class="headerlink" title="编写DLL"></a>编写DLL</h2><h3 id="extern-“c”"><a href="#extern-“c”" class="headerlink" title="extern “c”"></a>extern “c”</h3><p> __stdcall的调用方式就会在原来函数名上加符号，而extern “c” __cdecl则不会附加额外的符号。</p>
-<p>如果导出函数使用了extern”C” __cdecl，那么就不需要再重命名了，这个时候dll里的名字就是原始名字；如果使用了extern”C” __stdcall，这时候dll中的函数名被修饰了，就需要重命名。重命名的方式有两种，要么使用*.def文件，在文件外修正，要么使用#pragma，在代码里给函数别名。</p>
-<h3 id="declspec-dllexport-和-declspec-dllimport-的作用"><a href="#declspec-dllexport-和-declspec-dllimport-的作用" class="headerlink" title="__declspec(dllexport)和__declspec(dllimport)的作用"></a>__declspec(dllexport)和__declspec(dllimport)的作用</h3><p>__declspec还有另外的用途，这里只讨论跟dll相关的使用。正如括号里的关键字一样，导出和导入。__declspec(dllexport)用在dll上，用于说明这是导出的函数。而__declspec(dllimport)用在调用dll的程序中，用于说明这是从dll中导入的函数。</p>
-<p>因为dll中必须说明函数要用于导出，所以__declspec(dllexport)很有必要。但是可以换一种方式，可以使用def文件来说明哪些函数用于导出，同时def文件里边还有函数的编号。</p>
-<p>而使用__declspec(dllimport)却不是必须的，但是建议这么做。因为如果不用__declspec(dllimport)来说明该函数是从dll导入的，那么编译器就不知道这个函数到底在哪里，生成的exe里会有一个call XX的指令，这个XX是一个常数地址，XX地址处是一个jmp dword ptr[XXX]的指令，跳转到该函数的函数体处，显然这样就无缘无故多了一次中间的跳转。如果使用了__declspec(dllimport)来说明，那么就直接产生call dword ptr[XXX]，这样就不会有多余的跳转了。</p>
-<h3 id="stdcall带来的影响"><a href="#stdcall带来的影响" class="headerlink" title="__stdcall带来的影响"></a>__stdcall带来的影响</h3><p>这是一种函数的调用约定方式，压栈方式和最后的清栈的方式不同，<code>__stdcall</code><br><code>是函数自己处理栈</code>，<code>__cdecl是函数调用者清理</code>。默认情况下VC使用的是__cdecl的函数调用方式，如果产生的dll只会给C&#x2F;C++程序使用，那么就没必要定义为__stdcall调用方式，如果要给Win32汇编使用（或者其他的__stdcall调用方式的程序），那么就可以使用__stdcall。这个可能不是很重要，因为可以自己在调用函数的时候设置函数调用的规则。像VC就可以设置函数的调用方式，所以可以方便的使用win32汇编产生的dll。不过__stdcall这调用约定会Name-Mangling，所以我觉得用VC默认的调用约定简便些。但是，如果既要__stdcall调用约定，又要函数名不给修饰，那可以使用*.def文件，或者在代码里#pragma的方式给函数提供别名（这种方式需要知道修饰后的函数名是什么）。</p>
-<p>举例：</p>
-<p>extern “C” __declspec(dllexport) bool  __stdcall cswuyg();</p>
-<p>extern “C” __declspec(dllimport) bool __stdcall cswuyg();</p>
-<p>#pragma comment(linker,&quot;&#x2F;export:cswuyg&#x3D;_cswuyg@0&quot;)</p>
-<h3 id="def文件"><a href="#def文件" class="headerlink" title="*.def文件"></a>*.def文件</h3><p>指定<strong>导出函数</strong>，并告知编译器不要以修饰后的函数名作为<strong>导出函数</strong>名，而以指定的函数名<strong>导出函数</strong>（比如有函数func，让编译器处理后函数名仍为func）。这样，就可以避免由于microsoft VC++编译器的独特处理方式而引起的链接错误。</p>
-<p>也就是说，使用了def文件，那就不需要extern “C”了，也可以不需要__declspec(dllexport)了（不过，dll的制造者除了提供dll之外，还要提供头文件，需要在头文件里加上这extern”C”和调用约定，因为使用者需要跟制造者遵守同样的规则）。</p>
-<p>举例def文件格式：</p>
-<p>LIBRARY  XX(dll名称这个并不是必须的，但必须确保跟生成的dll名称一样)</p>
-<p>EXPORTS</p>
-<p>[函数名] @ [函数序号]</p>
-<p> 编写好之后加入到VC的项目中，就可以了。</p>
-<p>​       另外，要注意的是，如果要使用__stdcall，那么就必须在代码里使用上__stdcall，因为*.def文件只负责修改函数名称，不负责调用约定。</p>
-<p>也就是说，def文件只管函数名，不管函数平衡堆栈的方式。</p>
-<p>如何把*.def文件加入到工程之后，链接的时候并没有自动把它加进去。那么可以这样做：</p>
-<p>手动的在link添加：</p>
-<p>1）工程的properties Configuration Properties Linker Command Line在“Additional options”里加上：&#x2F;def:[完整文件名].def</p>
-<p>2）工程的properties Configuration Properties Linker Input Module Definition File里加上[完整文件名].def</p>
-<h3 id="DllMain函数"><a href="#DllMain函数" class="headerlink" title="DllMain函数"></a>DllMain函数</h3><p>每一个动态链接库都会有一个DllMain函数。如果在编程的时候没有定义DllMain函数，那么编译器会给你加上去。</p>
-<p>DllMain函数格式：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">BOOL APIENTRY <span class="title function_">DllMain</span><span class="params">( HANDLE hModule,</span></span><br><span class="line"><span class="params">                       DWORD  ul_reason_for_call,</span></span><br><span class="line"><span class="params">                       LPVOID lpReserved</span></span><br><span class="line"><span class="params">                       )</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span>(ul_reason_for_call)</span><br><span class="line">     &#123;</span><br><span class="line">     <span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nprocess attach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_THREAD_ATTACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nthread attach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_THREAD_DETACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nthread detach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nprocess detach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>编写dll可以使用.def文件对导出的函数名进行命名。</p>
-<h2 id="实例DLL"><a href="#实例DLL" class="headerlink" title="实例DLL"></a>实例DLL</h2><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>1.头文件 <code>test.h</code></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#define WIN</span></span><br><span class="line"><span class="comment">//#define TEST_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> WIN</span></span><br><span class="line">    <span class="meta">#<span class="keyword">ifdef</span> TEST_EXPORTS</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> EX_FUN __declspec(dllexport)</span></span><br><span class="line">    <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> EX_FUN __declspec(dllimport)</span></span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> CALL_METHOD __stdcall  <span class="comment">//__cdecl</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> CALLBACK    __stdcall</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> EX_FUN extern <span class="string">&quot;C&quot;</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> CALL_METHOD</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> CALLBACK</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">//linux</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test1</span><span class="params">()</span>;</span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test2</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">//TEST_H</span></span></span><br></pre></td></tr></table></figure>
-
-<p>2.实现文件 <code>test.cpp</code></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;test1\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;test2\n&quot;</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.调用dll<code>main.h</code></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    test1();</span><br><span class="line">    test2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h3><p>1.头文件 <code>testClass.h</code></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TESTCLASS_H  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TESTCLASS_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> TEST_CLASS  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EX_CLASS _declspec(dllexport)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EX_CLASS _declspec(dllimport)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EX_CLASS</span> test  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">    <span class="built_in">cls</span>(<span class="type">int</span> i,<span class="type">int</span> j);  </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">()</span></span>;  </span><br><span class="line"><span class="keyword">private</span>:  </span><br><span class="line">    <span class="type">int</span> m;  </span><br><span class="line">    <span class="type">int</span> n;  </span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
-
-<p>2.实现文件 <code>testClass.cpp</code></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;testClass.h&quot;</span>  </span></span><br><span class="line"></span><br><span class="line">test::<span class="built_in">test</span>(<span class="type">int</span> i,<span class="type">int</span> j)  </span><br><span class="line">&#123;  </span><br><span class="line">    m = i;  </span><br><span class="line">    n = j;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test::add</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">return</span> m+n;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-<p>3.调用dll<code>main.h</code></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_CLASS </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;testClass.h&quot;</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;DLL.lib&quot;</span>)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    test *clsObj = <span class="keyword">new</span> <span class="built_in">test</span>(<span class="number">2</span>,<span class="number">3</span>);  </span><br><span class="line">    <span class="type">int</span> num = clsObj-&gt;<span class="built_in">add</span>();  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;result : &quot;</span>&lt;&lt;num&lt;&lt;endl;  </span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Linux-动态库和静态库的生成"><a href="#Linux-动态库和静态库的生成" class="headerlink" title="Linux 动态库和静态库的生成"></a>Linux 动态库和静态库的生成</h2><p>参考：<a href="http://www.latelee.org/programming-under-linux/library-on-linux.html">http://www.latelee.org/programming-under-linux/library-on-linux.html</a></p>
-<h3 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1.示例代码"></a>1.示例代码</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* lib.h */</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> LIB_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIB_H_</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> i)</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*lib.c*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(“hell from %s,num:%dn”, __func__, i);</span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*main.c*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;lib.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(“hello from %s:n”, __func__);</span><br><span class="line">    test(<span class="number">250</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-生成静态库"><a href="#2-生成静态库" class="headerlink" title="2.生成静态库"></a>2.生成静态库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成静态库</span></span><br><span class="line">gcc -c lib.c</span><br><span class="line">ar cr libtest.a lib.o</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看静态库中的符号</span></span><br><span class="line">nm libtest.a </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试程序链接到静态库</span></span><br><span class="line">gcc -o main main.c ./libtest.a</span><br><span class="line">./main </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还可以这么写</span></span><br><span class="line">gcc -o main main.c -L. -ltest</span><br><span class="line">./main </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-生成动态库"><a href="#3-生成动态库" class="headerlink" title="3.生成动态库"></a>3.生成动态库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成动态库</span></span><br><span class="line">gcc -c lib.c</span><br><span class="line">gcc -fPIC -shared -o libtest.so lib.o</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用</span></span><br><span class="line">gcc -o main main.c ./libtest.so</span><br><span class="line">./main </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还可以这么写</span></span><br><span class="line">gcc -o main main.c -L. -ltest</span><br><span class="line">./main</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-库环境的配置"><a href="#4-库环境的配置" class="headerlink" title="4.库环境的配置"></a>4.库环境的配置</h3><p>在&#x2F;etc&#x2F;profile中添加库的路径</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>c/c++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C#调用C++动态库</title>
     <url>/posts/f5d63edf/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="C-调用C-动态库"><a href="#C-调用C-动态库" class="headerlink" title="C#调用C++动态库"></a>C#调用C++动态库</h1><h2 id="1-c-调用c-的方法"><a href="#1-c-调用c-的方法" class="headerlink" title="1.c#调用c++的方法"></a>1.c#调用c++的方法</h2><p>C#调用C++的dll总归可以有两种方法：</p>
@@ -37042,6 +36866,182 @@ another task : 24d
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">typedef <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">char</span>   CharArray[<span class="number">256</span>];</span><br><span class="line">    INT32  IntegerVariable;</span><br><span class="line">    INT32  IntegerVariable1;</span><br><span class="line">    UINT16 UnsignedIntegerVariable;</span><br><span class="line">    <span class="built_in">bool</span>   BoolType;</span><br><span class="line">    <span class="comment">//string StringVariable 不可以用string类型，可以使用char*代替</span></span><br><span class="line">&#125; STRUCT;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//法1.</span></span><br><span class="line">[<span class="meta">StructLayout(LayoutKind.Sequential)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> STRUCT</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">char</span>[] CharArray;</span><br><span class="line">    <span class="keyword">public</span> Int32 IntegerVariable;</span><br><span class="line">    <span class="keyword">public</span> UInt16 UnsignedIntegerVariable;</span><br><span class="line">    <span class="keyword">public</span> Boolean BoolType;</span><br><span class="line">&#125;</span><br><span class="line">可以使用一个C<span class="meta">#函数做转换</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> StructType <span class="title">ConverBytesToStructure</span>&lt;<span class="title">StructType</span>&gt;(<span class="params"><span class="built_in">byte</span>[] bytesBuffer</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// check the length。</span></span><br><span class="line">    <span class="keyword">if</span> (bytesBuffer.Length != Marshal.SizeOf(<span class="keyword">typeof</span>(STRUCT)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;bytesBuffer is not same as structObject for the length of byte.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    IntPtr bufferHandler = Marshal.AllocHGlobal(bytesBuffer.Length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> index = <span class="number">0</span>; index &lt; bytesBuffer.Length; index++)</span><br><span class="line">    &#123;</span><br><span class="line">        Marshal.WriteByte(bufferHandler, index, bytesBuffer[index]);</span><br><span class="line">    &#125;</span><br><span class="line">    STRUCT structObject = (STRUCT)Marshal.PtrToStructure(bufferHandler, <span class="keyword">typeof</span>(STRUCT));</span><br><span class="line">    Marshal.FreeHGlobal(bufferHandler);</span><br><span class="line">    <span class="keyword">return</span> structObject;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">FileStream file = File.OpenRead(<span class="string">@&quot;C:/Path&quot;</span>);</span><br><span class="line"><span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[Marshal.SizeOf(<span class="keyword">typeof</span>(STRUCT))];</span><br><span class="line">file.Read(buffer, <span class="number">0</span>, buffer.Length);</span><br><span class="line">STRUCT testValue = CommonTools.ConverBytesToStructure&lt;STRUCT&gt;(buffer);</span><br><span class="line"><span class="built_in">string</span> sCharArray = <span class="keyword">new</span> <span class="built_in">string</span>(testValue.CharArray);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//法2. 就不需要再写转换函数</span></span><br><span class="line">[<span class="meta">StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> STRUCT</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> CharArray;</span><br><span class="line">    <span class="keyword">public</span> Int32 IntegerVariable;</span><br><span class="line">    <span class="keyword">public</span> UInt16 UnsignedIntegerVariable;</span><br><span class="line">    <span class="keyword">public</span> Boolean BoolType;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>csharp</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C动态库的编写及调用</title>
+    <url>/posts/4b16202d/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="C动态库的编写及调用"><a href="#C动态库的编写及调用" class="headerlink" title="C动态库的编写及调用"></a>C动态库的编写及调用</h1><h2 id="GCC常用编译选项"><a href="#GCC常用编译选项" class="headerlink" title="GCC常用编译选项"></a>GCC常用编译选项</h2><h3 id="1、总体编译选项"><a href="#1、总体编译选项" class="headerlink" title="1、总体编译选项"></a>1、总体编译选项</h3><table>
+<thead>
+<tr>
+<th>选项名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c</td>
+<td>只是编译不链接，生成目标文件.o</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>只是编译不汇编，生成汇编代码</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>只进行预编译，不做其他处理</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>在可执行程序中包含标准调试信息</td>
+</tr>
+<tr>
+<td>-o file</td>
+<td>把输出文件输出到file里</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>打印出编译器内部编译各过程的命令行信息和编译器的版本</td>
+</tr>
+<tr>
+<td>-I dir</td>
+<td>在头文件的搜索路径列表中添加dir目录</td>
+</tr>
+<tr>
+<td>-L dir</td>
+<td>在库文件的搜索路径列表中添加dir目录</td>
+</tr>
+<tr>
+<td>-static</td>
+<td>链接静态库</td>
+</tr>
+<tr>
+<td>-llibrary</td>
+<td>连接名为library的库文件</td>
+</tr>
+</tbody></table>
+<h3 id="2、其他常用编译选项"><a href="#2、其他常用编译选项" class="headerlink" title="2、其他常用编译选项"></a>2、其他常用编译选项</h3><table>
+<thead>
+<tr>
+<th align="left">选项名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-ansi</td>
+<td>支持符合ANSI标准的C程序</td>
+</tr>
+<tr>
+<td align="left">-pedantic</td>
+<td>允许发出ANSI C标准所列的全部警告信息</td>
+</tr>
+<tr>
+<td align="left">-pedantic-error</td>
+<td>允许发出ANSI C标准所列的全部错误信息</td>
+</tr>
+<tr>
+<td align="left">-Wall</td>
+<td>允许发出gcc提供的所有有用的报警信息</td>
+</tr>
+<tr>
+<td align="left">-Werror</td>
+<td>把所有的告警信息转化为错误信息，并在告警发生时终止编译过程</td>
+</tr>
+<tr>
+<td align="left">-O</td>
+<td>主要进行线程跳转（Thread Jump）和延迟退栈（Deferred Stack Pops）两种优化</td>
+</tr>
+<tr>
+<td align="left">-O2</td>
+<td>除了完成所有“-O1”级别的优化之外，同时还要进行一些额外的调整工作，如处理器指令调度等</td>
+</tr>
+<tr>
+<td align="left">-O3</td>
+<td>还包括循环展开和其他一些与处理器特性相关的优化工作</td>
+</tr>
+<tr>
+<td align="left">-static</td>
+<td>指示链接器构建一个完全链接的可执行程序，即链接静态库而不链接动态库</td>
+</tr>
+<tr>
+<td align="left">-fPIC</td>
+<td>指示链接器创建一个共享的目标文件，即so文件</td>
+</tr>
+<tr>
+<td align="left">-shared</td>
+<td>生成动态库，一般和上面的-fPIC一起使用</td>
+</tr>
+</tbody></table>
+<h2 id="编写DLL"><a href="#编写DLL" class="headerlink" title="编写DLL"></a>编写DLL</h2><h3 id="extern-“c”"><a href="#extern-“c”" class="headerlink" title="extern “c”"></a>extern “c”</h3><p> __stdcall的调用方式就会在原来函数名上加符号，而extern “c” __cdecl则不会附加额外的符号。</p>
+<p>如果导出函数使用了extern”C” __cdecl，那么就不需要再重命名了，这个时候dll里的名字就是原始名字；如果使用了extern”C” __stdcall，这时候dll中的函数名被修饰了，就需要重命名。重命名的方式有两种，要么使用*.def文件，在文件外修正，要么使用#pragma，在代码里给函数别名。</p>
+<h3 id="declspec-dllexport-和-declspec-dllimport-的作用"><a href="#declspec-dllexport-和-declspec-dllimport-的作用" class="headerlink" title="__declspec(dllexport)和__declspec(dllimport)的作用"></a>__declspec(dllexport)和__declspec(dllimport)的作用</h3><p>__declspec还有另外的用途，这里只讨论跟dll相关的使用。正如括号里的关键字一样，导出和导入。__declspec(dllexport)用在dll上，用于说明这是导出的函数。而__declspec(dllimport)用在调用dll的程序中，用于说明这是从dll中导入的函数。</p>
+<p>因为dll中必须说明函数要用于导出，所以__declspec(dllexport)很有必要。但是可以换一种方式，可以使用def文件来说明哪些函数用于导出，同时def文件里边还有函数的编号。</p>
+<p>而使用__declspec(dllimport)却不是必须的，但是建议这么做。因为如果不用__declspec(dllimport)来说明该函数是从dll导入的，那么编译器就不知道这个函数到底在哪里，生成的exe里会有一个call XX的指令，这个XX是一个常数地址，XX地址处是一个jmp dword ptr[XXX]的指令，跳转到该函数的函数体处，显然这样就无缘无故多了一次中间的跳转。如果使用了__declspec(dllimport)来说明，那么就直接产生call dword ptr[XXX]，这样就不会有多余的跳转了。</p>
+<h3 id="stdcall带来的影响"><a href="#stdcall带来的影响" class="headerlink" title="__stdcall带来的影响"></a>__stdcall带来的影响</h3><p>这是一种函数的调用约定方式，压栈方式和最后的清栈的方式不同，<code>__stdcall</code><br><code>是函数自己处理栈</code>，<code>__cdecl是函数调用者清理</code>。默认情况下VC使用的是__cdecl的函数调用方式，如果产生的dll只会给C&#x2F;C++程序使用，那么就没必要定义为__stdcall调用方式，如果要给Win32汇编使用（或者其他的__stdcall调用方式的程序），那么就可以使用__stdcall。这个可能不是很重要，因为可以自己在调用函数的时候设置函数调用的规则。像VC就可以设置函数的调用方式，所以可以方便的使用win32汇编产生的dll。不过__stdcall这调用约定会Name-Mangling，所以我觉得用VC默认的调用约定简便些。但是，如果既要__stdcall调用约定，又要函数名不给修饰，那可以使用*.def文件，或者在代码里#pragma的方式给函数提供别名（这种方式需要知道修饰后的函数名是什么）。</p>
+<p>举例：</p>
+<p>extern “C” __declspec(dllexport) bool  __stdcall cswuyg();</p>
+<p>extern “C” __declspec(dllimport) bool __stdcall cswuyg();</p>
+<p>#pragma comment(linker,&quot;&#x2F;export:cswuyg&#x3D;_cswuyg@0&quot;)</p>
+<h3 id="def文件"><a href="#def文件" class="headerlink" title="*.def文件"></a>*.def文件</h3><p>指定<strong>导出函数</strong>，并告知编译器不要以修饰后的函数名作为<strong>导出函数</strong>名，而以指定的函数名<strong>导出函数</strong>（比如有函数func，让编译器处理后函数名仍为func）。这样，就可以避免由于microsoft VC++编译器的独特处理方式而引起的链接错误。</p>
+<p>也就是说，使用了def文件，那就不需要extern “C”了，也可以不需要__declspec(dllexport)了（不过，dll的制造者除了提供dll之外，还要提供头文件，需要在头文件里加上这extern”C”和调用约定，因为使用者需要跟制造者遵守同样的规则）。</p>
+<p>举例def文件格式：</p>
+<p>LIBRARY  XX(dll名称这个并不是必须的，但必须确保跟生成的dll名称一样)</p>
+<p>EXPORTS</p>
+<p>[函数名] @ [函数序号]</p>
+<p> 编写好之后加入到VC的项目中，就可以了。</p>
+<p>​       另外，要注意的是，如果要使用__stdcall，那么就必须在代码里使用上__stdcall，因为*.def文件只负责修改函数名称，不负责调用约定。</p>
+<p>也就是说，def文件只管函数名，不管函数平衡堆栈的方式。</p>
+<p>如何把*.def文件加入到工程之后，链接的时候并没有自动把它加进去。那么可以这样做：</p>
+<p>手动的在link添加：</p>
+<p>1）工程的properties Configuration Properties Linker Command Line在“Additional options”里加上：&#x2F;def:[完整文件名].def</p>
+<p>2）工程的properties Configuration Properties Linker Input Module Definition File里加上[完整文件名].def</p>
+<h3 id="DllMain函数"><a href="#DllMain函数" class="headerlink" title="DllMain函数"></a>DllMain函数</h3><p>每一个动态链接库都会有一个DllMain函数。如果在编程的时候没有定义DllMain函数，那么编译器会给你加上去。</p>
+<p>DllMain函数格式：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">BOOL APIENTRY <span class="title function_">DllMain</span><span class="params">( HANDLE hModule,</span></span><br><span class="line"><span class="params">                       DWORD  ul_reason_for_call,</span></span><br><span class="line"><span class="params">                       LPVOID lpReserved</span></span><br><span class="line"><span class="params">                       )</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span>(ul_reason_for_call)</span><br><span class="line">     &#123;</span><br><span class="line">     <span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nprocess attach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_THREAD_ATTACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nthread attach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_THREAD_DETACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nthread detach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     <span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\nprocess detach of dll&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>编写dll可以使用.def文件对导出的函数名进行命名。</p>
+<h2 id="实例DLL"><a href="#实例DLL" class="headerlink" title="实例DLL"></a>实例DLL</h2><h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>1.头文件 <code>test.h</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TEST_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#define WIN</span></span><br><span class="line"><span class="comment">//#define TEST_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> WIN</span></span><br><span class="line">    <span class="meta">#<span class="keyword">ifdef</span> TEST_EXPORTS</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> EX_FUN __declspec(dllexport)</span></span><br><span class="line">    <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> EX_FUN __declspec(dllimport)</span></span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> CALL_METHOD __stdcall  <span class="comment">//__cdecl</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> CALLBACK    __stdcall</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">	<span class="meta">#<span class="keyword">define</span> EX_FUN extern <span class="string">&quot;C&quot;</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> CALL_METHOD</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> CALLBACK</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">//linux</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test1</span><span class="params">()</span>;</span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test2</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">//TEST_H</span></span></span><br></pre></td></tr></table></figure>
+
+<p>2.实现文件 <code>test.cpp</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test1</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;test1\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">EX_FUN <span class="type">void</span> CALL_METHOD <span class="title function_">test2</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;test2\n&quot;</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.调用dll<code>main.h</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_EXPORTS</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    test1();</span><br><span class="line">    test2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h3><p>1.头文件 <code>testClass.h</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> TESTCLASS_H  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> TESTCLASS_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> TEST_CLASS  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EX_CLASS _declspec(dllexport)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EX_CLASS _declspec(dllimport)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EX_CLASS</span> test  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">    <span class="built_in">cls</span>(<span class="type">int</span> i,<span class="type">int</span> j);  </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">()</span></span>;  </span><br><span class="line"><span class="keyword">private</span>:  </span><br><span class="line">    <span class="type">int</span> m;  </span><br><span class="line">    <span class="type">int</span> n;  </span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+
+<p>2.实现文件 <code>testClass.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;testClass.h&quot;</span>  </span></span><br><span class="line"></span><br><span class="line">test::<span class="built_in">test</span>(<span class="type">int</span> i,<span class="type">int</span> j)  </span><br><span class="line">&#123;  </span><br><span class="line">    m = i;  </span><br><span class="line">    n = j;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">test::add</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">return</span> m+n;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>3.调用dll<code>main.h</code></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> TEST_CLASS </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;testClass.h&quot;</span>  </span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;DLL.lib&quot;</span>)  </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>  </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    test *clsObj = <span class="keyword">new</span> <span class="built_in">test</span>(<span class="number">2</span>,<span class="number">3</span>);  </span><br><span class="line">    <span class="type">int</span> num = clsObj-&gt;<span class="built_in">add</span>();  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;result : &quot;</span>&lt;&lt;num&lt;&lt;endl;  </span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux-动态库和静态库的生成"><a href="#Linux-动态库和静态库的生成" class="headerlink" title="Linux 动态库和静态库的生成"></a>Linux 动态库和静态库的生成</h2><p>参考：<a href="http://www.latelee.org/programming-under-linux/library-on-linux.html">http://www.latelee.org/programming-under-linux/library-on-linux.html</a></p>
+<h3 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1.示例代码"></a>1.示例代码</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* lib.h */</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> LIB_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIB_H_</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> i)</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*lib.c*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">printf</span>(“hell from %s,num:%dn”, __func__, i);</span><br><span class="line">	getchar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*main.c*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;lib.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(“hello from %s:n”, __func__);</span><br><span class="line">    test(<span class="number">250</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-生成静态库"><a href="#2-生成静态库" class="headerlink" title="2.生成静态库"></a>2.生成静态库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成静态库</span></span><br><span class="line">gcc -c lib.c</span><br><span class="line">ar cr libtest.a lib.o</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看静态库中的符号</span></span><br><span class="line">nm libtest.a </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试程序链接到静态库</span></span><br><span class="line">gcc -o main main.c ./libtest.a</span><br><span class="line">./main </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还可以这么写</span></span><br><span class="line">gcc -o main main.c -L. -ltest</span><br><span class="line">./main </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-生成动态库"><a href="#3-生成动态库" class="headerlink" title="3.生成动态库"></a>3.生成动态库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成动态库</span></span><br><span class="line">gcc -c lib.c</span><br><span class="line">gcc -fPIC -shared -o libtest.so lib.o</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">使用</span></span><br><span class="line">gcc -o main main.c ./libtest.so</span><br><span class="line">./main </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">还可以这么写</span></span><br><span class="line">gcc -o main main.c -L. -ltest</span><br><span class="line">./main</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-库环境的配置"><a href="#4-库环境的配置" class="headerlink" title="4.库环境的配置"></a>4.库环境的配置</h3><p>在&#x2F;etc&#x2F;profile中添加库的路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>c/c++</category>
       </categories>
   </entry>
   <entry>
@@ -47014,6 +47014,55 @@ another task : 24d
       </categories>
   </entry>
   <entry>
+    <title>proto3与proto2的区别</title>
+    <url>/posts/b8d70186/</url>
+    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>这是一篇学习笔记。在粗略的看了 <a href="https://developers.google.com/protocol-buffers/docs/overview">Protobuf 的文档</a>中关于 <a href="https://developers.google.com/protocol-buffers/docs/proto">proto2</a> 和 <a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3</a> 的说明后，记录下了几点 proto3 区别于 proto2 的地方。</p>
+<p>总的来说，proto3 比 proto2 支持更多语言但 更简洁。去掉了一些复杂的语法和特性，更强调约定而弱化语法。如果是首次使用 Protobuf ，建议使用 proto3 。</p>
+<ol>
+<li><p>在第一行非空白非注释行，必须写：</p>
+<p>syntax &#x3D; &quot;proto3&quot;;</p>
+</li>
+<li><p>字段规则移除了 “required”，并把 “optional” 改名为 “singular”<a href="https://solicomo.com/network-dev/protobuf-proto3-vs-proto2.html#fn:1">1</a>；</p>
+<p>在 proto2 中 required 也是不推荐使用的。proto3 直接从语法层面上移除了 required 规则。其实可以做的更彻底，把所有字段规则描述都撤销，原来的 repeated 改为在类型或字段名后加一对中括号。这样是不是更简洁？</p>
+</li>
+<li><p>“repeated”字段默认采用 <code>packed</code> 编码；</p>
+<p>在 proto2 中，需要明确使用 <code>[packed=true]</code> 来为字段指定比较紧凑的 <code>packed</code> 编码方式。</p>
+</li>
+<li><p>语言增加 Go、Ruby、JavaNano 支持；</p>
+</li>
+<li><p>移除了 default 选项；</p>
+<p>在 proto2 中，可以使用 default 选项为某一字段指定默认值。在 proto3 中，字段的默认值只能根据字段类型由系统决定。也就是说，默认值全部是约定好的，而不再提供指定默认值的语法。</p>
+<p>在字段被设置为默认值的时候，该字段不会被序列化。这样可以节省空间，提高效率。</p>
+<p>但这样就无法区分某字段是根本没赋值，还是赋值了默认值。这在 proto3 中问题不大，但在 proto2 中会有问题。</p>
+<p>比如，在更新协议的时候使用 default 选项为某个字段指定了一个与原来不同的默认值，旧代码获取到的该字段的值会与新代码不一样。</p>
+<p>另一个重约定而弱语法的例子是 Go 语言里的公共&#x2F;私有对象。Go 语言约定，首字母大写的为公共对象，否则为私有对象。所以在 Go 语言中是没有 public、private 这样的语法的。</p>
+</li>
+<li><p>枚举类型的第一个字段必须为 0 ；</p>
+<p>这也是一个约定。</p>
+</li>
+<li><p>移除了对分组的支持；</p>
+<p>分组的功能完全可以用消息嵌套的方式来实现，并且更清晰。在 proto2 中已经把分组语法标注为『过期』了。这次也算清理垃圾了。</p>
+</li>
+<li><p>旧代码在解析新增字段时，会把不认识的字段丢弃，再序列化后新增的字段就没了；</p>
+<p>在 proto2 中，旧代码虽然会忽视不认识的新增字段，但并不会将其丢弃，再序列化的时候那些字段会被原样保留。</p>
+<p>我觉得还是 proto2 的处理方式更好一些。能尽量保持兼容性和扩展能力，或许实现起来也更简单。proto3 现在的处理方式，没有带来明显的好处，但丢掉了部分兼容性和灵活性。</p>
+<p><strong>[2017-06-15 更新]</strong>：经过漫长的<a href="https://github.com/google/protobuf/issues/272">讨论</a>，官方终于同意在 proto3 中恢复 proto2 的处理方式了。 可以通过<a href="https://docs.google.com/document/d/1KMRX-G91Aa-Y2FkEaHeeviLRRNblgIahbsk4wA14gRk/view">这个文档</a>了解前因后果及时间线。</p>
+</li>
+<li><p>移除了对扩展的支持，新增了 Any 类型；</p>
+<p>Any 类型是用来替代 proto2 中的扩展的。目前还在开发中。</p>
+<p>proto2 中的扩展特性很像 Swift 语言中的扩展。理解起来有点困难，使用起来更是会带来不少混乱。</p>
+<p>相比之下，proto3 中新增的 Any 类型有点像 C&#x2F;C++ 中的 void* ，好理解，使用起来逻辑也更清晰。</p>
+</li>
+<li><p>增加了 JSON 映射特性；</p>
+<p>语言的活力来自于与时俱进。当前，JSON 的流行有其充分的理由。很多『现代化』的语言都内置了对 JSON 的支持，比如 Go、PHP 等。而 C++ 这种看似保罗万象的学院派语言，因循守旧、故步自封，以致于现出了式微的苗头。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>protobuf</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Protobuf语言指南(proto3)</title>
     <url>/posts/2658c59b/</url>
     <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="Protobuf-语言指南-proto-3"><a href="#Protobuf-语言指南-proto-3" class="headerlink" title="Protobuf 语言指南(proto 3)"></a>Protobuf 语言指南(proto 3)</h1><p>这个指南描述了如何使用Protocol buffer 语言去描述你的protocol buffer 数据， 包括 <code>.proto</code>文件符号和如何从.proto文件生成类。</p>
@@ -47601,55 +47650,6 @@ another task : 24d
 <li><p>你必须提议一个或多个<code>.proto</code>文件作为输入，多个<code>.proto</code>文件可以只指定一次。虽然文件路径是相对于当前目录的，每个文件必须位于其<code>IMPORT_PATH</code>下，以便每个文件可以确定其规范的名称。</p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>protobuf</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>proto3与proto2的区别</title>
-    <url>/posts/b8d70186/</url>
-    <content><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>这是一篇学习笔记。在粗略的看了 <a href="https://developers.google.com/protocol-buffers/docs/overview">Protobuf 的文档</a>中关于 <a href="https://developers.google.com/protocol-buffers/docs/proto">proto2</a> 和 <a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3</a> 的说明后，记录下了几点 proto3 区别于 proto2 的地方。</p>
-<p>总的来说，proto3 比 proto2 支持更多语言但 更简洁。去掉了一些复杂的语法和特性，更强调约定而弱化语法。如果是首次使用 Protobuf ，建议使用 proto3 。</p>
-<ol>
-<li><p>在第一行非空白非注释行，必须写：</p>
-<p>syntax &#x3D; &quot;proto3&quot;;</p>
-</li>
-<li><p>字段规则移除了 “required”，并把 “optional” 改名为 “singular”<a href="https://solicomo.com/network-dev/protobuf-proto3-vs-proto2.html#fn:1">1</a>；</p>
-<p>在 proto2 中 required 也是不推荐使用的。proto3 直接从语法层面上移除了 required 规则。其实可以做的更彻底，把所有字段规则描述都撤销，原来的 repeated 改为在类型或字段名后加一对中括号。这样是不是更简洁？</p>
-</li>
-<li><p>“repeated”字段默认采用 <code>packed</code> 编码；</p>
-<p>在 proto2 中，需要明确使用 <code>[packed=true]</code> 来为字段指定比较紧凑的 <code>packed</code> 编码方式。</p>
-</li>
-<li><p>语言增加 Go、Ruby、JavaNano 支持；</p>
-</li>
-<li><p>移除了 default 选项；</p>
-<p>在 proto2 中，可以使用 default 选项为某一字段指定默认值。在 proto3 中，字段的默认值只能根据字段类型由系统决定。也就是说，默认值全部是约定好的，而不再提供指定默认值的语法。</p>
-<p>在字段被设置为默认值的时候，该字段不会被序列化。这样可以节省空间，提高效率。</p>
-<p>但这样就无法区分某字段是根本没赋值，还是赋值了默认值。这在 proto3 中问题不大，但在 proto2 中会有问题。</p>
-<p>比如，在更新协议的时候使用 default 选项为某个字段指定了一个与原来不同的默认值，旧代码获取到的该字段的值会与新代码不一样。</p>
-<p>另一个重约定而弱语法的例子是 Go 语言里的公共&#x2F;私有对象。Go 语言约定，首字母大写的为公共对象，否则为私有对象。所以在 Go 语言中是没有 public、private 这样的语法的。</p>
-</li>
-<li><p>枚举类型的第一个字段必须为 0 ；</p>
-<p>这也是一个约定。</p>
-</li>
-<li><p>移除了对分组的支持；</p>
-<p>分组的功能完全可以用消息嵌套的方式来实现，并且更清晰。在 proto2 中已经把分组语法标注为『过期』了。这次也算清理垃圾了。</p>
-</li>
-<li><p>旧代码在解析新增字段时，会把不认识的字段丢弃，再序列化后新增的字段就没了；</p>
-<p>在 proto2 中，旧代码虽然会忽视不认识的新增字段，但并不会将其丢弃，再序列化的时候那些字段会被原样保留。</p>
-<p>我觉得还是 proto2 的处理方式更好一些。能尽量保持兼容性和扩展能力，或许实现起来也更简单。proto3 现在的处理方式，没有带来明显的好处，但丢掉了部分兼容性和灵活性。</p>
-<p><strong>[2017-06-15 更新]</strong>：经过漫长的<a href="https://github.com/google/protobuf/issues/272">讨论</a>，官方终于同意在 proto3 中恢复 proto2 的处理方式了。 可以通过<a href="https://docs.google.com/document/d/1KMRX-G91Aa-Y2FkEaHeeviLRRNblgIahbsk4wA14gRk/view">这个文档</a>了解前因后果及时间线。</p>
-</li>
-<li><p>移除了对扩展的支持，新增了 Any 类型；</p>
-<p>Any 类型是用来替代 proto2 中的扩展的。目前还在开发中。</p>
-<p>proto2 中的扩展特性很像 Swift 语言中的扩展。理解起来有点困难，使用起来更是会带来不少混乱。</p>
-<p>相比之下，proto3 中新增的 Any 类型有点像 C&#x2F;C++ 中的 void* ，好理解，使用起来逻辑也更清晰。</p>
-</li>
-<li><p>增加了 JSON 映射特性；</p>
-<p>语言的活力来自于与时俱进。当前，JSON 的流行有其充分的理由。很多『现代化』的语言都内置了对 JSON 的支持，比如 Go、PHP 等。而 C++ 这种看似保罗万象的学院派语言，因循守旧、故步自封，以致于现出了式微的苗头。</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>protobuf</category>
