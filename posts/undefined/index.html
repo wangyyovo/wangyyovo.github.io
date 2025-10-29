@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Windows下安装Claude Code及使用 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Windows下安装Claude Code及使用环境准备 Node.js(v18+): https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;download Git: https:&#x2F;&#x2F;git-scm.com&#x2F;install&#x2F;windows Wrap: https:&#x2F;&#x2F;www.warp.dev&#x2F;download  安装Claude Code在Wrap终端中执行安装 1npm install -g @a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下安装Claude Code及使用">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/undefined/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="Windows下安装Claude Code及使用环境准备 Node.js(v18+): https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;download Git: https:&#x2F;&#x2F;git-scm.com&#x2F;install&#x2F;windows Wrap: https:&#x2F;&#x2F;www.warp.dev&#x2F;download  安装Claude Code在Wrap终端中执行安装 1npm install -g @a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg">
+<meta property="article:published_time" content="2025-10-29T09:05:36.000Z">
+<meta property="article:modified_time" content="2025-10-29T09:05:36.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="claude">
+<meta property="article:tag" content="glm4.6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Windows下安装Claude Code及使用",
+  "url": "https://wangyyovo.github.io/posts/undefined/",
+  "image": "https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg",
+  "datePublished": "2025-10-29T09:05:36.000Z",
+  "dateModified": "2025-10-29T09:05:36.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Blank",
+      "url": "https://wangyyovo.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/undefined/"><link rel="preconnect" href="https://jsd.012700.xyz"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://jsd.012700.xyz/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Blank","link":"链接: ","source":"来源: Blank","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://jsd.012700.xyz/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Windows下安装Claude Code及使用',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">353</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">59</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 標簽外挂</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 语言</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Blank</span></a><a class="nav-page-title" href="/"><span class="site-name">Windows下安装Claude Code及使用</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 標簽外挂</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 语言</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Windows下安装Claude Code及使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-29T09:05:36.000Z" title="发表于 2025-10-29 17:05:36">2025-10-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-29T09:05:36.000Z" title="更新于 2025-10-29 17:05:36">2025-10-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/undefined/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/undefined/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Windows下安装Claude-Code及使用"><a href="#Windows下安装Claude-Code及使用" class="headerlink" title="Windows下安装Claude Code及使用"></a>Windows下安装Claude Code及使用</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ul>
+<li>Node.js(v18+): <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download">https://nodejs.org/zh-cn/download</a></li>
+<li>Git: <a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">https://git-scm.com/install/windows</a></li>
+<li>Wrap: <a target="_blank" rel="noopener" href="https://www.warp.dev/download">https://www.warp.dev/download</a></li>
+</ul>
+<h2 id="安装Claude-Code"><a href="#安装Claude-Code" class="headerlink" title="安装Claude Code"></a>安装Claude Code</h2><p>在Wrap终端中执行安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @anthropic-ai/claude-code</span><br></pre></td></tr></table></figure>
+<p>相关文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\用户\.claude.json</span><br><span class="line">C:\Users\用户\.claude</span><br></pre></td></tr></table></figure>
+
+<h2 id="claude-md-的核心作用"><a href="#claude-md-的核心作用" class="headerlink" title="claude.md 的核心作用"></a>claude.md 的核心作用</h2><p>claude.md文件是Claude Code的核心配置文件，它的作用类似于Cursor的rules文件，主要用于规定AI如何生成代码。通过这个文件，你可以精确控制代码风格、开发环境配置、仓库规范等各个方面，让AI更好地理解你的项目需求和编码习惯。</p>
+<table>
+<thead>
+<tr>
+<th>文件路径</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>项目根目录&#x2F;claude.md</td>
+<td>团队共享的项目级配置，提交至Git供所有成员使用</td>
+</tr>
+<tr>
+<td>项目根目录&#x2F;claude.local.md</td>
+<td>个人本地覆盖配置，通常加入.gitignore避免影响他人</td>
+</tr>
+<tr>
+<td>父目录&#x2F;claude.md</td>
+<td>在monorepo结构中自动继承的上级配置，递归向上查找</td>
+</tr>
+<tr>
+<td>子目录&#x2F;claude.md</td>
+<td>针对特定子模块&#x2F;功能的独立配置，优先于父级配置加载</td>
+</tr>
+<tr>
+<td>~&#x2F;.claude&#x2F;claude.md</td>
+<td>用户全局默认配置，适用于所有Claude会话的基线设定</td>
+</tr>
+</tbody></table>
+<h3 id="文件位置与加载优先级"><a href="#文件位置与加载优先级" class="headerlink" title="文件位置与加载优先级"></a>文件位置与加载优先级</h3><p>Claude Code支持多层级的配置文件系统，不同位置的文件具有不同的作用域和优先级：</p>
+<h4 id="项目级配置"><a href="#项目级配置" class="headerlink" title="项目级配置"></a>项目级配置</h4><ul>
+<li><p>项目根目录&#x2F;claude.md：这是团队共享的项目级配置文件，应该提交至Git仓库供所有团队成员使用。它定义了整个项目的通用规则和约定。</p>
+</li>
+<li><p>项目根目录&#x2F;claude.local.md：这是个人本地覆盖配置文件，通常需要添加到.gitignore中以避免影响其他团队成员。你可以在这里添加个人偏好的配置。</p>
+</li>
+</ul>
+<h4 id="继承式配置"><a href="#继承式配置" class="headerlink" title="继承式配置"></a>继承式配置</h4><ul>
+<li><p>父目录&#x2F;claude.md：在monorepo结构中，Claude Code会自动继承上级目录的配置，采用递归向上查找的方式。这样可以确保子项目继承统一的基础规范。</p>
+</li>
+<li><p>子目录&#x2F;claude.md：针对特定子模块或功能的独立配置文件，优先于父级配置加载。这允许你为不同的模块设置特定的规则。</p>
+</li>
+</ul>
+<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><ul>
+<li>~&#x2F;.claude&#x2F;claude.md：用户全局默认配置文件，适用于所有Claude会话的基线设定。这是你个人开发习惯的体现。</li>
+</ul>
+<h3 id="编辑方式"><a href="#编辑方式" class="headerlink" title="编辑方式"></a>编辑方式</h3><p>ClaudeCode支持支持命令行与对话框交互两种灵活的claude.md编辑方式：</p>
+<ol>
+<li><p>通过斜杠命令编辑<br>在Claude Code会话中输入 &#x2F;memory，会唤起系统记忆文件列表。选中后，可以在默认编辑器中打开claude.md进行编辑，非常适合批量配置或团队规则维护。</p>
+</li>
+<li><p>对话中动态添加内容<br>还有一种更轻量的方式：直接在对话框输入 # 开头的内容，Claude会自动识别为你想写入规则文件的内容。</p>
+</li>
+</ol>
+<h3 id="Claude命令"><a href="#Claude命令" class="headerlink" title="Claude命令"></a>Claude命令</h3><h4 id="会话管理命令"><a href="#会话管理命令" class="headerlink" title="会话管理命令"></a>会话管理命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/clear (reset, new)	清空当前对话历史和上下文，开始全新会话</span><br><span class="line">/compact	压缩对话历史但保留摘要，节省 token 消耗</span><br><span class="line">/exit (quit)	退出 Claude Code REPL 环境</span><br><span class="line">/resume	恢复之前的对话会话</span><br><span class="line">/rewind (checkpoint)	将代码和/或对话恢复到之前的某个时间点</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置与设置命令"><a href="#配置与设置命令" class="headerlink" title="配置与设置命令"></a>配置与设置命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/config (theme)	打开配置面板，设置主题等偏好</span><br><span class="line">/model	设置 Claude Code 使用的 AI 模型</span><br><span class="line">/output-style	设置输出样式（可直接设置或从菜单选择）</span><br><span class="line">/output-style:new	创建自定义输出样式</span><br><span class="line">/statusline	设置 Claude Code 的状态行 UI</span><br><span class="line">/terminal-setup	安装 Shift+Enter 键绑定用于换行</span><br><span class="line">/vim	在 Vim 和普通编辑模式之间切换</span><br></pre></td></tr></table></figure>
+
+<h4 id="账户与成本管理"><a href="#账户与成本管理" class="headerlink" title="账户与成本管理"></a>账户与成本管理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/login	使用 Anthropic 账户登录</span><br><span class="line">/logout	登出当前账户</span><br><span class="line">/cost	显示当前会话的总成本和持续时间</span><br><span class="line">/usage	显示计划使用限制</span><br><span class="line">/upgrade	升级到 Max 计划以获得更高频率限制和更多 Opus 使用</span><br></pre></td></tr></table></figure>
+
+<h4 id="系统状态与诊断"><a href="#系统状态与诊断" class="headerlink" title="系统状态与诊断"></a>系统状态与诊断</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/status	显示 Claude Code 状态（版本、模型、账户、API 连接性等）</span><br><span class="line">/doctor	诊断和验证 Claude Code 安装和设置</span><br><span class="line">/context	以彩色网格可视化当前上下文使用情况</span><br><span class="line">/release-notes	查看发布说明</span><br></pre></td></tr></table></figure>
+<h4 id="项目与文件管理"><a href="#项目与文件管理" class="headerlink" title="项目与文件管理"></a>项目与文件管理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/init	初始化新的 CLAUDE.md 文件，用于代码库文档</span><br><span class="line">/add-dir	添加新的工作目录</span><br><span class="line">/memory	编辑 Claude 记忆文件</span><br><span class="line">/export	将当前对话导出到文件或剪贴板</span><br></pre></td></tr></table></figure>
+
+<h4 id="高级功能与集成"><a href="#高级功能与集成" class="headerlink" title="高级功能与集成"></a>高级功能与集成</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/agents	管理代理配置</span><br><span class="line">/bashes	列出和管理后台任务</span><br><span class="line">/hooks	管理工具事件的钩子配置</span><br><span class="line">/ide	管理 IDE 集成并显示状态</span><br><span class="line">/mcp	管理 MCP 服务器</span><br><span class="line">/permissions (allowed-tools)	管理允许和拒绝的工具权限规则</span><br><span class="line">/plugin (plugins)	管理 Claude Code 插件</span><br><span class="line">/todos	列出当前待办事项</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码审查与安全"><a href="#代码审查与安全" class="headerlink" title="代码审查与安全"></a>代码审查与安全</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/pr-comments	从 GitHub pull request 获取评论</span><br><span class="line">/review	审查 pull request</span><br><span class="line">/security-review	完成当前分支上待更改的完全安全审查</span><br></pre></td></tr></table></figure>
+
+<h4 id="反馈与帮助"><a href="#反馈与帮助" class="headerlink" title="反馈与帮助"></a>反馈与帮助</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/help	显示帮助和可用命令</span><br><span class="line">/feedback (bug)	提交关于 Claude Code 的反馈</span><br><span class="line">/install-github-app	为仓库设置 Claude GitHub Actions</span><br><span class="line">/migrate-installer	从全局 npm 安装迁移到本地安装</span><br></pre></td></tr></table></figure>
+
+<h4 id="实用技巧与场景"><a href="#实用技巧与场景" class="headerlink" title="实用技巧与场景"></a>实用技巧与场景</h4><p>开发工作流示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 1. 初始化项目</span><br><span class="line">/init</span><br><span class="line"></span><br><span class="line"># 2. 检查系统状态</span><br><span class="line">/status</span><br><span class="line"></span><br><span class="line"># 3. 进行代码开发，使用 /compact 定期压缩历史</span><br><span class="line"></span><br><span class="line"># 4. 完成更改后进行安全审查</span><br><span class="line">/security-review</span><br><span class="line"></span><br><span class="line"># 5. 查看成本统计</span><br><span class="line">/cost</span><br></pre></td></tr></table></figure>
+
+<p>团队协作场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 审查 PR</span><br><span class="line">/review</span><br><span class="line"></span><br><span class="line"># 管理待办事项</span><br><span class="line">/todos</span><br><span class="line"></span><br><span class="line"># 导出会话分享给团队</span><br><span class="line">/export</span><br></pre></td></tr></table></figure>
+
+<p>系统管理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 诊断问题</span><br><span class="line">/doctor</span><br><span class="line"></span><br><span class="line"># 管理插件</span><br><span class="line">/plugin</span><br><span class="line"></span><br><span class="line"># 配置权限</span><br><span class="line">/permissions</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="配置GLM-4-6模型"><a href="#配置GLM-4-6模型" class="headerlink" title="配置GLM-4.6模型"></a>配置GLM-4.6模型</h2><p>前往智谱官方 Bigmodel 开放平台,创建 API Key</p>
+<table>
+<thead>
+<tr>
+<th>环境变量名</th>
+<th>变量值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ANTHROPIC_AUTH_TOKEN</td>
+<td>你的智谱API Key (例如 9b0...mb4)</td>
+</tr>
+<tr>
+<td>ANTHROPIC_BASE_URL</td>
+<td><a target="_blank" rel="noopener" href="https://open.bigmodel.cn/api/anthropic">https://open.bigmodel.cn/api/anthropic</a></td>
+</tr>
+<tr>
+<td>ANTHROPIC_MODEL</td>
+<td>glm-4.6</td>
+</tr>
+<tr>
+<td>ANTHROPIC_SMALL_FAST_MODEL</td>
+<td>glm-4.6</td>
+</tr>
+</tbody></table>
+<p>在Wrap终端中输入claude命令测试配置是否成功</p>
+<h2 id="用量查看"><a href="#用量查看" class="headerlink" title="用量查看"></a>用量查看</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g ccusage</span><br></pre></td></tr></table></figure>
+<p>常用命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ccusage                      # = ccusage daily（默认日汇总）</span><br><span class="line">ccusage daily --since 20241201 --until 20241231</span><br><span class="line">ccusage weekly               # 周汇总</span><br><span class="line">ccusage monthly              # 月汇总</span><br><span class="line">ccusage session              # 按会话（对话）查看</span><br><span class="line">ccusage blocks               # 按 5 小时计费窗查看（含 Active/预测等）</span><br><span class="line">ccusage blocks --active      # 只看当前活跃窗口</span><br><span class="line">ccusage blocks --recent      # 近几天窗口</span><br><span class="line">ccusage daily --breakdown    # 分模型拆解</span><br><span class="line">ccusage monthly --json &gt; usage.json  # 导出 JSON 做二次分析</span><br></pre></td></tr></table></figure>
+
+<h2 id="MCP市场"><a href="#MCP市场" class="headerlink" title="MCP市场"></a>MCP市场</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">https://modelcontextprotocol.io/docs/getting-started/intro</span><br><span class="line">https://mcpmarket.cn/ *</span><br><span class="line">https://www.claudemcp.com/</span><br><span class="line">https://www.mcpservers.cn/servers</span><br><span class="line">https://www.mcpworld.com/</span><br><span class="line">https://maomu.com/mcp</span><br><span class="line">https://openmcp.store/</span><br><span class="line">https://lobehub.com/zh/mcp</span><br><span class="line">https://www.mcp-cn.com/</span><br><span class="line">https://www.modelscope.cn/mcp</span><br><span class="line">https://www.mcpset.cn/</span><br></pre></td></tr></table></figure>
+
+<h2 id="规范驱动开发"><a href="#规范驱动开发" class="headerlink" title="规范驱动开发"></a>规范驱动开发</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spec-kit</span><br><span class="line">openspec</span><br><span class="line">BMAD-METHOD</span><br></pre></td></tr></table></figure>
+
+<h2 id="有哪些AI助手"><a href="#有哪些AI助手" class="headerlink" title="有哪些AI助手"></a>有哪些AI助手</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Claude Code</span><br><span class="line">Cursor</span><br><span class="line">Gemini CLI</span><br><span class="line">Windsurf</span><br><span class="line">Roo Code</span><br><span class="line">GitHub Copilot</span><br><span class="line">Qwen Code</span><br><span class="line">OpenCode</span><br><span class="line">Codex CLI</span><br><span class="line">Kilo Code</span><br><span class="line">Auggie CLI</span><br><span class="line">CodeBuddy</span><br><span class="line">Amazon Q Developer</span><br><span class="line">Trea</span><br><span class="line">QCoder</span><br><span class="line">iFlow CLI</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="PowerShell-脚本执行限制问题"><a href="#PowerShell-脚本执行限制问题" class="headerlink" title="PowerShell 脚本执行限制问题"></a>PowerShell 脚本执行限制问题</h3><p>这个错误是由于 PowerShell 的执行策略（Execution Policy）阻止了脚本运行。要解决这个问题，请在 PowerShell 中执行以下命令，当系统提示时，输入 Y 并回车确认：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/undefined/">https://wangyyovo.github.io/posts/undefined/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/claude/">claude</a><a class="post-meta__tags" href="/tags/glm4-6/">glm4.6</a></div><div class="post-share"><div class="social-share" data-image="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://jsd.012700.xyz/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://jsd.012700.xyz/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/d14168d/" title="虚拟机问题合集"><img class="cover" src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">虚拟机问题合集</div></div><div class="info-2"><div class="info-item-1">虚拟机问题合集Vmware网络无法连接 123sudo service network-manager stopsudo vi  /var/lib/NetworkManager/NetworkManager.state   # NetworkingEnabled=truesudo service network-manager start</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Blank</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">353</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">48</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">59</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>主题 GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows%E4%B8%8B%E5%AE%89%E8%A3%85Claude-Code%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">Windows下安装Claude Code及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Claude-Code"><span class="toc-number">1.2.</span> <span class="toc-text">安装Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#claude-md-%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">claude.md 的核心作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE%E4%B8%8E%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.3.1.</span> <span class="toc-text">文件位置与加载优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">项目级配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%BC%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">继承式配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">全局配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">编辑方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Claude%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.3.</span> <span class="toc-text">Claude命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">会话管理命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%AE%BE%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">配置与设置命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A6%E6%88%B7%E4%B8%8E%E6%88%90%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">账户与成本管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81%E4%B8%8E%E8%AF%8A%E6%96%AD"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">系统状态与诊断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%8E%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">项目与文件管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD%E4%B8%8E%E9%9B%86%E6%88%90"><span class="toc-number">1.3.3.6.</span> <span class="toc-text">高级功能与集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E4%B8%8E%E5%AE%89%E5%85%A8"><span class="toc-number">1.3.3.7.</span> <span class="toc-text">代码审查与安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E9%A6%88%E4%B8%8E%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.3.3.8.</span> <span class="toc-text">反馈与帮助</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.3.9.</span> <span class="toc-text">实用技巧与场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGLM-4-6%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">配置GLM-4.6模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E9%87%8F%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.5.</span> <span class="toc-text">用量查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP%E5%B8%82%E5%9C%BA"><span class="toc-number">1.6.</span> <span class="toc-text">MCP市场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91"><span class="toc-number">1.7.</span> <span class="toc-text">规范驱动开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9BAI%E5%8A%A9%E6%89%8B"><span class="toc-number">1.8.</span> <span class="toc-text">有哪些AI助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.9.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerShell-%E8%84%9A%E6%9C%AC%E6%89%A7%E8%A1%8C%E9%99%90%E5%88%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.9.1.</span> <span class="toc-text">PowerShell 脚本执行限制问题</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/undefined/" title="Windows下安装Claude Code及使用"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows下安装Claude Code及使用"/></a><div class="content"><a class="title" href="/posts/undefined/" title="Windows下安装Claude Code及使用">Windows下安装Claude Code及使用</a><time datetime="2025-10-29T09:05:36.000Z" title="发表于 2025-10-29 17:05:36">2025-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5faac006/" title="在线编程IDE"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线编程IDE"/></a><div class="content"><a class="title" href="/posts/5faac006/" title="在线编程IDE">在线编程IDE</a><time datetime="2022-06-12T13:30:36.000Z" title="发表于 2022-06-12 21:30:36">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7594185d/" title="即时性能分析工具Pyroscope"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/golang/3bfb3279740bc9a5b5ef436fa887ef07.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="即时性能分析工具Pyroscope"/></a><div class="content"><a class="title" href="/posts/7594185d/" title="即时性能分析工具Pyroscope">即时性能分析工具Pyroscope</a><time datetime="2022-06-12T08:07:36.000Z" title="发表于 2022-06-12 16:07:36">2022-06-12</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Blank</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/utils.min.js"></script><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/main.min.js"></script><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/tw_cn.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"请留下你的脚印","pageSize":10,"lang":"zh-CN","requiredFields":["nick","mail","link"]}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'BSfgwCPLOvPHVPaSoBCGSENf-MdYXbMMI',
+      appKey: '2Q8qq5060qxycL6FPL26LnMG',
+      avatar: 'monsterid',
+      serverURLs: 'https://bsfgwcpl.api.lncldglobal.com',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://jsd.012700.xyz/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/search/local-search.min.js"></script></div></div></body></html>
