@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Spec-kit安装 | Blank</title><meta name="author" content="Blank"><meta name="copyright" content="Blank"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;1959040296479339345https:&#x2F;&#x2F;www.cnblogs.com&#x2F;treasury-manager&#x2F;p&#x2F;19130337  spec-kit是什么？Spec-Kit 是一套微软发布的“规格驱动开发（Spec-Driven Development, SDD）”工具包，方法论 + 脚手架 + CLI + 模板：把“规格→计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spec-kit安装">
+<meta property="og:url" content="https://wangyyovo.github.io/posts/5c32937f/">
+<meta property="og:site_name" content="Blank">
+<meta property="og:description" content="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;1959040296479339345https:&#x2F;&#x2F;www.cnblogs.com&#x2F;treasury-manager&#x2F;p&#x2F;19130337  spec-kit是什么？Spec-Kit 是一套微软发布的“规格驱动开发（Spec-Driven Development, SDD）”工具包，方法论 + 脚手架 + CLI + 模板：把“规格→计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg">
+<meta property="article:published_time" content="2025-10-29T11:05:36.000Z">
+<meta property="article:modified_time" content="2025-10-29T11:05:36.000Z">
+<meta property="article:author" content="Blank">
+<meta property="article:tag" content="spec-kit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Spec-kit安装",
+  "url": "https://wangyyovo.github.io/posts/5c32937f/",
+  "image": "https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg",
+  "datePublished": "2025-10-29T11:05:36.000Z",
+  "dateModified": "2025-10-29T11:05:36.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Blank",
+      "url": "https://wangyyovo.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/favicon.ico"><link rel="canonical" href="https://wangyyovo.github.io/posts/5c32937f/"><link rel="preconnect" href="https://jsd.012700.xyz"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://jsd.012700.xyz/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Blank","link":"链接: ","source":"来源: Blank","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://jsd.012700.xyz/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spec-kit安装',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="alternate" href="/atom.xml" title="Blank" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">355</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">59</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 標簽外挂</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 语言</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Blank</span></a><a class="nav-page-title" href="/"><span class="site-name">Spec-kit安装</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 教程</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/21cfbf15/"><span> 🚀 快速開始</span></a></li><li><a class="site-page child" href="/posts/dc584b87/"><span> 📑 主題頁面</span></a></li><li><a class="site-page child" href="/posts/4aa8abbe/"><span> 🛠 主題配置</span></a></li><li><a class="site-page child" href="/posts/ceeb73f/"><span> ⚔️ 標簽外挂</span></a></li><li><a class="site-page child" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li><li><a class="site-page child" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-language"></i><span> 语言</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Spec-kit安装</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-29T11:05:36.000Z" title="发表于 2025-10-29 19:05:36">2025-10-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-29T11:05:36.000Z" title="更新于 2025-10-29 19:05:36">2025-10-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ai/">ai</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/5c32937f/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/5c32937f/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1959040296479339345">https://zhuanlan.zhihu.com/p/1959040296479339345</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/treasury-manager/p/19130337">https://www.cnblogs.com/treasury-manager/p/19130337</a></p>
+</blockquote>
+<h1 id="spec-kit是什么？"><a href="#spec-kit是什么？" class="headerlink" title="spec-kit是什么？"></a>spec-kit是什么？</h1><p>Spec-Kit 是一套微软发布的“规格驱动开发（Spec-Driven Development, SDD）”工具包，方法论 + 脚手架 + CLI + 模板：把“规格→计划→任务→实现”的流程标准化，并把这些步骤做成可执行的斜杠命令，让 Claude Code &#x2F; Copilot &#x2F; Gemini CLI 等代理有章可循，而不是即兴“凭感觉写代码”。核心组件是 Specify CLI（命令：specify），用于初始化模板、生成命令、校验环境等。目标是把“先写清楚规格&#x2F;意图，再规划，再拆任务，最后由 AI 代理实现”的流程产品化，替代一把梭的大Prompt“vibe coding”。</p>
+<h2 id="Spec-Kit有什么用呢："><a href="#Spec-Kit有什么用呢：" class="headerlink" title="Spec-Kit有什么用呢："></a>Spec-Kit有什么用呢：</h2><ul>
+<li>让“写什么&#x2F;为什么”（Spec）先于“怎么做”（Plan&#x2F;Tasks&#x2F;Impl），减少返工；</li>
+<li>给代理提供统一的“宪法”和护栏（安全、质量、SLO、禁行区等）；</li>
+<li>产出一套可追溯的工件与目录结构（如 .specify&#x2F;、任务清单、计划文档等）。</li>
+</ul>
+<h2 id="核心原则"><a href="#核心原则" class="headerlink" title="核心原则"></a>核心原则</h2><ul>
+<li>通用语言的规格：规格成为主要工件。代码成为其在特定语言和框架中的表达。维护软件意味着不断发展的规范。</li>
+<li>可执行规范：规范必须足够精确、完整且明确，以生成工作系统。这消除了意图和实现之间的差距。</li>
+<li>持续细化：一致性验证是持续进行的，而不是一次性的。人工智能将规范的歧义、矛盾和差距分析为一个持续的过程。</li>
+<li>研究驱动的背景：研究代理在整个规范过程中收集关键背景，调查技术选项、性能影响和组织限制。</li>
+<li>双向反馈：生产现实为规范演变提供信息。指标、事件和作学习成为规范细化的输入。</li>
+<li>分支探索：从同一规范生成多种实现方法，以探索不同的优化目标——性能、可维护性、用户体验、成本。</li>
+</ul>
+<p>运行 Spec Kit 后，您的 AI 编码代理将可以访问以下 Spec Kit 结构化开发命令：specify init</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/constitution</code></td>
+<td>创建项目管理原则和开发指南</td>
+<td>先建立项目标准（或称宪法）</td>
+</tr>
+<tr>
+<td><code>/specify</code></td>
+<td>定义要构建的内容（具体要求和用户情景）</td>
+<td>关注什么和为什么，而不是技术堆栈</td>
+</tr>
+<tr>
+<td><code>/clarify</code></td>
+<td>通过结构化提问澄清未指定区域</td>
+<td>除非显式跳过，否则必须在<code>/plan</code>之前运行</td>
+</tr>
+<tr>
+<td><code>/plan</code></td>
+<td>使用所选技术堆栈创建技术实施计划</td>
+<td>指定体系结构、框架和技术决策</td>
+</tr>
+<tr>
+<td><code>/tasks</code></td>
+<td>生成可操作的任务列表以供实施</td>
+<td>将计划分解为可执行的步骤</td>
+</tr>
+<tr>
+<td><code>/analyze</code></td>
+<td>跨工件一致性和覆盖率分析</td>
+<td>在<code>/tasks</code>运行之后，在<code>/implement</code>之前</td>
+</tr>
+<tr>
+<td><code>/implement</code></td>
+<td>执行所有任务，按计划构建功能</td>
+<td>根据规范生成工作代码</td>
+</tr>
+</tbody></table>
+<h1 id="Spec-kit安装"><a href="#Spec-kit安装" class="headerlink" title="Spec-kit安装"></a>Spec-kit安装</h1><p>以 Wrap + PowerShell 为例。</p>
+<h2 id="安装uv"><a href="#安装uv" class="headerlink" title="安装uv"></a>安装uv</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 安装uv，需要科学上网</span><br><span class="line">powershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex&quot;</span><br><span class="line"></span><br><span class="line">uv --version</span><br><span class="line"></span><br><span class="line"># 如果提示找不到命令</span><br><span class="line">uv tool update-shell</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装specify-cli"><a href="#安装specify-cli" class="headerlink" title="安装specify cli"></a>安装specify cli</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</span><br><span class="line">specify --help</span><br><span class="line">specify check</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化一个带-Spec-Kit-的项目骨架"><a href="#初始化一个带-Spec-Kit-的项目骨架" class="headerlink" title="初始化一个带 Spec-Kit 的项目骨架"></a>初始化一个带 Spec-Kit 的项目骨架</h2><p>在你打算放项目的目录里运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">specify init my-feature --ai claude --script ps</span><br></pre></td></tr></table></figure>
+<p>my-feature是feature名字。如果你是新开发，直接在根目录下。直接用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">specify init --here --force --ai claude --script ps</span><br></pre></td></tr></table></figure>
+<p>注意，spec-kit是基于git管理项目的，在运行以上命令之前，需要先git push。</p>
+<p>初始化后，会生成 .specify&#x2F;、templates&#x2F;、specs&#x2F;、scripts&#x2F; 等目录与模版，且模板会自动注入一组 &#x2F;speckit.* 的斜杠命令供代理使用。可用 specify check 自检依赖。</p>
+<h1 id="在-Claude-Code-里跑完整的-Spec-Driven-工作流"><a href="#在-Claude-Code-里跑完整的-Spec-Driven-工作流" class="headerlink" title="在 Claude Code 里跑完整的 Spec-Driven 工作流"></a>在 Claude Code 里跑完整的 Spec-Driven 工作流</h1><p>进入项目并启动 Claude Code：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd my-feature</span><br><span class="line">claude</span><br></pre></td></tr></table></figure>
+<p>建立项目原则（生成&#x2F;更新 .specify&#x2F;memory&#x2F;constitution.md）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.constitution</span><br></pre></td></tr></table></figure>
+
+<p>撰写功能规格（不要先纠结技术栈，专注要做什么 &amp; 为什么）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.specify</span><br></pre></td></tr></table></figure>
+
+<p>结构化澄清需求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.clarify</span><br></pre></td></tr></table></figure>
+
+<p>产出技术实现方案（这一步再指定技术栈、架构）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.plan</span><br></pre></td></tr></table></figure>
+
+
+<p>从实现方案拆解成任务列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.tasks</span><br></pre></td></tr></table></figure>
+
+
+<p>检查一致性</p>
+<p>对当前特性的所有工件做一次一致性&#x2F;覆盖率体检——检查 constitution.md、spec.md、plan.md、tasks.md 之间是否互相矛盾、是否遗漏关键验收项&#x2F;边界条件，是否存在范围蔓延、不可实现或未落地到任务的条目等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.analyze</span><br></pre></td></tr></table></figure>
+
+<p>最后，开始一键执行实现（会按依赖顺序执行任务、调用本地 CLI、TDD 流程等）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/speckit.implement</span><br></pre></td></tr></table></figure>
+
+
+<p>工作流：规范→规划→任务<br>SDD 方法通过三个强大的命令显着增强，这些命令可自动执行规范→规划→任务工作流：</p>
+<p>命令&#x2F;speckit.specify</p>
+<p>此命令将简单的功能描述（用户提示）转换为具有自动存储库管理的完整结构化规范：<br>自动特征编号：扫描现有规格以确定下一个特征编号（例如，001、002、003）<br>分支创建：根据您的描述生成语义分支名称并自动创建它<br>基于模板的生成：根据您的要求复制和自定义功能规范模板<br>目录结构：为所有相关文档创建正确的结构specs&#x2F;[branch-name]&#x2F;<br>命令&#x2F;speckit.plan<br>一旦存在功能规范，此命令将创建一个全面的实施计划：</p>
+<p>规范分析：阅读并理解功能要求、用户故事和验收标准<br>宪法合规性：确保符合项目宪法和建筑原则<br>技术翻译：将业务需求转换为技术架构和实现细节<br>详细文档：生成数据模型、API 合约和测试场景的支持文档<br>快速入门验证：生成捕获关键验证方案的快速入门指南<br>命令&#x2F;speckit.tasks<br>创建计划后，此命令将分析计划和相关设计文档以生成可执行任务列表：</p>
+<p>输入：读取（必需）和（如果存在）、、 和plan.mddata-model.mdcontracts&#x2F;research.md<br>任务派生：将合约、实体和场景转换为特定任务<br>并行化：标记独立任务并概述安全并行组[P]<br>输出：写入功能目录，可供任务代理执行tasks.md<br>总结：核心用途集中在三方面：</p>
+<p>项目初始化：快速生成带规范目录（如 .specify&#x2F; 、 specs&#x2F; 、 scripts&#x2F; ）和模板的项目骨架，无需手动搭建基础结构。<br>流程标准化：Specify（规格化） → Plan（规划） → Tasks（任务分解） → Implement（实现）<br>提供 &#x2F;speckit.constitution （定项目原则）、 &#x2F;speckit.specify （写功能规格）、 &#x2F;speckit.plan （出技术方案）等一系列斜杠命令，覆盖从需求澄清到任务拆解的全流程。<br>一致性保障：通过 &#x2F;speckit.analyze 等命令检查需求文档、技术方案、任务列表之间的矛盾或遗漏，避免开发偏离目标，同时支持并行任务识别，提升开发效率。</p>
+<p>SpecKit组成与目录结构<br>仓库主要包含：src&#x2F;specify_cli（CLI）、templates&#x2F;（规格&#x2F;计划&#x2F;任务模板）、scripts&#x2F;（自动化脚本）、memory&#x2F;（团队“宪法&#x2F;准则”文档）、docs&#x2F; 等。初始化后项目下还会生成 specs&#x2F;&#x2F; 的规范与计划树。</p>
+<p>典型初始化后的目录示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">your-project/</span><br><span class="line">├── .specify/                   # Spec Kit 配置目录（v0.0.34+）</span><br><span class="line">│   ├── memory/                 # 项目知识库</span><br><span class="line">│   │   ├── constitution.md     # 项目宪法（九大架构原则）</span><br><span class="line">│   │   └── constitution_update_checklist.md</span><br><span class="line">│   ├── scripts/                # 自动化脚本</span><br><span class="line">│   │   └── powershell/         # PowerShell脚本版本</span><br><span class="line">│   │       ├── create-new-feature.ps1</span><br><span class="line">│   │       ├── setup-plan.ps1</span><br><span class="line">│   │       ├── check-task-prerequisites.ps1</span><br><span class="line">│   │       ├── common.ps1</span><br><span class="line">│   │       ├── get-feature-paths.ps1</span><br><span class="line">│   │       └── update-agent-context.ps1</span><br><span class="line">│   └── templates/              # 模板文件</span><br><span class="line">│       ├── spec-template.md    # 规范模板</span><br><span class="line">│       ├── plan-template.md    # 计划模板</span><br><span class="line">│       ├── tasks-template.md   # 任务模板</span><br><span class="line">│       └── agent-file-template.md # AI助手配置模板</span><br><span class="line">├── specs/                      # 功能规范目录（用户创建的规范）</span><br><span class="line">│   └── 001-feature-name/       # 自动编号的功能目录</span><br><span class="line">│       ├── spec.md             # 功能规范</span><br><span class="line">│       ├── plan.md             # 实现计划</span><br><span class="line">│       ├── research.md         # 技术研究</span><br><span class="line">│       ├── data-model.md       # 数据模型</span><br><span class="line">│       ├── contracts/          # API契约</span><br><span class="line">│       ├── quickstart.md       # 快速验证指南</span><br><span class="line">│       └── tasks.md            # 任务列表</span><br><span class="line">└── CLAUDE.md                   # AI助手配置（自动生成）</span><br></pre></td></tr></table></figure>
+<p>SpecKit典型适用场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">新功能开发：完整的四阶段流程，适合复杂功能开发</span><br><span class="line">Bug修复：简化流程，重点关注测试和验证</span><br><span class="line">代码重构：先明确规格，再进行重构</span><br><span class="line">API设计：详细的规格定义和测试用例</span><br><span class="line">团队协作：规格文档作为团队沟通的统一语言</span><br><span class="line">项目交接：完整的规格和文档便于项目移交</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io">Blank</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wangyyovo.github.io/posts/5c32937f/">https://wangyyovo.github.io/posts/5c32937f/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wangyyovo.github.io" target="_blank">Blank</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/spec-kit/">spec-kit</a></div><div class="post-share"><div class="social-share" data-image="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://jsd.012700.xyz/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://jsd.012700.xyz/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/e7512c96/" title="GitHub Spec Kit 中文使用说明"><img class="cover" src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">GitHub Spec Kit 中文使用说明</div></div><div class="info-2"><div class="info-item-1"> https://blog.csdn.net/thinktodo1998/article/details/151832870  GitHub Spec Kit 中文使用说明 工具简介GitHub Spec Kit 是GitHub开源的规范驱动开发（Specification-Driven Development, SDD）工具包，它彻底颠覆了传统软件开发模式。在传统开发中，代码是王者，规范服务于代码；而Spec Kit实现了权力反转——规范成为主导，代码服务于规范。规范不再是指导实现的文档，而是能够直接生成实现的可执行文件。 核心理念：权力反转传统模式：规范 → 指导 → 代码实现 SDD模式：规范 → 直接生成 → 代码实现 规范优先：规范成为开发的首要驱动力，而非辅助文档可执行规范：规范足够精确和完整，能够直接生成工作系统消除鸿沟：彻底消除规范与实现之间的转译差距AI协同增强：通过AI的理解能力让自然语言规范变为可执行代码持续进化：生产反馈直接更新规范，驱动下一轮生成 安装方法1. 环境要求必需软件： 12345Linux/macOS (Windows需要WSL2或原生Pow...</div></div></div></a><a class="pagination-related" href="/posts/6999459/" title="Windows下安装Claude Code及使用"><img class="cover" src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Windows下安装Claude Code及使用</div></div><div class="info-2"><div class="info-item-1">Windows下安装Claude Code及使用 与Claude Desktop的区别：请注意，Claude Desktop（图形化桌面应用程序）的配置文件位于 %AppData%\Claude\ 目录（通常是 C:\Users\用户名\AppData\Roaming\Claude\），其配置文件名通常为 claude_desktop_config.json，用于配置MCP服务器等，与Claude Code的命令行配置不是一回事。  环境准备 Node.js(v18+): https://nodejs.org/zh-cn/download Git: https://git-scm.com/install/windows Wrap: https://www.warp.dev/download  安装Claude Code在Wrap终端中执行安装 1npm install -g @anthropic-ai/claude-code 相关文件 12C:\Users\用户\.claude.jsonC:\Users\用户\.claude  .claude目录下的文件说明    文件&#x2F...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/e7512c96/" title="GitHub Spec Kit 中文使用说明"><img class="cover" src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-29</div><div class="info-item-2">GitHub Spec Kit 中文使用说明</div></div><div class="info-2"><div class="info-item-1"> https://blog.csdn.net/thinktodo1998/article/details/151832870  GitHub Spec Kit 中文使用说明 工具简介GitHub Spec Kit 是GitHub开源的规范驱动开发（Specification-Driven Development, SDD）工具包，它彻底颠覆了传统软件开发模式。在传统开发中，代码是王者，规范服务于代码；而Spec Kit实现了权力反转——规范成为主导，代码服务于规范。规范不再是指导实现的文档，而是能够直接生成实现的可执行文件。 核心理念：权力反转传统模式：规范 → 指导 → 代码实现 SDD模式：规范 → 直接生成 → 代码实现 规范优先：规范成为开发的首要驱动力，而非辅助文档可执行规范：规范足够精确和完整，能够直接生成工作系统消除鸿沟：彻底消除规范与实现之间的转译差距AI协同增强：通过AI的理解能力让自然语言规范变为可执行代码持续进化：生产反馈直接更新规范，驱动下一轮生成 安装方法1. 环境要求必需软件： 12345Linux/macOS (Windows需要WSL2或原生Pow...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/theme/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Blank</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">355</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">59</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>主题 GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spec-kit%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">spec-kit是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spec-Kit%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%E5%91%A2%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">Spec-Kit有什么用呢：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E5%88%99"><span class="toc-number">1.2.</span> <span class="toc-text">核心原则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spec-kit%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">Spec-kit安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85uv"><span class="toc-number">2.1.</span> <span class="toc-text">安装uv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85specify-cli"><span class="toc-number">2.2.</span> <span class="toc-text">安装specify cli</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%B8%A6-Spec-Kit-%E7%9A%84%E9%A1%B9%E7%9B%AE%E9%AA%A8%E6%9E%B6"><span class="toc-number">2.3.</span> <span class="toc-text">初始化一个带 Spec-Kit 的项目骨架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-Claude-Code-%E9%87%8C%E8%B7%91%E5%AE%8C%E6%95%B4%E7%9A%84-Spec-Driven-%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">在 Claude Code 里跑完整的 Spec-Driven 工作流</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/e7512c96/" title="GitHub Spec Kit 中文使用说明"><img src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GitHub Spec Kit 中文使用说明"/></a><div class="content"><a class="title" href="/posts/e7512c96/" title="GitHub Spec Kit 中文使用说明">GitHub Spec Kit 中文使用说明</a><time datetime="2025-10-29T12:05:36.000Z" title="发表于 2025-10-29 20:05:36">2025-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/5c32937f/" title="Spec-kit安装"><img src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spec-kit安装"/></a><div class="content"><a class="title" href="/posts/5c32937f/" title="Spec-kit安装">Spec-kit安装</a><time datetime="2025-10-29T11:05:36.000Z" title="发表于 2025-10-29 19:05:36">2025-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6999459/" title="Windows下安装Claude Code及使用"><img src="https://www.jsdelivr.com/gh/wangyyovo/CDN@master/cover/algorithm/38b729ad735ef910dc048dd9c1a11743.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows下安装Claude Code及使用"/></a><div class="content"><a class="title" href="/posts/6999459/" title="Windows下安装Claude Code及使用">Windows下安装Claude Code及使用</a><time datetime="2025-10-29T09:05:36.000Z" title="发表于 2025-10-29 17:05:36">2025-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/d14168d/" title="虚拟机问题合集"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/hexo/090cfe4e9e60b0ad0de05db822f3ae97.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虚拟机问题合集"/></a><div class="content"><a class="title" href="/posts/d14168d/" title="虚拟机问题合集">虚拟机问题合集</a><time datetime="2022-07-16T13:30:36.000Z" title="发表于 2022-07-16 21:30:36">2022-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发"><img src="https://jsd.012700.xyz/gh/wangyyovo/CDN@master/cover/golang/941ed1ec2925719a0c92e76f4f786b6a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用go语言编写移动端sdk和app开发"/></a><div class="content"><a class="title" href="/posts/f540045f/" title="用go语言编写移动端sdk和app开发">用go语言编写移动端sdk和app开发</a><time datetime="2022-07-04T12:14:21.000Z" title="发表于 2022-07-04 20:14:21">2022-07-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Blank</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/utils.min.js"></script><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/main.min.js"></script><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/tw_cn.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"placeholder":"请留下你的脚印","pageSize":10,"lang":"zh-CN","requiredFields":["nick","mail","link"]}
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'BSfgwCPLOvPHVPaSoBCGSENf-MdYXbMMI',
+      appKey: '2Q8qq5060qxycL6FPL26LnMG',
+      avatar: 'monsterid',
+      serverURLs: 'https://bsfgwcpl.api.lncldglobal.com',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://jsd.012700.xyz/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="https://jsd.012700.xyz/npm/hexo-theme-butterfly/source/js/search/local-search.min.js"></script></div></div></body></html>
